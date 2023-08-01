@@ -1,0 +1,157 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
+}
+
+* {
+  font-family: "Inter";
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transition: all 0.2s;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+  background: #a1d9fa;
+  border-radius: 10px;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    110.22deg,
+    #2f7ba6 -11.29%,
+    #4bb9f8 49.06%,
+    #a1d9fa 107.38%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
+  max-height: 1080px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.addroompopup {
+  border-radius: 8px;
+  background: #f3f3f3;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 17px;
+  top: 50%;
+  flex-direction: column;
+  position: absolute;
+  height: 630px;
+  width: 480px;
+  display: flex;
+  border: 1px solid black;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.addroompopup > div {
+  width: 100%;
+}
+
+.top {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+.roominfo {
+  flex-direction: column;
+  display: flex;
+  padding: 8px;
+  align-items: flex-start;
+  gap: 13px;
+  align-self: stretch;
+  border-radius: var(--corner-4, 4px);
+  background: var(--orange, #fe7c31);
+}
+
+.roominfo input {
+  border: none;
+  display: flex;
+  padding: 4px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: var(--corner-4, 4px);
+  background: rgba(216, 216, 216, 0.5);
+}
+
+.photos{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.desc {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.desc textarea {
+  border-radius: 2px;
+  border: 1px solid var(--orange-shade-8, #fe8b48);
+  background: var(--orange-shade-2, #ffe2d1);
+  display: flex;
+  height: 96px;
+  padding: 4px;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.buttons {
+  justify-content: flex-end;
+  gap: 20px;
+  display: flex;
+}
+
+.buttons > button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  border-radius: 4px;
+}
+.addroom {
+  color: #ececec;
+  background: var(--orange, #fe7c31);
+}
+
+.cancel {
+  color: black;
+  border-radius: 4px;
+  border: 1px solid var(--gray-300, #c5c5c5);
+}
+
+.exit-button{
+  border: none;
+}
+.exit-button p{
+  font-size: 12px;
+}
