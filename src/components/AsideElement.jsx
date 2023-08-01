@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
-import useDynamicImage from "../hooks/useDynamicImage";
-import useRemoveSpaces from "../hooks/useRemoveSpaces";
+import useDynamicImage from "../hooks/useDynamicImage.js";
+import useRemoveSpaces from "../hooks/useRemoveSpaces.js";
 export default function AsideElement(props) {
   const { name, active, saved } = props;
   // hooks

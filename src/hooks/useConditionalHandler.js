@@ -1,6 +1,6 @@
 // same as useKeyHandlerEffect but has a condition if it should be added or not
-import { useEffect } from "react";
-import useKeyHandler from "./useKeyHandler";
+import { useEffect } from 'react';
+import useKeyHandler from './useKeyHandler.js';
 
 function useConditionalHandler(handlerFunction, condition) {
   const keyHandlers = useKeyHandler;

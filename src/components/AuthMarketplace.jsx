@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-import MarketplaceLogin from "./MarketplaceLogin";
-import MarketplaceRegister from "./MarketplaceRegister";
-import AsideContext from "../context/AsideContext";
+import MarketplaceLogin from "./MarketplaceLogin.jsx";
+import MarketplaceRegister from "./MarketplaceRegister.jsx";
+import AsideContext from "../context/AsideContext.js";
 export default function AuthMarketplace() {
   const [type, setType] = useState("login"); // form should be login or registraton
 

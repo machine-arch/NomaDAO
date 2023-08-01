@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import MarketplaceContext from "./context/MarketplaceContext";
+import MarketplaceContext from "./context/MarketplaceContext.jsx";
 export default function App() {
   // hooks
   const navigate = useNavigate();

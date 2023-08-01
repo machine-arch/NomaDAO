@@ -1,8 +1,6 @@
 import { styled } from "styled-components";
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import PopupAddroom from "./PopupAddroom";
-import arrow from "../assets/images/FilterArrow.svg";
+import PopupAddroom from "./PopupAddroom.jsx";
 import plus from "../assets/images/addroomplus.svg";
 
 export default function FilterComponentPanel({ header, rows, onFilterChange, handleAddRoom, f}) {

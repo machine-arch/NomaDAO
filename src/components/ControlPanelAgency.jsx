@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "styled-components";
-import GroupRequests from "./GroupRequests";
-import TableExtended from "./TableExtended";
+import GroupRequests from "./GroupRequests.jsx";
+import TableExtended from "./TableExtended.jsx";
 import { useOutletContext } from "react-router-dom";
 import MarketplaceHeader from "./MarketplaceHeader";
-import FilterByControlPanel from "./FilterbyControlPanelAgency";
-import FilterComponent from "./FilterComponent";
+import FilterByControlPanel from "./FilterbyControlPanelAgency.jsx";
+import FilterComponent from "./FilterComponent.jsx";
 const initialData = {
   header: [
     "Tour Agency",

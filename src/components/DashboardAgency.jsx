@@ -1,8 +1,8 @@
 import React from "react";
 import { styled } from "styled-components";
-import MontyleReport from "./MontyleReport";
-import RelatedHotelFares from "./RelatedHotelFares";
-import Table from "./Table";
+import MontyleReport from "./MontyleReport.jsx";
+import RelatedHotelFares from "./RelatedHotelFares.jsx";
+import Table from "./Table.jsx";
 import { useOutletContext } from "react-router-dom";
 const data = {
   header: [

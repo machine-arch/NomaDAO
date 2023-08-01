@@ -1,9 +1,9 @@
 import {React, useState} from "react";
 import { styled } from "styled-components";
-import ActiveBalance from "./ActiveBalance";
-import TableBalance from "./TableBalance";
+import ActiveBalance from "./ActiveBalance.jsx";
+import TableBalance from "./TableBalance.jsx";
 import { useOutletContext } from "react-router-dom";
-import FilterComponent from "./FilterComponent";
+import FilterComponent from "./FilterComponent.jsx";
 const data = {
   header: ["Sender", "Reciever", "Status", "Date", "Amount", "Action"],
   filters: [

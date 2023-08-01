@@ -1,18 +1,14 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
-import MontyleReport from "./MyroomsPublishedrooms";
-import TableExtended from "./TableExtended";
-import MarketplaceHeader from "./MarketplaceHeader";
+import MontyleReport from "./MyroomsPublishedrooms.jsx";
+import TableExtended from "./TableExtended.jsx";
+import MarketplaceHeader from "./MarketplaceHeader.jsx";
 import { useOutletContext } from "react-router-dom";
-import FilterByControlPanel from "./FilterbyControlPanelHotel";
-import FilterComponent from "./FilterComponent";
-import useMoveSound from "../hooks/useMoveSound";
-import useConditionalHandler from "../hooks/useConditionalHandler";
-import MarketplaceContext from "../context/MarketplaceContext";
-
-
-
+import FilterByControlPanel from "./FilterbyControlPanelHotel.jsx";
+import FilterComponent from "./FilterComponent.jsx";
+import useMoveSound from "../hooks/useMoveSound.js";
+import useConditionalHandler from "../hooks/useConditionalHandler.js";
 
 const initialData = {
   header: [

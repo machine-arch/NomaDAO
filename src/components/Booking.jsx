@@ -8,15 +8,15 @@ import React, {
 import { styled } from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import useMoveSound from "../hooks/useMoveSound";
+import useMoveSound from "../hooks/useMoveSound.js";
 import SearchedHotel from "./SearchedHotel";
 import "./Booking.css";
 import HOTELS from "../data/hotels.js";
 import { useNavigate } from "react-router-dom";
-import BookingContext from "../context/BookingContext";
-import useConditionalHandler from "../hooks/useConditionalHandler";
+import BookingContext from "../context/BookingContext.js";
+import useConditionalHandler from "../hooks/useConditionalHandler.js";
 import { cosine } from "string-comparison";
-import AsideContext from "../context/AsideContext";
+import AsideContext from "../context/AsideContext.js";
 
 export default function Booking() {
   // States
