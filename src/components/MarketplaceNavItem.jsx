@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
-import useDynamicImage from "../hooks/useDynamicImage";
-import useRemoveSpaces from "../hooks/useRemoveSpaces";
+import useDynamicImage from "../hooks/useDynamicImage.js";
+import useRemoveSpaces from "../hooks/useRemoveSpaces.js";
 export default function MarketplaceNavItem({ name, active, click }) {
   const removeSpaces = useRemoveSpaces;
   const image = useDynamicImage(
@@ -9,7 +9,12 @@ export default function MarketplaceNavItem({ name, active, click }) {
     "svg"
   ); // render nametrue.svg if element is active, new svg will be white
   return (
-    <Nav active={active} onClick={()=>{click(name)}}>
+    <Nav
+      active={active}
+      onClick={() => {
+        click(name);
+      }}
+    >
       <Img src={image} alt={name} />
       <Text active={active}>{name}</Text>
     </Nav>

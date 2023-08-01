@@ -1,10 +1,10 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { styled } from "styled-components";
-import PublishedHotels from "./PublishedHotels";
-import MarketPlaceHeader from "./MarketplaceHeader";
-import TableExtended from "./TableExtended";
+import PublishedHotels from "./PublishedHotels.jsx";
+import MarketPlaceHeader from "./MarketplaceHeader.jsx";
+import TableExtended from "./TableExtended.jsx";
 import { useOutletContext } from "react-router-dom";
-import FilterComponent from "./FilterComponent";
+import FilterComponent from "./FilterComponent.jsx";
 const data = {
   header: [
     "Publisher",
@@ -59,7 +59,7 @@ const data = {
       "89 $",
       "photos",
       "Check Details",
-    ],    
+    ],
     [
       "Hotel",
       "Confirmed",
@@ -70,7 +70,7 @@ const data = {
       "89 $",
       "photos",
       "Check Details",
-    ],    
+    ],
     [
       "Hotel",
       "Rejected",
@@ -125,7 +125,7 @@ const data = {
       "89 $",
       "photos",
       "Check Details",
-    ],   
+    ],
     [
       "Hotel",
       "Rejected",
@@ -147,7 +147,7 @@ export default function PublishedHotelsAgency() {
     const newFilteredData = data.rows.filter((row) => {
       return Object.keys(selectedFilters).every((key) => {
         const filterValue = selectedFilters[key];
-        return filterValue === '' || row[key] === filterValue;
+        return filterValue === "" || row[key] === filterValue;
       });
     });
     setFilteredData(newFilteredData);
@@ -159,15 +159,22 @@ export default function PublishedHotelsAgency() {
       <Title>Filter by</Title>
       {/* <FilterbyPublishedHotelsAgency filter={data.filters}/>
       <TableExtended header={data.header} rows={data.rows} setPopup={setPopup} /> */}
-      <FilterComponent header={data.header} rows={data.rows} onFilterChange={handleFilterChange} />
-      <TableExtended header={data.header} rows={filteredData} setPopup={setPopup} />  
+      <FilterComponent
+        header={data.header}
+        rows={data.rows}
+        onFilterChange={handleFilterChange}
+      />
+      <TableExtended
+        header={data.header}
+        rows={filteredData}
+        setPopup={setPopup}
+      />
     </Wrapper>
   );
 }
 const Wrapper = styled.div`
   padding: 60px 50px 0px 50px;
 `;
-
 
 const Title = styled.p`
   color: #4c4c4c;

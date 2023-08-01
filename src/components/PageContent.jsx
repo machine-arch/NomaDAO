@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import BigBox from "./BigBox";
-import useMoveSound from "../hooks/useMoveSound";
-import pagesContent from "../data/pagesContent";
-import AsideContext from "../context/AsideContext";
-import useConditionalHandler from "../hooks/useConditionalHandler";
+import useMoveSound from "../hooks/useMoveSound.js";
+import pagesContent from "../data/pagesContent.js";
+import AsideContext from "../context/AsideContext.js";
+import useConditionalHandler from "../hooks/useConditionalHandler.js";
 import { styled } from "styled-components";
 export default function PageContent() {
   let { pagename } = useParams(); // getting the name of the page

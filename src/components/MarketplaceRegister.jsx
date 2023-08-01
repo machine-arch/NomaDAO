@@ -2,9 +2,9 @@ import React, { useEffect, useContext, useRef, useState } from "react";
 import { styled } from "styled-components";
 import { API_register } from "../api/requests.js";
 import { useNavigate } from "react-router-dom";
-import useMoveSound from "../hooks/useMoveSound";
-import AsideContext from "../context/AsideContext";
-import useConditionalHandler from "../hooks/useConditionalHandler";
+import useMoveSound from "../hooks/useMoveSound.js";
+import AsideContext from "../context/AsideContext.js";
+import useConditionalHandler from "../hooks/useConditionalHandler.js";
 
 export default function MarketplaceRegister({ switchToRegister }) {
   const [error, setError] = useState("");
@@ -15,12 +15,12 @@ export default function MarketplaceRegister({ switchToRegister }) {
       setError("Passwords do not match");
     } else {
       let field = "";
-      if(field_hotel.current && field_hotel.current.checked) {
+      if (field_hotel.current && field_hotel.current.checked) {
         field = "Hotel";
-      } else if(field_agency.current && field_agency.current.checked) {
+      } else if (field_agency.current && field_agency.current.checked) {
         field = "Agency";
       }
-  
+
       let response = await API_register({
         companyName: name.current.value,
         companyField: field,
@@ -30,7 +30,7 @@ export default function MarketplaceRegister({ switchToRegister }) {
         website: website.current.value,
         password: password.current.value,
       });
-  
+
       if (response.error) {
         setError(response.error);
       } else {
@@ -77,27 +77,25 @@ export default function MarketplaceRegister({ switchToRegister }) {
         if (activeInput === 0 || activeInput === 1) {
           setActiveInput(2); // Jump to 'name' ref
           name.current.focus();
-        } else if(activeInput === 9)
-        {
+        } else if (activeInput === 9) {
           inputRefs[2].current.focus();
           setActiveInput(2);
-        }else {
+        } else {
           nextInput();
         }
         moveSound();
         break;
       case 38: // Up Arrow
-      if (activeInput === 2) { // If 'name' is the current active input
-        if(field_hotel.current.checked) {
-          setActiveInput(0); // Set 'Hotel' as the new active input
-          field_hotel.current.focus(); // Focus on 'Hotel'
-        } else if(field_agency.current.checked) {
-          setActiveInput(1); // Set 'Agency' as the new active input
-          field_agency.current.focus(); // Focus on 'Agency'
-        }
-      }
-      else
-        if (activeInput === 0 || activeInput === 1) {
+        if (activeInput === 2) {
+          // If 'name' is the current active input
+          if (field_hotel.current.checked) {
+            setActiveInput(0); // Set 'Hotel' as the new active input
+            field_hotel.current.focus(); // Focus on 'Hotel'
+          } else if (field_agency.current.checked) {
+            setActiveInput(1); // Set 'Agency' as the new active input
+            field_agency.current.focus(); // Focus on 'Agency'
+          }
+        } else if (activeInput === 0 || activeInput === 1) {
           switchToRegister();
         }
         prevInput();
@@ -116,12 +114,13 @@ export default function MarketplaceRegister({ switchToRegister }) {
         }
         moveSound();
         break;
-        case 13: // Enter - Ok
+      case 13: // Enter - Ok
         if (activeInput === inputRefs.length - 1) {
           handleSubmit();
         } else {
           setActiveInput(activeInput + 1);
-          inputRefs[activeInput + 1].current && inputRefs[activeInput + 1].current.focus();
+          inputRefs[activeInput + 1].current &&
+            inputRefs[activeInput + 1].current.focus();
         }
         break;
       default:
@@ -136,29 +135,28 @@ export default function MarketplaceRegister({ switchToRegister }) {
   }
 
   function nextInput() {
-    if (activeInput === 0) { // If "Hotel" is the current active input
+    if (activeInput === 0) {
+      // If "Hotel" is the current active input
       field_hotel.current.checked = false; // Uncheck "Hotel"
       field_agency.current.checked = true; // Check "Agency"
       setActiveInput(1);
-     }
-     else{ 
+    } else {
       setActiveInput(activeInput + 1);
       inputRefs[activeInput + 1].current.focus();
-     }
+    }
     // }
   }
 
   function prevInput() {
-    if (activeInput === 1) { // If "Hotel" is the current active input
+    if (activeInput === 1) {
+      // If "Hotel" is the current active input
       field_hotel.current.checked = true; // Uncheck "Hotel"
       field_agency.current.checked = false; // Check "Agency"
       setActiveInput(0);
-     }
+    }
     if (activeInput > 0) {
-        setActiveInput(activeInput - 1);
-        inputRefs[activeInput - 1].current.focus();
-      
-      
+      setActiveInput(activeInput - 1);
+      inputRefs[activeInput - 1].current.focus();
     }
   }
 
@@ -183,8 +181,9 @@ export default function MarketplaceRegister({ switchToRegister }) {
           type="checkbox"
           id="hotel"
           name="field"
-          defaultChecked/>
-          <Label htmlFor="agency">Agency</Label>
+          defaultChecked
+        />
+        <Label htmlFor="agency">Agency</Label>
         <Radio ref={field_agency} type="checkbox" id="agency" name="field" />
       </Flex>
       <Input ref={name} placeholder="Company Name" type="text" />

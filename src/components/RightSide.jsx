@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import SearchIcon from "../assets/images/search.png";
 import MicrophoneIcon from "../assets/images/microphone.png";
 import { Outlet } from "react-router-dom";
-import AsideContext from "../context/AsideContext";
+import AsideContext from "../context/AsideContext.js";
 
 export default function RightSide() {
   const asideContext = useContext(AsideContext);

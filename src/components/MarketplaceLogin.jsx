@@ -4,16 +4,13 @@ import { API_login } from "../api/requests.js";
 import { useNavigate } from "react-router-dom";
 import useConditionalHandler from "../hooks/useConditionalHandler";
 import useMoveSound from "../hooks/useMoveSound";
-import AsideContext from "../context/AsideContext";
-
-
+import AsideContext from "../context/AsideContext.js";
 
 export default function MarketplaceLogin({ switchToRegister }) {
   const asideContext = useContext(AsideContext);
   const [error, setError] = useState("");
   const [activeInputBox, setActiveInputBox] = useState(null);
   const { asideActive, setAsideActive } = asideContext;
-  
 
   // hooks
   const navigate = useNavigate();
@@ -35,7 +32,7 @@ export default function MarketplaceLogin({ switchToRegister }) {
     if (response.error) {
       setError(response.error); // if response contains error, it will be set
     } else {
-      navigate("/marketplace/" + response.field+"/Home"); // navigate to corresponding page
+      navigate("/marketplace/" + response.field + "/Home"); // navigate to corresponding page
     }
   }
 
@@ -48,7 +45,8 @@ export default function MarketplaceLogin({ switchToRegister }) {
         break;
       // Up Arrow
       case 38:
-        if (activeInput === 0) { // Check if current input is emailRef
+        if (activeInput === 0) {
+          // Check if current input is emailRef
           switchToRegister(); // Call the passed function to switch to register form
         }
         prevInput();
@@ -56,14 +54,14 @@ export default function MarketplaceLogin({ switchToRegister }) {
         break;
       // Left Arrow
       case 37:
-      goBackToNavigation();
-      moveSound();
-      break;
+        goBackToNavigation();
+        moveSound();
+        break;
       // Enter - Ok
       case 13:
         if (activeInput === inputRefs.length - 1) {
           handleSubmit();
-        } else if(inputRefs[activeInput].current === checkBoxRef.current) {
+        } else if (inputRefs[activeInput].current === checkBoxRef.current) {
           checkBoxRef.current.click(); // This line toggles the checkbox when it's focused and "Enter" is pressed
         } else {
           inputRefs[activeInput].current.focus();
@@ -95,14 +93,13 @@ export default function MarketplaceLogin({ switchToRegister }) {
   }
 
   useEffect(() => {
-    if (!asideActive) { 
-        emailRef.current.focus();
-    }
-    else{
+    if (!asideActive) {
+      emailRef.current.focus();
+    } else {
       emailRef.current.blur();
     }
   }, [asideActive]);
-  
+
   // const handleCheck = () => {
   //   if (checkboxRef.current) {
   //     checkboxRef.current.checked = true;
@@ -120,13 +117,15 @@ export default function MarketplaceLogin({ switchToRegister }) {
       <Input ref={passwordRef} placeholder="Password" type="password" />
       <Flex>
         <CheckBoxWrapper>
-          <CheckBox id="remember" type="checkbox" ref={checkBoxRef}/>
+          <CheckBox id="remember" type="checkbox" ref={checkBoxRef} />
           <CheckBoxLabel htmlFor="remember" />
         </CheckBoxWrapper>
         <Remember>Remember me</Remember>
       </Flex>
       <Error>{error}</Error>
-      <Submit ref={submitRef} onClick={handleSubmit}>Login</Submit>
+      <Submit ref={submitRef} onClick={handleSubmit}>
+        Login
+      </Submit>
     </div>
   );
 }
@@ -167,19 +166,14 @@ const Input = styled.input`
 `;
 
 const CheckBoxWrapper = styled.div`
-
   position: relative;
   &:focus {
-  border-radius: 10px;
-  border: 1px solid var(--gray-400, #000);
+    border-radius: 10px;
+    border: 1px solid var(--gray-400, #000);
   }
 `;
 
-
-
 const CheckBoxLabel = styled.label`
-
-
   position: absolute;
   top: 0;
   left: 0;
@@ -199,9 +193,9 @@ const CheckBoxLabel = styled.label`
     box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
     transition: 0.2s;
     &:hover,
-&:focus {
-  border-color: black;
-}
+    &:focus {
+      border-color: black;
+    }
   }
 `;
 const CheckBox = styled.input`
@@ -225,8 +219,8 @@ const CheckBox = styled.input`
 `;
 
 const CheckBoxs = styled.input`
-opacity: 0;
-`
+  opacity: 0;
+`;
 
 const Remember = styled.span`
   color: #3f3f3f;
@@ -273,4 +267,3 @@ const Error = styled.p`
   font-family: "Inter";
   line-height: 40px;
 `;
-

@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import Logo from "../assets/images/logo.png";
 import Arrow from "../assets/images/arrow-back.png";
-import useMoveSound from "../hooks/useMoveSound";
-import { useEncodeLink } from "../hooks/useEncodeLink";
-import AsideContext from "../context/AsideContext";
-import singlePages from "../data/singlePages";
-import useKeyHanderEffect from "../hooks/useKeyHanderEffect";
-import useRemoveSpaces from "../hooks/useRemoveSpaces";
-import ProductContext from "../context/ProductContext";
+import useMoveSound from "../hooks/useMoveSound.js";
+import { useEncodeLink } from "../hooks/useEncodeLink.js";
+import AsideContext from "../context/AsideContext.js";
+import singlePages from "../data/singlePages.js";
+import useKeyHanderEffect from "../hooks/useKeyHanderEffect.js";
+import useRemoveSpaces from "../hooks/useRemoveSpaces.js";
+import ProductContext from "../context/ProductContext.js";
 
 export default function Product() {
   const { product } = useParams();
