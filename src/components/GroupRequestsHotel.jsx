@@ -4,7 +4,7 @@ import GroupRequests from "./GroupRequests.jsx";
 import TableExtended from "./TableExtended.jsx";
 import { useOutletContext } from "react-router-dom";
 import MarketplaceHeader from "./MarketplaceHeader.jsx";
-import FilterComponent from "./FilterComponent.tsx";
+import FilterComponent from "./FilterComponent.jsx";
 const data = {
   header: [
     "Tour Agency",

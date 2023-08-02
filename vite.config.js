@@ -1,11 +1,17 @@
 import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import legacy from '@vitejs/plugin-legacy';
 
 export default defineConfig({
   root: './',
   build: {
-    // Relative to the root
-    outDir: './dist',
+    target: 'es5',
+    outDir: 'dist',
+    rollupOptions: {
+      output: {
+        format: 'iife',
+      },
+    },
   },
   plugins: [
     createHtmlPlugin({
@@ -14,6 +20,9 @@ export default defineConfig({
           title: 'production',
         },
       },
+    }),
+    legacy({
+      targets: ['defaults', 'not IE 11'],
     }),
   ],
 });

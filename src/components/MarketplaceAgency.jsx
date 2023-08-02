@@ -7,7 +7,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import settings from "../assets/images/settings.svg";
 import logout from "../assets/images/logout.svg";
 import bell from "../assets/images/notification.svg";
-import Popup from "./Popup.js";
+import Popup from "./Popup.jsx";
 import useMoveSound from "../hooks/useMoveSound.js";
 import useRemoveSpaces from "../hooks/useRemoveSpaces.js";
 import MarketplaceContext from "../context/MarketplaceContext.js";
