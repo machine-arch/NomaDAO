@@ -1,10 +1,10 @@
 import React from "react";
 import CopyImg from "../../assets/images/CopySymbol.svg";
-import "./ActiveBalance.css"; // Import a CSS file where you define the CSS classes
+import "./ActiveBalance.css";
 
 export default function ActiveBalance() {
   return (
-    <div className="wrapper">
+    <div >
       <p className="title">Active Balance</p>
       <div className="grayhoriz">
         <div className="grayvert">
