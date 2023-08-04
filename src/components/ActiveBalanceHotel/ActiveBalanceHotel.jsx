@@ -1,9 +1,10 @@
 import { React, useState } from "react";
-import { styled } from "styled-components";
-import ActiveBalance from "./ActiveBalance/ActiveBalance.jsx";
-import TableBalance from "./TableBalance.jsx";
+import ActiveBalance from "../ActiveBalance/ActiveBalance.jsx";
+import TableBalance from "../TableBalance/TableBalance.jsx";
 import { useOutletContext } from "react-router-dom";
-import FilterComponent from "./FilterComponent.jsx";
+import FilterComponent from "../FilterComponent/FilterComponent.jsx";
+import "./ActiveBalanceHotel.css";
+
 const data = {
   header: ["Sender", "Reciever", "Status", "Date", "Amount", "Action"],
   filters: [
@@ -95,29 +96,11 @@ export default function ActiveBalanceHotel() {
   };
 
   return (
-    <Wrapper>
+    <div className="wrapper">
       <ActiveBalance />
-      <Title>Filter by</Title>
+      <p className="title">Filter by</p>
       <FilterComponent header={data.header} rows={data.rows} onFilterChange={handleFilterChange} />
       <TableBalance header={data.header} rows={filteredData} setPopup={setPopup} />
-    </Wrapper>
+    </div>
   );
 }
-
-const Wrapper = styled.div`
-  padding: 60px 50px 0px 50px;
-`;
-
-const Title = styled.p`
-  color: #4c4c4c;
-  font-size: 18px;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  line-height: 32px;
-  margin-top: 40px;
-  margin-bottom: 10px;
-`;
-
-
-

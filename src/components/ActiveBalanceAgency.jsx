@@ -1,6 +1,6 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { styled } from "styled-components";
-import ActiveBalance from "./ActiveBalance.jsx";
+import ActiveBalance from "./ActiveBalance/ActiveBalance.jsx";
 import TableBalance from "./TableBalance.jsx";
 import { useOutletContext } from "react-router-dom";
 import FilterComponent from "./FilterComponent.jsx";
@@ -14,7 +14,7 @@ const data = {
     "Amount Range",
     "Group",
   ],
-  rows: [  
+  rows: [
     [
       "Another",
       "Bluenose",
@@ -100,7 +100,7 @@ export default function ActiveBalanceAgency() {
       <ActiveBalance />
       <Title>Filter by</Title>
       <FilterComponent header={data.header} rows={data.rows} onFilterChange={handleFilterChange} />
-      <TableBalance header={data.header} rows={filteredData} setPopup={setPopup} />      
+      <TableBalance header={data.header} rows={filteredData} setPopup={setPopup} />
     </Wrapper>
   );
 }
