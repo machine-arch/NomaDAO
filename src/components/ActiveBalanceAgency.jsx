@@ -98,7 +98,6 @@ export default function ActiveBalanceAgency() {
   return (
     <Wrapper>
       <ActiveBalance />
-      {/* prettier-ignore */}
       <Title>Filter by</Title>
       <FilterComponent header={data.header} rows={data.rows} onFilterChange={handleFilterChange} />
       <TableBalance header={data.header} rows={filteredData} setPopup={setPopup} />      

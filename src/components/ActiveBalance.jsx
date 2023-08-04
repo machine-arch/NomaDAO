@@ -36,8 +36,6 @@ export default function ActiveBalance() {
 
         </Grayverttwo>
       </Grayhoriz>
-      
-      {/* <See>See detailed report</See> */}
     </Wrapper>
   );
 }
