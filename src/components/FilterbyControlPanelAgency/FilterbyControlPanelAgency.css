@@ -1,0 +1,43 @@
+/* styles.css */
+
+.filterbyControlPanelAgency-container {
+    margin-bottom: 10px;
+    max-width: 1160px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  
+  
+  .filterbyControlPanelAgency-add-room {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 48px;
+    border-radius: 70px;
+    background: var(--brandy, #fe7c31);
+    cursor: pointer;
+  }
+  
+  .filterbyControlPanelAgency-add-room-text {
+    color: #fff;
+    display: flex;
+    font-size: 18px;
+    width: 82px;
+    font-weight: 300;
+  }
+  
+ 
+  .filterbyControlPanelAgency-small-image {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .filterbyControlPanelAgency-small-image:last-child {
+    margin-left: 4px;
+  }
+  

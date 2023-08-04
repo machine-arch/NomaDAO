@@ -1,0 +1,26 @@
+
+.controlPanelAgency-container {
+    margin-bottom: 10px;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-family: 'Inter';
+  }
+  
+  .controlPanelAgency-title {
+    color: #4c4c4c;
+    font-size: 18px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .controlPanelAgency-wrapper {
+    padding: 60px 50px 0px 50px;
+  }
+  
