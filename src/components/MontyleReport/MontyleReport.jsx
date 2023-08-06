@@ -1,5 +1,4 @@
 import React from 'react';
-import { styled } from 'styled-components';
 import './MontyleReport.css';
 
 export default function MontyleReport() {

@@ -1,0 +1,23 @@
+.smallBox-box {
+
+  height: 240px;
+  width: 30%;
+  border-radius: 8px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.smallBox-title {
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  color: #ececec;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 20px;
+}

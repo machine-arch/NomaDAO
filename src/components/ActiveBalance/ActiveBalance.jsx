@@ -5,17 +5,17 @@ import './ActiveBalance.css';
 export default function ActiveBalance() {
   return (
     <div>
-      <p className="title">Active Balance</p>
-      <div className="grayhoriz">
-        <div className="grayvert">
-          <div className="orange">
-            <p className="bigs">1,234 Nom</p>
-            <p className="small">Balance</p>
+      <p className="activeBalance-title">Active Balance</p>
+      <div className="activeBalance-grayhoriz">
+        <div className="activeBalance-grayvert">
+          <div className="activeBalance-orange">
+            <p className="activeBalance-bigs">1,234 Nom</p>
+            <p className="activeBalance-small">Balance</p>
           </div>
-          <div className="graymy">
-            <p className="smallb">Wallet address</p>
+          <div className="activeBalance-graymy">
+            <p className="activeBalance-smallb">Wallet address</p>
             <p
-              className="search"
+              className="activeBalance-search"
               style={{ backgroundImage: `url(${CopyImg})` }}
             >
               0xc59583f1c858fe5EE6dA27Eac7b1Ca8Aa30ADF63
@@ -23,18 +23,18 @@ export default function ActiveBalance() {
           </div>
         </div>
 
-        <div className="grayverttwo">
-          <div className="grayvert">
-            <div className="blue">
-              <p className="big">Send</p>
+        <div className="activeBalance-grayverttwo">
+          <div className="activeBalance-grayvert">
+            <div className="activeBalance-blue">
+              <p className="activeBalance-big">Send</p>
             </div>
-            <div className="blue">
-              <p className="big">Recieve</p>
+            <div className="activeBalance-blue">
+              <p className="activeBalance-big">Recieve</p>
             </div>
           </div>
-          <div className="grayvert1">
-            <div className="white">
-              <p className="bigb">Action</p>
+          <div className="activeBalance-grayvert1">
+            <div className="activeBalance-white">
+              <p className="activeBalance-bigb ">Action</p>
             </div>
           </div>
         </div>

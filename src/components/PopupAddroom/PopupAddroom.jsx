@@ -1,10 +1,10 @@
 import { React, useState } from 'react';
-import { styled } from 'styled-components';
 import Addroom1 from '../../assets/images/Addroom1.svg';
 import Addroom2 from '../../assets/images/Addroom2.svg';
 import Addroom3 from '../../assets/images/Addroom3.svg';
 import Addroom4 from '../../assets/images/Addroom4.svg';
 import Addroomclose from '../../assets/images/Addroomclose.svg';
+import './PopupAddroom.css';
 
 export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
   const [rooms, setRoom] = useState('');
@@ -33,9 +33,9 @@ export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
     <div className="addroompopup">
       <div className="top">
         <p>Add Room</p>
-        <Exitbutton onClick={closePopup} className="exit-button">
-          <p>close window</p> <SmallImage src={Addroomclose} />
-        </Exitbutton>
+        <div onClick={closePopup} className="popupAddroom-exitButton exit-button">
+          <p>close window</p> <img src={Addroomclose} className="popupAddroom-smallImage" />
+        </div>
       </div>
       <div className="roominfo">
         <p>Room info</p>
@@ -72,12 +72,12 @@ export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
       </div>
       <div className="photos">
         <p>Photos</p>
-        <PhotosContainer>
-          <BigImage src={Addroom1} />
-          <BigImage src={Addroom2} />
-          <BigImage src={Addroom3} />
-          <BigImage src={Addroom4} />
-        </PhotosContainer>
+        <div className="popupAddroom-photosContainer">
+          <img src={Addroom1} className="popupAddroom-bigImage" />
+          <img src={Addroom2} className="popupAddroom-bigImage" />
+          <img src={Addroom3} className="popupAddroom-bigImage" />
+          <img src={Addroom4} className="popupAddroom-bigImage" />
+        </div>
       </div>
       <div className="desc">
         <p>Description</p>
@@ -93,35 +93,3 @@ export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
     </div>
   );
 }
-
-const Exitbutton = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: none;
-  gap: 10px;
-  cursor: pointer;
-  padding: 2px;
-`;
-
-const PhotosContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 25px;
-`;
-
-const BigImage = styled.img`
-  width: 90px;
-  margin: 0;
-  height: 100px;
-  &:last-child {
-    margin-left: 4px;
-  }
-`;
-
-const SmallImage = styled.img`
-  transform: rotate(90deg);
-  width: 15px;
-  height: 15px;
-`;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { styled } from 'styled-components';
 import useDynamicImage from '../../hooks/useDynamicImage.js';
 import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
+import './MarketplaceNavItem.css';
 export default function MarketplaceNavItem({ name, active, click }) {
   const removeSpaces = useRemoveSpaces;
   const image = useDynamicImage(
@@ -9,54 +9,20 @@ export default function MarketplaceNavItem({ name, active, click }) {
     'svg',
   );
   return (
-    <Nav
-      active={active}
+    <div className={`marketplaceNavItem-nav ${active === 'true' ? '' : 'marketplaceNavItem-nav-hover'}`}
+      style={{
+        color: active === 'true' ? 'white' : 'var(--gray-800, #3f3f3f)',
+        backgroundColor: active === 'true' ? '#0699D2' : 'transparent'
+      }}
       onClick={() => {
         click(name);
       }}
     >
-      <Img src={image} alt={name} />
-      <Text active={active}>{name}</Text>
-    </Nav>
+      <img className='marketplaceNavItem-img' src={image} alt={name} />
+      <p className='marketplaceNavItem-Text'
+        style={{
+          color: active === 'true' ? 'white' : 'var(--gray-800, #3f3f3f)'
+        }}>{name}</p>
+    </div>
   );
 }
-
-const Nav = styled.div`
-  width: 246px;
-  height: 40px;
-  padding: 8px 16px;
-
-  display: flex;
-  align-content: center;
-  border-radius: 4px;
-  cursor: pointer;
-  &:hover {
-    background-color: ${(props) => {
-      return props.active !== 'true' && '#A0E2FC';
-    }};
-  }
-
-  margin-top: 24px;
-
-  &:first-child {
-    margin-top: 0px;
-  }
-
-  background-color: ${(props) => {
-    return props.active === 'true' ? '#0699D2' : 'transparent';
-  }};
-`;
-
-const Img = styled.img`
-  width: 24px;
-`;
-
-const Text = styled.p`
-  font-size: 16px;
-  font-family: 'Inter';
-  line-height: 24px;
-  margin-left: 12px;
-  color: ${(props) => {
-    return props.active === 'true' ? 'white' : 'var(--gray-800, #3f3f3f)';
-  }};
-`;

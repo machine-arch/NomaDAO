@@ -76,9 +76,9 @@ export default function ActiveBalanceHotel() {
   };
 
   return (
-    <div className="wrapper">
+    <div className="activeBalanceHotel-wrapper">
       <ActiveBalance />
-      <p className="title">Filter by</p>
+      <p className="activeBalanceHotel-title">Filter by</p>
       <FilterComponent
         header={data.header}
         rows={data.rows}
