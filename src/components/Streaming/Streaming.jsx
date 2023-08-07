@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { styled } from "styled-components";
-import ProductContext from "../../context/ProductContext.js";
-import useKeyHandlerEffect from "../../hooks/useKeyHanderEffect.js";
-import useMoveSound from "../../hooks/useMoveSound.js";
+import React, { useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import ProductContext from '../../context/ProductContext.js';
+import useKeyHandlerEffect from '../../hooks/useKeyHanderEffect.js';
+import useMoveSound from '../../hooks/useMoveSound.js';
 
 export default function Streaming() {
   const { link } = useParams();
@@ -32,6 +31,5 @@ export default function Streaming() {
   function exit() {
     navigate(`/products/` + product);
   }
-
-  return <div className="Stream" src={link}></div>;
+  return <iframe className='streaming-stream' src={link}></iframe>;
 }

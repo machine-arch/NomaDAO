@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { styled } from 'styled-components';
 import Banner from '../Banner/Banner.jsx';
 import SmallBox from '../SmallBox/SmallBox.jsx';
 import useMoveSound from '../../hooks/useMoveSound.js';
@@ -16,7 +15,7 @@ export default function PageContent() {
   // context
   const asideContext = useContext(AsideContext);
   // prettier-ignore
-  const { asideActive, setAsideActive} = asideContext;
+  const { asideActive, setAsideActive } = asideContext;
   // hooks
   const moveSound = useMoveSound;
   const navigate = useNavigate();
@@ -165,10 +164,10 @@ export default function PageContent() {
   return (
     <div className="homeContent">
       {/* prettier-ignore */}
-      <Banner title={pageData.banner.title} img={pageData.banner.img} active={bannerActive ? 'true' : 'false'}/>
+      <Banner title={pageData.banner.title} img={pageData.banner.img} active={bannerActive ? 'true' : 'false'} />
       {
         // prettier-ignore
-        pageData.boxes.map((box, index) => <SmallBox title={box.title} img={box.img} key={box.title + "SMALL"} active={activeBox === index ? "true" : "false" }/>)
+        pageData.boxes.map((box, index) => <SmallBox title={box.title} img={box.img} key={box.title + "SMALL"} active={activeBox === index ? "true" : "false"} />)
       }
     </div>
   );

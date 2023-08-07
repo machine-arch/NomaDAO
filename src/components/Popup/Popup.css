@@ -1,4 +1,4 @@
-.Wrapper {
+.popup-wrapper {
   width: 100vw;
   height: 100vh;
   max-width: 1920px;
@@ -14,7 +14,7 @@
   font-family: "Inter";
 }
 
-.Avatar {
+.popup-avatar {
   width: 28px;
   height: 28px;
   background-color: #fe7c31;
@@ -22,7 +22,7 @@
   border-radius: 50%;
 }
 
-.Name {
+.popup-name {
   color: var(--gray-800, #3f3f3f);
   font-size: 16px;
   font-style: normal;
@@ -31,7 +31,7 @@
   margin-left: 10px;
 }
 
-.ProfileBox {
+.popup-profileBox {
   display: flex;
   align-items: center;
   position: absolute;
@@ -39,7 +39,7 @@
   left: 16px;
 }
 
-.Popupp {
+.popup-popp {
   width: 515px;
   height: 520px;
   padding: 8px 16px;
@@ -49,7 +49,7 @@
   position: relative;
 }
 
-.CloseText {
+.popup-closeText {
   color: var(--gray-800, #3f3f3f);
   font-size: 16px;
   font-style: normal;
@@ -57,11 +57,10 @@
   line-height: 24px;
 }
 
-.CloseImage {
+.popup-closeImage {
   margin-left: 10px;
 }
-
-.CloseBox {
+.popup-closeBox {
   display: flex;
   align-items: center;
   position: absolute;
@@ -70,7 +69,7 @@
   cursor: pointer;
 }
 
-.InfoBox {
+.popup-infoBox {
   width: 100%;
   border-radius: 4px;
   background: #0699d2;
@@ -83,7 +82,7 @@
   margin-top: 80px;
 }
 
-.InfoText {
+.popup-infoText {
   width: 48%;
   color: var(--gray-900, #202020);
   font-size: 12px;
@@ -95,7 +94,7 @@
   padding: 8px;
 }
 
-.GroupInfo {
+.popup-groupInfo {
   width: 48%;
   display: inline-block;
   vertical-align: top;
@@ -110,7 +109,7 @@
   line-height: 16px;
 }
 
-.GroupBox {
+.popup-groupBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,14 +123,14 @@
   margin-top: 11.5px;
 }
 
-.Status {
+.popup-status {
   padding: 4px;
   background-color: #fdf8ce;
   color: #938406;
   border-radius: 4px;
 }
 
-.Description {
+.popup-description {
   width: 48%;
   display: inline-block;
   vertical-align: top;
@@ -139,7 +138,7 @@
   margin-left: 4%;
 }
 
-.DescTitle {
+.popup-descTitle {
   color: #000;
   font-size: 16px;
   font-style: normal;
@@ -147,7 +146,7 @@
   line-height: 16px;
 }
 
-.Desc {
+.popup-desc {
   color: var(--gray-800, #3f3f3f);
   font-size: 12px;
   font-style: normal;
@@ -156,7 +155,7 @@
   margin-top: 10px;
 }
 
-.Accept {
+.popup-accept {
   padding: 8px 16px;
   border-radius: 4px;
   background: var(--orange, #fe7c31);
@@ -169,7 +168,7 @@
   cursor: pointer;
 }
 
-.Negotiate {
+.popup-negotiate {
   padding: 8px 16px;
   border-radius: 4px;
   background: var(--blue, #0699d2);

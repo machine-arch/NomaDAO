@@ -1,11 +1,11 @@
-import React from "react";
+import "./PublishedHotels.css";
 
 export default function PublishedHotels() {
   return (
-    <div className="wrapper">
-      <div className="orange">
-        <p className="big">Announced Rooms</p>
-        <p className="small">Publish or monitor shared rooms</p>
+    <div className="">
+      <div className="publishedHotels-Orange">
+        <p className="publishedHotels-Big">Announced Rooms</p>
+        <p className="publishedHotels-Small">Publish or monitor shared rooms</p>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
-import { React, useState } from "react";
-import { styled } from "styled-components";
-import PublishedHotels from "../PublishedHotels/PublishedHotels.jsx";
-import MarketPlaceHeader from "../MarketplaceHeader/MarketplaceHeader.jsx";
-import TableExtended from "../TableExtended/TableExtended.jsx";
-import { useOutletContext } from "react-router-dom";
-import FilterComponent from "../FilterComponent/FilterComponent.jsx";
+import { React, useState } from 'react';
+import PublishedHotels from '../PublishedHotels/PublishedHotels.jsx';
+import MarketPlaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
+import TableExtended from '../TableExtended/TableExtended.jsx';
+import { useOutletContext } from 'react-router-dom';
+import FilterComponent from '../FilterComponent/FilterComponent.jsx';
+import './PublishedHotelsAgency.css';
 const data = {
   header: [
     "Publisher",
@@ -153,10 +153,10 @@ export default function PublishedHotelsAgency() {
     setFilteredData(newFilteredData);
   };
   return (
-    <div className="Wrapper">
+    <div className='publishedHotelsAgency-wrapper'>
       <PublishedHotels />
       <MarketPlaceHeader />
-      <div className="Title">Filter by</div>
+      <p className='publishedHotelsAgency-title'>Filter by</p>
       {/* <FilterbyPublishedHotelsAgency filter={data.filters}/>
       <TableExtended header={data.header} rows={data.rows} setPopup={setPopup} /> */}
       <FilterComponent

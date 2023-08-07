@@ -1,4 +1,10 @@
-.orange {
+.marketplaceHeader-header {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.marketplaceHeader-orange {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,16 +16,17 @@
   cursor: pointer;
 }
 
-.big {
+.marketplaceHeader-big {
   color: #fff;
   font-size: 18px;
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 300;
   line-height: 24px;
 }
 
-.search {
+
+.marketplaceHeader-search {
   margin-right: 20px;
   margin-bottom: 10px;
   width: 1170px;
@@ -40,4 +47,14 @@
   margin-top: 20px;
   display: flex;
   flex-direction: row;
+}
+
+  color: #4c4c4c;
+  font-size: 16px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
 }

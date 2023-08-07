@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Addroom1 from "../../assets/images/Addroom1.svg";
-import Addroom2 from "../../assets/images/Addroom2.svg";
-import Addroom3 from "../../assets/images/Addroom3.svg";
-import Addroom4 from "../../assets/images/Addroom4.svg";
-import Addroomclose from "../../assets/images/Addroomclose.svg";
-import "./PopupAddroom.css";
+import { React, useState } from 'react';
+import Addroom1 from '../../assets/images/Addroom1.svg';
+import Addroom2 from '../../assets/images/Addroom2.svg';
+import Addroom3 from '../../assets/images/Addroom3.svg';
+import Addroom4 from '../../assets/images/Addroom4.svg';
+import Addroomclose from '../../assets/images/Addroomclose.svg';
+import './PopupAddroom.css';
 
 export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
   const [rooms, setRoom] = useState("");
@@ -32,8 +32,8 @@ export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
     <div className="addroompopup">
       <div className="top">
         <p>Add Room</p>
-        <div onClick={closePopup} className="exit-button">
-          <p>close window</p> <img src={Addroomclose} className="small-image" />
+        <div onClick={closePopup} className="popupAddroom-exitButton exit-button">
+          <p>close window</p> <img src={Addroomclose} className="popupAddroom-smallImage" />
         </div>
       </div>
       <div className="roominfo">
@@ -71,11 +71,11 @@ export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
       </div>
       <div className="photos">
         <p>Photos</p>
-        <div className="photos-container">
-          <img src={Addroom1} className="big-image" />
-          <img src={Addroom2} className="big-image" />
-          <img src={Addroom3} className="big-image" />
-          <img src={Addroom4} className="big-image" />
+        <div className="popupAddroom-photosContainer">
+          <img src={Addroom1} className="popupAddroom-bigImage" />
+          <img src={Addroom2} className="popupAddroom-bigImage" />
+          <img src={Addroom3} className="popupAddroom-bigImage" />
+          <img src={Addroom4} className="popupAddroom-bigImage" />
         </div>
       </div>
       <div className="desc">

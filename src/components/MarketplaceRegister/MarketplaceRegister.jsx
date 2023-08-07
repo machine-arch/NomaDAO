@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useRef, useState } from 'react';
-import { styled } from 'styled-components';
 import { API_register } from '../../api/requests.js';
 import { useNavigate } from 'react-router-dom';
 import useMoveSound from '../../hooks/useMoveSound.js';

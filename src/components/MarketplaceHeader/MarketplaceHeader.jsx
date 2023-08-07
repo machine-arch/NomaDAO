@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import searchImg from "../../assets/images/search_marketplace.svg";
-import "./MarketplaceHeader.css";
 
+import React, { useState } from 'react';
+import searchImg from '../../assets/images/search_marketplace.svg';
+import './MarketplaceHeader.css';
 export default function MarketplaceHeader() {
   const [searchText, setSearchText] = useState("");
 

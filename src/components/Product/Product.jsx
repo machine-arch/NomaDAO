@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Logo from "../../assets/images/logo.png";
-import Arrow from "../../assets/images/arrow-back.png";
-import useMoveSound from "../../hooks/useMoveSound.js";
-import { useEncodeLink } from "../../hooks/useEncodeLink.js";
-import AsideContext from "../../context/AsideContext.js";
-import singlePages from "../../data/singlePages.js";
-import useKeyHanderEffect from "../../hooks/useKeyHanderEffect.js";
-import useRemoveSpaces from "../../hooks/useRemoveSpaces.js";
-import ProductContext from "../../context/ProductContext.js";
-import "./Product.css";
+import React, { useContext, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Logo from '../../assets/images/logo.png';
+import Arrow from '../../assets/images/arrow-back.png';
+import useMoveSound from '../../hooks/useMoveSound.js';
+import { useEncodeLink } from '../../hooks/useEncodeLink.js';
+import AsideContext from '../../context/AsideContext.js';
+import singlePages from '../../data/singlePages.js';
+import useKeyHanderEffect from '../../hooks/useKeyHanderEffect.js';
+import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
+import ProductContext from '../../context/ProductContext.js';
+import './Product.css';
 
 export default function Product() {
   const { product } = useParams();
@@ -91,42 +91,30 @@ export default function Product() {
     navigate(`/${removeSpaces(pages[activePage])}`);
   }
   return (
-    <div
-      className="SinglePage"
-      img={data.img}
-      style={{
-        backgroundImage: `url(${data.img})`,
-      }}
-    >
-      <div className="Top">
+    <div className='product-singlePage' style={{ backgroundImage: `url(${data.img})` }}>
+      <div className='product-Top'>
         <img src={Logo} alt="Logo" />
-        <div
-          className="BackButton"
-          active={active}
+        <button className='product-BackButton' active={active}
           style={{
-            active: active === "back" ? "#ececec" : "rgba(20, 170, 254, 1)",
-          }}
-        >
-          <img style={{ marginRight: "16px" }} src={Arrow} alt="Arrow Left" />
+            color: active === 'back' && '#ececec',
+            backgroundColor: active === 'back' && 'rgba(20, 170, 254, 1)'
+          }}>
+          <img style={{ marginRight: '16px' }} src={Arrow} alt="Arrow Left" />
           <p>Back</p>
-        </div>
+        </button>
       </div>
-      <div className="Bottom">
-        <div className="Title">{data.title}</div>
-        <div className="Buttons">
-          <div
-            className="Launch"
-            active={active}
-            style={{
-              color: active === "launch" ? "#ececec" : "rgba(20, 170, 254, 1)",
-            }}
-          >
-            Launch
-          </div>
+      <div className='product-Bottom'>
+        <p className='product-Title'>{data.title}</p>
+        <div className='product-Buttons'>
+          <button className='product-Button' style={{
+            color: active === 'launch' && '#ececec',
+            backgroundColor: active === 'back' && 'rgba(20, 170, 254, 1)'
+          }}>Launch</button>
           {/* <Tutorial active={active}>Tutorial</Tutorial> */}
         </div>
-        <div className="Description">{data.description}</div>
+        <p className='product-Description'>{data.description}</p>
       </div>
     </div>
   );
 }
+

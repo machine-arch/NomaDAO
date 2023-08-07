@@ -1,4 +1,4 @@
-.exit-button {
+.popupAddroom-exitButton {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,25 +8,27 @@
   padding: 2px;
 }
 
-.photos-container {
+
+.popupAddroom-photosContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 25px;
 }
 
-.big-image {
+.popupAddroom-bigImage {
   width: 90px;
   margin: 0;
   height: 100px;
 }
 
-.big-image:last-child {
+.popupAddroom-bigImage:last-child {
   margin-left: 4px;
 }
 
-.small-image {
+.popupAddroom-smallImage {
   transform: rotate(90deg);
   width: 15px;
   height: 15px;
 }
+

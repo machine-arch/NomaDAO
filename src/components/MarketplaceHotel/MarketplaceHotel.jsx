@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import styled, { css } from 'styled-components';
 import marketplace from '../../assets/images/marketplace_logo.png';
 import MarketplaceNavItem from '../MarketplaceNavItem/MarketplaceNavItem.jsx';
 import { Outlet, useNavigate } from 'react-router-dom';
@@ -9,6 +8,7 @@ import bell from '../../assets/images/notification.svg';
 import Popup from '../Popup/Popup.jsx';
 import useMoveSound from '../../hooks/useMoveSound.js';
 import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
+import './MarketplaceHotel.css';
 
 export default function MarketplaceHotel() {
   const navigate = useNavigate();
@@ -111,7 +111,7 @@ export default function MarketplaceHotel() {
           break;
       }
 
-      function openPage() {}
+      function openPage() { }
     }
     document.addEventListener('keydown', handleKeyDown);
 
@@ -121,21 +121,21 @@ export default function MarketplaceHotel() {
   }, [currentPage, navigate, navigation, removeSpaces]);
 
   return (
-    <Wrapper>
-      {popup && <Popup setPopup={setPopup} name="Tour Agency #2" />}
-      <UserInfo>
+    <div className='marketplaceHotel-wrapper'>
+      {popup && <Popup setPopup={setPopup} name="Tour Hotel #2" />}
+      <div className='marketplaceHotel-userInfo'>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Organe />
+          <div className='marketplaceHotel-organe' />
           <div>
-            <UserName>Karim Benzema</UserName>
-            <UserTitle>Admin</UserTitle>
+            <p className='marketplaceHotel-userName'>Karim Benzema</p>
+            <p className='marketplaceHotel-userTitle'>Admin</p>
           </div>
         </div>
-        <Img src={bell} alt="bell" />
-      </UserInfo>
-      <Aside>
-        <Logo src={marketplace} alt="Marketplace Logo" />
-        <Navigaion>
+        <img className='marketplaceHotel-img' src={bell} alt="bell" />
+      </div>
+      <aside className='marketplaceHotel-aside'>
+        <img className='marketplaceHotel-logo' src={marketplace} alt="Marketplace Logo" />
+        <nav className='marketplaceHotel-navigation'>
           {navigationtopfour.map((item) => (
             <MarketplaceNavItem
               // click={handleClick}
@@ -144,16 +144,20 @@ export default function MarketplaceHotel() {
               active={item === currentPage ? 'true' : 'false'}
             />
           ))}
-        </Navigaion>
+        </nav>
         {navigation.map((item, index) => (
-          <Settings
+          <div className='marketplaceHotel-settings' key={index}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onClick={() => {
               navigate('/marketplace/hotel/Settings');
               setCurrentPage('Settings');
             }}
-            isSelected={currentPage === navigation[4]}
+            style={{
+              color: currentPage === navigation[4] ? 'white' : '#4c4c4c',
+              backgroundColor: currentPage === navigation[4] ? '#3F3F3F' : 'transparent',
+              img: currentPage === navigation[4] ? 'brightness(0) invert(1)' : 'none'
+            }}
           >
             <img
               style={imageStyles}
@@ -168,13 +172,17 @@ export default function MarketplaceHotel() {
             />
 
             <span>Settings</span>
-          </Settings>
+          </div>
         ))}
-        <Logout
+        <div className='marketplaceHotel-logout'
           onClick={() => {
             navigate('/Marketplace');
           }}
-          isSelected={currentPage === navigation[5]}
+          style={{
+            color: currentPage === navigation[5] ? 'white' : '#a65959',
+            backgroundColor: currentPage === navigation[5] ? '#7A4242' : 'transparent',
+            img: currentPage === navigation[5] ? 'brightness(0) invert(1)' : 'none'
+          }}
         >
           <img
             style={imageStyles}
@@ -188,138 +196,12 @@ export default function MarketplaceHotel() {
             alt="Logout"
           />
           <span>Logout</span>
-        </Logout>
-      </Aside>
+        </div>
+      </aside>
       <Outlet context={{ setPopup }} />
-    </Wrapper>
+    </div>
   );
 }
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  overflow: hidden;
-
-  position: relative;
-
-  display: flex;
-`;
-
-const Aside = styled.aside`
-  min-width: 22%;
-  height: 100%;
-  background-color: #f2f2f2;
-  padding: 64px 28px;
-
-  position: relative;
-`;
-
-const Logo = styled.img`
-  margin-left: 28px;
-`;
-
-const Navigaion = styled.nav`
-  margin-top: 120px;
-`;
-
-const Logout = styled.div`
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  padding: 10px 20px;
-  color: ${(props) => (props.isSelected ? 'white' : '#a65959')};
-
-  position: absolute;
-  left: 50%;
-  bottom: 100px;
-  transform: translateX(-50%);
-  background-color: ${(props) =>
-    props.isSelected ? '#7A4242' : 'transparent'};
-
-  font-size: 16px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-
-  cursor: pointer;
-
-  img {
-    filter: ${(props) =>
-      props.isSelected ? 'brightness(0) invert(1)' : 'none'};
-  }
-`;
-
-const UserInfo = styled.div`
-  position: absolute;
-  top: 60px;
-  right: 50px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 300px;
-`;
-
-const UserName = styled.p`
-  color: #4c4c4c;
-  font-size: 14px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  line-height: 16px;
-`;
-
-const UserTitle = styled.p`
-  color: #b3b3b3;
-  font-size: 14px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-`;
-
-const Img = styled.img`
-  padding: 10px;
-  background-color: #f2f2f2;
-  border-radius: 50%;
-`;
-
-const Organe = styled.div`
-  width: 30px;
-  height: 30px;
-  background-color: #fe7c31;
-  margin-right: 10px;
-  border-radius: 50%;
-`;
-
-const Settings = styled.div`
-  // border: 3px solid red;
-  border-radius: 10px;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  bottom: 200px;
-  transform: translateX(-50%);
-  color: ${(props) => (props.isSelected ? 'white' : '#4c4c4c')};
-  font-size: 16px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300;
-  line-height: 24px;
-  background-color: ${(props) =>
-    props.isSelected ? '#3F3F3F' : 'transparent'};
-
-  cursor: pointer;
-
-  img {
-    filter: ${(props) =>
-      props.isSelected ? 'brightness(0) invert(1)' : 'none'};
-  }
-`;
 
 const imageStyles = {
   marginRight: '12px',
