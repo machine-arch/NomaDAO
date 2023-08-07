@@ -1,37 +1,44 @@
-import React, { useContext } from 'react';
-import { styled } from 'styled-components';
-import SearchIcon from '../../assets/images/search.png';
-import MicrophoneIcon from '../../assets/images/microphone.png';
-import { Outlet } from 'react-router-dom';
-import AsideContext from '../../context/AsideContext.js';
+import React, { useContext } from "react";
+import SearchIcon from "../../assets/images/search.png";
+import MicrophoneIcon from "../../assets/images/microphone.png";
+import { Outlet } from "react-router-dom";
+import AsideContext from "../../context/AsideContext.js";
+import "./RightSide.css";
 
 export default function RightSide() {
   const asideContext = useContext(AsideContext);
   const { pages, activePage } = asideContext;
-  const isBooking = pages[activePage] === 'Book Your Hotel'; //  search won't be rendered on this pages
-  const isMarketplace = pages[activePage] === 'Marketplace'; // header won't be rendered on this pages
+  const isBooking = pages[activePage] === "Book Your Hotel";
+  const isMarketplace = pages[activePage] === "Marketplace";
+
   return (
-    <Right>
+    <div className="right">
       {!isMarketplace && (
-        <Header>
-          {/* show search menu if it's ! not booking */}
+        <header className="header">
           {!isBooking && (
-            <SearchBox>
-              <SearchInput placeholder="Search Nomadao products" />
-              <VoiceSearch>
+            <div className="search-box">
+              <input
+                className="search-input"
+                style={{ backgroundImage: `url(${SearchIcon})` }}
+                placeholder="Search Nomadao products"
+              />
+              <div className="voice-search">
                 <img src={MicrophoneIcon} alt="Mic" />
                 <span>Type or voice</span>
-              </VoiceSearch>
-            </SearchBox>
+              </div>
+            </div>
           )}
-          <ButtonsBox style={{ marginLeft: isBooking && 'auto' }}>
-            <Button>Login</Button>
-            <Button>Sign Up</Button>
-          </ButtonsBox>
-        </Header>
+          <div
+            className="buttons-box"
+            style={{ marginLeft: isBooking && "auto" }}
+          >
+            <button className="button">Login</button>
+            <button className="button">Sign Up</button>
+          </div>
+        </header>
       )}
       <Outlet />
-    </Right>
+    </div>
   );
 }
 
@@ -67,7 +74,7 @@ const SearchInput = styled.input`
   background-repeat: no-repeat;
   background-position: 30px center;
   height: 20px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 500;
   font-size: 16px;
   letter-spacing: -0.02em;
@@ -87,13 +94,13 @@ const ButtonsBox = styled.div`
   gap: 12px;
   margin-left: 20px;
   color: #d8d8d8bf;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 500;
   font-size: 16px;
   letter-spacing: -0.02em;
 `;
 const Button = styled.button`
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
@@ -113,7 +120,7 @@ const VoiceSearch = styled.div`
   gap: 12px;
   margin-left: 20px;
   color: #d8d8d8bf;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 500;
   font-size: 16px;
   letter-spacing: -0.02em;

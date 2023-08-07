@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { styled } from 'styled-components';
-import Logo from '../../assets/images/logo.png';
-import Arrow from '../../assets/images/arrow-back.png';
-import useMoveSound from '../../hooks/useMoveSound.js';
-import { useEncodeLink } from '../../hooks/useEncodeLink.js';
-import AsideContext from '../../context/AsideContext.js';
-import singlePages from '../../data/singlePages.js';
-import useKeyHanderEffect from '../../hooks/useKeyHanderEffect.js';
-import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
-import ProductContext from '../../context/ProductContext.js';
+import React, { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Logo from "../../assets/images/logo.png";
+import Arrow from "../../assets/images/arrow-back.png";
+import useMoveSound from "../../hooks/useMoveSound.js";
+import { useEncodeLink } from "../../hooks/useEncodeLink.js";
+import AsideContext from "../../context/AsideContext.js";
+import singlePages from "../../data/singlePages.js";
+import useKeyHanderEffect from "../../hooks/useKeyHanderEffect.js";
+import useRemoveSpaces from "../../hooks/useRemoveSpaces.js";
+import ProductContext from "../../context/ProductContext.js";
+import "./Product.css";
 
 export default function Product() {
   const { product } = useParams();
@@ -19,7 +19,7 @@ export default function Product() {
   const productContext = useContext(ProductContext);
   const { setProduct } = productContext;
   // state
-  const [active, setActive] = useState('launch');
+  const [active, setActive] = useState("launch");
   // prettier-ignore
   const data = singlePages.find((page) => page.title === product); // find product data
   // hooks
@@ -33,9 +33,9 @@ export default function Product() {
   function productNavigation(event) {
     switch (event.keyCode) {
       case 13:
-        if (active === 'back') {
+        if (active === "back") {
           exit();
-        } else if (active === 'launch') {
+        } else if (active === "launch") {
           openStreaming(data.launch_link);
         }
         // } else if (active === "tutorial") {
@@ -44,14 +44,14 @@ export default function Product() {
         moveSound();
         break;
       case 38:
-        if (active !== 'back') {
-          setActive('back');
+        if (active !== "back") {
+          setActive("back");
           moveSound();
         }
         break;
       case 40:
-        if (active === 'back') {
-          setActive('launch');
+        if (active === "back") {
+          setActive("launch");
           moveSound();
         }
         break;
@@ -84,151 +84,49 @@ export default function Product() {
   }
   // functions
   function openStreaming(link) {
-    navigate('/streaming/' + encodeLink(link));
+    navigate("/streaming/" + encodeLink(link));
     setProduct(product);
   }
   function exit() {
     navigate(`/${removeSpaces(pages[activePage])}`);
   }
   return (
-    <SinglePage img={data.img}>
-      <Top>
+    <div
+      className="SinglePage"
+      img={data.img}
+      style={{
+        backgroundImage: `url(${data.img})`,
+      }}
+    >
+      <div className="Top">
         <img src={Logo} alt="Logo" />
-        <BackButton active={active}>
-          <img style={{ marginRight: '16px' }} src={Arrow} alt="Arrow Left" />
+        <div
+          className="BackButton"
+          active={active}
+          style={{
+            active: active === "back" ? "#ececec" : "rgba(20, 170, 254, 1)",
+          }}
+        >
+          <img style={{ marginRight: "16px" }} src={Arrow} alt="Arrow Left" />
           <p>Back</p>
-        </BackButton>
-      </Top>
-      <Bottom>
-        <Title>{data.title}</Title>
-        <Buttons>
-          <Launch active={active}>Launch</Launch>
+        </div>
+      </div>
+      <div className="Bottom">
+        <div className="Title">{data.title}</div>
+        <div className="Buttons">
+          <div
+            className="Launch"
+            active={active}
+            style={{
+              color: active === "launch" ? "#ececec" : "rgba(20, 170, 254, 1)",
+            }}
+          >
+            Launch
+          </div>
           {/* <Tutorial active={active}>Tutorial</Tutorial> */}
-        </Buttons>
-        <Description>{data.description}</Description>
-      </Bottom>
-    </SinglePage>
+        </div>
+        <div className="Description">{data.description}</div>
+      </div>
+    </div>
   );
 }
-
-const SinglePage = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-image: ${(props) => {
-    return `url(${props.img})`;
-  }};
-  background-repeat: no-repeat;
-  background-size: 80vw 100vh;
-`;
-
-const Top = styled.div`
-  position: absolute;
-  z-index: 3;
-  width: 100%;
-  height: 87px;
-  left: 0px;
-  top: 48px;
-  background: rgba(54, 148, 202, 0.769);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 50px;
-  padding-left: 50px;
-`;
-
-const Bottom = styled.div`
-  width: 40vw;
-  height: 100vh;
-  float: right;
-  background-color: rgb(32, 32, 32);
-  box-shadow: -20px 0px 100px 150px rgb(32, 32, 32);
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-
-  padding-right: 50px;
-`;
-
-const BackButton = styled.button`
-  background-color: rgba(0, 0, 0, 0.505);
-  width: 251px;
-  height: 40px;
-  border: 1px solid #ffffff;
-  backdrop-filter: blur(9.5px);
-  border-radius: 32px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  ${(props) =>
-    props.active === 'back' &&
-    'color: #ececec;background-color: rgba(20, 170, 254, 1);'}
-`;
-
-const Title = styled.p`
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 39px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  margin-bottom: 36px;
-`;
-
-const Description = styled.p`
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 24px;
-  color: #ffffff;
-  margin-top: 50px;
-`;
-
-const Button = styled.button`
-  width: 45%;
-  height: 40px;
-  border: 1px solid #ececec;
-  backdrop-filter: blur(9.5px);
-  border-radius: 32px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: -0.02em;
-  color: #ececec76;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-`;
-
-const Launch = styled(Button)`
-  ${(props) =>
-    props.active === 'launch' &&
-    'color: #ececec;background-color: rgba(20, 170, 254, 1);'}
-`;
-
-// const Tutorial = styled(Button)`
-//   ${(props) =>
-//     props.active === "tutorial" &&
-//     "color: #ececec;background-color: rgba(20, 170, 254, 1);"}
-// `;
-
-const Buttons = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-`;

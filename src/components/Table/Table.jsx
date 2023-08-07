@@ -1,57 +1,60 @@
-import React from 'react';
-import { styled } from 'styled-components';
-import mini1 from '../../assets/images/mini.png';
-import mini2 from '../../assets/images/mini2.png';
+import React from "react";
+import mini1 from "../../assets/images/mini.png";
+import mini2 from "../../assets/images/mini2.png";
+import "./Table.css";
 
 export default function Table({ header, rows, setPopup }) {
   return (
-    <Container>
-      <TableHeader>
-        <Row row={header.length}>
+    <div className="container">
+      <div className="table-header">
+        <div
+          className="row"
+          style={{ gridTemplateColumns: `repeat(${header.length}, 1fr)` }}
+        >
           {header.map((item) => (
-            <Column key={item}>{item}</Column>
+            <div key={item} className="column">
+              {item}
+            </div>
           ))}
-        </Row>
-      </TableHeader>
-      <TableBody>
+        </div>
+      </div>
+      <div className="table-body">
         {rows.map((row) => {
           return (
-            <Row row={row.length}>
+            <div
+              className="row"
+              style={{ gridTemplateColumns: `repeat(${row.length}, 1fr)` }}
+            >
               {row.map((item, index) => (
-                <Column
-                  item={item}
+                <div
+                  className="column"
                   onClick={() => {
-                    item === 'Check Details' && setPopup(true);
+                    item === "Check Details" && setPopup(true);
                   }}
                 >
-                  {index === 0 && <Orange />}{' '}
-                  {item === 'photos' ? (
+                  {index === 0 && <div className="orange" />}{" "}
+                  {item === "photos" ? (
                     <>
-                      <SmallImage src={mini1} />
-                      <SmallImage src={mini2} />
+                      <img className="small-image" src={mini1} />
+                      <img className="small-image" src={mini2} />
                     </>
                   ) : (
                     item
                   )}
-                </Column>
+                </div>
               ))}
-            </Row>
+            </div>
           );
         })}
-      </TableBody>
-      <TableFooter>
-        <PrevPage>Previous page</PrevPage>
-        <PageButton>1</PageButton>
-        <PageButton>2</PageButton>
-        <PageButton>3</PageButton>
-        <PageButton>4</PageButton>
-        <PageButton>5</PageButton>
-        <PageButton>6</PageButton>
-        <PageButton>7</PageButton>
-        <PageButton>8</PageButton>
-        <NextPage>Next page</NextPage>
-      </TableFooter>
-    </Container>
+      </div>
+      <div className="table-footer">
+        <div className="prev-page">Previous page</div>
+        <div className="page-button">1</div>
+        <div className="page-button">2</div>
+        {/* Additional page buttons */}
+        <div className="next-page">Next page</div>
+      </div>
+    </div>
   );
 }
 
@@ -60,13 +63,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-family: 'Inter';
+  font-family: "Inter";
 `;
 
 const TableHeader = styled.div`
   color: var(--gray-800, #3f3f3f);
   font-size: 12px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   line-height: 16px;
@@ -85,17 +88,17 @@ const Column = styled.div`
   &:nth-child(2):not(${TableHeader} *) {
     background-color: #deede5;
     border-radius: 4px;
-    background-color: ${(props) => props.item === 'Confirmed' && '#deede5'};
-    color: ${(props) => props.item === 'Confirmed' && '#427a5b'};
+    background-color: ${(props) => props.item === "Confirmed" && "#deede5"};
+    color: ${(props) => props.item === "Confirmed" && "#427a5b"};
 
-    background-color: ${(props) => props.item === 'Rejected' && '#EDDEDE'};
-    color: ${(props) => props.item === 'Rejected' && '#7A4242'};
+    background-color: ${(props) => props.item === "Rejected" && "#EDDEDE"};
+    color: ${(props) => props.item === "Rejected" && "#7A4242"};
 
-    background-color: ${(props) => props.item === 'Pending' && '#FDF8CE'};
-    color: ${(props) => props.item === 'Pending' && '#938406'};
+    background-color: ${(props) => props.item === "Pending" && "#FDF8CE"};
+    color: ${(props) => props.item === "Pending" && "#938406"};
 
-    background-color: ${(props) => props.item === 'Unverified' && '#D8D8D8'};
-    color: ${(props) => props.item === 'Unverified' && '#5F5F5F'};
+    background-color: ${(props) => props.item === "Unverified" && "#D8D8D8"};
+    color: ${(props) => props.item === "Unverified" && "#5F5F5F"};
   }
   &:last-child:not(${TableHeader} *) {
     border-radius: 4px;
@@ -124,7 +127,7 @@ const Row = styled.div`
 const TableBody = styled.div`
   color: #616161;
   font-size: 12px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   line-height: 16px;

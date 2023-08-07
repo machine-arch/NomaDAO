@@ -1,0 +1,32 @@
+.exit-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  gap: 10px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.photos-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+}
+
+.big-image {
+  width: 90px;
+  margin: 0;
+  height: 100px;
+}
+
+.big-image:last-child {
+  margin-left: 4px;
+}
+
+.small-image {
+  transform: rotate(90deg);
+  width: 15px;
+  height: 15px;
+}
