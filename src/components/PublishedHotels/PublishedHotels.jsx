@@ -1,4 +1,3 @@
-import React from "react";
 import "./PublishedHotels.css";
 
 export default function PublishedHotels() {

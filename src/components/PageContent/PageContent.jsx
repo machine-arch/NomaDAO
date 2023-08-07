@@ -75,7 +75,7 @@ export default function PageContent() {
   }
   // functions
   function openSinlgePage(name) {
-    navigate('/products/' + name);
+    navigate("/products/" + name);
   }
   function returnToAside() {
     setAsideActive(true);

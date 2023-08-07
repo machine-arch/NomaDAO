@@ -7,23 +7,22 @@ import Addroomclose from '../../assets/images/Addroomclose.svg';
 import './PopupAddroom.css';
 
 export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
-  const [rooms, setRoom] = useState('');
-  const [guests, setGuests] = useState('');
-  const [date, setDate] = useState('');
-  const [location, setLocation] = useState('');
-  const [price, setPrice] = useState('');
+  const [rooms, setRoom] = useState("");
+  const [guests, setGuests] = useState("");
+  const [date, setDate] = useState("");
+  const [location, setLocation] = useState("");
+  const [price, setPrice] = useState("");
   if (!open) return null;
   const handleRoomData = () => {
     const roomData = {
-      publisher: 'You',
-      status: 'Pending',
+      publisher: "You",
+      status: "Pending",
       guests: `${guests} Travellers`,
       location,
-
       rooms,
       date,
       price: `${price}$`,
-      action: 'Check Details',
+      action: "Check Details",
     };
 
     handleAddRoom(roomData);
@@ -86,7 +85,6 @@ export default function PopupAddroom({ open, closePopup, handleAddRoom }) {
       <div className="buttons">
         <button className="cancel">cancel</button>
         <button className="addroom" onClick={handleRoomData}>
-          {' '}
           Add Room
         </button>
       </div>

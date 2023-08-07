@@ -13,7 +13,6 @@ export default function Popup(props) {
           onClick={() => {
             props.setPopup(false);
           }}
-        >
           <p className="popup-closeText">Close window</p>
           <img className="popup-closeImage" src={close} alt="Close" />
         </div>

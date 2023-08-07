@@ -8,6 +8,7 @@
   padding: 2px;
 }
 
+
 .popupAddroom-photosContainer {
   display: flex;
   flex-direction: row;
@@ -30,3 +31,4 @@
   width: 15px;
   height: 15px;
 }
+

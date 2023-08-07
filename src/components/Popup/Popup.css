@@ -4,17 +4,14 @@
   max-width: 1920px;
   max-height: 1080px;
   background-color: #0000004c;
-
   position: absolute;
   z-index: 10000;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   display: grid;
   place-content: center;
-
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .popup-avatar {
@@ -63,7 +60,6 @@
 .popup-closeImage {
   margin-left: 10px;
 }
-
 .popup-closeBox {
   display: flex;
   align-items: center;
