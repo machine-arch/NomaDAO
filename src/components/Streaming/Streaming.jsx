@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ProductContext from '../../context/ProductContext.js';
 import useKeyHandlerEffect from '../../hooks/useKeyHanderEffect.js';
 import useMoveSound from '../../hooks/useMoveSound.js';
+import './Streaming.css';
 
 export default function Streaming() {
   const { link } = useParams();
@@ -31,5 +32,5 @@ export default function Streaming() {
   function exit() {
     navigate(`/products/` + product);
   }
-  return <iframe className='streaming-stream' src={link}></iframe>;
+  return <iframe className="streaming-stream" src={link}></iframe>;
 }

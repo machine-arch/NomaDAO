@@ -12,28 +12,28 @@ export default function RightSide() {
   const isMarketplace = pages[activePage] === 'Marketplace';
 
   return (
-    <div className="right">
+    <div className="RightSide-right">
       {!isMarketplace && (
-        <header className="header">
+        <header className="RightSide-header">
           {!isBooking && (
-            <div className="search-box">
+            <div className="RightSide-search-box">
               <input
-                className="search-input"
+                className="RightSide-search-input"
                 style={{ backgroundImage: `url(${SearchIcon})` }}
                 placeholder="Search Nomadao products"
               />
-              <div className="voice-search">
+              <div className="RightSide-voice-search">
                 <img src={MicrophoneIcon} alt="Mic" />
                 <span>Type or voice</span>
               </div>
             </div>
           )}
           <div
-            className="buttons-box"
+            className="RightSide-buttons-box"
             style={{ marginLeft: isBooking && 'auto' }}
           >
-            <button className="button">Login</button>
-            <button className="button">Sign Up</button>
+            <button className="RightSide-button">Login</button>
+            <button className="RightSide-button">Sign Up</button>
           </div>
         </header>
       )}

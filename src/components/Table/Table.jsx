@@ -5,38 +5,38 @@ import './Table.css';
 
 export default function Table({ header, rows, setPopup }) {
   return (
-    <div className="container">
-      <div className="table-header">
+    <div className="Table-container">
+      <div className="Table-header">
         <div
-          className="row"
+          className="Table-row"
           style={{ gridTemplateColumns: `repeat(${header.length}, 1fr)` }}
         >
           {header.map((item) => (
-            <div key={item} className="column">
+            <div key={item} className="Table-column">
               {item}
             </div>
           ))}
         </div>
       </div>
-      <div className="table-body">
+      <div className="Table-body">
         {rows.map((row) => {
           return (
             <div
-              className="row"
+              className="Table-row"
               style={{ gridTemplateColumns: `repeat(${row.length}, 1fr)` }}
             >
               {row.map((item, index) => (
                 <div
-                  className="column"
+                  className="Table-column"
                   onClick={() => {
                     item === 'Check Details' && setPopup(true);
                   }}
                 >
-                  {index === 0 && <div className="orange" />}{' '}
+                  {index === 0 && <div className="Table-orange" />}{' '}
                   {item === 'photos' ? (
                     <>
-                      <img className="small-image" src={mini1} />
-                      <img className="small-image" src={mini2} />
+                      <img className="Table-small-image" src={mini1} />
+                      <img className="Table-small-image" src={mini2} />
                     </>
                   ) : (
                     item
