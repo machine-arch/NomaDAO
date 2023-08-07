@@ -1,6 +1,6 @@
 import React from 'react';
 import close from '../../assets/images/close.svg';
-import "./Popup.css"
+import './Popup.css';
 export default function Popup(props) {
   return (
     <div className="popup-wrapper">
@@ -9,10 +9,12 @@ export default function Popup(props) {
           <div className="popup-avatar"></div>
           <p className="popup-name">{props.name}</p>
         </div>
-        <div className="popup-closeBox"
+        <div
+          className="popup-closeBox"
           onClick={() => {
             props.setPopup(false);
           }}
+        >
           <p className="popup-closeText">Close window</p>
           <img className="popup-closeImage" src={close} alt="Close" />
         </div>
@@ -54,9 +56,12 @@ export default function Popup(props) {
         <div className="popup-description">
           <p className="popup-descTitle">Description</p>
           <p className="popup-desc">
-            Group-friendly hotels provide spacious rooms or suites that can comfortably accommodate multiple guests.
-            They often offer amenities and facilities that are conducive to group activities and interactions, such as meeting rooms, banquet halls, or common areas for socializing.
-            These spaces are designed to facilitate team meetings, conferences, group meals, or networking events.
+            Group-friendly hotels provide spacious rooms or suites that can
+            comfortably accommodate multiple guests. They often offer amenities
+            and facilities that are conducive to group activities and
+            interactions, such as meeting rooms, banquet halls, or common areas
+            for socializing. These spaces are designed to facilitate team
+            meetings, conferences, group meals, or networking events.
           </p>
           <button className="popup-accept">Accept</button>
           <button className="popup-negotiate">Negotiate</button>
