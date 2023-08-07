@@ -1,0 +1,69 @@
+.wrapper {
+  display: flex;
+  width: 300px;
+  height: 800px;
+  padding: 10px 7px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: #f3f3f3;
+  position: absolute;
+  right: 50px;
+  top: 150px;
+}
+
+.title {
+  color: #000;
+  font-size: 16px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 40px;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 8px 0px;
+}
+
+.img {
+  /* Add any image styling here */
+}
+
+.hotel {
+  color: #4c4c4c;
+  font-size: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.price {
+  color: #808080;
+  font-size: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.view {
+  border-radius: 4px;
+  background: var(--brand-b, #0699d2);
+  color: var(--gray-100, #ececec);
+  font-size: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}

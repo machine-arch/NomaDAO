@@ -1,0 +1,32 @@
+.wrapper {
+  /* Add any styles you want for the wrapper */
+}
+
+.orange {
+  margin-bottom: 30px;
+  width: 218px;
+  height: 80px;
+  padding: 19px 15px;
+  border-radius: 4px;
+  background: var(--brandy, #fe7c31);
+}
+
+.big {
+  color: #ECECEC;
+  font-size: 16px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.small {
+  color: #ECECEC;
+  font-size: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+/* Add more styles for other classes if needed
