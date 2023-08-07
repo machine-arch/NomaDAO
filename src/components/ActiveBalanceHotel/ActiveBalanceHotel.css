@@ -1,19 +1,14 @@
-/* ActiveBalanceHotel */
-
-/* Wrapper */
-.wrapper {
-    padding: 60px 50px 0px 50px;
+.activeBalanceHotel-wrapper {
+  padding: 60px 50px 0px 50px;
 }
 
-
-/* title */
-.title {
-    color: #4c4c4c;
-    font-size: 18px;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 600;
-    line-height: 32px;
-    margin-top: 40px;
-    margin-bottom: 10px;
+.activeBalanceHotel-title {
+  color: #4c4c4c;
+  font-size: 18px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }

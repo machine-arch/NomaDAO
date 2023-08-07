@@ -1,0 +1,57 @@
+.publishedHotels-Title {
+  color: #4c4c4c;
+  font-size: 18px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.publishedHotels-Gray {
+  display: flex;
+  width: 1020px;
+  height: 100px;
+  justify-content: space-around;
+  align-items: center;
+  background: #f7f7f7;
+  margin-top: 10px;
+}
+
+.publishedHotels-Orange {
+  margin-bottom: 30px;
+  width: 218px;
+  height: 80px;
+  padding: 19px 15px;
+  border-radius: 4px;
+  background: var(--brandy, #fe7c31);
+}
+
+.publishedHotels-Big {
+  color: #ECECEC;
+  font-size: 16px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+.publishedHotels-Small {
+  color: #ECECEC;
+  font-size: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.publishedHotels-See {
+  color: var(--gray-800, #3f3f3f);
+  font-size: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: right;
+  cursor: pointer;
+  margin-top: 10px;
+}
+

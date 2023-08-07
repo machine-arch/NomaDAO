@@ -1,0 +1,26 @@
+.groupRequests-orange {
+  margin-bottom: 30px;
+  width: 207px;
+  height: 80px;
+  padding: 19px 15px;
+  border-radius: 4px;
+  background: var(--brandy, #fe7c31);
+}
+
+.groupRequests-big {
+  color: #fff;
+  font-size: 20px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.groupRequests-small {
+  color: #fff;
+  font-size: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}

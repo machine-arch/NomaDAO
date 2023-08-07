@@ -1,161 +1,127 @@
-import React, { useState, useEffect } from "react";
-import GroupRequests from "../GroupRequests/GroupRequests.jsx";
-import TableExtended from "../TableExtended/TableExtended.jsx";
-import { useOutletContext } from "react-router-dom";
-import MarketplaceHeader from "../MarketplaceHeader/MarketplaceHeader";
-import FilterByControlPanel from "../FilterbyControlPanelAgency/FilterbyControlPanelAgency.jsx";
-import FilterComponent from "../FilterComponent/FilterComponent.jsx";
-import "./ControlPanelAgency.css";
+import React, { useState, useEffect } from 'react';
+import GroupRequests from '../GroupRequests/GroupRequests.jsx';
+import TableExtended from '../TableExtended/TableExtended.jsx';
+import { useOutletContext } from 'react-router-dom';
+import MarketplaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
+import FilterByControlPanel from '../FilterbyControlPanelHotel/FilterbyControlPanelHotel.jsx';
+import FilterComponent from '../FilterComponent/FilterComponent.jsx';
+import './ControlPanelAgency.css';
 const initialData = {
   header: [
-    "Tour Agency",
-    "Status",
-    "Travelers",
-    "Destination",
-    "Rooms",
-    "Date",
-    "Price",
-    "Action",
+    'Tour Agency',
+    'Status',
+    'Travelers',
+    'Destination',
+    'Rooms',
+    'Date',
+    'Price',
+    'Action',
   ],
   filters: [
-    "Publisher",
-    "Number of Guests",
-    "Location",
-    "Price Range",
-    "Dates",
-    "Rooms",
+    'Publisher',
+    'Number of Guests',
+    'Location',
+    'Price Range',
+    'Dates',
+    'Rooms',
   ],
   rows: [
     [
-      "Another",
-      "Pending",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Pending',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
     [
-      "Another",
-      "Confirmed",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Confirmed',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
     [
-      "Another",
-      "Pending",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Pending',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
     [
-      "Another",
-      "Confirmed",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Confirmed',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
     [
-      "Another",
-      "Unverified",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Unverified',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
     [
-      "Another",
-      "Rejected",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Rejected',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
     [
-      "Another",
-      "Rejected",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Rejected',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
     [
-      "Another",
-      "Pending",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Pending',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
     [
-      "Another",
-      "Confirmed",
-      "25 Travellers",
-      "Tbilisi",
-      "23",
-      "25 Jul - 01 Aug",
-      "200 Nom",
-      "Check Details",
+      'Another',
+      'Confirmed',
+      '25 Travellers',
+      'Tbilisi',
+      '23',
+      '25 Jul - 01 Aug',
+      '200 Nom',
+      'Check Details',
     ],
   ],
 };
 
-// const { setPopup } = useOutletContext();
-// const [searchTerm, setSearchTerm] = useState(""); // new state variable for the search term
-// const [rows, setRows] = useState(data.rows); 
-// const [filteredData, setFilteredData] = useState(data.rows);
-
-
-// const handleAddRoom = (newRoomData) => {
-//   setRows(prevRows => [...prevRows, Object.values(newRoomData)]);
-// }
-
-// const filteredRows = rows.filter((row) =>
-//   row.some((field) =>
-//     field.toLowerCase().includes(searchTerm.toLowerCase())
-//   )
-// );
-
-// const handleFilterChange = (selectedFilters) => {
-//   const newFilteredData = data.rows.filter((row) => {
-//     return Object.keys(selectedFilters).every((key) => {
-//       const filterValue = selectedFilters[key];
-//       return filterValue === '' || row[key] === filterValue;
-//     });
-//   });
-//   setFilteredData(newFilteredData);
-// };
-
-// const handleSearch = (event) => {
-//   setSearchTerm(event.target.value);
-// };
-
-
-
-
-
 export default function ControlPanelAgency(setpopup) {
   const { setPopup } = useOutletContext();
-  const [searchTerm, setSearchTerm] = useState(""); // new state variable for the search term
+  const [searchTerm, setSearchTerm] = useState(''); // new state variable for the search term
   const [rows, setRows] = useState(initialData.rows);
   const [selectedFilters, setSelectedFilters] = useState({});
 
@@ -189,8 +155,8 @@ export default function ControlPanelAgency(setpopup) {
       if (searchTerm) {
         newRows = newRows.filter((row) =>
           row.some((field) =>
-            field.toLowerCase().includes(searchTerm.toLowerCase())
-          )
+            field.toLowerCase().includes(searchTerm.toLowerCase()),
+          ),
         );
       }
 
@@ -200,17 +166,17 @@ export default function ControlPanelAgency(setpopup) {
     filterData();
   }, [searchTerm, selectedFilters]);
 
-
-
-
   return (
-    <div className="wrapper">
+    <div className="controlPanelAgency-wrapper">
       <GroupRequests />
       <MarketplaceHeader />
-      {/* prettier-ignore */}
       <p className="title">Filter by</p>
-      <div className="container">
-        <FilterComponent header={initialData.header} rows={initialData.rows} onFilterChange={handleFilterChange} />
+      <div className="controlPanelAgency-container">
+        <FilterComponent
+          header={initialData.header}
+          rows={initialData.rows}
+          onFilterChange={handleFilterChange}
+        />
         <FilterByControlPanel
           filter={initialData.filters}
           header={initialData.header}
@@ -219,7 +185,6 @@ export default function ControlPanelAgency(setpopup) {
           handleAddRoom={handleAddRoom}
         />
       </div>
-      {/* <FilterComponentPanelAgency header={data.header} rows={data.rows} onFilterChange={handleFilterChange} handleAddRoom={handleAddRoom} /> */}
       <TableExtended
         header={initialData.header}
         rows={rows}
@@ -228,4 +193,3 @@ export default function ControlPanelAgency(setpopup) {
     </div>
   );
 }
-

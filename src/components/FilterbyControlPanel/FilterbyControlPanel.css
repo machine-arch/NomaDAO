@@ -1,15 +1,14 @@
-/* FilterbyControlPanel */
 
-.filterWrapper {
+.filterbyControlPanel-filter-wrapper {
     margin-bottom: 10px;
     align-items: center;
     width: 100%;
     height: 50px;
     display: flex;
     gap: 13px;
-}
-
-.select {
+  }
+  
+  .filterbyControlPanel-select {
     font-size: 1rem;
     color: #3f3f3f;
     outline: none;
@@ -22,10 +21,9 @@
     background: var(--background-section, #f2f2f2);
     padding: 10px 10px;
     cursor: pointer;
-
-}
-
-.resetBtn {
+  }
+  
+  .filterbyControlPanel-reset-btn {
     white-space: nowrap;
     display: flex;
     align-items: center;
@@ -36,9 +34,18 @@
     padding: 5px 20px;
     cursor: pointer;
     height: 30px;
-}
-
-.addRoom {
+  }
+  
+  .filterbyControlPanel-small-image {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .filterbyControlPanel-small-image:last-child {
+    margin-left: 4px;
+  }
+  
+  .filterbyControlPanel-add-room {
     padding: 20px;
     display: flex;
     align-items: center;
@@ -48,10 +55,9 @@
     border-radius: 70px;
     background: var(--brandy, #fe7c31);
     cursor: pointer;
-}
-
-.addRoomTxt {
-
+  }
+  
+  .filterbyControlPanel-add-room-text {
     color: #fff;
     display: flex;
     font-size: 18px;
@@ -59,14 +65,5 @@
     font-style: normal;
     width: 82px;
     font-weight: 300;
-}
-
-
-.smallImage {
-    width: 15px;
-    height: 15px;
-}
-
-.smallImage:last-child {
-    margin-left: 4px;
-}
+  }
+  

@@ -1,11 +1,8 @@
-import React, { useState, useRef } from "react";
-import "./FilterComponent.css";
-
+import React, { useState, useRef } from 'react';
+import './FilterComponent.css';
 export default function FilterComponent({ header, rows, onFilterChange }) {
   const [selectedFilters, setSelectedFilters] = useState({});
   const publisherFilterRef = useRef(null); // Add this line
-
-
 
   // Generate unique values for each column
   const uniqueValues = rows[0].map((_, columnIndex) => {
@@ -32,26 +29,30 @@ export default function FilterComponent({ header, rows, onFilterChange }) {
   };
 
   return (
-    <div className="filterWrapper">
-      {uniqueValues.map((values, index) => (
-        header[index] !== "Date" && (
-          <div key={index}>
-            <select className="select"
-              ref={index === 0 ? publisherFilterRef : null} // Add this line
-              onChange={(event) => handleFilterChange(event, index)}
-              value={selectedFilters[index] || header[index]}
-            >
-              <option value={header[index]}>{header[index]}</option>
-              {values.map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-        )
-      ))}
-      <button className="resetBtn" onClick={handleReset}>Reset</button>
+    <div className="filterComponent-filter-wrapper">
+      {uniqueValues.map(
+        (values, index) =>
+          header[index] !== 'Date' && (
+            <div key={index}>
+              <select
+                ref={index === 0 ? publisherFilterRef : null} // Add this line
+                onChange={(event) => handleFilterChange(event, index)}
+                value={selectedFilters[index] || header[index]}
+                className="filterComponent-select"
+              >
+                <option value={header[index]}>{header[index]}</option>
+                {values.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ),
+      )}
+      <button className="filterComponent-reset-btn" onClick={handleReset}>
+        Reset
+      </button>
     </div>
   );
 }

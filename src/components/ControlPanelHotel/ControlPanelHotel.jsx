@@ -1,63 +1,61 @@
-import React, { useState, useEffect, useRef } from "react";
-import MontyleReport from "../MyroomsPublishedrooms/MyroomsPublishedrooms.jsx";
-import TableExtended from "../TableExtended/TableExtended.jsx";
-import MarketplaceHeader from "../MarketplaceHeader/MarketplaceHeader.jsx";
-import { useOutletContext } from "react-router-dom";
-import FilterByControlPanel from "../FilterbyControlPanelHotel/FilterbyControlPanelHotel.jsx";
-import FilterComponent from "../FilterComponent/FilterComponent.jsx";
-import useMoveSound from "../../hooks/useMoveSound.js";
-import useConditionalHandler from "../../hooks/useConditionalHandler.js";
-import "./ControlPanelHotel.css";
+import React, { useState, useEffect, useRef } from 'react';
+import MontyleReport from '../MyroomsPublishedrooms/MyroomsPublishedrooms.jsx';
+import TableExtended from '../TableExtended/TableExtended.jsx';
+import MarketplaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
+import { useOutletContext } from 'react-router-dom';
+import FilterByControlPanel from '../FilterbyControlPanelHotel/FilterbyControlPanelHotel.jsx';
+import FilterComponent from '../FilterComponent/FilterComponent.jsx';
+import useMoveSound from '../../hooks/useMoveSound.js';
+import useConditionalHandler from '../../hooks/useConditionalHandler.js';
+import './ControlPanelHotel.css';
 
 const initialData = {
   header: [
-    "Publisher",
-    "Status",
-    "Guests",
-    "Location",
-    "Rooms",
-    "Period",
-    "Price",
-    "Action",
+    'Publisher',
+    'Status',
+    'Guests',
+    'Location',
+    'Rooms',
+    'Period',
+    'Price',
+    'Action',
   ],
   filters: [
-    "Publisher",
-    "status",
-    "Room type",
-    "Number of Rooms",
-    "Location",
-    "Price",
-    "Period",
+    'Publisher',
+    'status',
+    'Room type',
+    'Number of Rooms',
+    'Location',
+    'Price',
+    'Period',
   ],
   rows: [
     [
-      "You",
-      "Pending",
-      "25 Travellers",
-      "Tbilisi",
-      "3",
-      "25 Jul - 01 Aug",
-      "89$",
-      "Check Details",
+      'You',
+      'Pending',
+      '25 Travellers',
+      'Tbilisi',
+      '3',
+      '25 Jul - 01 Aug',
+      '89$',
+      'Check Details',
     ],
     [
-      "You",
-      "Confirmed",
-      "25 Travellers",
-      "Batumi",
-      "4",
-      "25 Jul - 01 Aug",
-      "70$",
-      "Check Details",
+      'You',
+      'Confirmed',
+      '25 Travellers',
+      'Batumi',
+      '4',
+      '25 Jul - 01 Aug',
+      '70$',
+      'Check Details',
     ],
   ],
 };
 
-
-
 export default function DashboardHotel({ setpopup }) {
   const { setPopup } = useOutletContext();
-  const [searchTerm, setSearchTerm] = useState(""); // new state variable for the search term
+  const [searchTerm, setSearchTerm] = useState(''); // new state variable for the search term
   const [rows, setRows] = useState(initialData.rows);
   const [selectedFilters, setSelectedFilters] = useState({});
   const moveSound = useMoveSound;
@@ -67,10 +65,9 @@ export default function DashboardHotel({ setpopup }) {
 
   // const { marketplaceActive, setmarketplaceActive } = marketplaceContext;
 
-
   ///////////////////////////////////
   // useEffect(() => {
-  //   if (!marketplaceActive) { 
+  //   if (!marketplaceActive) {
   //       emailRef.current.focus();
   //   }
   //   else{
@@ -85,24 +82,21 @@ export default function DashboardHotel({ setpopup }) {
     }
   }, []);
 
-
-
   const navigation = [
-    "Publisher",
-    "Status",
-    "Guests",
-    "Location",
-    "Rooms",
-    "Period",
-    "Price",
-    "Action",
+    'Publisher',
+    'Status',
+    'Guests',
+    'Location',
+    'Rooms',
+    'Period',
+    'Price',
+    'Action',
   ];
 
   // useConditionalHandler(navigateInputs, marketplaceActive);
 
   const [activeInputBox, setActiveInputBox] = useState(null);
-  const [currentPage, setCurrentPage] = useState("Publisher");
-
+  const [currentPage, setCurrentPage] = useState('Publisher');
 
   let currentIndex = navigation.indexOf(currentPage);
   let nextIndex;
@@ -117,13 +111,11 @@ export default function DashboardHotel({ setpopup }) {
   }
 
   function prevInput() {
-    if (currentPage === "Publisher") {
-
+    if (currentPage === 'Publisher') {
     }
     setCurrentPage(navigation[currentIndex - 1]);
   }
   function navigateInputs(event) {
-
     switch (event.keyCode) {
       // Down
       case 40:
@@ -154,7 +146,6 @@ export default function DashboardHotel({ setpopup }) {
         break;
     }
   }
-
 
   useConditionalHandler(navigateInputs, true);
 
@@ -190,8 +181,8 @@ export default function DashboardHotel({ setpopup }) {
       if (searchTerm) {
         newRows = newRows.filter((row) =>
           row.some((field) =>
-            field.toLowerCase().includes(searchTerm.toLowerCase())
-          )
+            field.toLowerCase().includes(searchTerm.toLowerCase()),
+          ),
         );
       }
 
@@ -202,12 +193,16 @@ export default function DashboardHotel({ setpopup }) {
   }, [searchTerm, selectedFilters]);
 
   return (
-    <div className="wrapper">
+    <div className="controlPanelHotel-wrapper">
       <MontyleReport />
       <MarketplaceHeader />
-      <p className="title">Filter by</p>
-      <div className="container">
-        <FilterComponent header={initialData.header} rows={initialData.rows} onFilterChange={handleFilterChange} />
+      <p className="controlPanelHotel-title">Filter by</p>
+      <div className="controlPanelHotel-container">
+        <FilterComponent
+          header={initialData.header}
+          rows={initialData.rows}
+          onFilterChange={handleFilterChange}
+        />
         <FilterByControlPanel
           filter={initialData.filters}
           header={initialData.header}
@@ -224,4 +219,3 @@ export default function DashboardHotel({ setpopup }) {
     </div>
   );
 }
-

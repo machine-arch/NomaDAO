@@ -1,16 +1,14 @@
-/* FilterComponent */
 
-
-.filterWrapper {
+.filterComponent-filter-wrapper {
     margin-bottom: 10px;
     align-items: center;
     width: 100%;
     height: 50px;
     display: flex;
     gap: 20px;
-}
-
-.select {
+  }
+  
+  .filterComponent-select {
     font-size: 1rem;
     color: #3f3f3f;
     outline: none;
@@ -23,9 +21,9 @@
     background: var(--background-section, #f2f2f2);
     padding: 10px 7px;
     cursor: pointer;
-}
-
-.resetBtn {
+  }
+  
+  .filterComponent-reset-btn {
     white-space: nowrap;
     display: flex;
     align-items: center;
@@ -36,4 +34,5 @@
     padding: 5px 20px;
     cursor: pointer;
     height: 30px;
-}
+  }
+  

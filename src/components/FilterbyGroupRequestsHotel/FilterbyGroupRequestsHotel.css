@@ -1,0 +1,68 @@
+/* styles.css */
+
+.filterbyGroupRequestsHotel-container {
+    margin-bottom: 10px;
+    max-width: 1160px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: 'Inter';
+  }
+  
+  .filterbyGroupRequestsHotel-table-header {
+    font-size: clamp(14px, 2vw, 16px);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 10px;
+    border-radius: 4px;
+  }
+  
+  .filterbyGroupRequestsHotel-column {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+    background: var(--background-section, #f2f2f2);
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .filterbyGroupRequestsHotel-reset {
+    margin-left: 190px;
+    margin-top: 10px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+    background: var(--background-section, #f2f2f2);
+    padding: 5px 20px;
+    cursor: pointer;
+    height: 30px;
+  }
+  
+  .filterbyGroupRequestsHotel-reset-text {
+    font-size: 15px;
+  }
+  
+  .filterbyGroupRequestsHotel-row {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .filterbyGroupRequestsHotel-small-image {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .filterbyGroupRequestsHotel-small-image:last-child {
+    margin-left: 4px;
+  }
+  

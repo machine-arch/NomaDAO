@@ -4,18 +4,19 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import useMoveSound from "../../hooks/useMoveSound.js";
-import SearchedHotel from "../SearchedHotel/SearchedHotel";
-import HOTELS from "../../data/hotels.js";
-import { useNavigate } from "react-router-dom";
-import BookingContext from "../../context/BookingContext.js";
-import useConditionalHandler from "../../hooks/useConditionalHandler.js";
-import { cosine } from "string-comparison";
-import AsideContext from "../../context/AsideContext.js";
-import "./Booking.css";
+} from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import useMoveSound from '../../hooks/useMoveSound.js';
+import SearchedHotel from '../RightSide/SearchedHotel.jsx';
+import './Booking-datapicker.css';
+import HOTELS from '../../data/hotels.js';
+import { useNavigate } from 'react-router-dom';
+import BookingContext from '../../context/BookingContext.js';
+import useConditionalHandler from '../../hooks/useConditionalHandler.js';
+import { cosine } from 'string-comparison';
+import AsideContext from '../../context/AsideContext.js';
+import './Booking.css';
 
 export default function Booking() {
   // States
@@ -68,9 +69,11 @@ export default function Booking() {
       (hotel) =>
         // if more then 50% similar, approve filter
         cosine.similarity(
-          hotel.location.toLowerCase().replace(/\s/g, ""),
-          bookingContext.bookingParams.location.toLowerCase().replace(/\s/g, "")
-        ) > 0.5
+          hotel.location.toLowerCase().replace(/\s/g, ''),
+          bookingContext.bookingParams.location
+            .toLowerCase()
+            .replace(/\s/g, ''),
+        ) > 0.5,
     );
     // if none found, return all
     if (newHotels.length === 0) {
@@ -220,7 +223,7 @@ export default function Booking() {
     }
   }
   function openSingleHotel() {
-    navigate("/hotel/" + filteredHotels[activeHotel - 1].name);
+    navigate('/hotel/' + filteredHotels[activeHotel - 1].name);
   }
   function goInsideHotels() {
     // activate hotels navigation, disable others navigation
@@ -231,7 +234,6 @@ export default function Booking() {
     setActiveHotel(1);
     setActiveInputBox(null);
   }
-
 
   function goInsideInput() {
     // if it's search input, activate search
@@ -250,7 +252,6 @@ export default function Booking() {
       focusInput();
     }
   }
-
 
   function goBackToNavigation() {
     leaveAll();
@@ -353,38 +354,108 @@ export default function Booking() {
   function handleScrollToHotel(index) {
     const hotelElement = hotelsWrapperRef.current.children[index - 1];
     if (hotelElement) {
-      hotelElement.scrollIntoView({ behavior: "smooth" });
+      hotelElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
   return (
-    <div className="bookingWrapper">
-      <p className="title" style={{ top: `${showHotels === "true" ? "5%" : "40%"}` }}>
+    <div className="booking-wrapper">
+      <p className="booking-title" style={{ top: showHotels ? '5%' : '40%' }}>
         Travel, Earn, Repeat!
       </p>
-      <div className="searchWrapper" ref={wrapperRef} style={{ top: `${showHotels === "true" ? "12%" : "50%"}` }} >
-        <div className={`InputBox ${activeInputBox ? "active" : ""}`}>
-          <label className="inputText">Location</label>
-          <input className="input" type="text" value={location} ref={locationRef} onChange={handleLocationChange} />
+      <div
+        className="booking-searchWrapper"
+        style={{ top: showHotels ? '12%' : '50%' }}
+        ref={wrapperRef}
+      >
+        <div
+          className={`booking-input-box ${
+            activeInputBox === 1 ? 'nth-child' : ''
+          }`}
+        >
+          <label className="booking-inputText">Location</label>
+          <input
+            className="booking-input"
+            type="text"
+            value={location}
+            ref={locationRef}
+            onChange={handleLocationChange}
+          />
         </div>
-        <div className={`InputBox ${activeInputBox ? "active" : ""}`}>
-          <label className="inputText">Check in</label>
-          <DatePicker dateFormat="yyyy-MM-dd" ref={checkinRef} selected={checkIn} onChange={handleCheckInChange} className="date-picker" />
+        <div
+          className={`booking-input-box ${
+            activeInputBox === 2 ? 'nth-child' : ''
+          }`}
+        >
+          <label className="booking-inputText">Check in</label>
+          <DatePicker
+            dateFormat="yyyy-MM-dd"
+            ref={checkinRef}
+            selected={checkIn}
+            onChange={handleCheckInChange}
+            className="booking-date-picker"
+          />
         </div>
-        <div className={`InputBox ${activeInputBox ? "active" : ""}`}>
-          <label className="inputText">Check Out</label>
-          <DatePicker dateFormat="yyyy-MM-dd" ref={checkoutRef} selected={checkOut} onChange={handleCheckOutChange} className="date-picker" />
+        <div
+          className={`booking-input-box ${
+            activeInputBox === 3 ? 'nth-child' : ''
+          }`}
+        >
+          <label className="booking-inputText">Check Out</label>
+          <DatePicker
+            dateFormat="yyyy-MM-dd"
+            ref={checkoutRef}
+            selected={checkOut}
+            onChange={handleCheckOutChange}
+            className="booking-date-picker"
+          />
         </div>
-        <div className={`InputBox ${activeInputBox ? "active" : ""}`}>
-          <label className="inputText">Guests</label>
-          <input className="input" ref={guestsRef} value={guests} type="number" min={0} max={100} onChange={handleGuestsChange} />
+        <div
+          className={`booking-input-box ${
+            activeInputBox === 4 ? 'nth-child' : ''
+          }`}
+        >
+          <label className="booking-inputText">Guests</label>
+          <input
+            className="booking-input"
+            ref={guestsRef}
+            value={guests}
+            type="number"
+            min={0}
+            max={100}
+            onChange={handleGuestsChange}
+          />
         </div>
-        <button className={`search ${activeInputBox ? "searchActive" : ""}`} ref={searchRef} > Search </button>
+        <button
+          ref={searchRef}
+          className={`booking-search-btn ${
+            activeInputBox === 5 ? 'nth-child' : ''
+          }`}
+        >
+          {' '}
+          Search{' '}
+        </button>
       </div>
-      <div className="hotelsWrapper" ref={hotelsWrapperRef} style={{ top: `${showHotels === "true" ? "25%" : "120%"}` }}>
+      <div
+        className="booking-hotelsWrapper"
+        ref={hotelsWrapperRef}
+        style={{ top: showHotels ? '25%' : '120%' }}
+      >
         {filteredHotels.map((hotel) => {
-          const { name, price, location, rating, mainImage, facilities } = hotel;
-          return <SearchedHotel key={name} activeBox={activeHotel} name={name} rating={rating} mainImage={mainImage} facilities={facilities} location={location} price={price} />
+          const { name, price, location, rating, mainImage, facilities } =
+            hotel;
+          return (
+            <SearchedHotel
+              key={name}
+              activeBox={activeHotel}
+              name={name}
+              rating={rating}
+              mainImage={mainImage}
+              facilities={facilities}
+              location={location}
+              price={price}
+            />
+          );
         })}
       </div>
     </div>

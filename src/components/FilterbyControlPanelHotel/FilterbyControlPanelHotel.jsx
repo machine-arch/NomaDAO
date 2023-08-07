@@ -1,12 +1,10 @@
-import { React, useState } from "react";
+import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PopupAddroom from "../PopupAddroom/PopupAddroom.jsx";
-import plus from "../../assets/images/addroomplus.svg";
-import "./FilterbyControlPanelHotel.css";
+import PopupAddroom from '../PopupAddroom/PopupAddroom.jsx';
+import plus from '../../assets/images/addroomplus.svg';
+import './FilterbyControlPanelHotel.css';
 
 //REDUNDANT CODE!!!
-
-
 
 export default function FilterByControlPanel({ filter, handleAddRoom }) {
   const navigate = useNavigate();
@@ -19,12 +17,21 @@ export default function FilterByControlPanel({ filter, handleAddRoom }) {
   const openPopup = () => setOpen(true);
   const closePopup = () => setOpen(false);
 
-
   return (
-    <div className="container">
-      <div className="addRoom" onClick={openPopup}><p className="addRoomText">Add room</p><img className="smallImage" src={plus} /></div>
-      <PopupAddroom open={open} closePopup={closePopup} handleAddRoom={handleAddRoom} />
+    <div className="filterbyControlPanelHotel-container">
+      <div className="filterbyControlPanelHotel-add-room" onClick={openPopup}>
+        <p className="filterbyControlPanelHotel-add-room-text">Add room</p>
+        <img
+          className="filterbyControlPanelHotel-small-image"
+          src={plus}
+          alt="plus-icon"
+        />
+      </div>
+      <PopupAddroom
+        open={open}
+        closePopup={closePopup}
+        handleAddRoom={handleAddRoom}
+      />
     </div>
-
   );
 }

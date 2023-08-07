@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import Logo from "../../assets/images/logo.png";
-import AsideElement from "../AsideElement/AsideElement.jsx";
-import useMoveSound from "../../hooks/useMoveSound.js";
-import { useNavigate } from "react-router-dom";
-import useConditionalHandler from "../../hooks/useConditionalHandler.js";
-import AsideContext from "../../context/AsideContext.js";
-import useRemoveSpaces from "../../hooks/useRemoveSpaces.js";
-import "./Aside.css";
+import React, { useContext } from 'react';
+import Logo from '../../assets/images/logo.png';
+import AsideElement from '../AsideElement/AsideElement.jsx';
+import useMoveSound from '../../hooks/useMoveSound.js';
+import { useNavigate } from 'react-router-dom';
+import useConditionalHandler from '../../hooks/useConditionalHandler.js';
+import AsideContext from '../../context/AsideContext.js';
+import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
+import './Aside.css';
 export default function Aside() {
   // Context
   const asideContext = useContext(AsideContext);
@@ -39,7 +39,7 @@ export default function Aside() {
       // Right
       case 39:
         openPage();
-        console.log("gadadis");
+        console.log('gadadis');
         moveSound();
         break;
       default:
@@ -48,7 +48,6 @@ export default function Aside() {
   }
   // movement functions
   function openPage() {
-
     setAsideActive(false);
   }
 
@@ -72,8 +71,8 @@ export default function Aside() {
   }
 
   return (
-    <aside className="aside">
-      <img src={Logo} alt="Logo" className="img" />
+    <aside className="aside-styledAside">
+      <img src={Logo} alt="Logo" className="Aside-logoImage" />
       <nav>
         <ul>
           {pages.map((page, index) => {
@@ -81,7 +80,7 @@ export default function Aside() {
               <AsideElement
                 key={page}
                 name={page}
-                active={index === activePage ? "true" : "false"}
+                active={index === activePage ? 'true' : 'false'}
                 // prettier-ignore
                 saved={Boolean((index === activePage) && !asideActive) ? "true" : "false"} // when user leaves aside navigation, page will be saved in UI
               />

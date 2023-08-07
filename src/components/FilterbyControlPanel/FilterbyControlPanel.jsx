@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import PopupAddroom from "../PopupAddroom/PopupAddroom.jsx";
-import plus from "../../assets/images/addroomplus.svg";
-import "./FilterByControlPanel.css";
+import React, { useState } from 'react';
+import PopupAddroom from '../PopupAddroom.jsx';
+import plus from '../assets/images/addroomplus.svg';
+import './FilterbyControlPanel.css';
 
-export default function FilterComponentPanel({ header, rows, onFilterChange, handleAddRoom, f }) {
+export default function FilterComponentPanel({
+  header,
+  rows,
+  onFilterChange,
+  handleAddRoom,
+  f,
+}) {
   const [selectedFilters, setSelectedFilters] = useState({});
-
-
 
   const [open, setOpen] = useState(false);
   const openPopup = () => setOpen(true);
@@ -37,27 +41,42 @@ export default function FilterComponentPanel({ header, rows, onFilterChange, han
   };
 
   return (
-    <div className="filterWrapper">
-      {uniqueValues.map((values, index) => (
-        header[index] !== "Date" && (
-          <div key={index}>
-            <select className="select"
-              onChange={(event) => handleFilterChange(event, index)}
-              value={selectedFilters[index] || header[index]}
-            >
-              <option value={header[index]}>{header[index]}</option>
-              {values.map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-        )
-      ))}
-      <button className="resetBtn" onClick={handleReset}>Reset</button>
-      <div className="addRoom" onClick={openPopup}><p className="addRoomTxt">Add room</p><img className="smallImage" src={plus} /></div>
-      <PopupAddroom open={open} closePopup={closePopup} handleAddRoom={handleAddRoom} />
+    <div className="filterbyControlPanel-filter-wrapper">
+      {uniqueValues.map(
+        (values, index) =>
+          header[index] !== 'Date' && (
+            <div key={index}>
+              <select
+                className="filterbyControlPanel-select"
+                onChange={(event) => handleFilterChange(event, index)}
+                value={selectedFilters[index] || header[index]}
+              >
+                <option value={header[index]}>{header[index]}</option>
+                {values.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ),
+      )}
+      <button className="filterbyControlPanel-reset-btn" onClick={handleReset}>
+        Reset
+      </button>
+      <div className="filterbyControlPanel-add-room" onClick={openPopup}>
+        <p className="filterbyControlPanel-add-room-text">Add room</p>
+        <img
+          className="filterbyControlPanel-small-image"
+          src={plus}
+          alt="plus-icon"
+        />
+      </div>
+      <PopupAddroom
+        open={open}
+        closePopup={closePopup}
+        handleAddRoom={handleAddRoom}
+      />
     </div>
   );
 }
