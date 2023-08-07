@@ -156,3 +156,91 @@ export default function MartketPlaceSettings() {
     </>
   );
 }
+
+const Last = styled.div`
+  gap: 25px;
+  display: flex;
+  width: 100%;
+`;
+
+const Message = styled.p`
+  margin-top: 30px;
+  color: #0699d2;
+  font-size: 1.5rem;
+`;
+const BtnWrapper = styled.div`
+    left: 25%;
+    top: 4%;
+    position: absolute;
+    justify-content: space-between;
+    width: 210px;
+    height: 22px;
+    display: flex;
+}`;
+const Choice = styled.button`
+  cursor: pointer;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  color: black;
+`;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 60px 50px 0px 50px;
+`;
+
+const Forms = styled.div`
+  gap: 100px;
+  display: flex;
+  margin-top: 20px;
+  padding: 0px 50px 0px 0px;
+`;
+
+const Button = styled.div`
+  cursor: pointer;
+  color: #ececec;
+  align-self: flex-end;
+  border-radius: 4px;
+  background: var(--blue, #0699d2);
+  display: flex;
+  width: 154px;
+  height: 43px;
+  padding: 10px 8px 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+`;
+
+const Form = styled.form`
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 425px;
+  height: auto;
+  gap: 16px;
+`;
+const Label = styled.label`
+  font-size: 16px;
+`;
+const Input = styled.input`
+  display: flex;
+  width: 425px;
+  height: 43px;
+  padding: 10px 8px 10px 16px;
+  align-items: center;
+  gap: 10px;
+
+  color: #4c4c4c;
+  font-size: 16px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+
+  border-radius: 4px;
+  border: 1px solid var(--gray-300, #c5c5c5);
+  background: var(--background-section, #f2f2f2);
+`;
