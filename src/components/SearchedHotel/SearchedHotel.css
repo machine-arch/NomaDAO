@@ -1,4 +1,4 @@
-.box {
+.SearchedHotel-box {
   width: 100%;
   height: 250px;
   min-height: 250px;
@@ -9,28 +9,28 @@
   display: flex;
 }
 
-.box:first-child {
+.SearchedHotel-box:first-child {
   margin-top: 0px;
 }
 
-.box.active {
+.SearchedHotel-box.active {
   background-color: #01729f39;
 }
 
-.img {
+.SearchedHotel-img {
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
   width: 30%;
   height: 100%;
 }
 
-.info {
+.SearchedHotel-info {
   width: 70%;
   height: 100%;
   position: relative;
 }
 
-.name {
+.SearchedHotel-name {
   font-family: "Inter";
   font-weight: 700;
   font-size: 30px;
@@ -41,7 +41,7 @@
   left: 20px;
 }
 
-.rating {
+.SearchedHotel-rating {
   width: fit-content;
   padding: 8px 16px;
   background: #01739f;
@@ -59,7 +59,7 @@
   right: 20px;
 }
 
-.facility {
+.SearchedHotel-facility {
   padding: 5px 10px;
   background: #709bac;
   border-radius: 13.2191px;
@@ -73,7 +73,7 @@
   color: #ececec;
 }
 
-.facilities {
+.SearchedHotel-facilities {
   width: fit-content;
   max-width: 400px;
   display: flex;
@@ -81,7 +81,7 @@
   gap: 20px;
 }
 
-.facilities-wrapper {
+.SearchedHotel-facilities-wrapper {
   display: flex;
   font-family: "Inter";
   font-style: normal;
@@ -96,7 +96,7 @@
   left: 20px;
 }
 
-.location {
+.SearchedHotel-location {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
@@ -108,7 +108,7 @@
   left: 20px;
 }
 
-.price-wrapper {
+.SearchedHotel-price-wrapper {
   display: flex;
   font-family: "Inter";
   font-style: normal;
@@ -123,7 +123,7 @@
   right: 20px;
 }
 
-.price {
+.SearchedHotel-price {
   width: fit-content;
   padding: 8px 16px;
   background: #01739f;

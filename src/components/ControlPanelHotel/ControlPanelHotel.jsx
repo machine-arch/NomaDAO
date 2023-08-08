@@ -193,11 +193,11 @@ export default function DashboardHotel({ setpopup }) {
   }, [searchTerm, selectedFilters]);
 
   return (
-    <div className='controlPanelHotel-wrapper'>
+    <div className="controlPanelHotel-wrapper">
       <MontyleReport />
       <MarketplaceHeader />
-      <p className='controlPanelHotel-title'>Filter by</p>
-      <div className='controlPanelHotel-container'>
+      <p className="controlPanelHotel-title">Filter by</p>
+      <div className="controlPanelHotel-container">
         <FilterComponent
           header={initialData.header}
           rows={initialData.rows}

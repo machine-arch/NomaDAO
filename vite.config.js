@@ -9,7 +9,10 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       output: {
-        format: 'iife',
+        format: 'es',
+        manualChunks: {
+          index_1: ['src/components/Booking/Booking.jsx'],
+        },
       },
     },
   },

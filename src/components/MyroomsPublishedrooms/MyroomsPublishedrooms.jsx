@@ -1,4 +1,5 @@
 import React from 'react';
+import './MyroomsPublishedrooms.css';
 
 export default function MontyleReport() {
   return (
