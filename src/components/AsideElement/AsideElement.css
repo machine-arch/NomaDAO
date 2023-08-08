@@ -1,5 +1,4 @@
-
-.AsideElement_white1 {
+.asideElement_white1 {
   width: 10px;
   height: 45px;
   /* background: #ececec; */
@@ -13,54 +12,53 @@
 }
 
 
-  .AsideElement_white1.active {
-    display: block;
-  }
+.asideElement_white1.active {
+  display: block;
+}
 
-  .AsideElement_white1.none {
-    display: none;
-  }
-  
-  .content {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  
-    height: 56px;
-    padding-left: 34px;
-    margin-bottom: 40px;
-    margin-left: 8px;
-  
-    position: relative;
-    z-index: 2;
-    border-width: 2px;
-    transition: all 0s;
-    border-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(0, 0, 0,0))1;
-    border-style: none;
-  }
+.asideElement_white1.none {
+  display: none;
+}
 
-  .content.active{
-    border-style: solid;
-  }
+.asideElement-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-  .content.none{
-    border-style: none;
-  }
-  
-  .elementImage {
-    margin-right: 10px;
-    width: 20px;
-  }
-  
-  .elementName {
-    margin-left: 10px;
-    font-family: "Inter";
-    font-weight: 600;
-    font-size: 16px;
-    color: #d5fbff;
-  }
-  
-  .liElement {
-    position: relative;
-  }
-  
+  height: 56px;
+  padding-left: 34px;
+  margin-bottom: 40px;
+  margin-left: 8px;
+
+  position: relative;
+  z-index: 2;
+  border-width: 2px;
+  transition: all 0s;
+  border-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0))1;
+  border-style: none;
+}
+
+.asideElement-content.active {
+  border-style: solid;
+}
+
+.asideElement-content.none {
+  border-style: none;
+}
+
+.asideElement-elementImage {
+  margin-right: 10px;
+  width: 20px;
+}
+
+.asideElement-elementName {
+  margin-left: 10px;
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  color: #d5fbff;
+}
+
+.asideElement-liElement {
+  position: relative;
+}

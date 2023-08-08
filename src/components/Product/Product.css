@@ -1,0 +1,103 @@
+
+.product-singlePage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 80vw 100vh;
+}
+
+.product-BackButton {
+  background-color: rgba(0, 0, 0, 0.505);
+  width: 251px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  backdrop-filter: blur(9.5px);
+  border-radius: 32px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-Top {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 87px;
+  left: 0px;
+  top: 48px;
+  background: rgba(54, 148, 202, 0.769);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+
+.product-Bottom {
+  width: 40vw;
+  height: 100vh;
+  float: right;
+  background-color: rgb(32, 32, 32);
+  box-shadow: -20px 0px 100px 150px rgb(32, 32, 32);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-right: 50px;
+}
+
+.product-Title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 36px;
+}
+
+.product-Description {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+  margin-top: 50px;
+}
+.product-Button {
+  width: 45%;
+  height: 40px;
+  border: 1px solid #ececec;
+  backdrop-filter: blur(9.5px);
+  border-radius: 32px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.02em;
+  color: #ececec76;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.product-Buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+

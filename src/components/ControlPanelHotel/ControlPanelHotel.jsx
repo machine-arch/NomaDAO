@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
-import { styled } from 'styled-components';
+import React, { useState, useEffect, useRef } from 'react';
 import MontyleReport from '../MyroomsPublishedrooms/MyroomsPublishedrooms.jsx';
 import TableExtended from '../TableExtended/TableExtended.jsx';
 import MarketplaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
@@ -194,11 +193,11 @@ export default function DashboardHotel({ setpopup }) {
   }, [searchTerm, selectedFilters]);
 
   return (
-    <Wrapper>
+    <div className="controlPanelHotel-wrapper">
       <MontyleReport />
       <MarketplaceHeader />
-      <Title>Filter by</Title>
-      <Container>
+      <p className="controlPanelHotel-title">Filter by</p>
+      <div className="controlPanelHotel-container">
         <FilterComponent
           header={initialData.header}
           rows={initialData.rows}
@@ -211,39 +210,12 @@ export default function DashboardHotel({ setpopup }) {
           onFilterChange={handleFilterChange}
           handleAddRoom={handleAddRoom}
         />
-      </Container>
+      </div>
       <TableExtended
         header={initialData.header}
         rows={rows}
         setPopup={setPopup}
       />
-    </Wrapper>
+    </div>
   );
 }
-
-const Container = styled.div`
-  margin-bottom: 10px;
-  max-width: 1200px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  font-family: 'Inter';
-  //   align-items: center;
-`;
-
-const Wrapper = styled.div`
-  margin-top: 20px;
-  padding: 60px 50px 0px 50px;
-`;
-
-const Title = styled.p`
-  color: #4c4c4c;
-  font-size: 18px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  line-height: 32px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-`;

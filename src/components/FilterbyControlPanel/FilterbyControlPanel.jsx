@@ -1,4 +1,3 @@
-import { styled } from 'styled-components';
 import React, { useState } from 'react';
 import PopupAddroom from '../PopupAddroom.jsx';
 import plus from '../assets/images/addroomplus.svg';

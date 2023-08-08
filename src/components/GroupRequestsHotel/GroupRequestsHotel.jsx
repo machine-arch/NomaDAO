@@ -141,17 +141,15 @@ export default function GroupRequestHotel() {
   };
   return (
     <div className="GroupRequestsHotel">
-      <GroupRequests className="GroupRequestsHotel__groupRequests" />
-      <MarketplaceHeader className="GroupRequestsHotel__marketplaceHeader" />
+      <GroupRequests />
+      <MarketplaceHeader />
       <p className="GroupRequestsHotel__title">Filter by</p>
       <FilterComponent
-        className="GroupRequestsHotel__filterComponent"
         header={data.header}
         rows={data.rows}
         onFilterChange={handleFilterChange}
       />
       <TableExtended
-        className="GroupRequestsHotel__tableExtended"
         header={data.header}
         rows={filteredData}
         setPopup={setPopup}

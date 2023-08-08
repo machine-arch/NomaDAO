@@ -11,7 +11,7 @@ export default function Aside() {
   // Context
   const asideContext = useContext(AsideContext);
   // prettier-ignore
-  const { asideActive, setAsideActive, pages, activePage, setActivePage} = asideContext;
+  const { asideActive, setAsideActive, pages, activePage, setActivePage } = asideContext;
   // hooks
   const moveSound = useMoveSound;
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ export default function Aside() {
   }
 
   return (
-    <aside className="styledAside">
+    <aside className="aside-styledAside">
       <img src={Logo} alt="Logo" className="Aside-logoImage" />
       <nav>
         <ul>

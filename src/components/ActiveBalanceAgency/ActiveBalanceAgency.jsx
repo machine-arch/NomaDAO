@@ -90,9 +90,9 @@ export default function ActiveBalanceAgency() {
   };
 
   return (
-    <div className="wrapper">
+    <div className="activeBalanceAgency-wrapper">
       <ActiveBalance />
-      <p className="title">Filter by</p>
+      <p className="activeBalanceAgency-title">Filter by</p>
       <FilterComponent
         header={data.header}
         rows={data.rows}

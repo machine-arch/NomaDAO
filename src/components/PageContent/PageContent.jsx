@@ -5,7 +5,7 @@ import useMoveSound from '../../hooks/useMoveSound.js';
 import pagesContent from '../../data/pagesContent.js';
 import AsideContext from '../../context/AsideContext.js';
 import useConditionalHandler from '../../hooks/useConditionalHandler.js';
-import { styled } from 'styled-components';
+import './PageContent.css';
 export default function PageContent() {
   let { pagename } = useParams(); // getting the name of the page
   // state
@@ -14,7 +14,7 @@ export default function PageContent() {
   // context
   const asideContext = useContext(AsideContext);
   // prettier-ignore
-  const { asideActive, setAsideActive} = asideContext;
+  const { asideActive, setAsideActive } = asideContext;
   // hooks
   const moveSound = useMoveSound;
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ export default function PageContent() {
   }
   // functions
   function openSinlgePage(name) {
-    navigate('/products/' + name);
+    navigate("/products/" + name);
   }
   function returnToAside() {
     setAsideActive(true);
@@ -96,18 +96,12 @@ export default function PageContent() {
     }
   }
   return (
-    <Wrapper>
+    <div className='pageContent-wrapper'>
       {pageData.map((box, index) => {
         const { title, img, description } = box;
         // prettier-ignore
         return <BigBox key={title + "BigBox"} title={title} img={img} description={description} active={activeBox === index ? 'true' : 'false'} />
       })}
-    </Wrapper>
+    </div>
   );
 }
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0px 60px 0px 40px;
-`;

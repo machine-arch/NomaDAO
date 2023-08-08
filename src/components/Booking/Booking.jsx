@@ -5,11 +5,10 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { styled } from 'styled-components';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import useMoveSound from '../../hooks/useMoveSound.js';
-import SearchedHotel from '../RightSide/SearchedHotel.jsx';
+import SearchedHotel from '../SearchedHotel/SearchedHotel.jsx';
 import './Booking-datapicker.css';
 import HOTELS from '../../data/hotels.js';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +16,7 @@ import BookingContext from '../../context/BookingContext.js';
 import useConditionalHandler from '../../hooks/useConditionalHandler.js';
 import { cosine } from 'string-comparison';
 import AsideContext from '../../context/AsideContext.js';
+import './Booking.css';
 
 export default function Booking() {
   // States
@@ -359,178 +359,105 @@ export default function Booking() {
   }
 
   return (
-    <BookingWrapper>
-      <Title up={showHotels ? 'true' : 'false'}>Travel, Earn, Repeat!</Title>
-      <SearchWrapper up={showHotels ? 'true' : 'false'} ref={wrapperRef}>
-        <InputBox index={activeInputBox}>
-          <InputText>Location</InputText>
-          {/* prettier-ignore */}
-          <Input type="text" value={location} ref={locationRef} onChange={handleLocationChange} />
-        </InputBox>
-        <InputBox index={activeInputBox}>
-          <InputText>Check in</InputText>
-          {/* prettier-ignore */}
-          <DatePicker dateFormat="yyyy-MM-dd" ref={checkinRef}  selected={checkIn} onChange={handleCheckInChange} className="date-picker" />
-        </InputBox>
-        <InputBox index={activeInputBox}>
-          <InputText>Check Out</InputText>
-          {/* prettier-ignore */}
-          <DatePicker dateFormat="yyyy-MM-dd" ref={checkoutRef} selected={checkOut} onChange={handleCheckOutChange} className="date-picker" />
-        </InputBox>
-        <InputBox index={activeInputBox}>
-          <InputText>Guests</InputText>
-          {/* prettier-ignore */}
-          <Input ref={guestsRef} value={guests} type="number" min={0} max={100} onChange={handleGuestsChange}/>
-        </InputBox>
-        {/* prettier-ignore */}
-        <Search ref={searchRef} index={activeInputBox}> Search </Search>
-      </SearchWrapper>
-      <HotelsWrapper ref={hotelsWrapperRef} up={showHotels ? 'true' : 'false'}>
+    <div className="booking-wrapper">
+      <p className="booking-title" style={{ top: showHotels ? '5%' : '40%' }}>
+        Travel, Earn, Repeat!
+      </p>
+      <div
+        className="booking-searchWrapper"
+        style={{ top: showHotels ? '12%' : '50%' }}
+        ref={wrapperRef}
+      >
+        <div
+          className={`booking-input-box ${
+            activeInputBox === 1 ? 'nth-child' : ''
+          }`}
+        >
+          <label className="booking-inputText">Location</label>
+          <input
+            className="booking-input"
+            type="text"
+            value={location}
+            ref={locationRef}
+            onChange={handleLocationChange}
+          />
+        </div>
+        <div
+          className={`booking-input-box ${
+            activeInputBox === 2 ? 'nth-child' : ''
+          }`}
+        >
+          <label className="booking-inputText">Check in</label>
+          <DatePicker
+            dateFormat="yyyy-MM-dd"
+            ref={checkinRef}
+            selected={checkIn}
+            onChange={handleCheckInChange}
+            className="booking-date-picker"
+          />
+        </div>
+        <div
+          className={`booking-input-box ${
+            activeInputBox === 3 ? 'nth-child' : ''
+          }`}
+        >
+          <label className="booking-inputText">Check Out</label>
+          <DatePicker
+            dateFormat="yyyy-MM-dd"
+            ref={checkoutRef}
+            selected={checkOut}
+            onChange={handleCheckOutChange}
+            className="booking-date-picker"
+          />
+        </div>
+        <div
+          className={`booking-input-box ${
+            activeInputBox === 4 ? 'nth-child' : ''
+          }`}
+        >
+          <label className="booking-inputText">Guests</label>
+          <input
+            className="booking-input"
+            ref={guestsRef}
+            value={guests}
+            type="number"
+            min={0}
+            max={100}
+            onChange={handleGuestsChange}
+          />
+        </div>
+        <button
+          ref={searchRef}
+          className={`booking-search-btn ${
+            activeInputBox === 5 ? 'nth-child' : ''
+          }`}
+        >
+          {' '}
+          Search{' '}
+        </button>
+      </div>
+      <div
+        className="booking-hotelsWrapper"
+        ref={hotelsWrapperRef}
+        style={{ top: showHotels ? '25%' : '120%' }}
+      >
         {filteredHotels.map((hotel) => {
-          // prettier-ignore
-          const {name,price,location,rating,mainImage,facilities} = hotel;
-          // prettier-ignore
-          return <SearchedHotel key={name} activeBox={activeHotel} name={name} rating={rating} mainImage={mainImage} facilities={facilities} location={location} price={price} />
+          const { name, price, location, rating, mainImage, facilities } =
+            hotel;
+          return (
+            <SearchedHotel
+              key={name}
+              activeBox={activeHotel}
+              name={name}
+              rating={rating}
+              mainImage={mainImage}
+              facilities={facilities}
+              location={location}
+              price={price}
+            />
+          );
         })}
-      </HotelsWrapper>
-    </BookingWrapper>
+      </div>
+    </div>
   );
 }
-
-// Styled Components
-
-const BookingWrapper = styled.div`
-  width: 75vw;
-  height: 100vh;
-  max-height: 1080px;
-  max-width: calc(1920px * 3 / 4);
-
-  position: absolute;
-  @media (max-width: 1921px) {
-    left: 25vw;
-  }
-
-  top: 50%;
-  transform: translateY(-50%);
-  @media (min-width: 1921px) {
-    left: 50%;
-    transform: translateY(-50%) translateX(-485px);
-  }
-  background-image: url(https://nomadao.net/public/uploads/0000/1/2023/04/05/form-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: 100vw 100vh;
-  background-position: right;
-`;
-const Title = styled.p`
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 58px;
-  color: #ececec;
-  transition: all 0.5s;
-  position: absolute;
-  top: ${(props) => (props.up === 'true' ? '5%' : '40%')};
-  left: 50%;
-  transform: translateX(-50%);
-`;
-const SearchWrapper = styled.div`
-  width: 90%;
-  height: 100px;
-  background: #ececec;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-left: 10px;
-  padding-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  transition: all 0.5s;
-  top: ${(props) => (props.up === 'true' ? '12%' : '50%')};
-`;
-const InputBox = styled.div`
-  height: 40px;
-
-  padding-right: 32px;
-  border-right: 2px solid #b1b1b1;
-
-  display: flex;
-  flex-direction: column;
-
-  &:last-of-type {
-    border-right: none;
-  }
-  &:last-of-type {
-    border-right: none;
-  }
-  &:nth-child(${(props) => props.index}) {
-    background-color: #314cd450;
-    padding: 10px;
-    padding-inline: 32px;
-    border-right: none;
-    border-radius: 10px;
-    height: 80px;
-    justify-content: space-around;
-  }
-`;
-const InputText = styled.label`
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  color: #01739f;
-`;
-const Search = styled.button`
-  width: 160px;
-  height: 45px;
-  border: 2px solid #314bd4;
-  border-radius: 10px;
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: #314bd4;
-
-  &:nth-child(${(props) => props.index}) {
-    background-color: #314bd4;
-    color: white;
-  }
-`;
-const Input = styled.input`
-  background: transparent;
-  border: none;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 16px;
-  color: #9e9e9e;
-  &:focus {
-    outline: none;
-  }
-`;
-const HotelsWrapper = styled.div`
-  width: 70%;
-  height: 70%;
-  overflow: auto;
-  background-color: white;
-  position: absolute;
-  top: ${(props) => (props.up === 'true' ? '25%' : '120%')};
-  left: 50%;
-  transform: translateX(-50%);
-  transition: all 0.5s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px;
-`;
