@@ -1,62 +1,61 @@
-import React, { useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { styled } from "styled-components";
-import HOTELS from "../../data/hotels.js";
-import useConditionalHandler from "../../hooks/useConditionalHandler.js";
-import useMoveSound from "../../hooks/useMoveSound.js";
+import React, { useRef, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import HOTELS from '../../data/hotels.js';
+import useConditionalHandler from '../../hooks/useConditionalHandler.js';
+import useMoveSound from '../../hooks/useMoveSound.js';
 const otherImages = [
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-3.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern3-4.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-1.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern1-2.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern1-1.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-5.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-1.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-2.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-2.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-3.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern3-4.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern3-6.jpg",
-  "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern6-6.jpg",
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-3.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern3-4.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-1.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern1-2.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern1-1.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-5.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-1.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-2.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-2.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-3.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern3-4.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern3-6.jpg',
+  'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern6-6.jpg',
 ];
 const rooms = [
   {
-    roomType: "Standard Single Room",
-    roomPrice: "65",
+    roomType: 'Standard Single Room',
+    roomPrice: '65',
     roomImage:
-      "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg",
+      'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg',
   },
   {
-    roomType: "Standard Double/Twin Room",
-    roomPrice: "75",
+    roomType: 'Standard Double/Twin Room',
+    roomPrice: '75',
     roomImage:
-      "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-3.jpg",
+      'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-3.jpg',
   },
   {
-    roomType: "Superior double/ twin",
-    roomPrice: "90",
+    roomType: 'Superior double/ twin',
+    roomPrice: '90',
     roomImage:
-      "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-2.jpg",
+      'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-2.jpg',
   },
   {
-    roomType: "Superior double/ twin",
-    roomPrice: "90",
+    roomType: 'Superior double/ twin',
+    roomPrice: '90',
     roomImage:
-      "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern3-6.jpg",
+      'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern3-6.jpg',
   },
   {
-    roomType: "Junior Suite",
-    roomPrice: "110",
+    roomType: 'Junior Suite',
+    roomPrice: '110',
     roomImage:
-      "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern6-6.jpg",
+      'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern6-6.jpg',
   },
   {
-    roomType: "Barnov Suite",
-    roomPrice: "140",
+    roomType: 'Barnov Suite',
+    roomPrice: '140',
     roomImage:
-      "https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg",
+      'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg',
   },
 ];
 export default function SingleHotel() {
@@ -251,13 +250,13 @@ export default function SingleHotel() {
     scrollToRef(wrapperRef);
   }
   function goToSearchingHotelsPage() {
-    navigate("/BookYourHotel");
+    navigate('/BookYourHotel');
   }
   function scrollToRef(elementRef) {
-    elementRef.current.scrollIntoView({ behavior: "smooth" });
+    elementRef.current.scrollIntoView({ behavior: 'smooth' });
   }
   function scrollToElement(element) {
-    element.scrollIntoView({ behavior: "smooth" });
+    element.scrollIntoView({ behavior: 'smooth' });
   }
   function nextRoom() {
     if (activeRoom === hotel.rooms.length - 1) {
@@ -284,13 +283,13 @@ export default function SingleHotel() {
         src="https://nomadao.net/public/uploads/0000/1/2023/04/05/form-bg.jpg"
         className="image"
       />
-      <button className={`gray-button ${backActive ? "active" : ""}`}>
+      <button className={`gray-button ${backActive ? 'active' : ''}`}>
         Back
       </button>
       <div className="rating">{hotel.rating} / 5</div>
       <p className="hotel-name">{hotel.name}</p>
       <p className="location">Location: {hotel.location}</p>
-      <div className={`slider-wrapper ${isSliderActive ? "active" : ""}`}>
+      <div className={`slider-wrapper ${isSliderActive ? 'active' : ''}`}>
         <img
           src="https://i.ibb.co/ymThbpH/arrow-right.png"
           className="arrow-right"
@@ -316,20 +315,20 @@ export default function SingleHotel() {
           ))}
         </div>
       </div>
-      <div className={`check-availability ${roomsActive ? "active" : ""}`}>
+      <div className={`check-availability ${roomsActive ? 'active' : ''}`}>
         Check Availability
       </div>
-      <div className={`rooms ${roomsActive ? "active" : ""}`} ref={roomsRef}>
+      <div className={`rooms ${roomsActive ? 'active' : ''}`} ref={roomsRef}>
         {hotel.rooms.map((room, index) => (
           <div
-            className={`room ${activeRoom === index ? "active" : ""}`}
+            className={`room ${activeRoom === index ? 'active' : ''}`}
             key={room.roomType + index}
           >
             <img src={room.roomImage} className="room-img" />
             <p className="room-type">{room.roomType}</p>
             <p className="room-price">${room.roomPrice} / night</p>
             <button
-              className={`room-book ${activeRoom === index ? "active" : ""}`}
+              className={`room-book ${activeRoom === index ? 'active' : ''}`}
             >
               Book Room
             </button>
