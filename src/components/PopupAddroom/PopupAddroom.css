@@ -1,0 +1,34 @@
+.popupAddroom-exitButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  gap: 10px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+
+.popupAddroom-photosContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+}
+
+.popupAddroom-bigImage {
+  width: 90px;
+  margin: 0;
+  height: 100px;
+}
+
+.popupAddroom-bigImage:last-child {
+  margin-left: 4px;
+}
+
+.popupAddroom-smallImage {
+  transform: rotate(90deg);
+  width: 15px;
+  height: 15px;
+}
+

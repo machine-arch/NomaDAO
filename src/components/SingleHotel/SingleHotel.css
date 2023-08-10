@@ -1,0 +1,107 @@
+.wrapper {
+  width: 100vw;
+  height: 160vh;
+  max-width: 1920px;
+  max-height: 1820px;
+  overflow: scroll;
+  background-color: rgb(204, 227, 236);
+  position: relative;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.image {
+  width: 100vw;
+  max-width: 1920px;
+  position: absolute;
+  top: 0px;
+  transform: translateY(-88%);
+}
+
+.gray-button {
+  padding: 10px 20px;
+  background: #d8d8d8;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: #5f5f5f;
+  position: absolute;
+  top: 110px;
+  left: 100px;
+}
+
+.gray-button.active {
+  background: #01739f;
+  color: white;
+}
+
+.rating {
+  width: fit-content;
+  padding: 12px 16px;
+  background: #01739f;
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 19px;
+  color: #ececec;
+  position: absolute;
+  top: 160px;
+  right: 100px;
+}
+
+.hotel-name {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #01739f;
+  position: absolute;
+  top: 160px;
+  left: 100px;
+}
+
+.location {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #3f3f3f;
+  position: absolute;
+  top: 190px;
+  left: 100px;
+}
+
+.arrow-right {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 80px;
+}
+
+.arrow-left {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%) rotate(180deg);
+  right: auto;
+  left: 20px;
+  z-index: 5;
+  width: 80px;
+}
+
+/* Other styles remain the same as in your original code */
+/* ... */

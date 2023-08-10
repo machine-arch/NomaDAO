@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import './MarketPlaceSettings.css';
+import React, { useState } from "react";
+import "./MarketPlaceSettings.css";
 
 export default function MartketPlaceSettings() {
-  const [activeForm, setActiveForm] = useState('option1');
-  const [message, setMessage] = useState('');
+  const [activeForm, setActiveForm] = useState("option1");
+  const [message, setMessage] = useState("");
   const handleFormToggle = (formOption) => {
     setActiveForm(formOption);
   };
@@ -11,25 +11,25 @@ export default function MartketPlaceSettings() {
   const handleFormSubmit = async () => {
     try {
       const response = await fetch(
-        'http://116.202.22.148:8888/changePassword',
+        "http://116.202.22.148:8888/changePassword",
         {
           // Update the URL
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            oldPassword: document.getElementById('oldpsw').value,
-            newPassword: document.getElementById('newpsw').value,
-            confirmPassword: document.getElementById('repeatnewpass').value,
+            oldPassword: document.getElementById("oldpsw").value,
+            newPassword: document.getElementById("newpsw").value,
+            confirmPassword: document.getElementById("repeatnewpass").value,
           }),
-        },
+        }
       );
 
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Password Changed Successfully');
+        setMessage("Password Changed Successfully");
         resetForm();
       } else {
         setMessage(data.error);
@@ -42,116 +42,178 @@ export default function MartketPlaceSettings() {
   };
 
   const resetForm = () => {
-    document.getElementById('oldpsw').value = '';
-    document.getElementById('newpsw').value = '';
-    document.getElementById('repeatnewpass').value = '';
+    document.getElementById("oldpsw").value = "";
+    document.getElementById("newpsw").value = "";
+    document.getElementById("repeatnewpass").value = "";
   };
 
   return (
     <>
-      <BtnWrapper>
-        <Choice
-          onClick={() => handleFormToggle('option1')}
-          style={{ color: activeForm === 'option1' ? '#009BD8' : 'black' }}
+      <div className="btn-wrapper">
+        <button
+          onClick={() => handleFormToggle("option1")}
+          className="choice"
+          style={{ color: activeForm === "option1" ? "#009BD8" : "black" }}
         >
           Company Details
-        </Choice>
-        <Choice
-          onClick={() => handleFormToggle('option2')}
-          style={{ color: activeForm === 'option2' ? '#009BD8' : 'black' }}
+        </button>
+        <button
+          onClick={() => handleFormToggle("option2")}
+          className="choice"
+          style={{ color: activeForm === "option2" ? "#009BD8" : "black" }}
         >
           Security
-        </Choice>
-      </BtnWrapper>
+        </button>
+      </div>
 
-      {activeForm === 'option1' && (
-        <Wrapper>
-          <Forms>
-            {/* Form1 */}
-            <Form>
-              <Label htmlFor="companyName">Company Name</Label>
-              <Input type="text" id="companyName" placeholder="Company Name" />
+      {activeForm === "option1" && (
+        <div className="wrapper">
+          <div className="forms">
+            <form className="form">
+              <label htmlFor="companyName" className="label">
+                Company Name
+              </label>
+              <input
+                type="text"
+                id="companyName"
+                className="input"
+                placeholder="Company Name"
+              />
 
-              <Label htmlFor="email">Email</Label>
-              <Input type="email" id="email" placeholder="Hotel@gmail.com" />
+              <label htmlFor="email" className="label">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                className="input"
+                placeholder="Hotel@gmail.com"
+              />
 
-              <Label htmlFor="phoneNumber">Phone Number</Label>
-              <Input type="tel" id="phoneNumber" placeholder="+995123123123" />
+              <label htmlFor="phoneNumber" className="label">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                className="input"
+                placeholder="+995123123123"
+              />
 
-              <Label htmlFor="affiliateCode">Affiliate Code</Label>
-              <Last>
-                <Input
+              <label htmlFor="affiliateCode" className="label">
+                Affiliate Code
+              </label>
+              <div className="last">
+                <input
                   type="text"
                   id="affiliateCode"
+                  className="input"
                   placeholder="Affiliate Code"
                 />
-                <Button
-                  type="submit"
-                  style={{ backgroundColor: '#D8D8D8', color: '#F2F2F2' }}
+                <div
+                  className="button"
+                  style={{ backgroundColor: "#D8D8D8", color: "#F2F2F2" }}
                 >
                   Generate Now
-                </Button>
-              </Last>
-            </Form>
-            {/* Form2 */}
-            <Form>
-              <Label htmlFor="companyidentificationcode">
+                </div>
+              </div>
+            </form>
+            <form className="form">
+              <label htmlFor="companyidentificationcode" className="label">
                 Company identification code
-              </Label>
-              <Input
+              </label>
+              <input
                 type="text"
                 id="companyidentificationcode"
+                className="input"
                 placeholder="Company identification code"
               />
 
-              <Label htmlFor="email">Country</Label>
-              <Input type="text" id="country" placeholder="Georgia" />
+              <label htmlFor="email" className="label">
+                Country
+              </label>
+              <input
+                type="text"
+                id="country"
+                className="input"
+                placeholder="Georgia"
+              />
 
-              <Label htmlFor="phoneNumber">City</Label>
-              <Input type="text" id="city" placeholder="Enter Your City Name" />
+              <label htmlFor="phoneNumber" className="label">
+                City
+              </label>
+              <input
+                type="text"
+                id="city"
+                className="input"
+                placeholder="Enter Your City Name"
+              />
 
-              <Label htmlFor="affiliateCode">Address</Label>
-              <Input
+              <label htmlFor="affiliateCode" className="label">
+                Address
+              </label>
+              <input
                 type="text"
                 id="address"
+                className="input"
                 placeholder="Enter Your Address"
               />
 
-              <Label htmlFor="companyName">ZIP Code</Label>
-              <Input type="text" id="zip" placeholder="Enter Your ZIP Code" />
+              <label htmlFor="companyName" className="label">
+                ZIP Code
+              </label>
+              <input
+                type="text"
+                id="zip"
+                className="input"
+                placeholder="Enter Your ZIP Code"
+              />
 
-              <Button type="submit">Save Information </Button>
-            </Form>
-          </Forms>
-        </Wrapper>
+              <div className="button">Save Information</div>
+            </form>
+          </div>
+        </div>
       )}
 
-      {activeForm === 'option2' && (
-        <Wrapper>
-          <Form>
-            <Label htmlFor="oldpassword">Old Password</Label>
-            <Input type="text" id="oldpsw" placeholder="Type old password" />
+      {activeForm === "option2" && (
+        <div className="wrapper">
+          <form className="form">
+            <label htmlFor="oldpassword" className="label">
+              Old Password
+            </label>
+            <input
+              type="text"
+              id="oldpsw"
+              className="input"
+              placeholder="Type old password"
+            />
 
-            <Label htmlFor="newpassword">New Password</Label>
-            <Input
+            <label htmlFor="newpassword" className="label">
+              New Password
+            </label>
+            <input
               type="password"
               id="newpsw"
+              className="input"
               placeholder="Type new password"
             />
 
-            <Label htmlFor="repeatnewpassword">Repeat New Password</Label>
-            <Input
+            <label htmlFor="repeatnewpassword" className="label">
+              Repeat New Password
+            </label>
+            <input
               type="password"
               id="repeatnewpass"
+              className="input"
               placeholder="Repeat new password"
             />
 
-            <Button type="submit" onClick={handleFormSubmit}>
+            <div className="button" onClick={handleFormSubmit}>
               Save Information
-            </Button>
-          </Form>
-          <Message>{message}</Message>
-        </Wrapper>
+            </div>
+          </form>
+          <p className="message">{message}</p>
+        </div>
       )}
     </>
   );
