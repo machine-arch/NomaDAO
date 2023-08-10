@@ -2,11 +2,19 @@ import React from 'react';
 import './SearchedHotel.css';
 
 export default function SearchedHotel(props) {
-  const { mainImage, name, rating, facilities, location, price, activeBox } =
-    props;
+  const {
+    mainImage,
+    name,
+    rating,
+    facilities,
+    location,
+    price,
+    activeBox,
+    position,
+  } = props;
   return (
     <div
-      className={`SearchedHotel-box${activeBox ? ' active' : ''}`}
+      className={`SearchedHotel-box${activeBox == position ? ' active' : ''}`}
       key={name}
     >
       <img className="SearchedHotel-img" src={mainImage} />

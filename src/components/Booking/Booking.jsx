@@ -441,7 +441,7 @@ export default function Booking() {
         ref={hotelsWrapperRef}
         style={{ top: showHotels ? '25%' : '120%' }}
       >
-        {filteredHotels.map((hotel) => {
+        {filteredHotels.map((hotel, index) => {
           const { name, price, location, rating, mainImage, facilities } =
             hotel;
           return (
@@ -454,6 +454,7 @@ export default function Booking() {
               facilities={facilities}
               location={location}
               price={price}
+              position={index + 1}
             />
           );
         })}

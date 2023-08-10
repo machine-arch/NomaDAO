@@ -19,7 +19,7 @@ export default function Product() {
   const productContext = useContext(ProductContext);
   const { setProduct } = productContext;
   // state
-  const [active, setActive] = useState("launch");
+  const [active, setActive] = useState('launch');
   // prettier-ignore
   const data = singlePages.find((page) => page.title === product); // find product data
   // hooks
@@ -33,9 +33,9 @@ export default function Product() {
   function productNavigation(event) {
     switch (event.keyCode) {
       case 13:
-        if (active === "back") {
+        if (active === 'back') {
           exit();
-        } else if (active === "launch") {
+        } else if (active === 'launch') {
           openStreaming(data.launch_link);
         }
         // } else if (active === "tutorial") {
@@ -44,14 +44,14 @@ export default function Product() {
         moveSound();
         break;
       case 38:
-        if (active !== "back") {
-          setActive("back");
+        if (active !== 'back') {
+          setActive('back');
           moveSound();
         }
         break;
       case 40:
-        if (active === "back") {
-          setActive("launch");
+        if (active === 'back') {
+          setActive('launch');
           moveSound();
         }
         break;
@@ -84,37 +84,45 @@ export default function Product() {
   }
   // functions
   function openStreaming(link) {
-    navigate("/streaming/" + encodeLink(link));
+    navigate('/streaming/' + encodeLink(link));
     setProduct(product);
   }
   function exit() {
     navigate(`/${removeSpaces(pages[activePage])}`);
   }
   return (
-    <div className='product-singlePage' style={{ backgroundImage: `url(${data.img})` }}>
-      <div className='product-Top'>
+    <div
+      className="product-singlePage"
+      style={{ backgroundImage: `url(${data.img})` }}
+    >
+      <div className="product-Top">
         <img src={Logo} alt="Logo" />
-        <button className='product-BackButton' active={active}
+        <button
+          className="product-BackButton"
           style={{
             color: active === 'back' && '#ececec',
-            backgroundColor: active === 'back' && 'rgba(20, 170, 254, 1)'
-          }}>
+            backgroundColor: active === 'back' && 'rgba(20, 170, 254, 1)',
+          }}
+        >
           <img style={{ marginRight: '16px' }} src={Arrow} alt="Arrow Left" />
           <p>Back</p>
         </button>
       </div>
-      <div className='product-Bottom'>
-        <p className='product-Title'>{data.title}</p>
-        <div className='product-Buttons'>
-          <button className='product-Button' style={{
-            color: active === 'launch' && '#ececec',
-            backgroundColor: active === 'back' && 'rgba(20, 170, 254, 1)'
-          }}>Launch</button>
-          {/* <Tutorial active={active}>Tutorial</Tutorial> */}
+      <div className="product-Bottom">
+        <p className="product-Title">{data.title}</p>
+        <div className="product-Buttons">
+          <button
+            className="product-Button"
+            style={{
+              color: active === 'launch' && '#ececec',
+              backgroundColor: active === 'launch' && 'rgba(20, 170, 254, 1)',
+            }}
+          >
+            Launch
+          </button>
         </div>
-        <p className='product-Description'>{data.description}</p>
+        <p className="product-Description">{data.description}</p>
       </div>
     </div>
   );
 }
-

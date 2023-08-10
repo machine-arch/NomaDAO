@@ -14,6 +14,7 @@
 
 .asideElement_white1.active {
   display: block;
+  background: #d5fbff;
 }
 
 .asideElement_white1.none {
