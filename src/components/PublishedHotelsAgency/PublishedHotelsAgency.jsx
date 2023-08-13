@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import PublishedHotels from '../PublishedHotels/PublishedHotels.jsx';
 import MarketPlaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
 import TableExtended from '../TableExtended/TableExtended.jsx';

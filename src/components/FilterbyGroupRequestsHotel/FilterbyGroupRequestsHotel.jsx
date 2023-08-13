@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import arrow from '../assets/images/FilterArrow.svg';
 import { useNavigate } from 'react-router-dom';
 import './FilterbyGroupRequestsHotel.css';

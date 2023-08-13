@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import GroupRequests from '../GroupRequests/GroupRequests.jsx';
 import TableExtended from '../TableExtended/TableExtended.jsx';
 import { useOutletContext } from 'react-router-dom';

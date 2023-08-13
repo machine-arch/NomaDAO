@@ -3,7 +3,7 @@ import MontyleReport from '../MyroomsPublishedrooms/MyroomsPublishedrooms.jsx';
 import TableExtended from '../TableExtended/TableExtended.jsx';
 import MarketplaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
 import { useOutletContext } from 'react-router-dom';
-import FilterByControlPanel from '../FilterbyControlPanelHotel/FilterbyControlPanelHotel.jsx';
+import FilterByControlPanelHotel from '../FilterbyControlPanelHotel/FilterbyControlPanelHotel.jsx';
 import FilterComponent from '../FilterComponent/FilterComponent.jsx';
 import useMoveSound from '../../hooks/useMoveSound.js';
 import useConditionalHandler from '../../hooks/useConditionalHandler.js';
@@ -203,7 +203,7 @@ export default function DashboardHotel({ setpopup }) {
           rows={initialData.rows}
           onFilterChange={handleFilterChange}
         />
-        <FilterByControlPanel
+        <FilterByControlPanelHotel
           filter={initialData.filters}
           header={initialData.header}
           rows={initialData.rows}

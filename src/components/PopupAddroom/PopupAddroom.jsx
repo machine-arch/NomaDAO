@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import Addroom1 from '../../assets/images/Addroom1.svg';
 import Addroom2 from '../../assets/images/Addroom2.svg';
 import Addroom3 from '../../assets/images/Addroom3.svg';
