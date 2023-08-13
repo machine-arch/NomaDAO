@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import ActiveBalance from '../ActiveBalance/ActiveBalance.jsx';
 import TableBalance from '../TableBalance/TableBalance.jsx';
 import { useOutletContext } from 'react-router-dom';

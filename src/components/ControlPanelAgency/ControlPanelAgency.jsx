@@ -3,7 +3,7 @@ import GroupRequests from '../GroupRequests/GroupRequests.jsx';
 import TableExtended from '../TableExtended/TableExtended.jsx';
 import { useOutletContext } from 'react-router-dom';
 import MarketplaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
-import FilterByControlPanel from '../FilterbyControlPanelHotel/FilterbyControlPanelHotel.jsx';
+import FilterByControlPanelAgency from '../FilterbyControlPanelAgency/FilterbyControlPanelAgency.jsx';
 import FilterComponent from '../FilterComponent/FilterComponent.jsx';
 import './ControlPanelAgency.css';
 const initialData = {
@@ -177,7 +177,7 @@ export default function ControlPanelAgency(setpopup) {
           rows={initialData.rows}
           onFilterChange={handleFilterChange}
         />
-        <FilterByControlPanel
+        <FilterByControlPanelAgency
           filter={initialData.filters}
           header={initialData.header}
           rows={initialData.rows}
