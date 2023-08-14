@@ -1,10 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { styled } from 'styled-components';
 import HOTELS from '../../data/hotels.js';
 import useConditionalHandler from '../../hooks/useConditionalHandler.js';
 import useMoveSound from '../../hooks/useMoveSound.js';
-import "./SingleHotel.css"
+import './SingleHotel.css';
 const otherImages = [
   'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg',
   'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern2-3.jpg',
@@ -280,60 +279,94 @@ export default function SingleHotel() {
   }
 
   return (
-    <div className='singleHotel-Wrapper' ref={wrapperRef}>
-      <img className='singleHotel-image' src="https://nomadao.net/public/uploads/0000/1/2023/04/05/form-bg.jpg" />
-      <button className='singleHotel-grayButton'
+    <div className="singleHotel-Wrapper" ref={wrapperRef}>
+      <img
+        className="singleHotel-image"
+        src="https://nomadao.net/public/uploads/0000/1/2023/04/05/form-bg.jpg"
+      />
+      <button
+        className="singleHotel-grayButton"
         style={{
           background: backActive ? '#01739f' : '#d8d8d8',
           color: backActive ? 'white' : '#5f5f5f',
-        }}>
+        }}
+      >
         Back
       </button>
-      <div className='singleHotel-rating'>{hotel.rating} / 5</div>
-      <p className='singleHotel-hotelName'>{hotel.name}</p>
-      <p className='singleHotel-location'>Location: {hotel.location}</p>
-      <div className='singleHotel-sliderWrapper' active={isSliderActive ? "true" : "false"}
+      <div className="singleHotel-rating">{hotel.rating} / 5</div>
+      <p className="singleHotel-hotelName">{hotel.name}</p>
+      <p className="singleHotel-location">Location: {hotel.location}</p>
+      <div
+        className="singleHotel-sliderWrapper"
+        active={isSliderActive ? 'true' : 'false'}
         style={{
           borderColor: isSliderActive ? '#01739f' : 'transparent',
-        }}>
-        <img className='singleHotel-arrowRight' src="https://i.ibb.co/ymThbpH/arrow-right.png" />
-        <img className='singleHotel-arrowLeft' src="https://i.ibb.co/ymThbpH/arrow-right.png" />
-        <div className='singleHotel-sliderRelative' index={sliderIndex} length={hotel.otherImages.length}
+        }}
+      >
+        <img
+          className="singleHotel-arrowRight"
+          src="https://i.ibb.co/ymThbpH/arrow-right.png"
+        />
+        <img
+          className="singleHotel-arrowLeft"
+          src="https://i.ibb.co/ymThbpH/arrow-right.png"
+        />
+        <div
+          className="singleHotel-sliderRelative"
+          index={sliderIndex}
+          length={hotel.otherImages.length}
           style={{
-            transform: `translateX(-${sliderIndex * (100 / hotel.otherImages.length)}%)`,
-          }} >
+            transform: `translateX(-${
+              sliderIndex * (100 / hotel.otherImages.length)
+            }%)`,
+          }}
+        >
           {hotel.otherImages.map((image, index) => (
-            <div className='singleHotel-slider' key={image + index}
+            <div
+              className="singleHotel-slider"
+              key={image + index}
               style={{
                 backgroundImage: `url(${image})`,
-              }} />
+              }}
+            />
           ))}
         </div>
       </div>
-      <div className='singleHotel-checkAvailability'
+      <div
+        className="singleHotel-checkAvailability"
         style={{
           background: roomsActive ? '#01739f' : 'transparent',
           color: roomsActive ? 'white' : '#5f5f5f',
-        }}>
+        }}
+      >
         Check Availability
       </div>
-      <div className='singleHotel-rooms' ref={roomsRef}
+      <div
+        className="singleHotel-rooms"
+        ref={roomsRef}
         style={{
           borderWidth: roomsActive ? '15px' : '2px',
-        }}>
+        }}
+      >
         {hotel.rooms.map((room, index) => (
-          <div className='singleHotel-room' key={room.roomType + index}
+          <div
+            className="singleHotel-room"
+            key={room.roomType + index}
             style={{
               backgroundColor: activeRoom === index ? '#68b1ce' : 'white',
-            }}>
-            <img className='singleHotel-roomImg' src={room.roomImage} />
-            <p className='singleHotel-roomType'>{room.roomType}</p>
-            <p className='singleHotel-roomPrice'>${room.roomPrice} / night</p>
-            <button className='singleHotel-roomBook' active={activeRoom === index ? 'true' : 'false'}
+            }}
+          >
+            <img className="singleHotel-roomImg" src={room.roomImage} />
+            <p className="singleHotel-roomType">{room.roomType}</p>
+            <p className="singleHotel-roomPrice">${room.roomPrice} / night</p>
+            <button
+              className="singleHotel-roomBook"
+              active={activeRoom === index ? 'true' : 'false'}
               style={{
                 backgroundColor: activeRoom === index ? '#01739f' : 'white',
                 color: activeRoom === index ? 'white' : '#01739f',
-              }}>
+              }}
+            >
               Book Room
             </button>
           </div>
