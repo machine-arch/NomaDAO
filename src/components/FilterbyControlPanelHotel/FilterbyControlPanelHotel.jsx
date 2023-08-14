@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PopupAddroom from '../PopupAddroom/PopupAddroom.jsx';
 import plus from '../../assets/images/addroomplus.svg';
@@ -6,7 +6,7 @@ import './FilterbyControlPanelHotel.css';
 
 //REDUNDANT CODE!!!
 
-export default function FilterByControlPanel({ filter, handleAddRoom }) {
+export default function FilterByControlPanelHotel({ filter, handleAddRoom }) {
   const navigate = useNavigate();
 
   function refreshPage() {

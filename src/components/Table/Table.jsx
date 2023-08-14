@@ -19,11 +19,12 @@ export default function Table({ header, rows, setPopup }) {
         </div>
       </div>
       <div className="Table-body">
-        {rows.map((row) => {
+        {rows.map((row, index) => {
           return (
             <div
               className="Table-row"
               style={{ gridTemplateColumns: `repeat(${row.length}, 1fr)` }}
+              key={index}
             >
               {row.map((item, index) => (
                 <div
@@ -31,6 +32,7 @@ export default function Table({ header, rows, setPopup }) {
                   onClick={() => {
                     item === 'Check Details' && setPopup(true);
                   }}
+                  key={index}
                 >
                   {index === 0 && <div className="Table-orange" />}{' '}
                   {item === 'photos' ? (
@@ -51,7 +53,6 @@ export default function Table({ header, rows, setPopup }) {
         <div className="prev-page">Previous page</div>
         <div className="page-button">1</div>
         <div className="page-button">2</div>
-        {/* Additional page buttons */}
         <div className="next-page">Next page</div>
       </div>
     </div>

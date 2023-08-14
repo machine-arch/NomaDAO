@@ -22,7 +22,6 @@ export default function ActiveBalance() {
             </p>
           </div>
         </div>
-
         <div className="activeBalance-grayverttwo">
           <div className="activeBalance-grayvert">
             <div className="activeBalance-blue">
