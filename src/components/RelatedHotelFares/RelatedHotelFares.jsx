@@ -7,7 +7,7 @@ export default function RelatedHotelFares() {
   const items = [];
   for (let index = 0; index < 13; index++) {
     items.push(
-      <div className="relatedHotelFares-Item">
+      <div className="relatedHotelFares-Item" key={index}>
         <img className="" src={Avatar} />
         <p className="relatedHotelFares-Hotel">Hotel {Math.floor(Math.random() * 10)}</p>
         <p className="relatedHotelFares-Price">{Math.floor(Math.random() * 100 + 200)} $</p>

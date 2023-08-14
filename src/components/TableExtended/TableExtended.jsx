@@ -37,10 +37,10 @@ export default function TableExtended({ header, rows, setPopup }) {
           className="tableExtended-row"
           style={{ gridTemplateColumns: `repeat(${header.length}, 1fr)` }}
         >
-          {header.map((item, index) =>
+          {header.map((item, index) => {
             index == 1 ? (
               <div
-                key={index}
+                key={item}
                 className="tableExtended-column"
                 style={{
                   backgroundColor: backgroundColor,
@@ -50,30 +50,31 @@ export default function TableExtended({ header, rows, setPopup }) {
                 {item}
               </div>
             ) : (
-              <div key={index} className="tableExtended-column">
+              <div key={item} className="tableExtended-column">
                 {item}
               </div>
-            ),
+            )
+          }
           )}
         </div>
       </div>
       <div className="tableExtended-body">
-        {rows.map((row) => {
+        {rows.map((row, index) => {
           return (
             <div
-              key={row[0]}
+              key={index}
               className="tableExtended-row"
               style={{ gridTemplateColumns: `repeat(${header.length}, 1fr)` }}
             >
-              {row.map((item, index) => (
+              {row.map((item, rowIndex) => (
                 <div
                   className="tableExtended-column"
                   onClick={() => {
                     item === 'Check Details' && setPopup(true);
                   }}
-                  key={index}
+                  key={rowIndex}
                 >
-                  {index == 0 ? (
+                  {rowIndex == 0 ? (
                     <div className="tableExtended-orange" />
                   ) : (
                     <div></div>
