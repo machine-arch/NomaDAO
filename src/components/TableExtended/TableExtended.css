@@ -1,13 +1,13 @@
-.TableExtended-container {
+.tableExtended-conteiner{
   max-width: 1360px;
-  width: 160%;
+  width:160%;
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-family: "Inter";
 }
 
-.TableExtended-header {
+.tableExtended-header{
   color: var(--gray-800, #3f3f3f);
   font-size: 12px;
   font-family: "Inter";
@@ -18,7 +18,22 @@
   background: var(--background-section, #f2f2f2);
 }
 
-.TableExtended-column {
+.tableExtended-row{
+  width: 100%;
+  height: 40px;
+  display: grid;
+  padding:0px 10px;
+}
+
+.tableExtended-row:not(.tableExtended-header){
+  margin-top: 15px;
+}
+
+.tableExtended-row:last-child:not(.tableExtended-header){
+  margin-bottom: 8px;
+}
+
+.tableExtended-column{
   width: 100%;
   height: 100%;
   display: flex;
@@ -26,38 +41,23 @@
   justify-content: center;
 }
 
-.TableExtended-column:nth-child(2):not(.table-header) {
+.tableExtended-column:nth-child(2):not(.tableExtended-header){
   margin-left: 25px;
   background-color: #deede5;
   border-radius: 4px;
   max-width: 120px;
 }
 
-.TableExtended-column:last-child:not(.table-header) {
+.tableExtended-column:last-child:not(.tableExtended-header){
   margin-left: 25px;
-  border-radius: 4px;
-  max-width: 120px;
-  background: var(--blue, #0699d2);
-  color: white;
-  cursor: pointer;
+    border-radius: 4px;
+    max-width: 120px;
+    background: var(--blue, #0699d2);
+    color: white;
+    cursor: pointer;
 }
 
-.TableExtended-row {
-  width: 100%;
-  height: 40px;
-  display: grid;
-  padding: 0px 10px;
-}
-
-.TableExtended-row:not(.table-header) {
-  margin-top: 15px;
-}
-
-.TableExtended-row:last-child:not(.table-header) {
-  margin-bottom: 8px;
-}
-
-.TableExtended-table-body {
+.tableExtended-body{
   color: #616161;
   font-size: 12px;
   font-family: "Inter";
@@ -67,7 +67,23 @@
   background: var(--background-section, #f2f2f2);
 }
 
-.TableExtended-table-footer {
+.tableExtended-orange{
+  width: 25px;
+  height: 25px;
+  background-color: #fe7c31;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.tableExtended-small-image{
+  width: 40px;
+  height: 40px;
+}
+
+.tableExtended-small-image:last-child{
+  margin-left: 4px;
+}
+
+.tableExtended-footer{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,13 +93,12 @@
   border-radius: 0px 0px 5px 5px;
 }
 
-.TableExtended-prev-page,
-.TableExtended-next-page {
+.tableExtended-prev-page{
   color: #585858;
-  margin: 20px;
+  margin-right: 20px;
 }
 
-.TableExtended-page-button {
+.tableExtended-page-button{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,37 +110,7 @@
   margin-inline: 5px;
 }
 
-.TableExtended-orange {
-  width: 25px;
-  height: 25px;
-  background-color: #fe7c31;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-.TableExtended-small-image {
-  width: 40px;
-  height: 40px;
-}
-
-.TableExtended-small-image:last-child {
-  margin-left: 4px;
-}
-
-/* Custom classes for the statuses */
-.TableExtended-Confirmed {
-  background-color: #deede5;
-  color: #427a5b;
-}
-.Rejected {
-  background-color: #eddede;
-  color: #7a4242;
-}
-.TableExtended-Pending {
-  background-color: #fdf8ce;
-  color: #938406;
-}
-.TableExtended-Unverified {
-  background-color: #d8d8d8;
-  color: #5f5f5f;
+.tableExtended-next-page{
+  color: #585858;
+  margin-left: 20px;
 }

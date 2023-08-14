@@ -4,46 +4,84 @@ import mini2 from '../../assets/images/mini2.png';
 import './TableExtended.css';
 
 export default function TableExtended({ header, rows, setPopup }) {
+  let backgroundColor = undefined;
+  let color = undefined;
+  header.map((item) => {
+    switch (item) {
+      case 'Confirmed':
+        backgroundColor = '#deede5';
+        color = '#427a5b';
+        break;
+      case 'Rejected':
+        backgroundColor = '#EDDEDE';
+        color = '#7A4242';
+        break;
+      case 'Pending':
+        backgroundColor = '#FDF8CE';
+        color = '#938406';
+        break;
+      case 'Unverified':
+        backgroundColor = '#D8D8D8';
+        color = '#5F5F5F';
+        break;
+      default:
+        backgroundColor = undefined;
+        color = undefined;
+        break;
+    }
+  });
   return (
-    <div className="TableExtended-container">
-      <div className="TableExtended-header">
-        <div className="TableExtended-row" data-columns={header.length}>
-          {header.map((item) => (
-            <div className="TableExtended-column" key={item}>
-              {item}
-            </div>
-          ))}
+    <div className="tableExtended-container">
+      <div className="tableExtended-header">
+        <div
+          className="tableExtended-row"
+          style={{ gridTemplateColumns: `repeat(${header.length}, 1fr)` }}
+        >
+          {header.map((item, index) =>
+            index == 1 ? (
+              <div
+                key={index}
+                className="tableExtended-column"
+                style={{
+                  backgroundColor: backgroundColor,
+                  color: color,
+                }}
+              >
+                {item}
+              </div>
+            ) : (
+              <div key={index} className="tableExtended-column">
+                {item}
+              </div>
+            ),
+          )}
         </div>
       </div>
-      <div className="TableExtended-body">
+      <div className="tableExtended-body">
         {rows.map((row) => {
           return (
             <div
-              className="TableExtended-row"
-              data-columns={row.length}
-              key={row.join('-')}
+              key={row[0]}
+              className="tableExtended-row"
+              style={{ gridTemplateColumns: `repeat(${header.length}, 1fr)` }}
             >
               {row.map((item, index) => (
                 <div
-                  className={`TableExtended-column ${item}`}
+                  className="tableExtended-column"
                   onClick={() => {
                     item === 'Check Details' && setPopup(true);
                   }}
                   key={index}
                 >
-                  {index === 0 && <div className="TableExtended-orange" />}
+                  {index == 0 ? (
+                    <div className="tableExtended-orange" />
+                  ) : (
+                    <div></div>
+                  )}{' '}
                   {item === 'photos' ? (
                     <>
-                      <img
-                        className="TableExtended-small-image"
-                        src={mini1}
-                        alt="mini1"
-                      />
-                      <img
-                        className="TableExtended-small-image"
-                        src={mini2}
-                        alt="mini2"
-                      />
+                      <img className="tableExtended-small-image" src={mini1} />
+                      <img className="tableExtended-small-image" src={mini2} />
                     </>
                   ) : (
                     item
@@ -54,17 +92,17 @@ export default function TableExtended({ header, rows, setPopup }) {
           );
         })}
       </div>
-      <div className="TableExtended-footer">
-        <div className="TableExtended-prev-page">Previous page</div>
-        <div className="TableExtended-page-button">1</div>
-        <div className="TableExtended-page-button">2</div>
-        <div className="TableExtended-page-button">3</div>
-        <div className="TableExtended-page-button">4</div>
-        <div className="TableExtended-page-button">5</div>
-        <div className="TableExtended-page-button">6</div>
-        <div className="TableExtended-page-button">7</div>
-        <div className="TableExtended-page-button">8</div>
-        <div className="TableExtended-next-page">Next page</div>
+      <div className="tableExtended-footer">
+        <div className="tableExtended-prev-page">Previous page</div>
+        <div className="TableBalance-page-button">1</div>
+        <div className="TableBalance-page-button">2</div>
+        <div className="TableBalance-page-button">3</div>
+        <div className="TableBalance-page-button">4</div>
+        <div className="TableBalance-page-button">5</div>
+        <div className="TableBalance-page-button">6</div>
+        <div className="TableBalance-page-button">7</div>
+        <div className="TableBalance-page-button">8</div>
+        <div className="tableExtended-next-page">Next page</div>
       </div>
     </div>
   );
