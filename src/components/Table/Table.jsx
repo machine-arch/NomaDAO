@@ -49,11 +49,11 @@ export default function Table({ header, rows, setPopup }) {
           );
         })}
       </div>
-      <div className="table-footer">
-        <div className="prev-page">Previous page</div>
-        <div className="page-button">1</div>
-        <div className="page-button">2</div>
-        <div className="next-page">Next page</div>
+      <div className="Table-footer">
+        <div className="Table-prev-page">Previous page</div>
+        <div className="Table-page-button">1</div>
+        <div className="Table-page-button">2</div>
+        <div className="Table-next-page">Next page</div>
       </div>
     </div>
   );
