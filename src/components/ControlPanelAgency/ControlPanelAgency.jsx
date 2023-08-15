@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GroupRequests from '../GroupRequests/GroupRequests.jsx';
 import TableExtended from '../TableExtended/TableExtended.jsx';
 import { useOutletContext } from 'react-router-dom';
-import MarketplaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
+import MarketplaceHeader from '../modules/marketplace/MarketplaceHeader/MarketplaceHeader.component.jsx';
 import FilterByControlPanelAgency from '../FilterbyControlPanelAgency/FilterbyControlPanelAgency.jsx';
 import FilterComponent from '../FilterComponent/FilterComponent.jsx';
 import './ControlPanelAgency.css';

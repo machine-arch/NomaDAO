@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import MarketplaceLogin from '../MarketplaceLogin/MarketplaceLogin.jsx';
-import MarketplaceRegister from '../MarketplaceRegister/MarketplaceRegister.jsx';
-import './AuthMarketplace.css';
+import MarketplaceLogin from '../MarketplaceLogin/MarketplaceLogin.component.jsx';
+import MarketplaceRegister from '../MarketplaceRegister/MarketplaceRegister.component.jsx';
+import './AuthMarketplace.stylesheet.css';
 
 export default function AuthMarketplace() {
   const [type, setType] = useState('login');
@@ -14,7 +14,6 @@ export default function AuthMarketplace() {
       setType('login');
     }
   }
-
   return (
     <div className="authMarketplace-wrapper">
       <div className="authMarketplace-flex">

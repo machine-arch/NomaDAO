@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import MontyleReport from '../MyroomsPublishedrooms/MyroomsPublishedrooms.jsx';
 import TableExtended from '../TableExtended/TableExtended.jsx';
-import MarketplaceHeader from '../MarketplaceHeader/MarketplaceHeader.jsx';
+import MarketplaceHeader from '../modules/marketplace/MarketplaceHeader/MarketplaceHeader.component.jsx';
 import { useOutletContext } from 'react-router-dom';
 import FilterByControlPanelHotel from '../FilterbyControlPanelHotel/FilterbyControlPanelHotel.jsx';
 import FilterComponent from '../FilterComponent/FilterComponent.jsx';

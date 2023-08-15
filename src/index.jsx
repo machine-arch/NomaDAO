@@ -11,9 +11,9 @@ import Error from './components/Error/Error';
 import Booking from './components/Booking/Booking';
 import SingleHotel from './components/SingleHotel/SingleHotel';
 import HomeContent from './components/HomeContent/HomeContent';
-import AuthMarketplace from './components/AuthMarketplace/AuthMarketplace';
-import MarketplaceHotel from './components/MarketplaceHotel/MarketplaceHotel';
-import MarketplaceAgency from './components/MarketplaceAgency/MarketplaceAgency';
+import AuthMarketplace from './components/modules/marketplace/AuthMarketplace/AuthMarketplace.component';
+import MarketplaceHotel from './components/modules/marketplace/MarketplaceHotel/MarketplaceHotel.component';
+import MarketplaceAgency from './components/modules/marketplace/MarketplaceAgency/MarketplaceAgency.component';
 import DashboardHotel from './components/DashboardHotel/DashboardHotel';
 import DashboardAgency from './components/DashboardAgency/DashboardAgency';
 import ActiveBalanceHotel from './components/ActiveBalanceHotel/ActiveBalanceHotel';
@@ -22,7 +22,7 @@ import GroupRequestsHotel from './components/GroupRequestsHotel/GroupRequestsHot
 import ControlPanelHotel from './components/ControlPanelHotel/ControlPanelHotel';
 import ControlPanelAgency from './components/ControlPanelAgency/ControlPanelAgency';
 import PublishedHotelsAgency from './components/PublishedHotelsAgency/PublishedHotelsAgency';
-import MartketPlaceSettings from './components/MarketPlaceSettings/MarketPlaceSettings';
+import MartketPlaceSettings from './components/modules/marketplace/MarketPlaceSettings/MarketPlaceSettings.component';
 const router = createBrowserRouter([
   {
     path: '/',

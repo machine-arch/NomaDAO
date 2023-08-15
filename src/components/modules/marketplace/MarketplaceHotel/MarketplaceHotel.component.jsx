@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
-import marketplace from '../../assets/images/marketplace_logo.png';
-import MarketplaceNavItem from '../MarketplaceNavItem/MarketplaceNavItem.jsx';
+import marketplace from '../../../../assets/images/marketplace_logo.png';
+import MarketplaceNavItem from '../MarketplaceNavItem/MarketplaceNavItem.component.jsx';
 import { Outlet, useNavigate } from 'react-router-dom';
-import settings from '../../assets/images/settings.svg';
-import logout from '../../assets/images/logout.svg';
-import bell from '../../assets/images/notification.svg';
-import Popup from '../Popup/Popup.jsx';
-import useMoveSound from '../../hooks/useMoveSound.js';
-import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
-import './MarketplaceHotel.css';
+import settings from '../../../../assets/images/settings.svg';
+import logout from '../../../../assets/images/logout.svg';
+import bell from '../../../../assets/images/notification.svg';
+import Popup from '../../../Popup/Popup.jsx';
+import useMoveSound from '../../../../hooks/useMoveSound.js';
+import useRemoveSpaces from '../../../../hooks/useRemoveSpaces.js';
+import './MarketplaceHotel.stylesheet.css';
 
 export default function MarketplaceHotel() {
   const navigate = useNavigate();
@@ -111,7 +111,7 @@ export default function MarketplaceHotel() {
           break;
       }
 
-      function openPage() { }
+      function openPage() {}
     }
     document.addEventListener('keydown', handleKeyDown);
 
@@ -121,21 +121,25 @@ export default function MarketplaceHotel() {
   }, [currentPage, navigate, navigation, removeSpaces]);
 
   return (
-    <div className='marketplaceHotel-wrapper'>
+    <div className="marketplaceHotel-wrapper">
       {popup && <Popup setPopup={setPopup} name="Tour Hotel #2" />}
-      <div className='marketplaceHotel-userInfo'>
+      <div className="marketplaceHotel-userInfo">
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div className='marketplaceHotel-organe' />
+          <div className="marketplaceHotel-organe" />
           <div>
-            <p className='marketplaceHotel-userName'>Karim Benzema</p>
-            <p className='marketplaceHotel-userTitle'>Admin</p>
+            <p className="marketplaceHotel-userName">Karim Benzema</p>
+            <p className="marketplaceHotel-userTitle">Admin</p>
           </div>
         </div>
-        <img className='marketplaceHotel-img' src={bell} alt="bell" />
+        <img className="marketplaceHotel-img" src={bell} alt="bell" />
       </div>
-      <aside className='marketplaceHotel-aside'>
-        <img className='marketplaceHotel-logo' src={marketplace} alt="Marketplace Logo" />
-        <nav className='marketplaceHotel-navigation'>
+      <aside className="marketplaceHotel-aside">
+        <img
+          className="marketplaceHotel-logo"
+          src={marketplace}
+          alt="Marketplace Logo"
+        />
+        <nav className="marketplaceHotel-navigation">
           {navigationtopfour.map((item) => (
             <MarketplaceNavItem
               // click={handleClick}
@@ -146,7 +150,9 @@ export default function MarketplaceHotel() {
           ))}
         </nav>
         {navigation.map((item, index) => (
-          <div className='marketplaceHotel-settings' key={index}
+          <div
+            className="marketplaceHotel-settings"
+            key={index}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onClick={() => {
@@ -155,8 +161,12 @@ export default function MarketplaceHotel() {
             }}
             style={{
               color: currentPage === navigation[4] ? 'white' : '#4c4c4c',
-              backgroundColor: currentPage === navigation[4] ? '#3F3F3F' : 'transparent',
-              img: currentPage === navigation[4] ? 'brightness(0) invert(1)' : 'none'
+              backgroundColor:
+                currentPage === navigation[4] ? '#3F3F3F' : 'transparent',
+              img:
+                currentPage === navigation[4]
+                  ? 'brightness(0) invert(1)'
+                  : 'none',
             }}
           >
             <img
@@ -174,14 +184,19 @@ export default function MarketplaceHotel() {
             <span>Settings</span>
           </div>
         ))}
-        <div className='marketplaceHotel-logout'
+        <div
+          className="marketplaceHotel-logout"
           onClick={() => {
             navigate('/Marketplace');
           }}
           style={{
             color: currentPage === navigation[5] ? 'white' : '#a65959',
-            backgroundColor: currentPage === navigation[5] ? '#7A4242' : 'transparent',
-            img: currentPage === navigation[5] ? 'brightness(0) invert(1)' : 'none'
+            backgroundColor:
+              currentPage === navigation[5] ? '#7A4242' : 'transparent',
+            img:
+              currentPage === navigation[5]
+                ? 'brightness(0) invert(1)'
+                : 'none',
           }}
         >
           <img

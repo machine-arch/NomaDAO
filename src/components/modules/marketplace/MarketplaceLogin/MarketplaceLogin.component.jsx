@@ -1,10 +1,10 @@
 import React, { useEffect, useContext, useRef, useState } from 'react';
-import { API_login } from '../../api/requests.js';
+import { API_login } from '../../../../api/requests.js';
 import { useNavigate } from 'react-router-dom';
-import useConditionalHandler from '../../hooks/useConditionalHandler.js';
-import useMoveSound from '../../hooks/useMoveSound.js';
-import AsideContext from '../../context/AsideContext.js';
-import './MarketplaceLogin.css';
+import useConditionalHandler from '../../../../hooks/useConditionalHandler.js';
+import useMoveSound from '../../../../hooks/useMoveSound.js';
+import AsideContext from '../../../../context/AsideContext.js';
+import './MarketplaceLogin.stylesheet.css';
 
 export default function MarketplaceLogin({ switchToRegister }) {
   const asideContext = useContext(AsideContext);
