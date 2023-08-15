@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import marketplace from '../../assets/images/marketplace_logo.png';
-import MarketplaceNavItem from '../MarketplaceNavItem/MarketplaceNavItem.jsx';
+import marketplace from '../../../../assets/images/marketplace_logo.png';
+import MarketplaceNavItem from '../MarketplaceNavItem/MarketplaceNavItem.component.jsx';
 import { Outlet, useNavigate } from 'react-router-dom';
-import settings from '../../assets/images/settings.svg';
-import logout from '../../assets/images/logout.svg';
-import bell from '../../assets/images/notification.svg';
-import Popup from '../Popup/Popup.jsx';
-import useMoveSound from '../../hooks/useMoveSound.js';
-import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
-import "./MarketplaceAgency.css"
+import settings from '../../../../assets/images/settings.svg';
+import logout from '../../../../assets/images/logout.svg';
+import bell from '../../../../assets/images/notification.svg';
+import Popup from '../../../Popup/Popup.jsx';
+import useMoveSound from '../../../../hooks/useMoveSound.js';
+import useRemoveSpaces from '../../../../hooks/useRemoveSpaces.js';
+import './MarketplaceAgency.stylesheet.css';
 
 export default function MarketplaceAgency() {
   const navigate = useNavigate();
@@ -128,21 +128,25 @@ export default function MarketplaceAgency() {
   }, [currentPage, navigate, navigation, removeSpaces]);
 
   return (
-    <div className='marketplaceAgency-wrapper'>
+    <div className="marketplaceAgency-wrapper">
       {popup && <Popup setPopup={setPopup} name="Tour Agency #2" />}
-      <div className='marketplaceAgency-userInfo'>
+      <div className="marketplaceAgency-userInfo">
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div className='marketplaceAgency-organe' />
+          <div className="marketplaceAgency-organe" />
           <div>
-            <p className='marketplaceAgency-userName'>Karim Benzema</p>
-            <p className='marketplaceAgency-userTitle'>Admin</p>
+            <p className="marketplaceAgency-userName">Karim Benzema</p>
+            <p className="marketplaceAgency-userTitle">Admin</p>
           </div>
         </div>
-        <img className='marketplaceAgency-img' src={bell} alt="bell" />
+        <img className="marketplaceAgency-img" src={bell} alt="bell" />
       </div>
-      <aside className='marketplaceAgency-aside'>
-        <img className='marketplaceAgency-logo' src={marketplace} alt="Marketplace Logo" />
-        <nav className='marketplaceAgency-navigation'>
+      <aside className="marketplaceAgency-aside">
+        <img
+          className="marketplaceAgency-logo"
+          src={marketplace}
+          alt="Marketplace Logo"
+        />
+        <nav className="marketplaceAgency-navigation">
           {navigationtopfour.map((item) => (
             <MarketplaceNavItem
               // click={handleClick}
@@ -153,7 +157,9 @@ export default function MarketplaceAgency() {
           ))}
         </nav>
         {navigation.map((item, index) => (
-          <div className='marketplaceAgency-settings' key={index}
+          <div
+            className="marketplaceAgency-settings"
+            key={index}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onClick={() => {
@@ -162,8 +168,12 @@ export default function MarketplaceAgency() {
             }}
             style={{
               color: currentPage === navigation[4] ? 'white' : '#4c4c4c',
-              backgroundColor: currentPage === navigation[4] ? '#3F3F3F' : 'transparent',
-              img: currentPage === navigation[4] ? 'brightness(0) invert(1)' : 'none'
+              backgroundColor:
+                currentPage === navigation[4] ? '#3F3F3F' : 'transparent',
+              img:
+                currentPage === navigation[4]
+                  ? 'brightness(0) invert(1)'
+                  : 'none',
             }}
           >
             <img
@@ -181,14 +191,19 @@ export default function MarketplaceAgency() {
             <span>Settings</span>
           </div>
         ))}
-        <div className='marketplaceAgency-logout'
+        <div
+          className="marketplaceAgency-logout"
           onClick={() => {
             navigate('/Marketplace');
           }}
           style={{
             color: currentPage === navigation[5] ? 'white' : '#a65959',
-            backgroundColor: currentPage === navigation[5] ? '#7A4242' : 'transparent',
-            img: currentPage === navigation[5] ? 'brightness(0) invert(1)' : 'none'
+            backgroundColor:
+              currentPage === navigation[5] ? '#7A4242' : 'transparent',
+            img:
+              currentPage === navigation[5]
+                ? 'brightness(0) invert(1)'
+                : 'none',
           }}
         >
           <img
@@ -218,4 +233,3 @@ const imageStyles = {
 const focusedImageStyles = {
   filter: 'grayscale(100%) opacity(0.5)',
 };
-

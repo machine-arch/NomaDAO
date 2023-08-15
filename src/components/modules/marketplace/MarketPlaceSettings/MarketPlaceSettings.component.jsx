@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import "./MarketPlaceSettings.css";
+import React, { useState } from 'react';
+import './MarketPlaceSettings.stylesheet.css';
 
 export default function MartketPlaceSettings() {
-  const [activeForm, setActiveForm] = useState("option1");
-  const [message, setMessage] = useState("");
+  const [activeForm, setActiveForm] = useState('option1');
+  const [message, setMessage] = useState('');
   const handleFormToggle = (formOption) => {
     setActiveForm(formOption);
   };
@@ -11,25 +11,25 @@ export default function MartketPlaceSettings() {
   const handleFormSubmit = async () => {
     try {
       const response = await fetch(
-        "http://116.202.22.148:8888/changePassword",
+        'http://116.202.22.148:8888/changePassword',
         {
           // Update the URL
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            oldPassword: document.getElementById("oldpsw").value,
-            newPassword: document.getElementById("newpsw").value,
-            confirmPassword: document.getElementById("repeatnewpass").value,
+            oldPassword: document.getElementById('oldpsw').value,
+            newPassword: document.getElementById('newpsw').value,
+            confirmPassword: document.getElementById('repeatnewpass').value,
           }),
-        }
+        },
       );
 
       const data = await response.json();
 
       if (response.ok) {
-        setMessage("Password Changed Successfully");
+        setMessage('Password Changed Successfully');
         resetForm();
       } else {
         setMessage(data.error);
@@ -42,31 +42,31 @@ export default function MartketPlaceSettings() {
   };
 
   const resetForm = () => {
-    document.getElementById("oldpsw").value = "";
-    document.getElementById("newpsw").value = "";
-    document.getElementById("repeatnewpass").value = "";
+    document.getElementById('oldpsw').value = '';
+    document.getElementById('newpsw').value = '';
+    document.getElementById('repeatnewpass').value = '';
   };
 
   return (
     <>
       <div className="btn-wrapper">
         <button
-          onClick={() => handleFormToggle("option1")}
+          onClick={() => handleFormToggle('option1')}
           className="choice"
-          style={{ color: activeForm === "option1" ? "#009BD8" : "black" }}
+          style={{ color: activeForm === 'option1' ? '#009BD8' : 'black' }}
         >
           Company Details
         </button>
         <button
-          onClick={() => handleFormToggle("option2")}
+          onClick={() => handleFormToggle('option2')}
           className="choice"
-          style={{ color: activeForm === "option2" ? "#009BD8" : "black" }}
+          style={{ color: activeForm === 'option2' ? '#009BD8' : 'black' }}
         >
           Security
         </button>
       </div>
 
-      {activeForm === "option1" && (
+      {activeForm === 'option1' && (
         <div className="wrapper">
           <div className="forms">
             <form className="form">
@@ -112,7 +112,7 @@ export default function MartketPlaceSettings() {
                 />
                 <div
                   className="button"
-                  style={{ backgroundColor: "#D8D8D8", color: "#F2F2F2" }}
+                  style={{ backgroundColor: '#D8D8D8', color: '#F2F2F2' }}
                 >
                   Generate Now
                 </div>
@@ -175,7 +175,7 @@ export default function MartketPlaceSettings() {
         </div>
       )}
 
-      {activeForm === "option2" && (
+      {activeForm === 'option2' && (
         <div className="wrapper">
           <form className="form">
             <label htmlFor="oldpassword" className="label">
