@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Banner from '../Banner/Banner.jsx';
-import SmallBox from '../SmallBox/SmallBox.jsx';
-import useMoveSound from '../../hooks/useMoveSound.js';
-import pagesContent from '../../data/pagesContent.js';
-import AsideContext from '../../context/AsideContext.js';
-import useConditionalHandler from '../../hooks/useConditionalHandler.js';
+import Banner from '../../Banner/Banner.jsx';
+import SmallBox from './SmallBox/SmallBox.jsx';
+import useMoveSound from '../../../hooks/useMoveSound.js';
+import pagesContent from '../../../data/pagesContent.js';
+import AsideContext from '../../../context/AsideContext.js';
+import useConditionalHandler from '../../../hooks/useConditionalHandler.js';
 import './HomeContent.css';
 export default function PageContent() {
   // state

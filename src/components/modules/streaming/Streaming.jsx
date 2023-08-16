@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import ProductContext from '../../context/ProductContext.js';
-import useKeyHandlerEffect from '../../hooks/useKeyHanderEffect.js';
-import useMoveSound from '../../hooks/useMoveSound.js';
+import ProductContext from '../../../context/ProductContext.js';
+import useKeyHandlerEffect from '../../../hooks/useKeyHanderEffect.js';
+import useMoveSound from '../../../hooks/useMoveSound.js';
 import './Streaming.css';
 
 export default function Streaming() {

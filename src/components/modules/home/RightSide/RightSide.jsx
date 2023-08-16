@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import SearchIcon from '../../assets/images/search.png';
-import MicrophoneIcon from '../../assets/images/microphone.png';
+import SearchIcon from '../../../../assets/images/search.png';
+import MicrophoneIcon from '../../../../assets/images/microphone.png';
 import { Outlet } from 'react-router-dom';
-import AsideContext from '../../context/AsideContext.js';
+import AsideContext from '../../../../context/AsideContext.js';
 import './RightSide.css';
 
 export default function RightSide() {

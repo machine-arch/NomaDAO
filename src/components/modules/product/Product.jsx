@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Logo from '../../assets/images/logo.png';
-import Arrow from '../../assets/images/arrow-back.png';
-import useMoveSound from '../../hooks/useMoveSound.js';
-import { useEncodeLink } from '../../hooks/useEncodeLink.js';
-import AsideContext from '../../context/AsideContext.js';
-import singlePages from '../../data/singlePages.js';
-import useKeyHanderEffect from '../../hooks/useKeyHanderEffect.js';
-import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
-import ProductContext from '../../context/ProductContext.js';
+import Logo from '../../../assets/images/logo.png';
+import Arrow from '../../../assets/images/arrow-back.png';
+import useMoveSound from '../../../hooks/useMoveSound.js';
+import { useEncodeLink } from '../../../hooks/useEncodeLink.js';
+import AsideContext from '../../../context/AsideContext.js';
+import singlePages from '../../../data/singlePages.js';
+import useKeyHanderEffect from '../../../hooks/useKeyHanderEffect.js';
+import useRemoveSpaces from '../../../hooks/useRemoveSpaces.js';
+import ProductContext from '../../../context/ProductContext.js';
 import './Product.css';
 
 export default function Product() {

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import BigBox from '../BigBox/BigBox';
-import useMoveSound from '../../hooks/useMoveSound.js';
-import pagesContent from '../../data/pagesContent.js';
-import AsideContext from '../../context/AsideContext.js';
-import useConditionalHandler from '../../hooks/useConditionalHandler.js';
+import BigBox from './BigBox/BigBox';
+import useMoveSound from '../../../hooks/useMoveSound.js';
+import pagesContent from '../../../data/pagesContent.js';
+import AsideContext from '../../../context/AsideContext.js';
+import useConditionalHandler from '../../../hooks/useConditionalHandler.js';
 import './PageContent.css';
 export default function PageContent() {
   let { pagename } = useParams(); // getting the name of the page
