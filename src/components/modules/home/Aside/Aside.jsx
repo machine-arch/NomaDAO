@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import Logo from '../../assets/images/logo.png';
-import AsideElement from '../AsideElement/AsideElement.jsx';
-import useMoveSound from '../../hooks/useMoveSound.js';
+import Logo from '../../../../assets/images/logo.png';
+import AsideElement from './AsideElement/AsideElement.jsx';
+import useMoveSound from '../../../../hooks/useMoveSound.js';
 import { useNavigate } from 'react-router-dom';
-import useConditionalHandler from '../../hooks/useConditionalHandler.js';
-import AsideContext from '../../context/AsideContext.js';
-import useRemoveSpaces from '../../hooks/useRemoveSpaces.js';
+import useConditionalHandler from '../../../../hooks/useConditionalHandler.js';
+import AsideContext from '../../../../context/AsideContext.js';
+import useRemoveSpaces from '../../../../hooks/useRemoveSpaces.js';
 import './Aside.css';
 export default function Aside() {
   // Context

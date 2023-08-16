@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import HOTELS from '../../data/hotels.js';
-import useConditionalHandler from '../../hooks/useConditionalHandler.js';
-import useMoveSound from '../../hooks/useMoveSound.js';
+import HOTELS from '../../../data/hotels.js';
+import useConditionalHandler from '../../../hooks/useConditionalHandler.js';
+import useMoveSound from '../../../hooks/useMoveSound.js';
 import './SingleHotel.css';
 const otherImages = [
   'https://nomadao.net/public/uploads/0000/1/2023/02/14/bestwestern-4.jpg',
@@ -316,9 +316,8 @@ export default function SingleHotel() {
           index={sliderIndex}
           length={hotel.otherImages.length}
           style={{
-            transform: `translateX(-${
-              sliderIndex * (100 / hotel.otherImages.length)
-            }%)`,
+            transform: `translateX(-${sliderIndex * (100 / hotel.otherImages.length)
+              }%)`,
           }}
         >
           {hotel.otherImages.map((image, index) => (
