@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const link = "http://116.202.22.148:8888/"; // server link
+const link = "http://135.125.245.252:8888/"; // server link
 const login = link + "login"; // login route
 const register = link + "register"; // login route
 // prettier-ignore
