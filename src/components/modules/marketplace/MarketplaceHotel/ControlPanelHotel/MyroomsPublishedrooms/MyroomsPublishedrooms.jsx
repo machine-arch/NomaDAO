@@ -1,7 +1,7 @@
 import React from 'react';
 import './MyroomsPublishedrooms.css';
 
-export default function MontyleReport() {
+export default function MyroomsPublishedrooms() {
   return (
     <div className="myroomsPublishedrooms-wrapper">
       <div className="myroomsPublishedrooms-gray">

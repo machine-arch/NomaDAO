@@ -3,3 +3,21 @@
   height: 100%;
 }
 
+.streaming-errorButton {
+  background-color: rgba(0, 0, 0, 0.505);
+  width: 251px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  backdrop-filter: blur(9.5px);
+  border-radius: 32px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Banner from '../../Banner/Banner.jsx';
+import Banner from './Banner/Banner.jsx';
 import SmallBox from './SmallBox/SmallBox.jsx';
 import useMoveSound from '../../../hooks/useMoveSound.js';
 import pagesContent from '../../../data/pagesContent.js';

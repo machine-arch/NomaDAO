@@ -4,18 +4,18 @@ const link = "http://135.125.245.252:8888/"; // server link
 const login = link + "login"; // login route
 const register = link + "register"; // login route
 // prettier-ignore
-export const API_register = async ({companyName, companyField, companyID, email, phoneNumber, website,password,}) => {
+export const API_register = async ({ companyName, companyField, companyID, email, phoneNumber, website, password, }) => {
   let response;
-  await axios.post(register, {companyName,companyField,companyID,email,phoneNumber,website,password}).then((res)=>{
-    response = {status: true};
+  await axios.post(register, { companyName, companyField, companyID, email, phoneNumber, website, password }).then((res) => {
+    response = { status: true };
   }).catch((error) => {
-    if(error.message){
+    if (error.message) {
       if (error.response) {
         response = { error: error.response.data.error };
       } else {
         response = { error: error.message };
       }
-    }else{
+    } else {
       response = { error: error.response.data.error };
     }
   });

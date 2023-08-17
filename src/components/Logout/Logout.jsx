@@ -1,3 +1,5 @@
+// Investigation required
+
 const Logout = () => {
   return null;
 };

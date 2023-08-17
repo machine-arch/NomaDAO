@@ -5,7 +5,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import settings from '../../../../assets/images/settings.svg';
 import logout from '../../../../assets/images/logout.svg';
 import bell from '../../../../assets/images/notification.svg';
-import Popup from '../../../Popup/Popup.jsx';
+import Popup from '../Popup/Popup.jsx';
 import useMoveSound from '../../../../hooks/useMoveSound.js';
 import useRemoveSpaces from '../../../../hooks/useRemoveSpaces.js';
 import './MarketplaceHotel.stylesheet.css';
@@ -111,7 +111,7 @@ export default function MarketplaceHotel() {
           break;
       }
 
-      function openPage() {}
+      function openPage() { }
     }
     document.addEventListener('keydown', handleKeyDown);
 

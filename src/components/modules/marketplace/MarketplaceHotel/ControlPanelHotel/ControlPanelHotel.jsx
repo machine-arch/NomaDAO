@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import MontyleReport from '../../../../MyroomsPublishedrooms/MyroomsPublishedrooms.jsx';
+import MyroomsPublishedrooms from './MyroomsPublishedrooms/MyroomsPublishedrooms.jsx';
 import TableExtended from '../../../../TableExtended/TableExtended.jsx';
 import MarketplaceHeader from '../../MarketplaceHeader/MarketplaceHeader.component.jsx';
 import { useOutletContext } from 'react-router-dom';
-import FilterByControlPanelHotel from '../../../../FilterbyControlPanelHotel/FilterbyControlPanelHotel.jsx';
-import FilterComponent from '../../../../FilterComponent/FilterComponent.jsx';
+import FilterByControlPanelHotel from './FilterByControlPanelHotel/FilterbyControlPanelHotel.jsx';
+import FilterComponent from '../../FilterComponent/FilterComponent.jsx';
 import useMoveSound from '../../../../../hooks/useMoveSound.js';
 import useConditionalHandler from '../../../../../hooks/useConditionalHandler.js';
 import './ControlPanelHotel.css';
@@ -194,7 +194,7 @@ export default function DashboardHotel({ setpopup }) {
 
   return (
     <div className="controlPanelHotel-wrapper">
-      <MontyleReport />
+      <MyroomsPublishedrooms />
       <MarketplaceHeader />
       <p className="controlPanelHotel-title">Filter by</p>
       <div className="controlPanelHotel-container">

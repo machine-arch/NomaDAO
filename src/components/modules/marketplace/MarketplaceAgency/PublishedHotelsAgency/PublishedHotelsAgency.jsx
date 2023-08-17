@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import PublishedHotels from '../PublishedHotels/PublishedHotels.jsx';
-import MarketPlaceHeader from '../modules/marketplace/MarketplaceHeader/MarketplaceHeader.component.jsx';
-import TableExtended from '../TableExtended/TableExtended.jsx';
+import PublishedHotels from './PublishedHotels/PublishedHotels.jsx';
+import MarketPlaceHeader from '../../MarketplaceHeader/MarketplaceHeader.component.jsx';
+import TableExtended from '../../../../TableExtended/TableExtended.jsx';
 import { useOutletContext } from 'react-router-dom';
-import FilterComponent from '../FilterComponent/FilterComponent.jsx';
+import FilterComponent from '../../FilterComponent/FilterComponent.jsx';
 import './PublishedHotelsAgency.css';
 const data = {
   header: [

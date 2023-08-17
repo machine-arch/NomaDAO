@@ -8,20 +8,20 @@ import Product from './components/modules/product/Product';
 import Home from './components/modules/home/Home';
 import Streaming from './components/modules/streaming/Streaming';
 import Error from './components/Error/Error';
-import Booking from './components/Booking/Booking';
+import Booking from './components/modules/booking/Booking';
 import SingleHotel from './components/modules/singleHotel/SingleHotel';
 import HomeContent from './components/modules/homeContent/HomeContent';
 import AuthMarketplace from './components/modules/marketplace/AuthMarketplace/AuthMarketplace.component';
 import MarketplaceHotel from './components/modules/marketplace/MarketplaceHotel/MarketplaceHotel.component';
 import MarketplaceAgency from './components/modules/marketplace/MarketplaceAgency/MarketplaceAgency.component';
 import DashboardHotel from './components/modules/marketplace/MarketplaceHotel/DashboardHotel/DashboardHotel';
-import DashboardAgency from './components/DashboardAgency/DashboardAgency';
-import ActiveBalanceHotel from './components/ActiveBalanceHotel/ActiveBalanceHotel';
-import ActivebalanceAgency from './components/ActiveBalanceAgency/ActiveBalanceAgency';
-import GroupRequestsHotel from './components/GroupRequestsHotel/GroupRequestsHotel';
+import DashboardAgency from './components/modules/marketplace/MarketplaceAgency/DashboardAgency/DashboardAgency';
+import ActiveBalanceHotel from './components/modules/marketplace/MarketplaceHotel/ActiveBalanceHotel/ActiveBalanceHotel';
+import ActivebalanceAgency from './components/modules/marketplace/MarketplaceAgency/ActiveBalanceAgency/ActiveBalanceAgency';
+import GroupRequestsHotel from './components/modules/marketplace/MarketplaceHotel/GroupRequestsHotel/GroupRequestsHotel';
 import ControlPanelHotel from './components/modules/marketplace/MarketplaceHotel/ControlPanelHotel/ControlPanelHotel';
-import ControlPanelAgency from './components/ControlPanelAgency/ControlPanelAgency';
-import PublishedHotelsAgency from './components/PublishedHotelsAgency/PublishedHotelsAgency';
+import ControlPanelAgency from './components/modules/marketplace/MarketplaceAgency/ControlPanelAgency/ControlPanelAgency';
+import PublishedHotelsAgency from './components/modules/marketplace/MarketplaceAgency/PublishedHotelsAgency/PublishedHotelsAgency';
 import MartketPlaceSettings from './components/modules/marketplace/MarketPlaceSettings/MarketPlaceSettings.component';
 const router = createBrowserRouter([
   {

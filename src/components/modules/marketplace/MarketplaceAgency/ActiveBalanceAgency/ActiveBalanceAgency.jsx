@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ActiveBalance from '../ActiveBalance/ActiveBalance.jsx';
-import TableBalance from '../TableBalance/TableBalance.jsx';
+import ActiveBalance from '../../ActiveBalance/ActiveBalance.jsx';
+import TableBalance from '../../../../TableBalance/TableBalance.jsx';
 import { useOutletContext } from 'react-router-dom';
-import FilterComponent from '../FilterComponent/FilterComponent.jsx';
+import FilterComponent from '../../FilterComponent/FilterComponent.jsx';
 import './ActiveBalanceAgency.css';
 
 const data = {
