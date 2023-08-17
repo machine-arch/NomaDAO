@@ -5,6 +5,8 @@ import './FilterbyGroupRequestsHotel.css';
 
 //REDUNDANT CODE!!!
 
+// Investigation required
+
 export default function Filterby({ filter }) {
   const navigate = useNavigate();
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Addroom1 from '../../assets/images/Addroom1.svg';
-import Addroom2 from '../../assets/images/Addroom2.svg';
-import Addroom3 from '../../assets/images/Addroom3.svg';
-import Addroom4 from '../../assets/images/Addroom4.svg';
-import Addroomclose from '../../assets/images/Addroomclose.svg';
+import Addroom1 from '../../../../assets/images/Addroom1.svg';
+import Addroom2 from '../../../../assets/images/Addroom2.svg';
+import Addroom3 from '../../../../assets/images/Addroom3.svg';
+import Addroom4 from '../../../../assets/images/Addroom4.svg';
+import Addroomclose from '../../../../assets/images/Addroomclose.svg';
 import './PopupAddroom.css';
 
 export default function PopupAddroom({ open, closePopup, handleAddRoom }) {

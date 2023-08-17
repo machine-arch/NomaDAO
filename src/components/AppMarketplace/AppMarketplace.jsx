@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import MarketplaceContext from './context/MarketplaceContext.jsx';
+import MarketplaceContext from '../../context/MarketplaceContext.jsx';
+
+// investigation required 
+
+
 export default function App() {
   // hooks
   const navigate = useNavigate();
@@ -15,8 +19,8 @@ export default function App() {
 
   return (
     // prettier-ignore
-    <MarketplaceContext.Provider value={{ MarketplaceActive, setMarketplaceActive}}>
-            <Outlet />
+    <MarketplaceContext.Provider value={{ MarketplaceActive, setMarketplaceActive }}>
+      <Outlet />
     </MarketplaceContext.Provider>
   );
 }

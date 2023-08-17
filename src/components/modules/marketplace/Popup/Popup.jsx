@@ -1,5 +1,5 @@
 import React from 'react';
-import close from '../../assets/images/close.svg';
+import close from '../../../../assets/images/close.svg';
 import './Popup.css';
 export default function Popup(props) {
   return (

@@ -7,15 +7,15 @@ import React, {
 } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import useMoveSound from '../../hooks/useMoveSound.js';
-import SearchedHotel from '../SearchedHotel/SearchedHotel.jsx';
+import useMoveSound from '../../../hooks/useMoveSound.js';
+import SearchedHotel from '../../SearchedHotel/SearchedHotel.jsx';
 import './Booking-datapicker.css';
-import HOTELS from '../../data/hotels.js';
+import HOTELS from '../../../data/hotels.js';
 import { useNavigate } from 'react-router-dom';
-import BookingContext from '../../context/BookingContext.js';
-import useConditionalHandler from '../../hooks/useConditionalHandler.js';
+import BookingContext from '../../../context/BookingContext.js';
+import useConditionalHandler from '../../../hooks/useConditionalHandler.js';
 import { cosine } from 'string-comparison';
-import AsideContext from '../../context/AsideContext.js';
+import AsideContext from '../../../context/AsideContext.js';
 import './Booking.css';
 
 export default function Booking() {
@@ -369,9 +369,8 @@ export default function Booking() {
         ref={wrapperRef}
       >
         <div
-          className={`booking-input-box ${
-            activeInputBox === 1 ? 'nth-child' : ''
-          }`}
+          className={`booking-input-box ${activeInputBox === 1 ? 'nth-child' : ''
+            }`}
         >
           <label className="booking-inputText">Location</label>
           <input
@@ -383,9 +382,8 @@ export default function Booking() {
           />
         </div>
         <div
-          className={`booking-input-box ${
-            activeInputBox === 2 ? 'nth-child' : ''
-          }`}
+          className={`booking-input-box ${activeInputBox === 2 ? 'nth-child' : ''
+            }`}
         >
           <label className="booking-inputText">Check in</label>
           <DatePicker
@@ -397,9 +395,8 @@ export default function Booking() {
           />
         </div>
         <div
-          className={`booking-input-box ${
-            activeInputBox === 3 ? 'nth-child' : ''
-          }`}
+          className={`booking-input-box ${activeInputBox === 3 ? 'nth-child' : ''
+            }`}
         >
           <label className="booking-inputText">Check Out</label>
           <DatePicker
@@ -411,9 +408,8 @@ export default function Booking() {
           />
         </div>
         <div
-          className={`booking-input-box ${
-            activeInputBox === 4 ? 'nth-child' : ''
-          }`}
+          className={`booking-input-box ${activeInputBox === 4 ? 'nth-child' : ''
+            }`}
         >
           <label className="booking-inputText">Guests</label>
           <input
@@ -428,9 +424,8 @@ export default function Booking() {
         </div>
         <button
           ref={searchRef}
-          className={`booking-search-btn ${
-            activeInputBox === 5 ? 'nth-child' : ''
-          }`}
+          className={`booking-search-btn ${activeInputBox === 5 ? 'nth-child' : ''
+            }`}
         >
           {' '}
           Search{' '}

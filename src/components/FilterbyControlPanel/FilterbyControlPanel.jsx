@@ -3,6 +3,8 @@ import PopupAddroom from '../PopupAddroom.jsx';
 import plus from '../assets/images/addroomplus.svg';
 import './FilterbyControlPanel.css';
 
+// investigation required
+
 export default function FilterComponentPanel({
   header,
   rows,

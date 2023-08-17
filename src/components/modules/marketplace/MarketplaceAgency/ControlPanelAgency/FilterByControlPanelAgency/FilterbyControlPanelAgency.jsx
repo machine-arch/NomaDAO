@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PopupAddroom from '../PopupAddroom/PopupAddroom.jsx';
-import plus from '../../assets/images/addroomplus.svg';
+import PopupAddroom from '../../../PopupAddroom/PopupAddroom.jsx';
+import plus from '../../../../../../assets/images/addroomplus.svg';
 
 //REDUNDANT CODE!!!
 

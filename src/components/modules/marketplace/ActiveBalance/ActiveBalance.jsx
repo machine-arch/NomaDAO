@@ -1,5 +1,5 @@
 import React from 'react';
-import CopyImg from '../../assets/images/CopySymbol.svg';
+import CopyImg from '../../../../assets/images/CopySymbol.svg';
 import './ActiveBalance.css';
 
 export default function ActiveBalance() {
