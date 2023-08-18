@@ -15,8 +15,9 @@ export default function Streaming() {
   // error handling on loading iframe
   const [iframeError, setIframeError] = useState(false);
   const buttonRef = useRef(null);
+  const iframe = useRef(null);
 
-  const handleIframeLoad = () => {
+  const handleIframeLoad = async () => {
     setIframeError(false);
   };
 
@@ -49,17 +50,32 @@ export default function Streaming() {
   }
   return (
     <>
-      {iframeError &&
+      {iframeError && (
         <div style={{ padding: '10px', flexDirection: 'column', gap: '20px' }}>
-          <p style={{ fontSize: '20px' }}>Error loading content. Please contact administration.</p>
-          <button ref={buttonRef} onKeyDown={exit} onFocus={() => alert(1)} className='streaming-errorButton'>Back</button>
+          <p style={{ fontSize: '20px' }}>
+            Error loading content. Please contact administration.
+          </p>
+          <button
+            ref={buttonRef}
+            onKeyDown={exit}
+            onFocus={() => alert(1)}
+            className="streaming-errorButton"
+          >
+            Back
+          </button>
         </div>
-      }
+      )}
       <iframe
         className={`streaming-stream ${iframeError ? 'hidden' : ''}`}
         src={link}
         onLoad={handleIframeLoad}
         onError={handleIframeError}
+        onKeyDown={(e) => {
+          console.log(e.keyCode);
+        }}
+        ref={iframe}
+        autoPlay={true}
       ></iframe>
-    </>)
+    </>
+  );
 }
