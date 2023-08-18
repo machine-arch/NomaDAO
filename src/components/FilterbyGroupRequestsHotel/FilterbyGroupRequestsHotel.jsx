@@ -25,7 +25,7 @@ export default function Filterby({ filter }) {
                 src={arrow}
                 alt="arrow-icon"
               />
-            </div>
+            </div>  
           ))}
           <div
             className="filterbyGroupRequestsHotel-reset"
