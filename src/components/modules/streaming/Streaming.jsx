@@ -4,6 +4,7 @@ import ProductContext from '../../../context/ProductContext.js';
 import useKeyHandlerEffect from '../../../hooks/useKeyHanderEffect.js';
 import useMoveSound from '../../../hooks/useMoveSound.js';
 import './Streaming.css';
+import Loader from './Loader/Loader.jsx';
 
 export default function Streaming() {
   const { link } = useParams();
@@ -67,10 +68,7 @@ export default function Streaming() {
           </button>
         </div>
       )}
-      {iframeLoading &&
-        <div className='streaming-loader' >
-          <p>Loading...</p>
-        </div>}
+      {iframeLoading && <Loader />}
       <iframe
         className={`streaming-stream ${iframeError ? 'hidden' : ''}`}
         src={link}
