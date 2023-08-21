@@ -1,6 +1,6 @@
 import React from 'react';
-import mini1 from '../../assets/images/mini.png';
-import mini2 from '../../assets/images/mini2.png';
+import mini1 from '../../../../assets/images/mini.png';
+import mini2 from '../../../../assets/images/mini2.png';
 import './Table.css';
 
 export default function Table({ header, rows, setPopup }) {

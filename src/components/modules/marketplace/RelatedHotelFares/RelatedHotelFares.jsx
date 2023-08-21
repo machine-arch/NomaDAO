@@ -1,7 +1,7 @@
 import React from 'react';
-import Green from '../../assets/images/green_triangle.svg';
-import Red from '../../assets/images/red_triangle.svg';
-import Avatar from '../../assets/images/avatar.png';
+import Green from '../../../../assets/images/green_triangle.svg';
+import Red from '../../../../assets/images/red_triangle.svg';
+import Avatar from '../../../../assets/images/avatar.png';
 import './RelatedHotelFares.css';
 export default function RelatedHotelFares() {
   const items = [];
