@@ -68,7 +68,7 @@ export default function Streaming() {
         </div>
       )}
       {iframeLoading &&
-        <div className='streaming-stream' style={{ zIndex: 10, backgroundColor: 'green' }}>
+        <div className='streaming-loader' >
           <p>Loading...</p>
         </div>}
       <iframe
