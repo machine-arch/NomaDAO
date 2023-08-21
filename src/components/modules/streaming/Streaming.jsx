@@ -16,9 +16,11 @@ export default function Streaming() {
   const [iframeError, setIframeError] = useState(false);
   const buttonRef = useRef(null);
   const iframe = useRef(null);
+  const [iframeLoading, setIframeLoading] = useState(true);
 
   const handleIframeLoad = async () => {
     setIframeError(false);
+    setIframeLoading(false);
   };
 
   const handleIframeError = () => {
@@ -65,6 +67,10 @@ export default function Streaming() {
           </button>
         </div>
       )}
+      {iframeLoading &&
+        <div className='streaming-loader' >
+          <p>Loading...</p>
+        </div>}
       <iframe
         className={`streaming-stream ${iframeError ? 'hidden' : ''}`}
         src={link}

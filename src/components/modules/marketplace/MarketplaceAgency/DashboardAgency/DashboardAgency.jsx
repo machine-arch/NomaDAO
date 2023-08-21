@@ -1,7 +1,7 @@
 import React from 'react';
 import MontyleReport from '../../MontyleReport/MontyleReport.jsx';
-import RelatedHotelFares from '../../../../RelatedHotelFares/RelatedHotelFares.jsx';
-import Table from '../../../../Table/Table.jsx';
+import RelatedHotelFares from '../../RelatedHotelFares/RelatedHotelFares.jsx';
+import Table from '../../Table/Table.jsx';
 import { useOutletContext } from 'react-router-dom';
 const data = {
   header: [

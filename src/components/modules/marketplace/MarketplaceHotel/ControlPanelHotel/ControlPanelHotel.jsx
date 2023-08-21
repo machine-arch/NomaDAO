@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import MyroomsPublishedrooms from './MyroomsPublishedrooms/MyroomsPublishedrooms.jsx';
-import TableExtended from '../../../../TableExtended/TableExtended.jsx';
+import TableExtended from '../../TableExtended/TableExtended.jsx';
 import MarketplaceHeader from '../../MarketplaceHeader/MarketplaceHeader.component.jsx';
 import { useOutletContext } from 'react-router-dom';
 import FilterByControlPanelHotel from './FilterByControlPanelHotel/FilterbyControlPanelHotel.jsx';

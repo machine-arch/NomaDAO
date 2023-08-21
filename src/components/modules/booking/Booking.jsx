@@ -8,7 +8,7 @@ import React, {
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import useMoveSound from '../../../hooks/useMoveSound.js';
-import SearchedHotel from '../../SearchedHotel/SearchedHotel.jsx';
+import SearchedHotel from './SearchedHotel/SearchedHotel.jsx';
 import './Booking-datapicker.css';
 import HOTELS from '../../../data/hotels.js';
 import { useNavigate } from 'react-router-dom';
