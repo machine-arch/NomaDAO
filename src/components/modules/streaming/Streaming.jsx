@@ -57,7 +57,7 @@ export default function Streaming() {
 
   const fetchUrlsAndWaitForStatus = async () => {
     const urls = [
-      'https://jsonplaceholder1.typicode.com/posts/1',
+      'https://jsonplaceholder.typicode.com/posts/1',
       'https://jsonplaceholder.typicode.com/comments/1',
       'https://jsonplaceholder.typicode.com/todos/1'
     ];
