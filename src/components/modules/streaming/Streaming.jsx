@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductContext from '../../../context/ProductContext.js';
 import useKeyHandlerEffect from '../../../hooks/useKeyHanderEffect.js';
@@ -51,6 +51,42 @@ export default function Streaming() {
   function exit() {
     navigate(`/products/` + product);
   }
+  
+
+  // check if iframe url is valid
+
+  const fetchUrlsAndWaitForStatus = async () => {
+    const urls = [
+      'https://jsonplaceholder.typicode.com/posts/1',
+      'https://jsonplaceholder.typicode.com/comments/1',
+      'https://jsonplaceholder.typicode.com/todos/1'
+    ];
+  
+    const expectedStatus = 200; 
+  
+    try {
+      for (const url of urls) {
+        const response = await fetch(url);
+        
+        if (response.status === expectedStatus) {
+          console.log(`Received expected response status ${expectedStatus} for URL: ${url}`);
+          
+        } else {
+          setIframeError(true);
+        }
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      setIframeError(true);
+    }
+  };
+
+  useEffect(() => {
+    fetchUrlsAndWaitForStatus();
+  }, []);
+    
+
+
   return (
     <>
       {iframeError && (
