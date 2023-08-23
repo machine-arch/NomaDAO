@@ -57,7 +57,7 @@ export default function Streaming() {
 
   const fetchUrlsAndWaitForStatus = async () => {
     const urls = [
-      'https://jsonplaceholder.typicode.com/posts/1',
+      'https://jsonplaceholder1.typicode.com/posts/1',
       'https://jsonplaceholder.typicode.com/comments/1',
       'https://jsonplaceholder.typicode.com/todos/1'
     ];
@@ -89,23 +89,8 @@ export default function Streaming() {
 
   return (
     <>
-      {iframeError && (
-        <div style={{ padding: '10px', flexDirection: 'column', gap: '20px' }}>
-          <p style={{ fontSize: '20px' }}>
-            Error loading content. Please contact administration.
-          </p>
-          <button
-            ref={buttonRef}
-            onKeyDown={exit}
-            onFocus={() => alert(1)}
-            className="streaming-errorButton"
-          >
-            Back
-          </button>
-        </div>
-      )}
-      {iframeLoading && <Loader />}
-      <iframe
+      {iframeLoading && <Loader error={iframeError} exit={exit} />}
+      {!iframeError && <iframe
         className={`streaming-stream ${iframeError ? 'hidden' : ''}`}
         src={link}
         onLoad={handleIframeLoad}
@@ -115,7 +100,7 @@ export default function Streaming() {
         }}
         ref={iframe}
         autoPlay={true}
-      ></iframe>
+      ></iframe>}
     </>
   );
 }
