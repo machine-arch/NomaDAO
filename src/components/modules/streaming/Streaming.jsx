@@ -6,6 +6,10 @@ import useMoveSound from '../../../hooks/useMoveSound.js';
 import './Streaming.css';
 import Loader from './Loader/Loader.jsx';
 
+const checkStreamUrl = import.meta.env.VITE_CHECK_STREAM;
+const checkStreamUrl2 = import.meta.env.VITE_CHECK_STREAM_2;
+
+
 export default function Streaming() {
   const { link } = useParams();
   const navigate = useNavigate();
@@ -57,9 +61,8 @@ export default function Streaming() {
 
   const fetchUrlsAndWaitForStatus = async () => {
     const urls = [
-      'https://jsonplaceholder.typicode.com/posts/1',
-      'https://jsonplaceholder.typicode.com/comments/1',
-      'https://jsonplaceholder.typicode.com/todos/1'
+      checkStreamUrl,
+      checkStreamUrl2,
     ];
   
     const expectedStatus = 200; 
