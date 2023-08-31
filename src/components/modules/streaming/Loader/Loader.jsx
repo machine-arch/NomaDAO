@@ -31,6 +31,7 @@ useEffect(() => {
           style={{
             color: '#ececec',
             backgroundColor: 'rgba(20, 170, 254, 1)',
+            marginTop: "20px"
           }}
         >
           <img style={{ marginRight: '16px', margin:"10px" }} src={Arrow} alt="Arrow Left" />
