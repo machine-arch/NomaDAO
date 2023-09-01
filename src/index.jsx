@@ -11,18 +11,6 @@ import Error from './components/Error/Error';
 import Booking from './components/modules/booking/Booking';
 import SingleHotel from './components/modules/singleHotel/SingleHotel';
 import HomeContent from './components/modules/homeContent/HomeContent';
-import AuthMarketplace from './components/modules/marketplace/AuthMarketplace/AuthMarketplace.component';
-import MarketplaceHotel from './components/modules/marketplace/MarketplaceHotel/MarketplaceHotel.component';
-import MarketplaceAgency from './components/modules/marketplace/MarketplaceAgency/MarketplaceAgency.component';
-import DashboardHotel from './components/modules/marketplace/MarketplaceHotel/DashboardHotel/DashboardHotel';
-import DashboardAgency from './components/modules/marketplace/MarketplaceAgency/DashboardAgency/DashboardAgency';
-import ActiveBalanceHotel from './components/modules/marketplace/MarketplaceHotel/ActiveBalanceHotel/ActiveBalanceHotel';
-import ActivebalanceAgency from './components/modules/marketplace/MarketplaceAgency/ActiveBalanceAgency/ActiveBalanceAgency';
-import GroupRequestsHotel from './components/modules/marketplace/MarketplaceHotel/GroupRequestsHotel/GroupRequestsHotel';
-import ControlPanelHotel from './components/modules/marketplace/MarketplaceHotel/ControlPanelHotel/ControlPanelHotel';
-import ControlPanelAgency from './components/modules/marketplace/MarketplaceAgency/ControlPanelAgency/ControlPanelAgency';
-import PublishedHotelsAgency from './components/modules/marketplace/MarketplaceAgency/PublishedHotelsAgency/PublishedHotelsAgency';
-import MartketPlaceSettings from './components/modules/marketplace/MarketPlaceSettings/MarketPlaceSettings.component';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -32,10 +20,6 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />, // Home component rendered when the path is '/' as known as index element
         children: [
-          {
-            path: 'Marketplace',
-            element: <AuthMarketplace />, // Marketplace login/register page
-          },
           {
             path: 'BookYourHotel',
             element: <Booking />, // Booking component rendered when the path is '/BookYourHotel', it's custom page, so doesn't share same struture as /:pageName
@@ -65,28 +49,6 @@ const router = createBrowserRouter([
       {
         path: '/hotel/:hotelName',
         element: <SingleHotel />,
-      },
-      {
-        path: '/marketplace/hotel',
-        element: <MarketplaceHotel />,
-        children: [
-          { path: 'Home', element: <DashboardHotel /> },
-          { path: 'ActiveBalance', element: <ActiveBalanceHotel /> },
-          { path: 'GroupRequests', element: <GroupRequestsHotel /> },
-          { path: 'ControlPanel', element: <ControlPanelHotel /> },
-          { path: 'Settings', element: <MartketPlaceSettings /> },
-        ],
-      },
-      {
-        path: '/marketplace/agency',
-        element: <MarketplaceAgency />,
-        children: [
-          { path: 'Home', element: <DashboardAgency /> },
-          { path: 'ActiveBalance', element: <ActivebalanceAgency /> },
-          { path: 'PublishedHotels', element: <PublishedHotelsAgency /> },
-          { path: 'ControlPanel', element: <ControlPanelAgency /> },
-          { path: 'Settings', element: <MartketPlaceSettings /> },
-        ],
       },
     ],
   },
