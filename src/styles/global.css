@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "Inter";
-  src: url("../assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
+  font-family: "Albert Sans";
+  src: url("../assets/fonts/AlbertSans/AlbertSans-VariableFont_wght.ttf");
 }
 
 * {
-  font-family: "Inter";
+  font-family: "Albert Sans";
   box-sizing: border-box;
   padding: 0;
   margin: 0;

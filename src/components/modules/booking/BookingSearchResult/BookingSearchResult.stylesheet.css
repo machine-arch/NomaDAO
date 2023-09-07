@@ -1,7 +1,7 @@
 .booking__result__box {
   display: flex;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
 
   z-index: 20000;
