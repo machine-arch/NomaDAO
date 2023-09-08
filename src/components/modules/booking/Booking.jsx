@@ -15,9 +15,20 @@ const Booking = () => {
       <div className="bottom">
         <div className="bottom_bgOverlay"></div>
         <div className="bottom__results">
-          <BookingSearchResult />
-          <BookingSearchResult />
-          <BookingSearchResult />
+          {BookingData.hotels?.map((oneBooking, index) => {
+            return (
+              <BookingSearchResult
+                id={oneBooking.id}
+                key={index}
+                name={oneBooking.name}
+                price={oneBooking.price}
+                facilities={oneBooking.facilities}
+                mainImage={oneBooking.mainImage}
+                rating={oneBooking.rating}
+                location={oneBooking.location}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

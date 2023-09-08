@@ -1,68 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BookingSearchBarFilterBack.stylesheet.css";
-import Checkbox from "../Checkbox/Checkbox.component";
+import FilterBox from "./FilterBox/FilterBox.component";
 
 const BookingSearchBarFilterBack = () => {
+  const [showFilterBox, setShowFilterBox] = useState(false);
   return (
     <div className="back__filter__btns">
-      <div className="filter__box">
-        <div className="filter__viewMode">
-          <h1 className="filter__title">View Mode</h1>
-          <button className="filter__threed__btn">3D Look</button>
-        </div>
-        <div className="filter__sort">
-          <h1 className="filter__title">Sort</h1>
-          <div>
-            <button className="filter__partners__btn">Partner Hotels</button>
-            <button className="filter__select__btn__default">
-              Low Price First
-            </button>
-            <button className="filter__select__btn__default">
-              Recommended
-            </button>
-            <button className="filter__select__btn__default">
-              High Price First
-            </button>
-            <button className="filter__select__btn__default">
-              High Rating First
-            </button>
-          </div>
-        </div>
-        <div className="filter__perNight">
-          <h1 className="filter__title">Your Budget Per Night</h1>
-          <div className="min__max">
-            <div className="budget__min">
-              <h1 className="filter__title">Min</h1>
-              <input type="text" placeholder="$ 500" />
-            </div>
-            <div className="budget__max">
-              <h1 className="filter__title">Max</h1>
-              <input type="text" placeholder="$ 1400" />
-            </div>
-          </div>
-        </div>
-        <hr className="hr"></hr>
-        <div className="filter__hotelStar">
-          <h1 className="filter__title">Hotel Star</h1>
-          <Checkbox />
-        </div>
-        <div className="filter__reviewScore">
-          <h1 className="filter__title">Review Score</h1>
-          <Checkbox />
-        </div>
-        <hr className="hr"></hr>
-        <div className="filter__propertyType">
-          <h1 className="filter__title">Property Type</h1>
-        </div>
-        <hr className="hr"></hr>
-        <div className="filter__facilities">
-          <h1 className="filter__title">Facilities</h1>
-        </div>
-        <hr className="hr"></hr>
-        <div className="filter__hotelService">
-          <h1 className="filter__title">Hotel Service</h1>
-        </div>
-      </div>
+      <FilterBox
+        showFilterBox={showFilterBox}
+        setShowFilterBox={setShowFilterBox}
+      />
       <button className="back__btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +29,10 @@ const BookingSearchBarFilterBack = () => {
         </svg>
         Back
       </button>
-      <button className="filter__btn">
+      <button
+        onClick={() => setShowFilterBox((prev) => !prev)}
+        className="filter__btn"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"

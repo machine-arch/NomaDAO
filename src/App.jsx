@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import BookingContext from './context/BookingContext';
-import { Outlet, useNavigate } from 'react-router-dom';
-import AsideContext from './context/AsideContext';
-import ProductContext from './context/ProductContext';
+import React, { useEffect, useState } from "react";
+import BookingContext from "./context/BookingContext";
+import { Outlet, useNavigate } from "react-router-dom";
+import AsideContext from "./context/AsideContext";
+import ProductContext from "./context/ProductContext";
 export default function App() {
   // hooks
   const navigate = useNavigate();
@@ -16,9 +16,9 @@ export default function App() {
   const [bookingParams, setBookingParams] = useState({showHotels: false, location: "Tbilisi",checkIn: new Date(),checkOut: new Date(), guests: 2}); //user filled booking data stored
 
   // navigate to home page on first render
-  useEffect(() => {
-    navigate('/Home');
-  }, [navigate]);
+  // useEffect(() => {
+  // navigate("/Home");
+  // }, [navigate]);
 
   return (
     // prettier-ignore

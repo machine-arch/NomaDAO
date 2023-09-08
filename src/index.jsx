@@ -11,6 +11,7 @@ import Error from "./components/Error/Error";
 import Booking from "./components/modules/booking/Booking";
 import SingleHotel from "./components/modules/singleHotel/SingleHotel";
 import HomeContent from "./components/modules/homeContent/HomeContent";
+import BookingDetailed from "./components/modules/booking/BookingDetailed/BookingDetailed.component";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
           {
             path: "BookYourHotel",
             element: <Booking />, // Booking component rendered when the path is '/BookYourHotel', it's custom page, so doesn't share same struture as /:pageName
+          },
+          {
+            path: "BookYourHotel/:id",
+            element: <BookingDetailed />,
           },
           {
             path: "Home",

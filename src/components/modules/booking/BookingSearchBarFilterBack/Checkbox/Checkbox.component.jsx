@@ -1,7 +1,7 @@
 import React from "react";
 import "./Checkbox.stylesheet.css";
 
-const Checkbox = () => {
+const Checkbox = ({ checkBoxData }) => {
   return (
     <div>
       <label class="checkbox__container">

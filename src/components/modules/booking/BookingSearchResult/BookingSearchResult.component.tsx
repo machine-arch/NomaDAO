@@ -1,20 +1,33 @@
 import React from "react";
 import "./BookingSearchResult.stylesheet.css";
+import { useNavigate } from "react-router-dom";
 
-const BookingSearchResult = () => {
+const BookingSearchResult = ({
+  id,
+  location,
+  mainImage,
+  name,
+  rating,
+  price,
+  facilities,
+}) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="booking__result__box">
+    <div
+      onClick={() => {
+        navigate(`/BookYourHotel/${id}`);
+      }}
+      className="booking__result__box"
+    >
       <div className="container">
         <div className="left">
-          <img
-            className="booking__result__img"
-            src="https://nomadao.net/public/uploads/demo/space/space-9.jpg"
-          />
+          <img className="booking__result__img" src={mainImage} />
         </div>
         <div className="right">
           <div className="right__top">
             <div className="right__top__left">
-              <h1 className="hotel__title">The Tower Plaza Hotel Dubai</h1>
+              <h1 className="hotel__title">{name}</h1>
               <div className="right__top__left_bottom">
                 <div className="stars">
                   <svg
@@ -88,7 +101,7 @@ const BookingSearchResult = () => {
                 <h1 className="review__count">214 reviews</h1>
               </div>
               <div className="right__top__right__right">
-                <div className="rating__box">4.4/5</div>
+                <div className="rating__box">{rating}/5</div>
               </div>
             </div>
           </div>
@@ -109,12 +122,13 @@ const BookingSearchResult = () => {
               <h1 className="right__middle__header__title">Facilities:</h1>
             </div>
             <div className="facilities">
-              <span className="facility">Wake-up call</span>
-              <span className="facility">Car hire</span>
-              <span className="facility">Flat TV</span>
-              <span className="facility">Internet - WiFi</span>
-              <span className="facility">Coffee and tea</span>
-              <span className="facility">Laundry and dry cleaning</span>
+              {facilities?.map((oneFacility, index) => {
+                return (
+                  <span key={index} className="facility">
+                    {oneFacility}
+                  </span>
+                );
+              })}
             </div>
           </div>
           <div className="right__bottom">
@@ -131,13 +145,11 @@ const BookingSearchResult = () => {
                   fill="#202020"
                 />
               </svg>
-              <h1 className="location">
-                Location: United Arab Emirates, Dubai
-              </h1>
+              <h1 className="location">Location: {location}</h1>
             </div>
             <div className="right__bottom__right">
               <h1>from</h1>
-              <div className="price__box">$550 / night</div>
+              <div className="price__box">${price} / night</div>
             </div>
           </div>
         </div>
