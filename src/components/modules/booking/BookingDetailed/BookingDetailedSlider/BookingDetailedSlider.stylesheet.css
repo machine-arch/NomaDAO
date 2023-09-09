@@ -1,0 +1,58 @@
+.detailed__slider__bg {
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("/src/assets/images/mock_apartment.jpeg");
+  background-repeat: no-repeat;
+  height: 457px;
+  background-position: center;
+  background-size: cover;
+}
+
+.view__threed__btn {
+  border: none;
+  display: flex;
+  padding: 15px 61px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--Corner, 8px);
+  background: rgba(0, 0, 0, 0.20);
+  backdrop-filter: blur(4px);
+  color: var(--100, #ECECEC);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.detailed__slider {
+  position: absolute;
+  bottom: -20px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.detailed__slider__threed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  height: 79px;
+  width: 182px;
+  padding: 0.25rem;
+  border: none;
+  background: var(--nomadao-products-nomadaonft, linear-gradient(106deg, #994BE3 11.09%, #228699 141.77%));
+}
+
+.detailed__slider__img {
+  padding: 0.25rem;
+  border-radius: 4px;
+  width: 182px;
+  height: 79px;
+}

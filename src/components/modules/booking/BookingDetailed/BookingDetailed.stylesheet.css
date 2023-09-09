@@ -42,6 +42,9 @@
 }
 
 .bgOverlayContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   padding-top: 1.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -57,6 +60,7 @@
 
 .title__rating {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .review__title {
@@ -79,4 +83,10 @@
 
 .rating__box {
   padding: 0.5rem;
+}
+
+.title__rating__left > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
