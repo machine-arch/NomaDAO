@@ -120,8 +120,8 @@ const BookingDetailed = () => {
         <hr className="detailed__hr"></hr>
         <BookingDetailedLocation />
         <hr className="detailed__hr"></hr>
-        <BookingDetailedRooms />
       </div>
+      <BookingDetailedRooms />
     </div>
   );
 };
