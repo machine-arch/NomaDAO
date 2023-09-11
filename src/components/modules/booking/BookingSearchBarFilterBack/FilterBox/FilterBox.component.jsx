@@ -1,5 +1,4 @@
 import React from "react";
-import Checkbox from "../Checkbox/Checkbox.component";
 import "./FilterBox.stylesheet.css";
 
 const FilterBox = ({ showFilterBox, setShowFilterBox }) => {

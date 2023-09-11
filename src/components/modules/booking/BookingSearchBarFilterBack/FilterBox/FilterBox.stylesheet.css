@@ -19,14 +19,14 @@
   display: flex;
   opacity: 1;
   transform: translateX(12%);
-  transition: transform 0.5s ease-in-out;
+  transition: display 0.5s ease-in-out;
 }
 
 .filter__box__hidden {
-  display: flex;
+  display: none;
   opacity: 1;
   transform: translateX(150%);
-  transition: transform 0.5s ease-in-out;
+  transition: display 0.5s ease-in-out;
 }
 
 

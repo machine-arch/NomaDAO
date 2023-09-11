@@ -1,4 +1,4 @@
-.topBg {
+.detailedBg {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -8,6 +8,7 @@
   width: 100%;
   height: 200px;
   background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
   background-position: center;
 }
@@ -89,4 +90,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.detailed__hr {
+  margin: 42px auto;
+  width: 30%;
+  border: 2px solid #0699D2;
 }

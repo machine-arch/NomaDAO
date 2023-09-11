@@ -1,4 +1,5 @@
 .booking__search {
+  z-index: 202020;
   padding: 2rem; 
   width: 100%;
 }

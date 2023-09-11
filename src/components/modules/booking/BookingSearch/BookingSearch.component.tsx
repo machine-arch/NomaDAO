@@ -1,7 +1,7 @@
 import React from "react";
 import "./BookingSearch.stylesheet.css";
 
-const BookingSearch = () => {
+const BookingSearch = ({ filterResults }) => {
   return (
     <div className="booking__search">
       <div className="booking__search__box">
@@ -29,7 +29,10 @@ const BookingSearch = () => {
         <div className="vl"></div>
 
         <div className="search__BtnDiv">
-          <button className="search__Btn searchBox__title">
+          <button
+            onClick={() => filterResults()}
+            className="search__Btn searchBox__title"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

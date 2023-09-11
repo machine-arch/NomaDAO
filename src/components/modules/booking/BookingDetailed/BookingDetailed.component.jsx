@@ -1,11 +1,12 @@
 import React from "react";
 import "./BookingDetailed.stylesheet.css";
 import BookingDetailedSlider from "./BookingDetailedSlider/BookingDetailedSlider.component";
+import BookingDetailedDescription from "./BookingDetailedDescription/BookingDetailedDescription.component";
 
 const BookingDetailed = () => {
   return (
     <div>
-      <div className="topBg">
+      <div className="detailedBg">
         <button className="back__btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -112,6 +113,9 @@ const BookingDetailed = () => {
           </div>
         </div>
         <BookingDetailedSlider />
+        <hr className="detailed__hr"></hr>
+        <BookingDetailedDescription />
+        <hr className="detailed__hr"></hr>
       </div>
     </div>
   );
