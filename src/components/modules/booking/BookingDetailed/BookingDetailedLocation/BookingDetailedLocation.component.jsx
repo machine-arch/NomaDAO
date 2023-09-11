@@ -12,7 +12,7 @@ const BookingDetailedLocation = () => {
     position: "relative",
   };
 
-  console.log(showMap);
+  console.log(import.meta.env.VITE_GOOGLEMAPS_API_KEY);
   return (
     <div>
       <div className="location__top">
@@ -43,8 +43,10 @@ const BookingDetailedLocation = () => {
           loading="lazy"
           allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDM3WLzT4HuEGqv36QrhOn-s7FkJGLTLHA
-    &q=Tbilisi,Georgia"
+          src={`https://www.google.com/maps/embed/v1/place?key=${
+            import.meta.env.VITE_GOOGLEMAPS_API_KEY
+          }
+    &q=Tbilisi,Georgia`}
         ></iframe>
         <button
           onClick={() => setShowMap((prev) => !prev)}

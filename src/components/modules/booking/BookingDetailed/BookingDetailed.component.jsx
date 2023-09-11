@@ -3,6 +3,7 @@ import "./BookingDetailed.stylesheet.css";
 import BookingDetailedSlider from "./BookingDetailedSlider/BookingDetailedSlider.component";
 import BookingDetailedDescription from "./BookingDetailedDescription/BookingDetailedDescription.component";
 import BookingDetailedLocation from "./BookingDetailedLocation/BookingDetailedLocation.component";
+import BookingDetailedRooms from "./BookingDetailedRooms/BookingDetailedRooms.component";
 
 const BookingDetailed = () => {
   return (
@@ -119,6 +120,7 @@ const BookingDetailed = () => {
         <hr className="detailed__hr"></hr>
         <BookingDetailedLocation />
         <hr className="detailed__hr"></hr>
+        <BookingDetailedRooms />
       </div>
     </div>
   );
