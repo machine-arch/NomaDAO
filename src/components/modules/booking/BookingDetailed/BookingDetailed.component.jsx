@@ -2,6 +2,7 @@ import React from "react";
 import "./BookingDetailed.stylesheet.css";
 import BookingDetailedSlider from "./BookingDetailedSlider/BookingDetailedSlider.component";
 import BookingDetailedDescription from "./BookingDetailedDescription/BookingDetailedDescription.component";
+import BookingDetailedLocation from "./BookingDetailedLocation/BookingDetailedLocation.component";
 
 const BookingDetailed = () => {
   return (
@@ -115,6 +116,8 @@ const BookingDetailed = () => {
         <BookingDetailedSlider />
         <hr className="detailed__hr"></hr>
         <BookingDetailedDescription />
+        <hr className="detailed__hr"></hr>
+        <BookingDetailedLocation />
         <hr className="detailed__hr"></hr>
       </div>
     </div>

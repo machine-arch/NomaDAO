@@ -1,0 +1,64 @@
+.location__title {
+  color: #202020;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.blue__box {
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+  background: #0699D2;
+}
+
+.location__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.location__top > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.location__top > span {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.location__bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.location__bottom__btn {
+  z-index: 200000;
+  color: white;
+  padding: 1rem;
+  cursor: pointer;
+  background: none;
+  position: absolute;
+  border-radius: var(--Corner-4, 4px);
+  border: 2px solid #0699D2;
+  color: #0699D2;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.map__disabled {
+  pointer-events: none;
+}
+
+.map__active {
+  pointer-events: all;
+}
