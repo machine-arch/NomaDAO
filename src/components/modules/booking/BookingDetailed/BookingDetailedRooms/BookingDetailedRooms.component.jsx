@@ -29,8 +29,11 @@ const BookingDetailedRooms = () => {
         <hr className="detailed__rooms_hr" />
         <div className="rooms__list">
           <Room />
+          <hr />
           <Room />
+          <hr />
           <Room />
+          <hr />
           <Room />
         </div>
       </div>

@@ -1,0 +1,40 @@
+.container__sign {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  margin-top: 2rem;
+  /* position: absolute; */
+  /* top: 20px; */
+  /* right: 0; */
+  z-index: 999999999;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn__sign {
+  display: flex;
+  border-radius: var(--Corner-4, 4px);
+  border: 1.304px solid var(--100, #ECECEC);
+  padding: 8px 16px;
+  background: none;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--100, #ECECEC);
+  font-family: Albert Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.sign__in__primary {
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
+.sign__in__secondary {
+  width: 100%;
+  justify-content: end;
+}

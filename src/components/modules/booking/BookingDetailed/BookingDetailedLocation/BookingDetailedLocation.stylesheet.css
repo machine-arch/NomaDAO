@@ -47,8 +47,8 @@
   background: none;
   position: absolute;
   border-radius: var(--Corner-4, 4px);
-  border: 2px solid #0699D2;
-  color: #0699D2;
+  border: 2px solid white;
+  background: #0699D2;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;

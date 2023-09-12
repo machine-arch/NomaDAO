@@ -4,6 +4,7 @@ import "./Booking.css";
 import BookingSearch from "./BookingSearch/BookingSearch.component";
 import BookingSearchResult from "./BookingSearchResult/BookingSearchResult.component";
 import BookingSearchBarFilterBack from "./BookingSearchBarFilterBack/BookingSearchBarFilterBack.component";
+import SignIn from "../../SignIn/SignIn.component";
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -20,6 +21,7 @@ const Booking = () => {
   return (
     <div className="booking__mainContainer">
       <div className={`topBg ${showResult == true ? "showResults" : ""}`}>
+        <SignIn type={showResult == true ? "secondary" : "primary"} />
         <BookingSearch filterResults={filterResults} />
         {showResult == true && <BookingSearchBarFilterBack />}
       </div>
