@@ -4,11 +4,17 @@ import BookingDetailedSlider from "./BookingDetailedSlider/BookingDetailedSlider
 import BookingDetailedDescription from "./BookingDetailedDescription/BookingDetailedDescription.component";
 import BookingDetailedLocation from "./BookingDetailedLocation/BookingDetailedLocation.component";
 import BookingDetailedRooms from "./BookingDetailedRooms/BookingDetailedRooms.component";
+import SignIn from "../../../SignIn/SignIn.component";
+import BookingComplete from "./BookingComplete/BookingComplete.component";
+import { useParams } from "react-router-dom";
 
 const BookingDetailed = () => {
+  const params = useParams();
+  const id = params.id;
   return (
     <div>
       <div className="detailedBg">
+        <SignIn type="secondary" />
         <button className="back__btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -122,6 +128,7 @@ const BookingDetailed = () => {
         <hr className="detailed__hr"></hr>
       </div>
       <BookingDetailedRooms />
+      <BookingComplete id={id} />
     </div>
   );
 };

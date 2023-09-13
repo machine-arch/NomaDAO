@@ -12,6 +12,7 @@ import Booking from "./components/modules/booking/Booking";
 import SingleHotel from "./components/modules/singleHotel/SingleHotel";
 import HomeContent from "./components/modules/homeContent/HomeContent";
 import BookingDetailed from "./components/modules/booking/BookingDetailed/BookingDetailed.component";
+import BookingSubmission from "./components/modules/booking/BookingSubmission/BookingSubmission.component";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
           {
             path: ":pagename",
             element: <PageContent />, // PageContent component rendered for dynamic paths, e.g., '/Home', '/Entertainment'
+          },
+          {
+            path: "/submission/:id",
+            element: <BookingSubmission />,
           },
         ],
       },

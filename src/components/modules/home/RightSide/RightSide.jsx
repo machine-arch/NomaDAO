@@ -18,7 +18,8 @@ export default function RightSide() {
         <header
           style={{
             display:
-              location.pathname.includes("/BookYourHotel") == true
+              location.pathname.includes("/BookYourHotel") ||
+              location.pathname.includes("/submission") == true
                 ? "none"
                 : null,
           }}

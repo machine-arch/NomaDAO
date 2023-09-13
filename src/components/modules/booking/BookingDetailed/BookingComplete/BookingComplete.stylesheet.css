@@ -1,0 +1,70 @@
+.booking__complete__container {
+  padding: 2rem;
+  background: white;
+  position: relative;
+}
+
+.booking__complete__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.booking__complete__content hr {
+  border: 1px solid #0699D2;
+}
+
+.booking__complete__information {
+  display: flex;
+  align-items: center;
+}
+
+.booking__complete__information__box {
+  flex: 1;
+}
+
+.booking__complete__information__box h1, .information__detailed {
+  color: #000;
+  font-family: Albert Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+
+
+.information__detailed h1 {
+  width: 13rem;
+}
+
+.information__detailed {
+  display: flex;
+  align-items: center;
+}
+
+.totalprice {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.information__booknow__btn {
+  background: none;
+  display: flex;
+  padding: 1rem 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: var(--Corner-4, 4px);
+  border: 1.304px solid var(--Brand-B, #0699D2);
+  color: var(--Brand-B, var(--Blue, #0699D2));
+  font-family: Albert Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
