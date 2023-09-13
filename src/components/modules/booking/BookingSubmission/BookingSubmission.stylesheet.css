@@ -15,6 +15,11 @@
   background-position: center;
 }
 
+.submission__bottom__container {
+  position: relative;
+  z-index: 99999;
+}
+
 .submission__bottom__bgOverlay {
     position: absolute;
     bottom: 0;
@@ -23,4 +28,25 @@
     opacity: 0.7;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url("../../../../src/assets/images/bgOverlay.jpg"), lightgray 0px -431.906px / 100% 168.918% no-repeat;
     filter: blur(37px);
+}
+
+.submission__back__btn {
+    display: flex;
+    align-items: start;
+    font-size: 20px;
+    font-style: normal;
+    left: 40px;
+    bottom: 40px;
+    align-items: center;
+    font-weight: 300;
+    line-height: normal;
+    color: #202020;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 16px 64px;
+    position: absolute;
+    border-radius: 4px;
+    border: none;
+    background: #ECECEC;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
