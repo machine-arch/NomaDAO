@@ -13,6 +13,7 @@ import SingleHotel from "./components/modules/singleHotel/SingleHotel";
 import HomeContent from "./components/modules/homeContent/HomeContent";
 import BookingDetailed from "./components/modules/booking/BookingDetailed/BookingDetailed.component";
 import BookingSubmission from "./components/modules/booking/BookingSubmission/BookingSubmission.component";
+import Login from "./components/Login/Login.component";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
           {
             path: "/submission/:id",
             element: <BookingSubmission />,
+          },
+          {
+            path: "/sign-in",
+            element: <Login />,
           },
         ],
       },
