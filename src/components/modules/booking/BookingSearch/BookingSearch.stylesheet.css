@@ -1,0 +1,74 @@
+.booking__search {
+  z-index: 202020;
+  padding: 2rem; 
+  width: 100%;
+}
+
+.booking__search__box {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  align-items: center;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 8px;
+  background: #FFFFFF;
+}
+
+.searchBox__title {
+  font-size: 20px;
+  color: #0699D2;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.search__Btn {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1.304px solid #0699D2;
+}
+
+.searchBox__selectable { 
+  border: none;
+  padding: 0.2rem;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  color: #3F3F3F ;
+}
+
+
+
+.search__location, .search__date, .search__persons {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+  gap: 4px;
+}
+
+.search__BtnDiv {
+  padding: 1rem;
+  flex: 1;
+}
+
+.search__Btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.vl{
+  border-left: 1.3px solid #B1B1B1;
+  height: 26px;
+}
+
+
+
+

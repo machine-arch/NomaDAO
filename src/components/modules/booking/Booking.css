@@ -1,141 +1,51 @@
-.booking-wrapper {
-  width: 75vw;
-  height: 100vh;
-  max-height: 1080px;
-  max-width: calc(1920px * 3 / 4);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-image: url(https://nomadao.net/public/uploads/0000/1/2023/04/05/form-bg.jpg);
+.topBg {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  z-index: 99999;
+  padding-left: 2rem;
+  justify-content: center;
+  background-image: url("https://nomadao.net/public/uploads/0000/1/2023/04/05/form-bg.jpg");
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
-  background-size: 100vw 100vh;
-  background-position: right;
+  background-size: cover;
+  position: relative;
+  background-position: center;
 }
 
-@media (max-width: 1921px) {
-  .booking-wrapper {
-    left: 25vw;
-  }
+.showResults {
+  height: 300px;
 }
 
-@media (min-width: 1921px) {
-  .booking-wrapper {
-    left: 50%;
-    transform: translateY(-50%) translateX(-485px);
-  }
-}
 
-.booking-title {
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 58px;
-  color: #ececec;
-  transition: all 0.5s;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.booking-searchWrapper {
-
-  width: 90%;
-  height: 100px;
-  background: #ececec;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-left: 10px;
-  padding-right: 10px;
+.booking__mainContainer {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  transition: all 0.5s;
+  height: 100%;
+  flex-direction: column;
+  /* overflow-y: scroll; */
 }
 
-.booking-inputText {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  color: #01739f;
+.bottom {
+  padding-top: 1rem;
+  padding-bottom: 8rem;
 }
 
-.booking-input {
-  background: transparent;
-  border: none;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 16px;
-  color: #9e9e9e;
-}
 
-.booking-input:focus {
-  outline: none;
-}
-
-.booking-hotelsWrapper {
-  width: 70%;
-  height: 70%;
-  overflow: auto;
-  background-color: white;
+.bottom_bgOverlay {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: all 0.5s;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.7;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url("../../../../src/assets/images/bgOverlay.jpg"), lightgray 0px -431.906px / 100% 168.918% no-repeat;
+  filter: blur(37px);
+}
+
+.bottom__results {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px;
+  gap: 1rem;
+  position: relative;
 }
 
-.booking-input-box {
-  height: 40px;
-  padding-right: 32px;
-  border-right: 2px solid #b1b1b1;
-  display: flex;
-  flex-direction: column;
-}
-
-.booking-input-box:last-of-type {
-  border-right: none;
-}
-
-.booking-input-box.nth-child {
-  background-color: #314cd450;
-  padding: 10px;
-  padding-inline: 32px;
-  border-right: none;
-  border-radius: 10px;
-  height: 80px;
-  justify-content: space-around;
-}
-
-.booking-search-btn {
-  width: 160px;
-  height: 45px;
-  border: 2px solid #314bd4;
-  border-radius: 10px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: #314bd4;
-}
-
-.booking-search-btn.nth-child {
-  background-color: #314bd4;
-  color: white;
-}

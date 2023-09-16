@@ -1,20 +1,30 @@
-import React, { useContext } from 'react';
-import SearchIcon from '../../../../assets/images/search.png';
-import MicrophoneIcon from '../../../../assets/images/microphone.png';
-import { Outlet } from 'react-router-dom';
-import AsideContext from '../../../../context/AsideContext.js';
-import './RightSide.css';
+import React, { useContext } from "react";
+import SearchIcon from "../../../../assets/images/search.png";
+import MicrophoneIcon from "../../../../assets/images/microphone.png";
+import { Outlet, useLocation } from "react-router-dom";
+import AsideContext from "../../../../context/AsideContext.js";
+import "./RightSide.css";
 
 export default function RightSide() {
+  const location = useLocation();
   const asideContext = useContext(AsideContext);
   const { pages, activePage } = asideContext;
-  const isBooking = pages[activePage] === 'Book Your Hotel';
-  const isMarketplace = pages[activePage] === 'Marketplace';
+  const isBooking = pages[activePage] === "Book Your Hotel";
+  const isMarketplace = pages[activePage] === "Marketplace";
 
   return (
     <div className="RightSide-right">
       {!isMarketplace && (
-        <header className="RightSide-header">
+        <header
+          style={{
+            display:
+              location.pathname.includes("/BookYourHotel") ||
+              location.pathname.includes("/submission") == true
+                ? "none"
+                : null,
+          }}
+          className="RightSide-header"
+        >
           {!isBooking && (
             <div className="RightSide-search-box">
               <input
@@ -28,13 +38,6 @@ export default function RightSide() {
               </div>
             </div>
           )}
-          <div
-            className="RightSide-buttons-box"
-            style={{ marginLeft: isBooking && 'auto' }}
-          >
-            <button className="RightSide-button">Login</button>
-            <button className="RightSide-button">Sign Up</button>
-          </div>
         </header>
       )}
       <Outlet />

@@ -1,0 +1,168 @@
+.login__container {
+  display: flex;
+  margin: 0 auto;
+  width: 447px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login__title {
+  color: var(--800, #3F3F3F);
+  text-align: center;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 44px; /* 137.5% */
+}
+
+.login__subtitle {
+  color: var(--800, #3F3F3F);
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 29.163px; /* 162.016% */
+}
+
+.login__inputs {
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__inputs > input {
+  flex: 1;
+  padding: 1.5rem;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--400, #B1B1B1);
+  background: var(--FFF, #FFF);
+}
+
+.login__remember {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.login__remember > div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.text__remember {
+  color: var(--800, #3F3F3F);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+  letter-spacing: 0.3px;
+}
+
+.text__recover {
+  color: #D93F21;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 14.5px; /* 103.571% */
+}
+
+.login__btn > button {
+  border: none;
+  display: flex;
+  width: 442px;
+  height: 64px;
+  padding: 8px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  color: var(--800, #3F3F3F);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14.5px; /* 90.625% */
+}
+
+.text__signup {
+  color: var(--800, #3F3F3F);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 14.5px; /* 103.571% */
+}
+
+.text__signup__strong {
+  color: var(--800, #3F3F3F);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 14.5px;
+}
+
+.div__hr {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.div__hr hr {
+  border: 1px solid #000;
+  width: 151px;
+}
+
+.div__hr h1 {
+  color: var(--nomadao-project-gradient-900, var(--900, #202020));
+  font-family: Albert Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 14.5px; /* 60.417% */
+}
+
+.login__providers {
+  display: flex;
+  padding-top: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding-left: 12rem;
+  padding-right: 12rem;
+  gap: 1rem;
+}
+
+.login__providers div {
+  display: flex;
+  width: 251px;
+  height: 47px;
+  padding: var(--Corner, 8px) 24px;
+  align-items: center;
+  gap: var(--Corner, 8px);
+  border-radius: 10px;
+  border: 1px solid var(--400, #B1B1B1);
+  background: var(--FFF, #FFF);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.text__login__provider {
+  color: #000;
+  font-family: Albert Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14.5px; /* 90.625% */
+}

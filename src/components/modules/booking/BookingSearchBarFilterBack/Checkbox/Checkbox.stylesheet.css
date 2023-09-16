@@ -1,0 +1,15 @@
+.checkbox__container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+}
+
+.checkbox__horizontal {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
