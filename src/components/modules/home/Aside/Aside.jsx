@@ -18,7 +18,6 @@ export default function Aside() {
   const removeSpaces = useRemoveSpaces;
   // adding listeners
   useConditionalHandler(asideEvents, asideActive);
-  // event handlers
   function asideEvents(event) {
     switch (event.keyCode) {
       // Arrow Down
@@ -39,14 +38,12 @@ export default function Aside() {
       // Right
       case 39:
         openPage();
-        console.log('gadadis');
         moveSound();
         break;
       default:
         break;
     }
   }
-  // movement functions
   function openPage() {
     setAsideActive(false);
   }
@@ -60,6 +57,7 @@ export default function Aside() {
       navigate(`/${removeSpaces(pages[activePage - 1])}`);
     }
   }
+
   function nextPage() {
     if (activePage === pages.length - 1) {
       setActivePage(0);
@@ -82,7 +80,7 @@ export default function Aside() {
                 name={page}
                 active={index === activePage ? 'true' : 'false'}
                 // prettier-ignore
-                saved={Boolean((index === activePage) && !asideActive) ? "true" : "false"} // when user leaves aside navigation, page will be saved in UI
+                saved={Boolean((index === activePage) && !asideActive) ? "true" : "false"}
               />
             );
           })}

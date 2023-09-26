@@ -1,6 +1,6 @@
-import React from "react";
-import "./BookingSearchResult.stylesheet.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './BookingSearchResult.stylesheet.css';
+import { useNavigate } from 'react-router-dom';
 
 const BookingSearchResult = ({
   id,
@@ -10,15 +10,28 @@ const BookingSearchResult = ({
   rating,
   price,
   facilities,
+  index,
+  config,
 }) => {
   const navigate = useNavigate();
 
   return (
     <div
-      onClick={() => {
-        navigate(`/BookYourHotel/${id}`);
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          navigate(`/BookYourHotel/${id}`);
+        }
       }}
-      className="booking__result__box"
+      className={`${config?.components?.booking__result__box?.className}
+      ${
+        config?.components?.booking__result__box?.isActive &&
+        index === config?.factory?.index
+          ? 'booking-active-element'
+          : ''
+      }
+      `}
+      id={`${config?.components?.booking__result__box?.className}-${index}`}
+      tabIndex={index}
     >
       <div className="container">
         <div className="left">

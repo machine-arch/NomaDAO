@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
-import SearchIcon from "../../../../assets/images/search.png";
-import MicrophoneIcon from "../../../../assets/images/microphone.png";
-import { Outlet, useLocation } from "react-router-dom";
-import AsideContext from "../../../../context/AsideContext.js";
-import "./RightSide.css";
+import React, { useContext } from 'react';
+import SearchIcon from '../../../../assets/images/search.png';
+import MicrophoneIcon from '../../../../assets/images/microphone.png';
+import { Outlet, useLocation } from 'react-router-dom';
+import AsideContext from '../../../../context/AsideContext.js';
+import './RightSide.css';
 
 export default function RightSide() {
   const location = useLocation();
   const asideContext = useContext(AsideContext);
   const { pages, activePage } = asideContext;
-  const isBooking = pages[activePage] === "Book Your Hotel";
-  const isMarketplace = pages[activePage] === "Marketplace";
+  const isBooking = pages[activePage] === 'Book Your Hotel';
+  const isMarketplace = pages[activePage] === 'Marketplace';
 
   return (
     <div className="RightSide-right">
@@ -18,9 +18,9 @@ export default function RightSide() {
         <header
           style={{
             display:
-              location.pathname.includes("/BookYourHotel") ||
-              location.pathname.includes("/submission") == true
-                ? "none"
+              location.pathname.includes('/BookYourHotel') ||
+              location.pathname.includes('/submission') == true
+                ? 'none'
                 : null,
           }}
           className="RightSide-header"

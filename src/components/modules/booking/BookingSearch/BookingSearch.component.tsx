@@ -1,28 +1,50 @@
-import React from "react";
-import "./BookingSearch.stylesheet.css";
+import React, { useEffect } from 'react';
+import './BookingSearch.stylesheet.css';
 
-const BookingSearch = ({ filterResults }) => {
+const BookingSearch = ({ filterResults, config }) => {
   return (
-    <div className="booking__search">
+    <div className="booking__search" id={config?.id}>
       <div className="booking__search__box">
-        <div className="search__location">
+        <div
+          className={`${'search__location'} ${
+            config?.components?.search__location?.isActive
+              ? `${config?.components?.search__location?.activeClass}`
+              : ''
+          }`}
+          id={`search__${config?.components?.search__location?.id}`}
+        >
           <h1 className="searchBox__title">Location</h1>
           <input
-            className="searchBox__selectable"
+            className="searchBox__selectable navigable"
             placeholder="Where are you going?"
+            id={`nav_index_1`}
           />
         </div>
         <div className="vl"></div>
 
-        <div className="search__date">
+        <div
+          className={`${'search__date'} ${
+            config?.components?.search__date?.isActive
+              ? `${config?.components?.search__date?.activeClass}`
+              : ''
+          }`}
+          id={`search__${config?.components?.search__date?.id}`}
+        >
           <h1 className="searchBox__title">Check in - check out</h1>
-          <h5 className="searchBox__selectable">Fri 16 Jun - Fri 14 Jul</h5>
+          <input type="date" className="searchBox__selectable navigable" />{' '}
         </div>
         <div className="vl"></div>
 
-        <div className="search__persons">
+        <div
+          className={`${'search__persons'} ${
+            config?.components?.search__persons?.isActive
+              ? `${config?.components?.search__persons?.activeClass}`
+              : ''
+          }`}
+          id={`search__${config?.components?.search__persons?.id}`}
+        >
           <h1 className="searchBox__title">Guests</h1>
-          <h5 className="searchBox__selectable">
+          <h5 className="searchBox__selectable navigable">
             2 adult - 1 children - 1 room
           </h5>
         </div>
@@ -30,8 +52,13 @@ const BookingSearch = ({ filterResults }) => {
 
         <div className="search__BtnDiv">
           <button
-            onClick={() => filterResults()}
-            className="search__Btn searchBox__title"
+            onKeyDown={(e) => filterResults(e)}
+            className={`${'search__Btn'} ${
+              config?.components?.search__Btn?.isActive
+                ? `${config?.components?.search__Btn?.activeClass}`
+                : ''
+            }`}
+            id={`search__${config?.components?.search__Btn?.id}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

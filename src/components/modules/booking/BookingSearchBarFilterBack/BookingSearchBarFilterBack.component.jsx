@@ -1,16 +1,29 @@
-import React, { useState } from "react";
-import "./BookingSearchBarFilterBack.stylesheet.css";
-import FilterBox from "./FilterBox/FilterBox.component";
+import React, { useState } from 'react';
+import './BookingSearchBarFilterBack.stylesheet.css';
+import FilterBox from './FilterBox/FilterBox.component';
 
-const BookingSearchBarFilterBack = () => {
-  const [showFilterBox, setShowFilterBox] = useState(false);
+const BookingSearchBarFilterBack = ({
+  config,
+  showFilterBox,
+  setShowFilterBox,
+  onKeyDown,
+}) => {
+  const filterBox = config?.filter_box?.home;
   return (
     <div className="back__filter__btns">
       <FilterBox
         showFilterBox={showFilterBox}
         setShowFilterBox={setShowFilterBox}
+        className="filter__box"
+        config={filterBox}
       />
-      <button className="back__btn">
+      <button
+        className={`${config?.filter?.components?.back__btn?.className} ${
+          config?.filter?.components?.back__btn?.isActive
+            ? `${config?.filter?.components?.back__btn?.activeClass}`
+            : ''
+        }`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -31,7 +44,11 @@ const BookingSearchBarFilterBack = () => {
       </button>
       <button
         onClick={() => setShowFilterBox((prev) => !prev)}
-        className="filter__btn"
+        className={`${config?.filter?.components?.filter__btn?.className} ${
+          config?.filter?.components?.filter__btn?.isActive
+            ? `${config?.filter?.components?.filter__btn?.activeClass}`
+            : ''
+        }`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
