@@ -50,5 +50,7 @@
 }
 
 .booking-active-element{
-  background-color: blueviolet !important;
+  background: var(--Blue, #0699D2)!important;
+  box-shadow: 0px 0px 7px 0px rgba(255, 255, 255, 0.25)!important;
+  color: white !important;
 }

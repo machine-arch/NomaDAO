@@ -26,3 +26,16 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.booking-filter-active-element {
+  background: #0699D2!important;
+  color: #FFFFFF!important;
+}
+
+.booking-filter-active-element > svg {
+  fill: white;
+}
+
+.booking-filter-active-element:focus{
+  outline: none;
+}
+

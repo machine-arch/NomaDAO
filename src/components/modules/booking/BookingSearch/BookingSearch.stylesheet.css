@@ -17,6 +17,7 @@
 }
 
 .searchBox__title {
+  white-space: nowrap;
   font-size: 20px;
   color: #0699D2;
   font-style: normal;
@@ -39,6 +40,10 @@
   font-style: normal;
   font-weight: 600;
   color: #3F3F3F ;
+}
+
+.searchBox__selectable::placeholder {
+  color: #3F3F3F!important;
 }
 
 
@@ -64,10 +69,52 @@
   gap: 1rem;
 }
 
+.search__Btn > svg {
+  fill: #0699D2;
+}
+
 .vl{
   border-left: 1.3px solid #B1B1B1;
   height: 26px;
 }
+
+.booking-search-active-element {
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+  color: white!important;
+}
+
+.booking-search-active-element input {
+  color: white!important;
+}
+
+.booking-search-active-element:focus {
+  outline: none;
+}
+
+.booking-search-active-element > h1, .booking-search-active-element > h5 {
+  color: white!important;
+}
+
+.booking-search-active-element > input {
+  background: none!important;
+}
+
+.booking-search-active-element > input::placeholder {
+  color: white!important;
+}
+
+.booking-search-active-element > input::webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.booking-search-active-element svg {
+  fill: white!important;
+}
+
+
+
+
 
 
 

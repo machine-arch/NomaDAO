@@ -1,6 +1,6 @@
-import React from 'react';
-import './BookingSearchResult.stylesheet.css';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "./BookingSearchResult.stylesheet.css";
+import { useNavigate } from "react-router-dom";
 
 const BookingSearchResult = ({
   id,
@@ -18,7 +18,7 @@ const BookingSearchResult = ({
   return (
     <div
       onKeyDown={(e) => {
-        if (e.key === 'Enter') {
+        if (e.key === "Enter") {
           navigate(`/BookYourHotel/${id}`);
         }
       }}
@@ -26,8 +26,8 @@ const BookingSearchResult = ({
       ${
         config?.components?.booking__result__box?.isActive &&
         index === config?.factory?.index
-          ? 'booking-active-element'
-          : ''
+          ? "booking-active-element"
+          : ""
       }
       `}
       id={`${config?.components?.booking__result__box?.className}-${index}`}
