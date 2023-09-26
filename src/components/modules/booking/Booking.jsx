@@ -19,8 +19,7 @@ const Booking = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const [canNavigate, setCanNavigate] = useState(false);
   const activeHomeComponent = useRef(null);
-  const [activeComponentState, setActiveComponentState] = useState(null);
-  const activeComponent = useRef(activeComponentState);
+  const activeComponent = useRef(null);
   const [showFilterBox, setShowFilterBox] = useState(false);
 
   function startup() {
@@ -82,7 +81,6 @@ const Booking = () => {
     home,
     components,
     homeKeys,
-    setActiveComponentState,
   ) => {
     switch (e.key) {
       case 'ArrowRight':
@@ -113,7 +111,6 @@ const Booking = () => {
           dispatch,
           configuration,
           activeComponent,
-          setActiveComponentState,
         );
         break;
       case 'ArrowUp':
@@ -179,7 +176,6 @@ const Booking = () => {
       home,
       components,
       homeKeys,
-      setActiveComponentState,
     );
   };
 
