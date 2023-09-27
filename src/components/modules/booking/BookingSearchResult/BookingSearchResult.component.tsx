@@ -22,7 +22,13 @@ const BookingSearchResult = ({
           navigate(`/BookYourHotel/${id}`);
         }
       }}
-      className={`${config?.components?.booking__result__box?.className}
+      id={`${config?.components?.booking__result__box?.className}-${index}`}
+      tabIndex={index}
+    >
+      <div
+        className={`container ${
+          config?.components?.booking__result__box?.className
+        }
       ${
         config?.components?.booking__result__box?.isActive &&
         index === config?.factory?.index
@@ -30,10 +36,7 @@ const BookingSearchResult = ({
           : ""
       }
       `}
-      id={`${config?.components?.booking__result__box?.className}-${index}`}
-      tabIndex={index}
-    >
-      <div className="container">
+      >
         <div className="left">
           <img className="booking__result__img" src={mainImage} />
         </div>
