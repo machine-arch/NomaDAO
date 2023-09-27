@@ -32,7 +32,7 @@ const BookingSearchResult = ({
       ${
         config?.components?.booking__result__box?.isActive &&
         index === config?.factory?.index
-          ? "booking-active-element"
+          ? "booking-result-active-element"
           : ""
       }
       `}

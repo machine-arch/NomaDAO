@@ -88,7 +88,7 @@ const configuration = {
             id: "1",
             isActive: false,
             className: "booking__result__box",
-            activeClass: "booking-active-element",
+            activeClass: "booking-results-active-element",
           },
         },
       },
