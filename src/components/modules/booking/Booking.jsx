@@ -9,6 +9,7 @@ import AsideContext from "../../../context/AsideContext.js";
 import { GlobalContext } from "../../../context/global.context.jsx";
 import BookingUtil from "../../../utils/navigation.util";
 import configuration from "../../../navigateConfig.js";
+import { ErrorBoundary } from "react-error-boundary";
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -192,6 +193,14 @@ const Booking = () => {
   };
 
   return (
+    // <ErrorBoundary
+    //   FallbackComponent={({ error, resetErrorBoundary }) => (
+    //     <div>
+    //       <h2>An error occurred: {error.message}</h2>
+    //       <button onClick={resetErrorBoundary}>Retry</button>
+    //     </div>
+    //   )}
+    // >
     <div className="booking__mainContainer">
       <div className={`topBg ${showResult == true ? "showResults" : ""}`}>
         <SignIn
@@ -234,6 +243,7 @@ const Booking = () => {
         </div>
       )}
     </div>
+    // </ErrorBoundary>
   );
 };
 
