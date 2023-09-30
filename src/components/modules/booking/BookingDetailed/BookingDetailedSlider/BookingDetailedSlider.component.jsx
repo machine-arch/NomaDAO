@@ -18,18 +18,6 @@ const BookingDetailedSlider = () => {
       id: 3,
       src: "/src/assets/images/mock_apartment_slider3.jpeg",
     },
-    {
-      id: 4,
-      src: "/src/assets/images/mock_apartment_slider1.jpeg",
-    },
-    {
-      id: 5,
-      src: "/src/assets/images/mock_apartment_slider2.jpeg",
-    },
-    {
-      id: 6,
-      src: "/src/assets/images/mock_apartment_slider3.jpeg",
-    },
   ];
 
   const [mainBgIndex, setMainBgIndex] = useState(0);
@@ -41,11 +29,6 @@ const BookingDetailedSlider = () => {
       setMainBgIndex(mainBgIndex + 1);
     }
   };
-
-  console.log({
-    mainBgIndex: mainBgIndex,
-    length: SLIDER_IMGS.length,
-  });
 
   return (
     <div className="detailed__slider__bg">
@@ -59,24 +42,15 @@ const BookingDetailedSlider = () => {
         <div className="detailed__slider__item">
           <BookingDetailedSlider3D />
         </div>
-        <div className="detailed__slider__item">
-          <img
-            src="/src/assets/images/mock_apartment_slider1.jpeg"
-            className="detailed__slider__img"
-          />
-        </div>
-        <div className="detailed__slider__item">
-          <img
-            src="/src/assets/images/mock_apartment_slider2.jpeg"
-            className="detailed__slider__img"
-          />
-        </div>
-        <div className="detailed__slider__item">
-          <img
-            src="/src/assets/images/mock_apartment_slider3.jpeg"
-            className="detailed__slider__img"
-          />
-        </div>
+        {SLIDER_IMGS.map((img, i) => {
+          if (i !== mainBgIndex) {
+            return (
+              <div key={i} className="detailed__slider__item">
+                <img src={img.src} className="detailed__slider__img" />
+              </div>
+            );
+          }
+        })}
         <BookingDetailedSliderNextArrow onClick={() => chooseNewMainBg()} />
       </div>
     </div>
