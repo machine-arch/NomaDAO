@@ -1,15 +1,15 @@
-import React from 'react';
-import './BookingDetailedLocation.stylesheet.css';
-import { useState } from 'react';
+import React from "react";
+import "./BookingDetailedLocation.stylesheet.css";
+import { useState } from "react";
 
 const BookingDetailedLocation = () => {
   const [showMap, setShowMap] = useState(false);
   const mapStyle = {
-    width: '100%',
-    height: '450px',
-    border: '0',
-    borderRadius: '16px',
-    position: 'relative',
+    width: "100%",
+    height: "450px",
+    border: "0",
+    borderRadius: "16px",
+    position: "relative",
   };
 
   return (
@@ -40,8 +40,8 @@ const BookingDetailedLocation = () => {
           className="location__bottom__map"
           style={mapStyle}
           loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
           src={`https://www.google.com/maps/embed/v1/place?key=${
             import.meta.env.VITE_GOOGLEMAPS_API_KEY
           }

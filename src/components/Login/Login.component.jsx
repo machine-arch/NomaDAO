@@ -98,7 +98,7 @@ const Login = () => {
             viewBox="0 0 26 25"
             fill="none"
           >
-            <g clip-path="url(#clip0_786_2512)">
+            <g clipPath="url(#clip0_786_2512)">
               <path
                 d="M25.0091 0.5L14.0244 8.6279L16.0671 3.8379L25.0091 0.5Z"
                 fill="#E17726"

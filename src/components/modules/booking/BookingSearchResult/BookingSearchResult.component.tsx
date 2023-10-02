@@ -1,6 +1,6 @@
-import React from 'react';
-import './BookingSearchResult.stylesheet.css';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "./BookingSearchResult.stylesheet.css";
+import { useNavigate } from "react-router-dom";
 
 const BookingSearchResult = ({
   id,
@@ -18,22 +18,25 @@ const BookingSearchResult = ({
   return (
     <div
       onKeyDown={(e) => {
-        if (e.key === 'Enter') {
+        if (e.key === "Enter") {
           navigate(`/BookYourHotel/${id}`);
         }
       }}
-      className={`${config?.components?.booking__result__box?.className}
-      ${
-        config?.components?.booking__result__box?.isActive &&
-        index === config?.factory?.index
-          ? 'booking-active-element'
-          : ''
-      }
-      `}
       id={`${config?.components?.booking__result__box?.className}-${index}`}
       tabIndex={index}
     >
-      <div className="container">
+      <div
+        className={`container ${
+          config?.components?.booking__result__box?.className
+        }
+      ${
+        config?.components?.booking__result__box?.isActive &&
+        index === config?.factory?.index
+          ? "booking-result-active-element"
+          : ""
+      }
+      `}
+      >
         <div className="left">
           <img className="booking__result__img" src={mainImage} />
         </div>

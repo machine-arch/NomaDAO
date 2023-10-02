@@ -5,7 +5,7 @@ export default class BookingUtil {
     components,
     home,
     dispatch,
-    configuration,
+    configuration
   ) {
     const activeComp = activeCompRef.current;
     const nextComponents = home[activeHomeComponent.current]?.components;
@@ -17,7 +17,7 @@ export default class BookingUtil {
 
     activeCompRef.current = nextElement;
 
-    if (activeComp && activeComp != '') {
+    if (activeComp && activeComp != "") {
       components[activeComp].isActive = false;
       document.querySelector(`.${activeComp}`).blur();
     }
@@ -26,7 +26,7 @@ export default class BookingUtil {
     document.querySelector(`.${nextElement}`).focus();
     const newConfig = JSON.parse(JSON.stringify(configuration));
     dispatch({
-      type: 'SET_CONFIG',
+      type: "SET_CONFIG",
       payload: newConfig,
     });
   }
@@ -39,7 +39,7 @@ export default class BookingUtil {
         (componentKeys.indexOf(activeComp) - 1 + componentKeys.length) %
           componentKeys.length
       ];
-    if (activeComp && activeComp != '') {
+    if (activeComp && activeComp != "") {
       components[activeComp].isActive = false;
       document.querySelector(`.${activeComp}`).blur();
     }
@@ -47,7 +47,7 @@ export default class BookingUtil {
     components[prevEl].isActive = true;
     document.querySelector(`.${prevEl}`).focus();
     dispatch({
-      type: 'SET_CONFIG',
+      type: "SET_CONFIG",
       payload: configuration,
     });
     activeCompRef.current = prevEl;
@@ -61,7 +61,7 @@ export default class BookingUtil {
     home,
     dispatch,
     configuration,
-    activeCompRef,
+    activeCompRef
   ) {
     let activeComp = activeCompRef.current;
     let componentKeys = Object.keys(components);
@@ -76,26 +76,26 @@ export default class BookingUtil {
       return;
     }
 
-    if (home[homeKeys[currentHomeIndex]]?.type == 'collection') {
+    if (home[homeKeys[currentHomeIndex]]?.type == "collection") {
       let index = home[homeKeys[currentHomeIndex]]?.factory?.index;
       const i = home[homeKeys[currentHomeIndex]]?.factory?.sequence(index);
       home[homeKeys[currentHomeIndex]].factory.index = i;
       dispatch({
-        type: 'SET_CONFIG',
+        type: "SET_CONFIG",
         payload: configuration,
       });
 
       const activeComponentDOM = document.getElementById(
         home[homeKeys[currentHomeIndex]]?.components[activeComp]?.className +
-          '-' +
-          index,
+          "-" +
+          index
       );
 
       activeComponentDOM.focus();
 
       activeComponentDOM.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
+        behavior: "smooth",
+        block: "start",
       });
 
       return false;
@@ -104,27 +104,27 @@ export default class BookingUtil {
     if (
       nextActiveComponentIndex !== componentKeys.length &&
       nextActiveComponentIndex !== -1 &&
-      home[homeKeys[currentHomeIndex]]?.arrangement == 'column'
+      home[homeKeys[currentHomeIndex]]?.arrangement == "column"
     ) {
       components[componentKeys[activeCompIndex]].isActive = false;
       document.querySelector(`.${componentKeys[activeCompIndex]}`).blur();
       components[componentKeys[activeCompIndex + 1]].isActive = true;
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: 'SET_CONFIG',
+        type: "SET_CONFIG",
         payload: newConfig,
       });
       activeCompRef.current = componentKeys[activeCompIndex + 1];
 
       const activeComponentDOM = document.querySelector(
-        `.${componentKeys[activeCompIndex + 1]}`,
+        `.${componentKeys[activeCompIndex + 1]}`
       );
 
       activeComponentDOM.focus();
 
       activeComponentDOM.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+        behavior: "smooth",
+        block: "center",
       });
 
       return;
@@ -143,18 +143,18 @@ export default class BookingUtil {
     prevComponents[prevComponentKeys[0]].isActive = true;
     const newConfig = JSON.parse(JSON.stringify(configuration));
     dispatch({
-      type: 'SET_CONFIG',
+      type: "SET_CONFIG",
       payload: newConfig,
     });
     activeCompRef.current = prevComponentKeys[0];
     const activeComponentDOM = document.querySelector(
-      `.${prevComponentKeys[0]}`,
+      `.${prevComponentKeys[0]}`
     );
     activeComponentDOM.focus();
 
     activeComponentDOM.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
+      behavior: "smooth",
+      block: "center",
     });
   }
 
@@ -166,35 +166,35 @@ export default class BookingUtil {
     components,
     dispatch,
     configuration,
-    activeCompRef,
+    activeCompRef
   ) {
     let activeComp = activeCompRef.current;
     let componentKeys = Object.keys(components);
     let activeCompIndex = componentKeys.indexOf(activeComp);
 
     if (
-      home[homeKeys[currentHomeIndex]]?.type == 'collection' &&
+      home[homeKeys[currentHomeIndex]]?.type == "collection" &&
       home[homeKeys[currentHomeIndex]]?.factory?.index > 0
     ) {
       let index = home[homeKeys[currentHomeIndex]]?.factory?.index;
       const i = home[homeKeys[currentHomeIndex]]?.factory?.decrement(index);
       home[homeKeys[currentHomeIndex]].factory.index = i;
       dispatch({
-        type: 'SET_CONFIG',
+        type: "SET_CONFIG",
         payload: configuration,
       });
 
       const activeComponentDOM = document.getElementById(
         home[homeKeys[currentHomeIndex]]?.components[activeComp]?.className +
-          '-' +
-          index,
+          "-" +
+          index
       );
 
       activeComponentDOM.focus();
 
       activeComponentDOM.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
+        behavior: "smooth",
+        block: "end",
       });
 
       return false;
@@ -202,27 +202,27 @@ export default class BookingUtil {
 
     if (
       activeCompIndex !== 0 &&
-      home[homeKeys[currentHomeIndex]]?.arrangement == 'column'
+      home[homeKeys[currentHomeIndex]]?.arrangement == "column"
     ) {
       components[componentKeys[activeCompIndex]].isActive = false;
       components[componentKeys[activeCompIndex - 1]].isActive = true;
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: 'SET_CONFIG',
+        type: "SET_CONFIG",
         payload: newConfig,
       });
 
       activeCompRef.current = componentKeys[activeCompIndex - 1];
 
       const activeComponentDOM = document.querySelector(
-        `.${componentKeys[activeCompIndex - 1]}`,
+        `.${componentKeys[activeCompIndex - 1]}`
       );
 
       activeComponentDOM.focus();
 
       activeComponentDOM.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+        behavior: "smooth",
+        block: "center",
       });
 
       return;
@@ -242,20 +242,20 @@ export default class BookingUtil {
       nextComponentKeys[nextComponentKeys.length - 1]
     ].isActive = true;
     dispatch({
-      type: 'SET_CONFIG',
+      type: "SET_CONFIG",
       payload: configuration,
     });
     activeCompRef.current = nextComponentKeys[nextComponentKeys.length - 1];
 
     const activeComponentDOM = document.querySelector(
-      `.${nextComponentKeys[nextComponentKeys.length - 1]}`,
+      `.${nextComponentKeys[nextComponentKeys.length - 1]}`
     );
 
     activeComponentDOM.focus();
 
     activeComponentDOM.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
+      behavior: "smooth",
+      block: "center",
     });
   }
 }

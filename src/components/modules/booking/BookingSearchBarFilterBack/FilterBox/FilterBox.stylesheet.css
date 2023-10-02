@@ -90,6 +90,7 @@ line-height: normal;
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding: 0.5rem;
   position: relative;
   cursor: pointer;
   font-size: 22px;
@@ -110,3 +111,100 @@ gap: 0.5rem;
   line-height: normal;
 }
 
+.booking-filter_threed__btn-active-element {
+  background: var(--nomadao-products-nomadaonft, linear-gradient(106deg, #994BE3 11.09%, #228699 141.77%))!important;
+  color: white!important;
+  border: none!important;
+}
+.booking-filter_threed__btn-active-element:focus {
+  outline: none!important;
+}
+
+.booking-filter__partners__btn-active-element {
+  background: linear-gradient(117deg, #FEA014 2.45%, #C04BE9 127.41%);
+  color: white!important;
+  border: none!important;
+}
+
+.booking-filter__partners__btn-active-element {
+  outline: none!important;
+}
+
+.booking-filter__select__btn__default-active-element {
+  background: none!important;
+  border-radius: 16px!important;
+  border: 2px solid var(--Blue-Shade-5, #60CFFA)!important;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25)!important;
+}
+
+.booking-filter__select__btn__default-active-element {
+  outline: none!important;
+}
+
+.booking-perNight-active-element {
+  background: none!important;
+  border-radius: var(--Corner, 8px)!important;
+  border: 2px solid var(--Blue-Shade-5, #60CFFA)!important;
+}
+
+.booking-perNight-active-element:focus {
+  outline: none!important;
+}
+
+.booking-hotel__star-active-element {
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid var(--Blue-Shade-5, #60CFFA)!important;
+}
+
+.booking-hotel__star-active-element:focus {
+  outline: none!important;
+}
+
+
+.booking-checkbox__review-active-element {
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid var(--Blue-Shade-5, #60CFFA)!important;
+}
+
+.booking-checkbox__review-active-element {
+  outline: none!important;
+}
+
+
+.booking-propertyType-active-element {
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid #709BAC!important;}
+
+.booking-propertyType-active-element {
+  outline: none!important;
+}
+
+
+.booking-facilities-active-element
+{
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid #709BAC!important;}
+
+.booking-facilities-active-element
+{
+  outline: none!important;
+}
+
+
+
+
+
+.booking-hotelService-active-element
+{
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid #709BAC!important;}
+
+.booking-hotelService-active-element
+{
+  outline: none!important;
+}
