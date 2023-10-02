@@ -88,10 +88,6 @@
   color: white!important;
 }
 
-.booking-search-active-element:focus {
-  outline: none;
-}
-
 .booking-search-active-element > h1, .booking-search-active-element > h5 {
   color: white!important;
 }

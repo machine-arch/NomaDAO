@@ -1,3 +1,7 @@
+import { handleSearchLocation } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
+import { handleDate } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
+import { handlePersons } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
+
 const configuration = {
   booking: {
     home: {
@@ -29,22 +33,46 @@ const configuration = {
             id: "1",
             isActive: false,
             activeClass: "booking-search-active-element",
+            eventHandlers: {
+              onKeyDown: {
+                name: "onKeyDown",
+                callback: handleSearchLocation,
+              },
+            },
           },
           search__date: {
             id: "2",
             isActive: false,
             activeClass: "booking-search-active-element",
+            eventHandlers: {
+              onKeyDown: {
+                name: "onKeyDown",
+                callback: handleDate,
+              },
+            },
           },
           search__persons: {
             id: "3",
             isActive: false,
             activeClass: "booking-search-active-element",
+            eventHandlers: {
+              onKeyDown: {
+                name: "onKeyDown",
+                callback: handlePersons,
+              },
+            },
           },
           search__Btn: {
             id: "4",
             className: "search__Btn",
             isActive: false,
             activeClass: "booking-search-active-element",
+            // eventHandlers: {
+            //   onKeyDown: {
+            //     name: "onKeyDown",
+            //     callback: handleSearchButton,
+            //   },
+            // },
           },
         },
       },

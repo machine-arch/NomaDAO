@@ -37,7 +37,16 @@ const useFetch = (url, params) => {
     fetchData();
   };
 
-  return { data, error, errorMessage, setError, loading, refetch, setLoading };
+  return {
+    data,
+    setData,
+    error,
+    errorMessage,
+    setError,
+    loading,
+    refetch,
+    setLoading,
+  };
 };
 
 export default useFetch;
