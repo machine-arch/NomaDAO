@@ -10,10 +10,16 @@ import { GlobalContext } from "../../../context/global.context.jsx";
 import BookingUtil from "../../../utils/navigation.util";
 import configuration from "../../../navigateConfig.js";
 import { ErrorBoundary } from "react-error-boundary";
+import useFetch from "../../../hooks/useFetch/useFetch";
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
   const bookingUtil = new BookingUtil();
+
+  const { data } = useFetch("/hotel", {
+    page: 1,
+    limit: 10,
+  });
 
   const { asideActive, setAsideActive, pages, activePage, setActivePage } =
     useContext(AsideContext);
@@ -223,17 +229,12 @@ const Booking = () => {
         <div className="bottom">
           <div className="bottom_bgOverlay"></div>
           <div className="bottom__results">
-            {BookingData.hotels?.map((oneBooking, index) => {
+            {data?.content?.map((oneBooking, index) => {
               return (
                 <BookingSearchResult
+                  data={oneBooking}
                   id={oneBooking.id}
                   key={index}
-                  name={oneBooking.name}
-                  price={oneBooking.price}
-                  facilities={oneBooking.facilities}
-                  mainImage={oneBooking.mainImage}
-                  rating={oneBooking.rating}
-                  location={oneBooking.location}
                   index={index}
                   config={configuration?.booking?.home?.results}
                 />
