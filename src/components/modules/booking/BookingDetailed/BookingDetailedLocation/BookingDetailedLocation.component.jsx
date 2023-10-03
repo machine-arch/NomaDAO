@@ -1,19 +1,19 @@
-import React from "react";
-import "./BookingDetailedLocation.stylesheet.css";
-import { useState } from "react";
+import React from 'react';
+import './BookingDetailedLocation.stylesheet.css';
+import { useState } from 'react';
 
-const BookingDetailedLocation = () => {
+const BookingDetailedLocation = ({ config }) => {
   const [showMap, setShowMap] = useState(false);
   const mapStyle = {
-    width: "100%",
-    height: "450px",
-    border: "0",
-    borderRadius: "16px",
-    position: "relative",
+    width: '100%',
+    height: '450px',
+    border: '0',
+    borderRadius: '16px',
+    position: 'relative',
   };
 
   return (
-    <div>
+    <div className={config?.components?.location__container?.className}>
       <div className="location__top">
         <div>
           <span className="blue__box"></span>

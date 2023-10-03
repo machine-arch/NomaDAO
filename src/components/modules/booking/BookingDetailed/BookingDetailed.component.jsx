@@ -1,20 +1,154 @@
-import React from "react";
-import "./BookingDetailed.stylesheet.css";
-import BookingDetailedSlider from "./BookingDetailedSlider/BookingDetailedSlider.component";
-import BookingDetailedDescription from "./BookingDetailedDescription/BookingDetailedDescription.component";
-import BookingDetailedLocation from "./BookingDetailedLocation/BookingDetailedLocation.component";
-import BookingDetailedRooms from "./BookingDetailedRooms/BookingDetailedRooms.component";
-import SignIn from "../../../SignIn/SignIn.component";
-import BookingComplete from "./BookingComplete/BookingComplete.component";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState, useRef } from 'react';
+import './BookingDetailed.stylesheet.css';
+import BookingDetailedSlider from './BookingDetailedSlider/BookingDetailedSlider.component';
+import BookingDetailedDescription from './BookingDetailedDescription/BookingDetailedDescription.component';
+import BookingDetailedLocation from './BookingDetailedLocation/BookingDetailedLocation.component';
+import BookingDetailedRooms from './BookingDetailedRooms/BookingDetailedRooms.component';
+import SignIn from '../../../SignIn/SignIn.component';
+import BookingComplete from './BookingComplete/BookingComplete.component';
+import { useParams } from 'react-router-dom';
+import { GlobalContext } from '../../../../context/global.context.jsx';
+import BookingUtil from '../../../../utils/navigation.util';
+import useMoveSound from '../../../../hooks/useMoveSound';
+import configuration from '../../../../navigateConfig';
+import _ from 'lodash';
 
 const BookingDetailed = () => {
+  const { state, dispatch } = useContext(GlobalContext);
+
+  const bookingUtil = new BookingUtil();
+  const moveSound = useMoveSound;
+
+  const [canNavigate, setCanNavigate] = useState(false);
+  const activeHomeComponent = useRef(null);
+  const activeComponent = useRef(null);
+  const [showFilterBox, setShowFilterBox] = useState(false);
+
+  function startup() {
+    const firstHomeEl = Object.keys(
+      state?.config?.booking?.home?.hotel_detalis?.home,
+    )[0];
+
+    const searchComponents =
+      state?.config?.booking?.home?.hotel_detalis?.home[firstHomeEl]
+        ?.components;
+    if (!searchComponents) return;
+    const firstSearchEl = Object.keys(searchComponents)[0];
+    searchComponents[firstSearchEl].isActive = true;
+    const newConfig = _.cloneDeep(configuration);
+    dispatch({
+      type: 'SET_CONFIG',
+      payload: newConfig,
+    });
+    activeHomeComponent.current = firstHomeEl;
+    activeComponent.current = firstSearchEl;
+    setCanNavigate(true);
+  }
+
+  useEffect(() => {
+    startup();
+  }, []);
+
+  const handleKeyPress = (e, currentHomeIndex, home, components, homeKeys) => {
+    switch (e.key) {
+      case 'ArrowRight':
+        bookingUtil.moveRight(
+          activeHomeComponent,
+          activeComponent,
+          home,
+          dispatch,
+          state?.config,
+          _,
+        );
+        moveSound();
+        break;
+      case 'ArrowLeft':
+        bookingUtil.moveLeft(
+          activeComponent,
+          activeHomeComponent,
+          home,
+          dispatch,
+          state?.config,
+          _,
+        );
+        moveSound();
+        break;
+      case 'ArrowDown':
+        bookingUtil.moveDown(
+          currentHomeIndex,
+          homeKeys,
+          activeHomeComponent,
+          home,
+          dispatch,
+          state?.config,
+          activeComponent,
+          _,
+        );
+        moveSound();
+        break;
+      case 'ArrowUp':
+        bookingUtil.moveUp(
+          currentHomeIndex,
+          homeKeys,
+          activeHomeComponent,
+          home,
+          dispatch,
+          state?.config,
+          activeComponent,
+          _,
+        );
+        moveSound();
+        break;
+      case 'Enter':
+        break;
+      case 'Backspace':
+        if (showFilterBox) {
+          setShowFilterBox(false);
+          activeHomeComponent.current = 'filter';
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
+  const eventHendler = (e) => {
+    let components = null;
+    let homeKeys = null;
+    let currentHomeIndex = null;
+    let home = null;
+    activeComponent.current = activeComponent.current;
+    components =
+      state?.config?.booking?.home?.hotel_detalis?.home[
+        activeHomeComponent.current
+      ]?.components;
+    if (components) {
+      home = state?.config?.booking?.home?.hotel_detalis?.home;
+      homeKeys = Object.keys(
+        state?.config?.booking?.home?.hotel_detalis?.home || {},
+      );
+      currentHomeIndex = homeKeys.indexOf(activeHomeComponent.current);
+    }
+
+    handleKeyPress(e, currentHomeIndex, home, components, homeKeys);
+  };
+
+  useEffect(() => {
+    canNavigate ? window.addEventListener('keydown', eventHendler) : null;
+    return () => {
+      window.removeEventListener('keydown', eventHendler);
+    };
+  }, [activeComponent.current, state?.config]);
+
   const params = useParams();
   const id = params.id;
   return (
     <div>
       <div className="detailedBg">
-        <SignIn type="secondary" />
+        <SignIn
+          type="secondary"
+          config={state?.config?.booking?.home?.hotel_detalis?.home?.auth}
+        />
         <button className="back__btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -120,11 +254,26 @@ const BookingDetailed = () => {
             </div>
           </div>
         </div>
-        <BookingDetailedSlider />
+        <BookingDetailedSlider
+          config={
+            state?.config?.booking?.home?.hotel_detalis?.home
+              ?.detailed__slider__bg
+          }
+        />
         <hr className="detailed__hr"></hr>
-        <BookingDetailedDescription />
+        <BookingDetailedDescription
+          config={
+            state?.config?.booking?.home?.hotel_detalis?.home
+              ?.description__container
+          }
+        />
         <hr className="detailed__hr"></hr>
-        <BookingDetailedLocation />
+        <BookingDetailedLocation
+          config={
+            state?.config?.booking?.home?.hotel_detalis?.home
+              ?.location__conteiner
+          }
+        />
         <hr className="detailed__hr"></hr>
       </div>
       <BookingDetailedRooms />

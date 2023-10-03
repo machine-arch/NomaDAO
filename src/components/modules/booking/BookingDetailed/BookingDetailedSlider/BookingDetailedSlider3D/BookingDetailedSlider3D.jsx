@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-const BookingDetailedSlider3D = () => {
+const BookingDetailedSlider3D = ({ isActive, className, actieveClass }) => {
   return (
-    <button className="detailed__slider__threed">
+    <button className={`${className} ${isActive ? actieveClass : ''}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="49"

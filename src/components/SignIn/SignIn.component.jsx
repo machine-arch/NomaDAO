@@ -12,16 +12,16 @@ const SignIn = ({ type, config }) => {
     >
       <Button
         text={`Sign in`}
-        className="btn__sign sign_in"
+        className={`${config?.components?.sign_in?.className}`}
         id={`auth__button__${config?.components?.sign_in?.id}`}
-        isActive={config?.components?.sign_in?.isActive ? true : false}
+        isActive={config?.components?.sign_in?.isActive}
         activeClassName={config?.components?.sign_in?.activeClass}
       />
       <Button
         text={` Create account`}
-        className="btn__sign sign_up"
+        className={`${config?.components?.sign_up?.className}`}
         id={`auth__button__${config?.components?.sign_up?.id}`}
-        isActive={config?.components?.sign_up?.isActive ? true : false}
+        isActive={config?.components?.sign_up?.isActive}
         activeClassName={config?.components?.sign_up?.activeClass}
       />
     </div>

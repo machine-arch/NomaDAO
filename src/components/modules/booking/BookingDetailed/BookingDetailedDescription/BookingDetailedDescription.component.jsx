@@ -1,9 +1,14 @@
-import React from "react";
-import "./BookingDetailedDescription.stylesheet.css";
+import React from 'react';
+import './BookingDetailedDescription.stylesheet.css';
 
-const BookingDetailedDescription = () => {
+const BookingDetailedDescription = ({ config }) => {
   return (
-    <div className="description__container">
+    <div
+      className={`${config?.components?.description__container.className} ${
+        config?.components?.description__container.isActive &&
+        config?.components?.description__container.activeClass
+      }`}
+    >
       <div className="description__left">
         <div>
           <span className="blue__box"></span>
