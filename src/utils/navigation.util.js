@@ -2,53 +2,104 @@ export default class BookingUtil {
   moveRight(
     activeHomeComponent,
     activeCompRef,
-    components,
     home,
     dispatch,
-    configuration
+    configuration,
+    _,
   ) {
     const activeComp = activeCompRef.current;
-    const nextComponents = home[activeHomeComponent.current]?.components;
-    const nextComponentKeys = Object.keys(components);
+    const coomponents = home[activeHomeComponent.current]?.components;
+    const componentKeys = Object.keys(coomponents);
     const nextElement =
-      nextComponentKeys[
-        (nextComponentKeys.indexOf(activeComp) + 1) % nextComponentKeys.length
+      componentKeys[
+        (componentKeys.indexOf(activeComp) + 1) % componentKeys.length
       ];
 
-    activeCompRef.current = nextElement;
+    if (activeComp && activeComp != '') {
+      if (coomponents[activeComp].type == 'collection') {
+        let index = coomponents[activeComp]?.factory?.index;
+        console.log('index', index);
+        const i = coomponents[activeComp]?.factory?.sequence(index);
+        coomponents[activeComp].factory.index = i;
+        const newConfig = _.cloneDeep(configuration);
+        dispatch({
+          type: 'SET_CONFIG',
+          payload: newConfig,
+        });
 
-    if (activeComp && activeComp != "") {
-      components[activeComp].isActive = false;
+        const activeComponentDOM = document.getElementById(
+          coomponents[activeComp]?.className + '-' + index,
+        );
+
+        activeComponentDOM.focus();
+
+        return false;
+      }
+
+      coomponents[activeComp].isActive = false;
       document.querySelector(`.${activeComp}`).blur();
     }
 
-    nextComponents[nextElement].isActive = true;
+    coomponents[nextElement].isActive = true;
+    activeCompRef.current = nextElement;
     document.querySelector(`.${nextElement}`).focus();
-    const newConfig = JSON.parse(JSON.stringify(configuration));
+
+    const newConfig = _.cloneDeep(configuration);
+
     dispatch({
-      type: "SET_CONFIG",
+      type: 'SET_CONFIG',
       payload: newConfig,
     });
   }
 
-  moveLeft(activeCompRef, components, dispatch, configuration) {
+  moveLeft(
+    activeCompRef,
+    activeHomeComponent,
+    home,
+    dispatch,
+    configuration,
+    _,
+  ) {
     const activeComp = activeCompRef.current;
+    const components = home[activeHomeComponent.current]?.components;
     const componentKeys = Object.keys(components);
     const prevEl =
       componentKeys[
         (componentKeys.indexOf(activeComp) - 1 + componentKeys.length) %
           componentKeys.length
       ];
-    if (activeComp && activeComp != "") {
+    if (activeComp && activeComp != '') {
+      if (
+        components[activeComp].type == 'collection' &&
+        components[activeComp]?.factory?.index > 1
+      ) {
+        let index = components[activeComp]?.factory?.index;
+        const i = components[activeComp]?.factory?.decrement(index);
+        components[activeComp].factory.index = i;
+        const newConfig = _.cloneDeep(configuration);
+        dispatch({
+          type: 'SET_CONFIG',
+          payload: newConfig,
+        });
+
+        const activeComponentDOM = document.getElementById(
+          components[activeComp]?.className + '-' + index,
+        );
+
+        activeComponentDOM.focus();
+
+        return false;
+      }
       components[activeComp].isActive = false;
       document.querySelector(`.${activeComp}`).blur();
     }
 
     components[prevEl].isActive = true;
     document.querySelector(`.${prevEl}`).focus();
+    const newConfig = _.cloneDeep(configuration);
     dispatch({
-      type: "SET_CONFIG",
-      payload: configuration,
+      type: 'SET_CONFIG',
+      payload: newConfig,
     });
     activeCompRef.current = prevEl;
   }
@@ -57,13 +108,14 @@ export default class BookingUtil {
     currentHomeIndex,
     homeKeys,
     activeHomeComponent,
-    components,
     home,
     dispatch,
     configuration,
-    activeCompRef
+    activeCompRef,
+    _,
   ) {
     let activeComp = activeCompRef.current;
+    let components = home[activeHomeComponent.current]?.components;
     let componentKeys = Object.keys(components);
     let nextActiveComp = componentKeys[componentKeys.indexOf(activeComp) + 1];
     let nextActiveComponentIndex = componentKeys.indexOf(nextActiveComp);
@@ -76,26 +128,27 @@ export default class BookingUtil {
       return;
     }
 
-    if (home[homeKeys[currentHomeIndex]]?.type == "collection") {
+    if (home[homeKeys[currentHomeIndex]]?.type == 'collection') {
       let index = home[homeKeys[currentHomeIndex]]?.factory?.index;
       const i = home[homeKeys[currentHomeIndex]]?.factory?.sequence(index);
       home[homeKeys[currentHomeIndex]].factory.index = i;
+      const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: "SET_CONFIG",
-        payload: configuration,
+        type: 'SET_CONFIG',
+        payload: newConfig,
       });
 
       const activeComponentDOM = document.getElementById(
         home[homeKeys[currentHomeIndex]]?.components[activeComp]?.className +
-          "-" +
-          index
+          '-' +
+          index,
       );
 
       activeComponentDOM.focus();
 
       activeComponentDOM.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+        behavior: 'smooth',
+        block: 'start',
       });
 
       return false;
@@ -104,27 +157,27 @@ export default class BookingUtil {
     if (
       nextActiveComponentIndex !== componentKeys.length &&
       nextActiveComponentIndex !== -1 &&
-      home[homeKeys[currentHomeIndex]]?.arrangement == "column"
+      home[homeKeys[currentHomeIndex]]?.arrangement == 'column'
     ) {
       components[componentKeys[activeCompIndex]].isActive = false;
       document.querySelector(`.${componentKeys[activeCompIndex]}`).blur();
       components[componentKeys[activeCompIndex + 1]].isActive = true;
-      const newConfig = JSON.parse(JSON.stringify(configuration));
+      const newConfig = _.cloneDeep(configuration);
       dispatch({
-        type: "SET_CONFIG",
+        type: 'SET_CONFIG',
         payload: newConfig,
       });
       activeCompRef.current = componentKeys[activeCompIndex + 1];
 
       const activeComponentDOM = document.querySelector(
-        `.${componentKeys[activeCompIndex + 1]}`
+        `.${componentKeys[activeCompIndex + 1]}`,
       );
 
       activeComponentDOM.focus();
 
       activeComponentDOM.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
+        behavior: 'smooth',
+        block: 'center',
       });
 
       return;
@@ -135,26 +188,28 @@ export default class BookingUtil {
     const prevComponents = home[homeKeys[currentHomeIndex + 1]]?.components;
     const prevComponentKeys = Object.keys(prevComponents);
     const prevHomeComponent = homeKeys[currentHomeIndex + 1];
+    console.log('prevHomeComponent', prevHomeComponent);
     activeHomeComponent.current = prevHomeComponent;
     componentKeys.forEach((item) => {
-      components[item].isActive = false;
-      document.querySelector(`.${item}`).blur();
+      components[item].isActive && (components[item].isActive = false);
+      document.querySelector(`.${item}`) &&
+        document.querySelector(`.${item}`).blur();
     });
     prevComponents[prevComponentKeys[0]].isActive = true;
-    const newConfig = JSON.parse(JSON.stringify(configuration));
+    const newConfig = _.cloneDeep(configuration);
     dispatch({
-      type: "SET_CONFIG",
+      type: 'SET_CONFIG',
       payload: newConfig,
     });
     activeCompRef.current = prevComponentKeys[0];
     const activeComponentDOM = document.querySelector(
-      `.${prevComponentKeys[0]}`
+      `.${prevComponentKeys[0]}`,
     );
     activeComponentDOM.focus();
 
     activeComponentDOM.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
+      behavior: 'smooth',
+      block: 'center',
     });
   }
 
@@ -163,38 +218,40 @@ export default class BookingUtil {
     homeKeys,
     activeHomeComponent,
     home,
-    components,
     dispatch,
     configuration,
-    activeCompRef
+    activeCompRef,
+    _,
   ) {
     let activeComp = activeCompRef.current;
+    let components = home[activeHomeComponent.current]?.components;
     let componentKeys = Object.keys(components);
     let activeCompIndex = componentKeys.indexOf(activeComp);
 
     if (
-      home[homeKeys[currentHomeIndex]]?.type == "collection" &&
+      home[homeKeys[currentHomeIndex]]?.type == 'collection' &&
       home[homeKeys[currentHomeIndex]]?.factory?.index > 0
     ) {
       let index = home[homeKeys[currentHomeIndex]]?.factory?.index;
       const i = home[homeKeys[currentHomeIndex]]?.factory?.decrement(index);
       home[homeKeys[currentHomeIndex]].factory.index = i;
+      const newConfig = _.cloneDeep(configuration);
       dispatch({
-        type: "SET_CONFIG",
-        payload: configuration,
+        type: 'SET_CONFIG',
+        payload: newConfig,
       });
 
       const activeComponentDOM = document.getElementById(
         home[homeKeys[currentHomeIndex]]?.components[activeComp]?.className +
-          "-" +
-          index
+          '-' +
+          index,
       );
 
       activeComponentDOM.focus();
 
       activeComponentDOM.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
+        behavior: 'smooth',
+        block: 'end',
       });
 
       return false;
@@ -202,28 +259,39 @@ export default class BookingUtil {
 
     if (
       activeCompIndex !== 0 &&
-      home[homeKeys[currentHomeIndex]]?.arrangement == "column"
+      home[homeKeys[currentHomeIndex]]?.arrangement == 'column'
     ) {
       components[componentKeys[activeCompIndex]].isActive = false;
       components[componentKeys[activeCompIndex - 1]].isActive = true;
-      const newConfig = JSON.parse(JSON.stringify(configuration));
+      const newConfig = _.cloneDeep(configuration);
       dispatch({
-        type: "SET_CONFIG",
+        type: 'SET_CONFIG',
         payload: newConfig,
       });
 
       activeCompRef.current = componentKeys[activeCompIndex - 1];
 
       const activeComponentDOM = document.querySelector(
-        `.${componentKeys[activeCompIndex - 1]}`
+        `.${componentKeys[activeCompIndex - 1]}`,
       );
+      if (activeComponentDOM) {
+        activeComponentDOM.focus();
 
-      activeComponentDOM.focus();
+        activeComponentDOM.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      } else {
+        const activeComponentDOM = document.querySelector(
+          `.${componentKeys[0]}`,
+        );
+        activeComponentDOM.focus();
 
-      activeComponentDOM.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+        activeComponentDOM.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }
 
       return;
     }
@@ -241,21 +309,45 @@ export default class BookingUtil {
     nextComponents[
       nextComponentKeys[nextComponentKeys.length - 1]
     ].isActive = true;
+    const newConfig = _.cloneDeep(configuration);
     dispatch({
-      type: "SET_CONFIG",
-      payload: configuration,
+      type: 'SET_CONFIG',
+      payload: newConfig,
     });
     activeCompRef.current = nextComponentKeys[nextComponentKeys.length - 1];
 
     const activeComponentDOM = document.querySelector(
-      `.${nextComponentKeys[nextComponentKeys.length - 1]}`
+      `.${nextComponentKeys[nextComponentKeys.length - 1]}`,
     );
 
-    activeComponentDOM.focus();
+    if (activeComponentDOM) {
+      activeComponentDOM.focus();
 
-    activeComponentDOM.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
+      activeComponentDOM.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    } else {
+      const activeComponentDOM = document.querySelector(
+        `.${homeKeys[currentHomeIndex - 1]}`,
+      );
+
+      const component = home[homeKeys[currentHomeIndex - 1]].components;
+      const componentKeys = Object.keys(component);
+
+      home[homeKeys[currentHomeIndex - 1]].components[
+        componentKeys[0]
+      ].isActive = true;
+      const newConfig = _.cloneDeep(configuration);
+      dispatch({
+        type: 'SET_CONFIG',
+        payload: newConfig,
+      });
+
+      activeComponentDOM.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
   }
 }

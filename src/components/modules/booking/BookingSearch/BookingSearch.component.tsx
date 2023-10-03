@@ -1,3 +1,6 @@
+import React, { useEffect } from 'react';
+import './BookingSearch.stylesheet.css';
+=======
 import React, { useEffect, useState } from "react";
 import "./BookingSearch.stylesheet.css";
 import { useRef } from "react";
@@ -30,6 +33,7 @@ const BookingSearch = ({
     <div className="booking__search" id={config?.id}>
       <div className="booking__search__box">
         <div
+          className={`${'search__location'} ${
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -41,7 +45,7 @@ const BookingSearch = ({
           className={`${"search__location"} ${
             config?.components?.search__location?.isActive
               ? `${config?.components?.search__location?.activeClass}`
-              : ""
+              : ''
           }`}
           id={`search__${config?.components?.search__location?.id}`}
         >
@@ -57,6 +61,7 @@ const BookingSearch = ({
         <div className="vl"></div>
 
         <div
+          className={`${'search__date'} ${
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -66,7 +71,7 @@ const BookingSearch = ({
           className={`${"search__date"} ${
             config?.components?.search__date?.isActive
               ? `${config?.components?.search__date?.activeClass}`
-              : ""
+              : ''
           }`}
           id={`search__${config?.components?.search__date?.id}`}
         >
@@ -75,11 +80,12 @@ const BookingSearch = ({
             type="text"
             placeholder="Fr 16 Jun - Fri 14 Jul"
             className="searchBox__selectable navigable"
-          />{" "}
+          />{' '}
         </div>
         <div className="vl"></div>
 
         <div
+          className={`${'search__persons'} ${
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               config?.components?.search__persons?.eventHandlers?.onKeyDown?.callback();
@@ -89,7 +95,7 @@ const BookingSearch = ({
           className={`${"search__persons"} ${
             config?.components?.search__persons?.isActive
               ? `${config?.components?.search__persons?.activeClass}`
-              : ""
+              : ''
           }`}
           id={`search__${config?.components?.search__persons?.id}`}
         >
@@ -103,10 +109,10 @@ const BookingSearch = ({
         <div className="search__BtnDiv">
           <button
             onKeyDown={(e) => filterResults(e)}
-            className={`${"search__Btn"} ${
+            className={`${'search__Btn'} ${
               config?.components?.search__Btn?.isActive
                 ? `${config?.components?.search__Btn?.activeClass}`
-                : ""
+                : ''
             }`}
             id={`search__${config?.components?.search__Btn?.id}`}
           >
