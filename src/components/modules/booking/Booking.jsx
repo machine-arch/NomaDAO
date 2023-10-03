@@ -12,9 +12,17 @@ import configuration from '../../../navigateConfig.js';
 import useMoveSound from '../../../hooks/useMoveSound';
 import _ from 'lodash';
 
+
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
   const bookingUtil = new BookingUtil();
+
+  const { data, setData } = useFetch("/hotel", {
+    page: 1,
+    limit: 10,
+  });
+
+  console.log(data);
 
   const { asideActive, setAsideActive, pages, activePage, setActivePage } =
     useContext(AsideContext);
@@ -32,6 +40,7 @@ const Booking = () => {
       if (!searchComponents) return;
       const firstSearchEl = Object.keys(searchComponents)[0];
       searchComponents[firstSearchEl].isActive = true;
+      document.querySelector(`.${firstSearchEl}`).focus();
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
         type: 'SET_CONFIG',
@@ -208,6 +217,9 @@ const Booking = () => {
         />
         <BookingSearch
           filterResults={filterResults}
+          data={data}
+          toggleResults={toggleResults}
+          setData={setData}
           config={configuration?.booking?.home?.search}
         />
         {showResult == true && (
@@ -222,17 +234,12 @@ const Booking = () => {
         <div className="bottom">
           <div className="bottom_bgOverlay"></div>
           <div className="bottom__results">
-            {BookingData.hotels?.map((oneBooking, index) => {
+            {data?.map((oneBooking, index) => {
               return (
                 <BookingSearchResult
+                  data={oneBooking}
                   id={oneBooking.id}
                   key={index}
-                  name={oneBooking.name}
-                  price={oneBooking.price}
-                  facilities={oneBooking.facilities}
-                  mainImage={oneBooking.mainImage}
-                  rating={oneBooking.rating}
-                  location={oneBooking.location}
                   index={index}
                   config={configuration?.booking?.home?.results}
                 />

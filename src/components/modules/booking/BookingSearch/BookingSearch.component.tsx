@@ -1,12 +1,48 @@
 import React, { useEffect } from 'react';
 import './BookingSearch.stylesheet.css';
+=======
+import React, { useEffect, useState } from "react";
+import "./BookingSearch.stylesheet.css";
+import { useRef } from "react";
+import useDebounce from "../../../../hooks/useDebounce/useDebounce";
 
-const BookingSearch = ({ filterResults, config }) => {
+const BookingSearch = ({
+  filterResults,
+  config,
+  data,
+  setData,
+  toggleResults,
+}) => {
+  const searchRef = useRef(null);
+  const [location, setLocation] = useState("");
+  const debouncedSearchValue = useDebounce(location, 1500);
+
+  useEffect(() => {
+    if (debouncedSearchValue) {
+      const filteredData = data?.content?.filter((item) => {
+        return item.hotelName.toLowerCase().includes(debouncedSearchValue);
+      });
+      setData(filteredData);
+      toggleResults();
+    } else {
+      setData(data);
+    }
+  }, [debouncedSearchValue]);
+
   return (
     <div className="booking__search" id={config?.id}>
       <div className="booking__search__box">
         <div
           className={`${'search__location'} ${
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              config?.components?.search__location?.eventHandlers?.onKeyDown?.callback(
+                searchRef
+              );
+            }
+          }}
+          className={`${"search__location"} ${
             config?.components?.search__location?.isActive
               ? `${config?.components?.search__location?.activeClass}`
               : ''
@@ -15,6 +51,8 @@ const BookingSearch = ({ filterResults, config }) => {
         >
           <h1 className="searchBox__title">Location</h1>
           <input
+            onChange={(e) => setLocation(e.target.value)}
+            ref={searchRef}
             className="searchBox__selectable navigable"
             placeholder="Where are you going?"
             id={`nav_index_1`}
@@ -24,6 +62,13 @@ const BookingSearch = ({ filterResults, config }) => {
 
         <div
           className={`${'search__date'} ${
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              config?.components?.search__date?.eventHandlers?.onKeyDown?.callback();
+            }
+          }}
+          className={`${"search__date"} ${
             config?.components?.search__date?.isActive
               ? `${config?.components?.search__date?.activeClass}`
               : ''
@@ -41,6 +86,13 @@ const BookingSearch = ({ filterResults, config }) => {
 
         <div
           className={`${'search__persons'} ${
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              config?.components?.search__persons?.eventHandlers?.onKeyDown?.callback();
+            }
+          }}
+          tabIndex={0}
+          className={`${"search__persons"} ${
             config?.components?.search__persons?.isActive
               ? `${config?.components?.search__persons?.activeClass}`
               : ''

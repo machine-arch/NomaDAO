@@ -1,18 +1,9 @@
 import React from "react";
 import "./BookingSearchResult.stylesheet.css";
 import { useNavigate } from "react-router-dom";
+import ResultStar from "./ResultStar/ResultStar";
 
-const BookingSearchResult = ({
-  id,
-  location,
-  mainImage,
-  name,
-  rating,
-  price,
-  facilities,
-  index,
-  config,
-}) => {
+const BookingSearchResult = ({ id, index, config, data }) => {
   const navigate = useNavigate();
 
   return (
@@ -38,75 +29,14 @@ const BookingSearchResult = ({
       `}
       >
         <div className="left">
-          <img className="booking__result__img" src={mainImage} />
+          <img className="booking__result__img" src={data?.images[0]} />
         </div>
         <div className="right">
           <div className="right__top">
             <div className="right__top__left">
-              <h1 className="hotel__title">{name}</h1>
+              <h1 className="hotel__title">{data?.hotelName}</h1>
               <div className="right__top__left_bottom">
-                <div className="stars">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                </div>
+                <ResultStar starsCount={data?.rating} />
                 <button className="btn__partner">Partners Hotels</button>
                 <button className="btn__3dlook">3D Look</button>
               </div>
@@ -114,10 +44,10 @@ const BookingSearchResult = ({
             <div className="right__top__right">
               <div className="right__top__right__left">
                 <h1 className="review__title">Very Good</h1>
-                <h1 className="review__count">214 reviews</h1>
+                <h1 className="review__count">{data?.reviews} reviews</h1>
               </div>
               <div className="right__top__right__right">
-                <div className="rating__box">{rating}/5</div>
+                <div className="rating__box">{data?.rating}/5</div>
               </div>
             </div>
           </div>
@@ -138,13 +68,21 @@ const BookingSearchResult = ({
               <h1 className="right__middle__header__title">Facilities:</h1>
             </div>
             <div className="facilities">
-              {facilities?.map((oneFacility, index) => {
-                return (
-                  <span key={index} className="facility">
-                    {oneFacility}
-                  </span>
-                );
-              })}
+              {data?.facilities?.wakeUpCall == true && (
+                <span className="facility">Wake Up Call</span>
+              )}
+              {data?.facilities?.crHire == true && (
+                <span className="facility">CR Hire</span>
+              )}
+              {data?.facilities?.flatTv == true && (
+                <span className="facility">Flat TV</span>
+              )}
+              {data?.facilities?.dryCleaning == true && (
+                <span className="facility">Dry Cleaning</span>
+              )}
+              {data?.facilities?.internet == true && (
+                <span className="facility">Internet</span>
+              )}
             </div>
           </div>
           <div className="right__bottom">
@@ -161,11 +99,11 @@ const BookingSearchResult = ({
                   fill="#202020"
                 />
               </svg>
-              <h1 className="location">Location: {location}</h1>
+              <h1 className="location">Location: {data?.location}</h1>
             </div>
             <div className="right__bottom__right">
               <h1>from</h1>
-              <div className="price__box">${price} / night</div>
+              <div className="price__box">${data?.price} / night</div>
             </div>
           </div>
         </div>
