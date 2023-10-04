@@ -1,17 +1,18 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
-import BookingData from '../../../data/hotels.json';
-import './Booking.css';
-import BookingSearch from './BookingSearch/BookingSearch.component';
-import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
-import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
-import SignIn from '../../SignIn/SignIn.component';
-import AsideContext from '../../../context/AsideContext.js';
-import { GlobalContext } from '../../../context/global.context.jsx';
-import BookingUtil from '../../../utils/navigation.util';
-import configuration from '../../../navigateConfig.js';
-import useMoveSound from '../../../hooks/useMoveSound';
-import _ from 'lodash';
-
+import React, { useEffect, useState, useContext, useRef } from "react";
+import BookingData from "../../../data/hotels.json";
+import "./Booking.css";
+import BookingSearch from "./BookingSearch/BookingSearch.component";
+import BookingSearchResult from "./BookingSearchResult/BookingSearchResult.component";
+import BookingSearchBarFilterBack from "./BookingSearchBarFilterBack/BookingSearchBarFilterBack.component";
+import SignIn from "../../SignIn/SignIn.component";
+import AsideContext from "../../../context/AsideContext.js";
+import { GlobalContext } from "../../../context/global.context.jsx";
+import BookingUtil from "../../../utils/navigation.util";
+import configuration from "../../../navigateConfig.js";
+import useMoveSound from "../../../hooks/useMoveSound";
+import _ from "lodash";
+import useFetch from "../../../hooks/useFetch/useFetch";
+import Axios from "../../../axios/Axios";
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -43,7 +44,7 @@ const Booking = () => {
       document.querySelector(`.${firstSearchEl}`).focus();
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: 'SET_CONFIG',
+        type: "SET_CONFIG",
         payload: newConfig,
       });
       activeHomeComponent.current = firstHomeEl;
@@ -60,9 +61,9 @@ const Booking = () => {
 
   useEffect(() => {
     if (showFilterBox) {
-      const parent = 'filter_box';
+      const parent = "filter_box";
       const firstHomeEl = Object.keys(
-        configuration?.booking?.home[parent]?.home,
+        configuration?.booking?.home[parent]?.home
       )[0];
 
       const searchComponents =
@@ -74,7 +75,7 @@ const Booking = () => {
       activeHomeComponent.current = firstHomeEl;
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: 'SET_CONFIG',
+        type: "SET_CONFIG",
         payload: newConfig,
       });
       activeComponent.current = firstSearchEl;
@@ -87,32 +88,32 @@ const Booking = () => {
     currentHomeIndex,
     home,
     components,
-    homeKeys,
+    homeKeys
   ) => {
     switch (e.key) {
-      case 'ArrowRight':
+      case "ArrowRight":
         bookingUtil.moveRight(
           activeHomeComponent,
           activeComponent,
           home,
           dispatch,
           configuration,
-          _,
+          _
         );
         useMoveSound();
         break;
-      case 'ArrowLeft':
+      case "ArrowLeft":
         bookingUtil.moveLeft(
           activeComponent,
           activeHomeComponent,
           home,
           dispatch,
           configuration,
-          _,
+          _
         );
         useMoveSound();
         break;
-      case 'ArrowDown':
+      case "ArrowDown":
         bookingUtil.moveDown(
           currentHomeIndex,
           homeKeys,
@@ -121,11 +122,11 @@ const Booking = () => {
           dispatch,
           configuration,
           activeComponent,
-          _,
+          _
         );
         useMoveSound();
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         bookingUtil.moveUp(
           currentHomeIndex,
           homeKeys,
@@ -134,16 +135,16 @@ const Booking = () => {
           dispatch,
           configuration,
           activeComponent,
-          _,
+          _
         );
         useMoveSound();
         break;
-      case 'Enter':
+      case "Enter":
         break;
-      case 'Backspace':
+      case "Backspace":
         if (showFilterBox) {
           setShowFilterBox(false);
-          activeHomeComponent.current = 'filter';
+          activeHomeComponent.current = "filter";
         }
         break;
       default:
@@ -167,7 +168,7 @@ const Booking = () => {
         home = configuration?.booking?.home?.filter_box?.home;
         componentKeys = Object.keys(components);
         homeKeys = Object.keys(
-          configuration?.booking?.home?.filter_box?.home || {},
+          configuration?.booking?.home?.filter_box?.home || {}
         );
       }
       currentHomeIndex = homeKeys.indexOf(activeHomeComponent.current);
@@ -188,14 +189,14 @@ const Booking = () => {
       currentHomeIndex,
       home,
       components,
-      homeKeys,
+      homeKeys
     );
   };
 
   useEffect(() => {
-    canNavigate ? window.addEventListener('keydown', eventHendler) : null;
+    canNavigate ? window.addEventListener("keydown", eventHendler) : null;
     return () => {
-      window.removeEventListener('keydown', eventHendler);
+      window.removeEventListener("keydown", eventHendler);
     };
   }, [activeComponent.current, configuration, showFilterBox]);
 
@@ -204,15 +205,15 @@ const Booking = () => {
   };
 
   const filterResults = (e) => {
-    if (e.key !== 'Enter' && e.type !== 'click') return;
+    if (e.key !== "Enter" && e.type !== "click") return;
     toggleResults();
   };
 
   return (
     <div className="booking__mainContainer">
-      <div className={`topBg ${showResult == true ? 'showResults' : ''}`}>
+      <div className={`topBg ${showResult == true ? "showResults" : ""}`}>
         <SignIn
-          type={showResult == true ? 'secondary' : 'primary'}
+          type={showResult == true ? "secondary" : "primary"}
           config={configuration?.booking?.home?.auth}
         />
         <BookingSearch
