@@ -276,7 +276,9 @@ const BookingDetailed = () => {
         />
         <hr className="detailed__hr"></hr>
       </div>
-      <BookingDetailedRooms />
+      <BookingDetailedRooms
+        config={state?.config?.booking?.home?.hotel_detalis?.home}
+      />
       <BookingComplete id={id} />
     </div>
   );

@@ -473,6 +473,54 @@ const configuration = {
               },
             },
           },
+          booking__detailed__rooms: {
+            id: '6',
+            name: 'booking__detailed__rooms',
+            display: 'active',
+            arrangement: 'row',
+            components: {
+              detailed__search__check: {
+                id: '1',
+                isActive: false,
+                activeClass: 'booking-active-element',
+                className: 'detailed__search__check',
+              },
+              detailed__search__guests: {
+                id: '2',
+                isActive: false,
+                activeClass: 'booking-active-element',
+                className: 'detailed__search__guests',
+              },
+              availability__btn: {
+                id: '3',
+                isActive: false,
+                activeClass: 'booking-active-element',
+                className: 'availability__btn',
+              },
+            },
+          },
+          rooms__list: {
+            id: '4',
+            type: 'collection',
+            arrangement: 'column',
+            factory: {
+              index: 0,
+              sequence: function (index) {
+                return index + 1;
+              },
+              decrement: function (index) {
+                return index !== 0 ? index - 1 : index;
+              },
+            },
+            components: {
+              room__card: {
+                id: '1',
+                isActive: false,
+                className: 'room__card',
+                activeClass: 'booking-active-element',
+              },
+            },
+          },
         },
       },
     },

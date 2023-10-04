@@ -18,7 +18,6 @@ export default class BookingUtil {
     if (activeComp && activeComp != '') {
       if (coomponents[activeComp].type == 'collection') {
         let index = coomponents[activeComp]?.factory?.index;
-        console.log('index', index);
         const i = coomponents[activeComp]?.factory?.sequence(index);
         coomponents[activeComp].factory.index = i;
         const newConfig = _.cloneDeep(configuration);
@@ -122,17 +121,18 @@ export default class BookingUtil {
     let activeCompIndex = componentKeys.indexOf(activeComp);
 
     if (
-      currentHomeIndex == homeKeys.length - 1 &&
-      activeCompIndex + 1 == componentKeys.length
+      currentHomeIndex == homeKeys.length &&
+      activeCompIndex == componentKeys.length
     ) {
       return;
     }
 
     if (home[homeKeys[currentHomeIndex]]?.type == 'collection') {
+      console.log(home[homeKeys[currentHomeIndex]]);
       let index = home[homeKeys[currentHomeIndex]]?.factory?.index;
       const i = home[homeKeys[currentHomeIndex]]?.factory?.sequence(index);
       home[homeKeys[currentHomeIndex]].factory.index = i;
-      const newConfig = JSON.parse(JSON.stringify(configuration));
+      const newConfig = _.cloneDeep(configuration);
       dispatch({
         type: 'SET_CONFIG',
         payload: newConfig,
@@ -188,7 +188,6 @@ export default class BookingUtil {
     const prevComponents = home[homeKeys[currentHomeIndex + 1]]?.components;
     const prevComponentKeys = Object.keys(prevComponents);
     const prevHomeComponent = homeKeys[currentHomeIndex + 1];
-    console.log('prevHomeComponent', prevHomeComponent);
     activeHomeComponent.current = prevHomeComponent;
     componentKeys.forEach((item) => {
       components[item].isActive && (components[item].isActive = false);
