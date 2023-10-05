@@ -9,19 +9,63 @@ import { GlobalContext } from "../../../context/global.context.jsx";
 import BookingUtil from "../../../utils/navigation.util";
 import configuration from "../../../navigateConfig.js";
 import useMoveSound from "../../../hooks/useMoveSound";
-import _ from "lodash";
+import _, { set } from "lodash";
 import useFetch from "../../../hooks/useFetch/useFetch";
-import Axios from "../../../axios/Axios";
-import { ErrorBoundary } from "react-error-boundary";
+import useDebounce from "../../../hooks/useDebounce/useDebounce";
+import axios from "axios";
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
   const bookingUtil = new BookingUtil();
 
-  const { data, setData } = useFetch("/hotel", {
-    page: 1,
-    limit: 10,
+  const [location, setLocation] = useState(null);
+
+  const [locationFilterData, setLocationFilterData] = useState([]);
+
+  const [locationDataFetched, setLocationDataFetched] = useState(false);
+
+  const [data, setData] = useState([]);
+
+  const [guests, setGuests] = useState({
+    adults: 0,
+    children: 0,
+    rooms: 0,
   });
+
+  const [filterDisplay, setFilterDisplay] = useState({
+    location: false,
+    date: false,
+    guests: false,
+  });
+
+  const fetchSuggestions = (e) => {
+    if (e.key === "Enter") {
+      return;
+    }
+    if (e.target.value?.length > 2 && locationDataFetched == true) {
+      setLocationFilterData(
+        locationFilterData.filter((item) => {
+          return item.toLowerCase().includes(e.target.value.toLowerCase());
+        })
+      );
+    }
+    if (e.target.value?.length > 2 && locationDataFetched == false) {
+      axios({
+        method: "POST",
+        url: `${import.meta.env.VITE_API_URL}/hotel-filter/sugestions`,
+        data: {
+          locationSuggestions: e.target?.value,
+        },
+      })
+        .then((res) => {
+          setLocationFilterData(res?.data?.content);
+          setLocationDataFetched(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
   const { asideActive, setAsideActive, pages, activePage, setActivePage } =
     useContext(AsideContext);
@@ -202,6 +246,18 @@ const Booking = () => {
   }, [activeComponent.current, state?.config, showFilterBox, asideActive]);
 
   const toggleResults = () => {
+    fetch(`${import.meta.env.VITE_API_URL}/hotel`, {
+      page: 1,
+      limit: 10,
+    })
+      .then((res) => {
+        res.json().then((data) => {
+          setData(data?.content);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setShowResult((prev) => !prev);
     configuration.booking.home.results.display =
       !configuration.booking.home.results.display;
@@ -222,8 +278,17 @@ const Booking = () => {
           config={configuration?.booking?.home?.auth}
         />
         <BookingSearch
+          locationFilterData={locationFilterData}
+          setLocationFilterData={setLocationFilterData}
           filterResults={filterResults}
           data={data}
+          location={location}
+          setLocation={setLocation}
+          guests={guests}
+          setGuests={setGuests}
+          filterDisplay={filterDisplay}
+          fetchSuggestions={fetchSuggestions}
+          setFilterDisplay={setFilterDisplay}
           toggleResults={toggleResults}
           setData={setData}
           config={configuration?.booking?.home?.search}
@@ -240,7 +305,7 @@ const Booking = () => {
         <div className="bottom">
           <div className="bottom_bgOverlay"></div>
           <div className="bottom__results">
-            {data?.content?.map((oneBooking, index) => {
+            {data?.map((oneBooking, index) => {
               return (
                 <BookingSearchResult
                   data={oneBooking}

@@ -54,6 +54,10 @@
 }
 
 
+.search__date {
+  position: relative;
+}
+
 
 .search__location, .search__date, .search__persons {
   display: flex;
@@ -84,6 +88,25 @@
   border-left: 1.3px solid #B1B1B1;
   height: 26px;
 }
+
+.booking-search-date-active-element{
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+}
+
+
+
+.booking-search-date-active-element > h1, .booking-search-date-active-element > h5, .booking-search-date-active-element > span {
+  color: white!important;
+}
+
+.booking-search-date-active-element > input {
+  background: none!important;
+}
+
+
+
+
 
 .booking-search-active-element {
   border-radius: 4px;
