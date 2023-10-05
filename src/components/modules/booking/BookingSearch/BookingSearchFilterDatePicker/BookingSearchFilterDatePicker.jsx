@@ -1,39 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./BookingSearchFilterDatePicker.css";
 
-const BookingSearchFilterDatePicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-
+const BookingSearchFilterDatePicker = ({ dates, setDates }) => {
   const handleStartDateChange = (date) => {
-    setStartDate(date);
+    setDates({
+      ...dates,
+      startDate: date,
+    });
   };
 
   const handleEndDateChange = (date) => {
-    setEndDate(date);
+    setDates({
+      ...dates,
+      endDate: date,
+    });
   };
 
   return (
     <div className="datepicker">
       <div>
         <DatePicker
-          selected={startDate}
+          selected={dates?.startDate}
           onChange={handleStartDateChange}
           selectsStart
-          startDate={startDate}
-          endDate={endDate}
+          startDate={dates?.startDate}
+          endDate={dates?.endDate}
         />
       </div>
       <div>
         <DatePicker
-          selected={endDate}
+          selected={dates?.endDate}
           onChange={handleEndDateChange}
           selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
+          startDate={dates?.startDate}
+          endDate={dates?.endDate}
+          minDate={dates?.startDate}
         />
       </div>
     </div>

@@ -196,6 +196,10 @@
   outline: none;
 }
 
-.test:focus {
+.booking__search__result {
+  padding: 1rem;
+}
+
+.booking__search__result:focus {
   outline: none;
 }
