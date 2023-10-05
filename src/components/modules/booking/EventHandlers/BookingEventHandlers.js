@@ -17,3 +17,10 @@ export const handlePersons = (state, setState) => {
 export function handleLocation(state, setState) {
   setState(!state);
 }
+
+export const handleAdvancedFilter = (name, setState) => {
+  setState((prevState) => ({
+    ...prevState,
+    [name]: !prevState[name],
+  }));
+};

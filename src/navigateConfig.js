@@ -1,4 +1,7 @@
-import { handleSearchLocation } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
+import {
+  handleAdvancedFilter,
+  handleSearchLocation,
+} from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 import { handleDate } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 import { handlePersons } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 import { handleLocation } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
@@ -139,6 +142,12 @@ const configuration = {
                 hasSibling: false,
                 activeClass: "booking-filter_threed__btn-active-element",
                 className: "filter__threed__btn",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
             },
           },
@@ -151,6 +160,12 @@ const configuration = {
                 isActive: false,
                 activeClass: "booking-filter__partners__btn-active-element",
                 className: "filter__partners__btn",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
               filter__select__btn__default_1: {
                 id: "3",
@@ -158,6 +173,12 @@ const configuration = {
                 activeClass:
                   "booking-filter__select__btn__default-active-element",
                 className: "filter__select__btn__default_1",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
               filter__select__btn__default_2: {
                 id: "4",
@@ -165,6 +186,12 @@ const configuration = {
                 activeClass:
                   "booking-filter__select__btn__default-active-element",
                 className: "filter__select__btn__default_2",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
               filter__select__btn__default_3: {
                 id: "5",
@@ -172,6 +199,12 @@ const configuration = {
                 activeClass:
                   "booking-filter__select__btn__default-active-element",
                 className: "filter__select__btn__default_3",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
               filter__select__btn__default_4: {
                 id: "6",
@@ -179,6 +212,12 @@ const configuration = {
                 activeClass:
                   "booking-filter__select__btn__default-active-element",
                 className: "filter__select__btn__default_4",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
             },
           },

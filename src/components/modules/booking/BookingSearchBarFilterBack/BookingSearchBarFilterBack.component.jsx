@@ -7,11 +7,15 @@ const BookingSearchBarFilterBack = ({
   showFilterBox,
   setShowFilterBox,
   onKeyDown,
+  advancedFilter,
+  setAdvancedFilter,
 }) => {
   const filterBox = config?.filter_box?.home;
   return (
     <div className="back__filter__btns">
       <FilterBox
+        advancedFilter={advancedFilter}
+        setAdvancedFilter={setAdvancedFilter}
         showFilterBox={showFilterBox}
         setShowFilterBox={setShowFilterBox}
         className="filter__box"

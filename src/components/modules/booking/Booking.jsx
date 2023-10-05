@@ -23,6 +23,42 @@ const Booking = () => {
     endDate: null,
   });
 
+  const [advancedFilter, setAdvancedFilter] = useState({
+    "3dView": false,
+    partnersHotels: false,
+    lowPriceFirst: false,
+    recomended: false,
+    highPriceFirst: false,
+    hightRatingFirst: false,
+    priceMin: 0,
+    priceMax: 0,
+    hotelStarFive: false,
+    hotelStarFour: false,
+    hotelStarThree: false,
+    hotelStarTwo: false,
+    hotelStarOne: false,
+    reviewScoreFive: false,
+    reviewScoreFour: false,
+    reviewScoreThree: false,
+    reviewScoreTwo: false,
+    reviewScoreOne: false,
+    apartments: false,
+    hotels: false,
+    homestays: false,
+    villas: false,
+    motels: false,
+    wakeUpCall: false,
+    crHire: false,
+    flatTv: false,
+    dryCleaning: false,
+    internet: false,
+    havanaLobbyBar: false,
+    flestaRestaurant: false,
+    hotelTransportService: false,
+    laundryService: false,
+    petsWelcome: false,
+  });
+
   const [locationFilterData, setLocationFilterData] = useState([]);
   const [locationFilterDataCopy, setLocationFilterDataCopy] = useState([]);
 
@@ -78,6 +114,8 @@ const Booking = () => {
         });
     }
   };
+
+  console.log(advancedFilter);
 
   const { asideActive, setAsideActive, pages, activePage, setActivePage } =
     useContext(AsideContext);
@@ -385,6 +423,8 @@ const Booking = () => {
         />
         {showResult == true && (
           <BookingSearchBarFilterBack
+            advancedFilter={advancedFilter}
+            setAdvancedFilter={setAdvancedFilter}
             config={configuration?.booking?.home}
             showFilterBox={showFilterBox}
             setShowFilterBox={setShowFilterBox}
