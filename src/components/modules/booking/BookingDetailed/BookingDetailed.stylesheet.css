@@ -13,6 +13,10 @@
     position: relative;
     background-position: center;
 }
+.detailed_conteiner,.detailedBg{
+  scroll-behavior: smooth;
+}
+
 
 .back__btn {
   display: flex;

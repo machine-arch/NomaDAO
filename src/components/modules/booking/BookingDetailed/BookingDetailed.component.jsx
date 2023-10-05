@@ -140,7 +140,7 @@ const BookingDetailed = () => {
   const params = useParams();
   const id = params.id;
   return (
-    <div>
+    <div className="detailed_conteiner">
       <div className="detailedBg">
         <SignIn
           type="secondary"
