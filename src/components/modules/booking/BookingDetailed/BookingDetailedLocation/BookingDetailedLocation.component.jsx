@@ -1,9 +1,10 @@
 import React from 'react';
 import './BookingDetailedLocation.stylesheet.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const BookingDetailedLocation = ({ config }) => {
   const [showMap, setShowMap] = useState(false);
+  const buttonRef = useRef(null);
   const mapStyle = {
     width: '100%',
     height: '450px',
@@ -13,7 +14,15 @@ const BookingDetailedLocation = ({ config }) => {
   };
 
   return (
-    <div className={config?.components?.location__container?.className}>
+    <div
+      tabIndex={0}
+      className={config?.components?.location__container?.className}
+      onKeyDown={(e) => {
+        config?.components?.location__container?.eventHandlers?.onKeyDown?.callback(
+          e,
+        );
+      }}
+    >
       <div className="location__top">
         <div>
           <span className="blue__box"></span>
@@ -48,8 +57,11 @@ const BookingDetailedLocation = ({ config }) => {
     &q=Tbilisi,Georgia`}
         ></iframe>
         <button
-          onClick={() => setShowMap((prev) => !prev)}
+          onClick={() => {
+            console.log('buttonRef', buttonRef);
+          }}
           className="location__bottom__btn"
+          ref={buttonRef}
         >
           Show on map
         </button>
