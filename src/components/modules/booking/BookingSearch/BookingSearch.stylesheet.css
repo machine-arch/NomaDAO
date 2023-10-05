@@ -3,6 +3,13 @@
   padding: 2rem; 
   width: 100%;
 }
+.search__location {
+  position: relative;
+}
+
+.search__persons {
+  position: relative;
+}
 
 .booking__search__box {
   display: flex;
