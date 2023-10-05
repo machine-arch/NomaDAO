@@ -36,7 +36,7 @@ const router = createBrowserRouter([
             element: <HomeContent />, // HomeContent component rendered when the path is '/Home', it's custom page, so doesn't share same struture as /:pageName
           },
           {
-            path: 'index.html',
+            path: '/',
             element: <HomeContent />, // HomeContent component rendered when the path is '/index.html', for localhost
           },
           {
