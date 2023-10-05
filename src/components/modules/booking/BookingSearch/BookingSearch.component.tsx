@@ -57,7 +57,7 @@ const BookingSearch = ({
             placeholder="Where are you going?"
             id={`nav_index_1`}
           />
-          <BookingSearchFilterLocationDropdown />
+          {filterDisplay?.location && <BookingSearchFilterLocationDropdown />}
         </div>
         <div className="vl"></div>
 
@@ -103,10 +103,12 @@ const BookingSearch = ({
             {guests?.adults} adult - {guests?.children} children -{" "}
             {guests?.rooms} room
           </h5>
-          <BookingSearchFilterGuestsDropdown
-            guests={guests}
-            setGuests={setGuests}
-          />
+          {filterDisplay?.location && (
+            <BookingSearchFilterGuestsDropdown
+              guests={guests}
+              setGuests={setGuests}
+            />
+          )}
         </div>
         <div className="vl"></div>
 

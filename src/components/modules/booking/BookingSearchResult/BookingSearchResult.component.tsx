@@ -1,17 +1,18 @@
-import React from 'react';
-import './BookingSearchResult.stylesheet.css';
-import { useNavigate } from 'react-router-dom';
-import ResultStar from './ResultStar/ResultStar';
+import React from "react";
+import "./BookingSearchResult.stylesheet.css";
+import { useNavigate } from "react-router-dom";
+import ResultStar from "./ResultStar/ResultStar";
 
 const BookingSearchResult = ({ index, config, data }) => {
   const navigate = useNavigate();
   return (
     <div
       onKeyDown={(e) => {
-        if (e.key === 'Enter') {
+        if (e.key === "Enter") {
           navigate(`/BookYourHotel/${index + 1}`);
         }
       }}
+      className="test"
       id={`${config?.components?.booking__result__box?.className}-${index}`}
       tabIndex={0}
     >
@@ -22,8 +23,8 @@ const BookingSearchResult = ({ index, config, data }) => {
       ${
         config?.components?.booking__result__box?.isActive &&
         index === config?.factory?.index
-          ? 'booking-result-active-element'
-          : ''
+          ? config?.components?.booking__result__box?.activeClass
+          : ""
       }
       `}
         tabIndex={0}

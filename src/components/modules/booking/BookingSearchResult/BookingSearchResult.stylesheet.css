@@ -1,7 +1,6 @@
 .booking__result__box {
   display: flex;
   align-items: center;
-  /* position: absolute; */
   width: 100%;
 
   z-index: 20000;
@@ -183,11 +182,20 @@
 .right__bottom {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 
-.booking-result-active-element {
+.booking-results-active-element {
   border-radius: var(--Corner-4, 4px)!important;
   border: 4px solid var(--Brand-B, #0699D2)!important;
   background: rgba(236, 236, 236, 0.70)!important;
+}
+
+.booking-results-active-element:focus{
+  outline: none;
+}
+
+.test:focus {
+  outline: none;
 }
