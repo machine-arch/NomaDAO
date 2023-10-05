@@ -158,6 +158,7 @@ export default class BookingUtil {
 
     if (home[homeKeys[currentHomeIndex]]?.type == 'collection') {
       let index = home[homeKeys[currentHomeIndex]]?.factory?.index;
+      if (index >= 9) return;
       const i = home[homeKeys[currentHomeIndex]]?.factory?.sequence(index);
       home[homeKeys[currentHomeIndex]].factory.index = i;
       const newConfig = _.cloneDeep(configuration);

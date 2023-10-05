@@ -3,9 +3,13 @@ export const handleSearchLocation = (ref) => {
 };
 
 export const handleDate = () => {
-  console.log("TEST");
+  console.log('TEST');
 };
 
 export const handlePersons = () => {
-  console.log("TEST");
+  console.log('TEST');
 };
+
+export function handleLocation(ref) {
+  ref?.current?.click();
+}

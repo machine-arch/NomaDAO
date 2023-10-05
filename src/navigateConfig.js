@@ -39,7 +39,7 @@ const configuration = {
             eventHandlers: {
               onKeyDown: {
                 name: 'onKeyDown',
-                callback: handleSearchLocation,
+                callback: handleLocation,
               },
             },
           },
@@ -490,6 +490,12 @@ const configuration = {
                 isActive: false,
                 activeClass: 'booking-active-element',
                 className: 'location__container',
+                eventHandlers: {
+                  onKeyDown: {
+                    name: 'onKeyDown',
+                    callback: handleSearchLocation,
+                  },
+                },
               },
             },
           },
