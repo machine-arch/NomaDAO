@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 const BookingDetailed = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const navigate = useNavigate();
+  const originalConfig = configuration;
 
   const bookingUtil = new BookingUtil();
   const moveSound = useMoveSound;
@@ -149,15 +150,8 @@ const BookingDetailed = () => {
           className={`${state?.config?.booking?.home?.hotel_detalis?.home?.back?.components?.back__btn?.className}`}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              navigate('/BookYourHotel');
-              configuration.booking.home.filter.display =
-                !configuration.booking.home.filter.display;
-              configuration.booking.home.results.display =
-                !configuration.booking.home.results.display;
-              const newConfig = _.cloneDeep(configuration);
-              configuration.booking.home.results.factory.index = 0;
+              navigate('/BookYourHotel', { state: { persist: true } });
               activeHomeComponent.current = 'search';
-              dispatch({ type: 'SET_CONFIG', payload: newConfig });
             }
           }}
         >
