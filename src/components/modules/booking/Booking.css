@@ -55,3 +55,7 @@
   box-shadow: 0px 0px 7px 0px rgba(255, 255, 255, 0.25)!important;
   color: white !important;
 }
+
+.booking-active-element:focus{
+  outline: none!important;
+}

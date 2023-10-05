@@ -486,7 +486,7 @@ const configuration = {
               location__container: {
                 id: "1",
                 isActive: false,
-                activeClass: "booking-active-element",
+                activeClass: "booking-location__container-active-element",
                 className: "location__container",
                 eventHandlers: {
                   onKeyDown: {
@@ -542,7 +542,7 @@ const configuration = {
                 id: "1",
                 isActive: false,
                 className: "room__card",
-                activeClass: "booking-active-element",
+                activeClass: "booking-room__card-active-element",
               },
             },
           },

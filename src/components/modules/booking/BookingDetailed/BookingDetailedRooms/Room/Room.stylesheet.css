@@ -117,3 +117,7 @@
   gap: 0.5rem;
   padding: 1rem 1.5rem;
 }
+
+.booking-room__card-choose__room-active-element > button {
+  border: 3px solid #0699D2;
+}

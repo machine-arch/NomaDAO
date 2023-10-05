@@ -14,6 +14,6 @@ export const handlePersons = (state, setState) => {
   setState({ ...state, guests: !state?.guests });
 };
 
-export function handleLocation(e, ref) {
-  if (e.key === 'Enter') ref?.current?.click();
+export function handleLocation(state, setState) {
+  setState(!state);
 }

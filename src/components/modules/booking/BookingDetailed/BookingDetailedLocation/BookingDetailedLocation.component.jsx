@@ -1,16 +1,16 @@
-import React from 'react';
-import './BookingDetailedLocation.stylesheet.css';
-import { useState, useRef } from 'react';
+import React from "react";
+import "./BookingDetailedLocation.stylesheet.css";
+import { useState, useRef } from "react";
 
 const BookingDetailedLocation = ({ config }) => {
   const [showMap, setShowMap] = useState(false);
   const buttonRef = useRef(null);
   const mapStyle = {
-    width: '100%',
-    height: '450px',
-    border: '0',
-    borderRadius: '16px',
-    position: 'relative',
+    width: "100%",
+    height: "450px",
+    border: "0",
+    borderRadius: "16px",
+    position: "relative",
   };
 
   return (
@@ -18,9 +18,12 @@ const BookingDetailedLocation = ({ config }) => {
       tabIndex={0}
       className={config?.components?.location__container?.className}
       onKeyDown={(e) => {
-        config?.components?.location__container?.eventHandlers?.onKeyDown?.callback(
-          e,
-        );
+        if (e.keyCode === 13) {
+          config?.components?.location__container?.eventHandlers?.onKeyDown?.callback(
+            showMap,
+            setShowMap
+          );
+        }
       }}
     >
       <div className="location__top">
@@ -46,25 +49,26 @@ const BookingDetailedLocation = ({ config }) => {
       </div>
       <div className="location__bottom">
         <iframe
-          className="location__bottom__map"
+          className={showMap == false ? "location__bottom__map" : ""}
           style={mapStyle}
           loading="lazy"
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
           src={`https://www.google.com/maps/embed/v1/place?key=${
             import.meta.env.VITE_GOOGLEMAPS_API_KEY
-          }
-    &q=Tbilisi,Georgia`}
+          }&q=41.716667,44.783333&zoom=15`}
         ></iframe>
-        <button
-          onClick={() => {
-            console.log('buttonRef', buttonRef);
-          }}
-          className="location__bottom__btn"
-          ref={buttonRef}
-        >
-          Show on map
-        </button>
+        {showMap == false && (
+          <button
+            onClick={() => {
+              console.log("buttonRef", buttonRef);
+            }}
+            className="location__bottom__btn"
+            ref={buttonRef}
+          >
+            Show on map
+          </button>
+        )}
       </div>
     </div>
   );

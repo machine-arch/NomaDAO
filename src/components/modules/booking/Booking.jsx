@@ -10,8 +10,6 @@ import BookingUtil from "../../../utils/navigation.util";
 import configuration from "../../../navigateConfig.js";
 import useMoveSound from "../../../hooks/useMoveSound";
 import _, { set } from "lodash";
-import useFetch from "../../../hooks/useFetch/useFetch";
-import useDebounce from "../../../hooks/useDebounce/useDebounce";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -45,6 +43,7 @@ const Booking = () => {
   });
 
   const fetchSuggestions = (e) => {
+    setLocation(e.target.value);
     if (e.target.value.length == 0) {
       setLocationFilterDataCopy([]);
       setLocationFilterData([]);
@@ -119,7 +118,7 @@ const Booking = () => {
             setData(data?.content);
             setShowResult(true);
             dispatch({
-              type: 'SET_PERIST',
+              type: "SET_PERIST",
               payload: false,
             });
           });
@@ -130,7 +129,7 @@ const Booking = () => {
           tcomponents[tcomponentsKeys[0]].isActive = false;
           const newConfig = JSON.parse(JSON.stringify(configuration));
           dispatch({
-            type: 'SET_CONFIG',
+            type: "SET_CONFIG",
             payload: newConfig,
           });
           let activeDomElement = null;
@@ -138,7 +137,7 @@ const Booking = () => {
             return new Promise((resolve) => {
               setTimeout(() => {
                 activeDomElement = document.querySelector(
-                  '.booking-results-active-element',
+                  ".booking-results-active-element"
                 );
                 resolve();
               }, 500);
@@ -148,12 +147,12 @@ const Booking = () => {
           console.log(activeDomElement);
           if (activeDomElement) {
             activeDomElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
+              behavior: "smooth",
+              block: "center",
             });
             activeDomElement.focus();
-            activeHomeComponent.current = 'results';
-            activeComponent.current = 'booking__result__box';
+            activeHomeComponent.current = "results";
+            activeComponent.current = "booking__result__box";
           }
         })
         .catch((err) => {
