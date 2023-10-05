@@ -1,9 +1,9 @@
-import React from "react";
-import "./Room.stylesheet.css";
+import React from 'react';
+import './Room.stylesheet.css';
 
-const Room = () => {
+const Room = ({ className, id }) => {
   return (
-    <div className="room__card">
+    <div className={className} id={id}>
       <div className="room__card__left">
         <img src="/src/assets/images/RoomCardImg.jpeg" />
       </div>

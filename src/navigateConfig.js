@@ -1,6 +1,6 @@
-import { handleSearchLocation } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
-import { handleDate } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
-import { handlePersons } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
+import { handleSearchLocation } from './components/modules/booking/EventHandlers/BookingEventHandlers';
+import { handleDate } from './components/modules/booking/EventHandlers/BookingEventHandlers';
+import { handlePersons } from './components/modules/booking/EventHandlers/BookingEventHandlers';
 
 const configuration = {
   booking: {
@@ -35,10 +35,10 @@ const configuration = {
             id: '1',
             isActive: false,
             activeClass: 'booking-search-active-element',
-            activeClass: "booking-search-active-element",
+            activeClass: 'booking-search-active-element',
             eventHandlers: {
               onKeyDown: {
-                name: "onKeyDown",
+                name: 'onKeyDown',
                 callback: handleSearchLocation,
               },
             },
@@ -47,10 +47,10 @@ const configuration = {
             id: '2',
             isActive: false,
             activeClass: 'booking-search-active-element',
-            activeClass: "booking-search-active-element",
+            activeClass: 'booking-search-active-element',
             eventHandlers: {
               onKeyDown: {
-                name: "onKeyDown",
+                name: 'onKeyDown',
                 callback: handleDate,
               },
             },
@@ -59,10 +59,10 @@ const configuration = {
             id: '3',
             isActive: false,
             activeClass: 'booking-search-active-element',
-            activeClass: "booking-search-active-element",
+            activeClass: 'booking-search-active-element',
             eventHandlers: {
               onKeyDown: {
-                name: "onKeyDown",
+                name: 'onKeyDown',
                 callback: handlePersons,
               },
             },
@@ -72,20 +72,14 @@ const configuration = {
             className: 'search__Btn',
             isActive: false,
             activeClass: 'booking-search-active-element',
-            activeClass: "booking-search-active-element",
-            // eventHandlers: {
-            //   onKeyDown: {
-            //     name: "onKeyDown",
-            //     callback: handleSearchButton,
-            //   },
-            // },
+            activeClass: 'booking-search-active-element',
           },
         },
       },
       filter: {
         id: '2',
         name: 'filter',
-        display: 'hidden',
+        display: false,
         arrangement: 'row',
         components: {
           back__btn: {
@@ -105,7 +99,7 @@ const configuration = {
       results: {
         id: '4',
         name: 'results',
-        display: 'hidden',
+        display: false,
         arrangement: 'column',
         type: 'collection',
         factory: {
@@ -409,7 +403,7 @@ const configuration = {
           auth: {
             id: '1',
             name: 'auth',
-            display: 'active',
+            display: true,
             arrangement: 'row',
             components: {
               sign_in: {
@@ -429,7 +423,7 @@ const configuration = {
           back: {
             id: '2',
             name: 'back',
-            display: 'active',
+            display: true,
             arrangement: 'row',
             components: {
               back__btn: {
@@ -443,7 +437,7 @@ const configuration = {
           detailed__slider__bg: {
             id: '3',
             name: 'slider',
-            display: 'active',
+            display: true,
             arrangement: 'row',
             components: {
               detailed__slider__threed: {
@@ -469,18 +463,12 @@ const configuration = {
                   },
                 },
               },
-              slider__btn: {
-                id: '1',
-                isActive: false,
-                activeClass: 'booking-active-element',
-                className: 'slider__btn',
-              },
             },
           },
           description__container: {
             id: '4',
             name: 'description',
-            display: 'active',
+            display: true,
             arrangement: 'row',
             components: {
               description__container: {
@@ -494,7 +482,7 @@ const configuration = {
           location__conteiner: {
             id: '5',
             name: 'location__conteiner',
-            display: 'active',
+            display: true,
             arrangement: 'row',
             components: {
               location__container: {
@@ -502,6 +490,55 @@ const configuration = {
                 isActive: false,
                 activeClass: 'booking-active-element',
                 className: 'location__container',
+              },
+            },
+          },
+          booking__detailed__rooms: {
+            id: '6',
+            name: 'booking__detailed__rooms',
+            display: true,
+            arrangement: 'row',
+            components: {
+              detailed__search__check: {
+                id: '1',
+                isActive: false,
+                activeClass: 'booking-active-element',
+                className: 'detailed__search__check',
+              },
+              detailed__search__guests: {
+                id: '2',
+                isActive: false,
+                activeClass: 'booking-active-element',
+                className: 'detailed__search__guests',
+              },
+              availability__btn: {
+                id: '3',
+                isActive: false,
+                activeClass: 'booking-active-element',
+                className: 'availability__btn',
+              },
+            },
+          },
+          rooms__list: {
+            id: '4',
+            type: 'collection',
+            display: true,
+            arrangement: 'column',
+            factory: {
+              index: 0,
+              sequence: function (index) {
+                return index + 1;
+              },
+              decrement: function (index) {
+                return index !== 0 ? index - 1 : index;
+              },
+            },
+            components: {
+              room__card: {
+                id: '1',
+                isActive: false,
+                className: 'room__card',
+                activeClass: 'booking-active-element',
               },
             },
           },

@@ -35,11 +35,6 @@ const BookingDetailed = () => {
     if (!searchComponents) return;
     const firstSearchEl = Object.keys(searchComponents)[0];
     searchComponents[firstSearchEl].isActive = true;
-    const newConfig = _.cloneDeep(configuration);
-    dispatch({
-      type: 'SET_CONFIG',
-      payload: newConfig,
-    });
     activeHomeComponent.current = firstHomeEl;
     activeComponent.current = firstSearchEl;
     setCanNavigate(true);
@@ -139,7 +134,6 @@ const BookingDetailed = () => {
       window.removeEventListener('keydown', eventHendler);
     };
   }, [activeComponent.current, state?.config]);
-
   const params = useParams();
   const id = params.id;
   return (
@@ -149,7 +143,9 @@ const BookingDetailed = () => {
           type="secondary"
           config={state?.config?.booking?.home?.hotel_detalis?.home?.auth}
         />
-        <button className="back__btn">
+        <button
+          className={`${state?.config?.booking?.home?.hotel_detalis?.home?.back?.components?.back__btn?.className}`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -276,7 +272,9 @@ const BookingDetailed = () => {
         />
         <hr className="detailed__hr"></hr>
       </div>
-      <BookingDetailedRooms />
+      <BookingDetailedRooms
+        config={state?.config?.booking?.home?.hotel_detalis?.home}
+      />
       <BookingComplete id={id} />
     </div>
   );

@@ -1,29 +1,26 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
-import BookingData from "../../../data/hotels.json";
-import "./Booking.css";
-import BookingSearch from "./BookingSearch/BookingSearch.component";
-import BookingSearchResult from "./BookingSearchResult/BookingSearchResult.component";
-import BookingSearchBarFilterBack from "./BookingSearchBarFilterBack/BookingSearchBarFilterBack.component";
-import SignIn from "../../SignIn/SignIn.component";
-import AsideContext from "../../../context/AsideContext.js";
-import { GlobalContext } from "../../../context/global.context.jsx";
-import BookingUtil from "../../../utils/navigation.util";
-import configuration from "../../../navigateConfig.js";
-import useMoveSound from "../../../hooks/useMoveSound";
-import _ from "lodash";
-import useFetch from "../../../hooks/useFetch/useFetch";
+import React, { useEffect, useState, useContext, useRef } from 'react';
+import './Booking.css';
+import BookingSearch from './BookingSearch/BookingSearch.component';
+import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
+import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
+import SignIn from '../../SignIn/SignIn.component';
+import AsideContext from '../../../context/AsideContext.js';
+import { GlobalContext } from '../../../context/global.context.jsx';
+import BookingUtil from '../../../utils/navigation.util';
+import configuration from '../../../navigateConfig.js';
+import useMoveSound from '../../../hooks/useMoveSound';
+import _ from 'lodash';
+import useFetch from '../../../hooks/useFetch/useFetch';
 import Axios from "../../../axios/Axios";
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
   const bookingUtil = new BookingUtil();
 
-  const { data, setData } = useFetch("/hotel", {
+  const { data, setData } = useFetch('/hotel', {
     page: 1,
     limit: 10,
   });
-
-  console.log(data);
 
   const { asideActive, setAsideActive, pages, activePage, setActivePage } =
     useContext(AsideContext);
@@ -109,7 +106,8 @@ const Booking = () => {
           home,
           dispatch,
           configuration,
-          _
+          _,
+          setAsideActive,
         );
         useMoveSound();
         break;
@@ -122,7 +120,8 @@ const Booking = () => {
           dispatch,
           configuration,
           activeComponent,
-          _
+          _,
+          showFilterBox,
         );
         useMoveSound();
         break;
@@ -144,7 +143,8 @@ const Booking = () => {
       case "Backspace":
         if (showFilterBox) {
           setShowFilterBox(false);
-          activeHomeComponent.current = "filter";
+          activeHomeComponent.current = 'filter';
+          return;
         }
         break;
       default:
@@ -198,14 +198,18 @@ const Booking = () => {
     return () => {
       window.removeEventListener("keydown", eventHendler);
     };
-  }, [activeComponent.current, configuration, showFilterBox]);
+  }, [activeComponent.current, state?.config, showFilterBox, asideActive]);
 
   const toggleResults = () => {
     setShowResult((prev) => !prev);
+    configuration.booking.home.results.display =
+      !configuration.booking.home.results.display;
   };
 
   const filterResults = (e) => {
-    if (e.key !== "Enter" && e.type !== "click") return;
+    if (e.key !== 'Enter' && e.type !== 'click') return;
+    configuration.booking.home.filter.display =
+      !configuration.booking.home.filter.display;
     toggleResults();
   };
 
@@ -235,7 +239,7 @@ const Booking = () => {
         <div className="bottom">
           <div className="bottom_bgOverlay"></div>
           <div className="bottom__results">
-            {data?.map((oneBooking, index) => {
+            {data?.content?.map((oneBooking, index) => {
               return (
                 <BookingSearchResult
                   data={oneBooking}
