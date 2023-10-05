@@ -1,7 +1,6 @@
 import React from 'react';
 import './BookingDetailedRooms.stylesheet.css';
 import Room from './Room/Room.component';
-
 const BookingDetailedRooms = ({ config }) => {
   return (
     <div className="booking__detailed__rooms">

@@ -1,20 +1,19 @@
-import React from "react";
-import "./BookingSearchResult.stylesheet.css";
-import { useNavigate } from "react-router-dom";
-import ResultStar from "./ResultStar/ResultStar";
+import React from 'react';
+import './BookingSearchResult.stylesheet.css';
+import { useNavigate } from 'react-router-dom';
+import ResultStar from './ResultStar/ResultStar';
 
-const BookingSearchResult = ({ id, index, config, data }) => {
+const BookingSearchResult = ({ index, config, data }) => {
   const navigate = useNavigate();
-
   return (
     <div
       onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          navigate(`/BookYourHotel/${id}`);
+        if (e.key === 'Enter') {
+          navigate(`/BookYourHotel/${index + 1}`);
         }
       }}
       id={`${config?.components?.booking__result__box?.className}-${index}`}
-      tabIndex={index}
+      tabIndex={0}
     >
       <div
         className={`container ${
@@ -23,10 +22,11 @@ const BookingSearchResult = ({ id, index, config, data }) => {
       ${
         config?.components?.booking__result__box?.isActive &&
         index === config?.factory?.index
-          ? "booking-result-active-element"
-          : ""
+          ? 'booking-result-active-element'
+          : ''
       }
       `}
+        tabIndex={0}
       >
         <div className="left">
           <img className="booking__result__img" src={data?.images[0]} />
