@@ -1,11 +1,15 @@
 export const handleSearchLocation = (ref) => {
-  ref?.current?.focus();
+  if (ref.current === document.activeElement) {
+    ref.current.blur();
+  } else {
+    ref.current.focus();
+  }
 };
 
-export const handleDate = () => {
-  console.log("TEST");
+export const handleDate = (state, setState) => {
+  setState({ ...state, date: !state?.date });
 };
 
-export const handlePersons = () => {
-  console.log("TEST");
+export const handlePersons = (state, setState) => {
+  setState({ ...state, guests: !state?.guests });
 };

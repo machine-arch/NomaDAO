@@ -47,7 +47,7 @@ const configuration = {
             id: "2",
             isActive: false,
             activeClass: "booking-search-active-element",
-            activeClass: "booking-search-active-element",
+            activeClass: "booking-search-date-active-element",
             eventHandlers: {
               onKeyDown: {
                 name: "onKeyDown",

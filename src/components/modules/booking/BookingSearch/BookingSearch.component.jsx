@@ -1,34 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "./BookingSearch.stylesheet.css";
 import { useRef } from "react";
-import useDebounce from "../../../../hooks/useDebounce/useDebounce";
 import BookingSearchFilterLocationDropdown from "./BookingSearchFilterLocationDropdown/BookingSearchFilterLocationDropdown";
 import BookingSearchFilterGuestsDropdown from "./BookingSearchFilterGuestsDropdown/BookingSearchFilterGuestsDropdown";
+import BookingSearchFilterDatePicker from "./BookingSearchFilterDatePicker/BookingSearchFilterDatePicker";
 
 const BookingSearch = ({
   filterResults,
   config,
-  data,
-  setData,
-  toggleResults,
+  // data,
+  // location,
+  // setLocation,
+  // setData,
+  // toggleResults,
+  guests,
+  setGuests,
+  filterDisplay,
+  setFilterDisplay,
+  locationFilterData,
+  setLocationFilterData,
+  fetchSuggestions,
 }) => {
   const searchRef = useRef(null);
-  const [location, setLocation] = useState("");
-
-  const [guests, setGuests] = useState({
-    adults: 0,
-    children: 0,
-    rooms: 0,
-  });
-
-  const [filterDisplay, setFilterDisplay] = useState({
-    location: false,
-    date: {
-      checkIn: false,
-      checkOut: false,
-    },
-    guests: false,
-  });
 
   return (
     <div className="booking__search" id={config?.id}>
@@ -51,13 +44,20 @@ const BookingSearch = ({
         >
           <h1 className="searchBox__title">Location</h1>
           <input
-            onChange={(e) => setLocation(e.target.value)}
+            autoComplete="off"
+            onKeyUp={(e) => {
+              fetchSuggestions(e);
+            }}
             ref={searchRef}
             className="searchBox__selectable navigable"
             placeholder="Where are you going?"
             id={`nav_index_1`}
           />
-          {filterDisplay?.location && <BookingSearchFilterLocationDropdown />}
+          {locationFilterData?.length >= 1 && (
+            <BookingSearchFilterLocationDropdown
+              locationFilterData={locationFilterData}
+            />
+          )}
         </div>
         <div className="vl"></div>
 
@@ -65,7 +65,10 @@ const BookingSearch = ({
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              config?.components?.search__date?.eventHandlers?.onKeyDown?.callback();
+              config?.components?.search__date?.eventHandlers?.onKeyDown?.callback(
+                filterDisplay,
+                setFilterDisplay
+              );
             }
           }}
           className={`${"search__date"} ${
@@ -76,18 +79,22 @@ const BookingSearch = ({
           id={`search__${config?.components?.search__date?.id}`}
         >
           <h1 className="searchBox__title">Check in - check out</h1>
-          <input
-            type="text"
-            placeholder="Fr 16 Jun - Fri 14 Jul"
-            className="searchBox__selectable navigable"
-          />{" "}
+          <span className="searchBox__selectable navigable">
+            Fr 16 Jun - Fri 14 Jul
+          </span>
+          {filterDisplay?.date == true && (
+            <BookingSearchFilterDatePicker config={config} />
+          )}
         </div>
         <div className="vl"></div>
 
         <div
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              config?.components?.search__persons?.eventHandlers?.onKeyDown?.callback();
+              config?.components?.search__persons?.eventHandlers?.onKeyDown?.callback(
+                filterDisplay,
+                setFilterDisplay
+              );
             }
           }}
           tabIndex={0}
@@ -103,7 +110,7 @@ const BookingSearch = ({
             {guests?.adults} adult - {guests?.children} children -{" "}
             {guests?.rooms} room
           </h5>
-          {filterDisplay?.location && (
+          {filterDisplay?.guests && (
             <BookingSearchFilterGuestsDropdown
               guests={guests}
               setGuests={setGuests}
