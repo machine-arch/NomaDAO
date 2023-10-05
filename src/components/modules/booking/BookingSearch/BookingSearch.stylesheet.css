@@ -49,6 +49,17 @@
   color: #3F3F3F ;
 }
 
+.datepicker__placeholder {
+  border: none;
+  padding: 0.2rem;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  color: #3F3F3F ;
+}
+
+
+
 .searchBox__selectable::placeholder {
   color: #3F3F3F!important;
 }

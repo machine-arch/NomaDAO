@@ -19,8 +19,8 @@ const Booking = () => {
 
   const [location, setLocation] = useState(null);
   const [dates, setDates] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: null,
+    endDate: null,
   });
 
   const [locationFilterData, setLocationFilterData] = useState([]);
@@ -31,9 +31,9 @@ const Booking = () => {
   const [data, setData] = useState([]);
 
   const [guests, setGuests] = useState({
-    adults: 0,
-    children: 0,
-    rooms: 0,
+    adultsCount: 0,
+    childrensCount: 0,
+    roomsCount: 0,
   });
 
   const [filterDisplay, setFilterDisplay] = useState({
@@ -302,6 +302,16 @@ const Booking = () => {
     );
   };
 
+  const formatDate = (string) => {
+    if (string == undefined) {
+      return null;
+    }
+    let month = string?.slice(0, 2);
+    let day = string?.slice(3, 5);
+    let year = string?.slice(6, 10);
+    return `${year}-${month}-${day}`;
+  };
+
   useEffect(() => {
     canNavigate ? window.addEventListener("keydown", eventHendler) : null;
     return () => {
@@ -312,6 +322,12 @@ const Booking = () => {
   const toggleResults = () => {
     const data = {
       location: location,
+      startDate: formatDate(dates?.startDate?.toLocaleDateString().toString()),
+      endDate: formatDate(dates?.endDate?.toLocaleDateString().toString()),
+      roomsCount: guests?.roomsCount == 0 ? null : guests?.roomsCount,
+      adultsCount: guests?.adultsCount == 0 ? null : guests?.adultsCount,
+      childrensCount:
+        guests?.childrensCount == 0 ? null : guests?.childrensCount,
     };
     fetch(`${import.meta.env.VITE_API_URL}/hotel-filter?page=1&limit=10`, {
       method: "POST",
@@ -332,8 +348,6 @@ const Booking = () => {
     configuration.booking.home.results.display =
       !configuration.booking.home.results.display;
     configuration.booking.home.results.factory.index = 0;
-
-    console.log(configuration.booking.home.results.display);
   };
 
   const filterResults = (e) => {
@@ -367,6 +381,7 @@ const Booking = () => {
           dates={dates}
           setDates={setDates}
           config={configuration?.booking?.home?.search}
+          formatDate={formatDate}
         />
         {showResult == true && (
           <BookingSearchBarFilterBack

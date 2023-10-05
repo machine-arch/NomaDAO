@@ -20,9 +20,9 @@ const BookingSearchFilterGuestsDropdown = ({ guests, setGuests }) => {
         <div className="guests__dropdown__item__container">
           <h1 className="guests__dropdown__item__title">Rooms</h1>
           <div className="guests__dropdown__item__counter">
-            <IconMinus onClick={() => onMinus("rooms")} />
-            <span>{guests?.rooms}</span>
-            <IconPlus onClick={() => onPlus("rooms")} />
+            <IconMinus onClick={() => onMinus("roomsCount")} />
+            <span>{guests?.roomsCount}</span>
+            <IconPlus onClick={() => onPlus("roomsCount")} />
           </div>
         </div>
       </div>
@@ -30,9 +30,9 @@ const BookingSearchFilterGuestsDropdown = ({ guests, setGuests }) => {
         <div className="guests__dropdown__item__container">
           <h1 className="guests__dropdown__item__title">Adults</h1>
           <div className="guests__dropdown__item__counter">
-            <IconMinus onClick={() => onMinus("adults")} />
-            <span>{guests?.adults}</span>
-            <IconPlus onClick={() => onPlus("adults")} />
+            <IconMinus onClick={() => onMinus("adultsCount")} />
+            <span>{guests?.adultsCount}</span>
+            <IconPlus onClick={() => onPlus("adultsCount")} />
           </div>
         </div>
       </div>
@@ -40,9 +40,9 @@ const BookingSearchFilterGuestsDropdown = ({ guests, setGuests }) => {
         <div className="guests__dropdown__item__container">
           <h1 className="guests__dropdown__item__title">Children</h1>
           <div className="guests__dropdown__item__counter">
-            <IconMinus onClick={() => onMinus("children")} />
-            <span>{guests?.children}</span>
-            <IconPlus onClick={() => onPlus("children")} />
+            <IconMinus onClick={() => onMinus("childrensCount")} />
+            <span>{guests?.childrensCount}</span>
+            <IconPlus onClick={() => onPlus("childrensCount")} />
           </div>
         </div>
       </div>

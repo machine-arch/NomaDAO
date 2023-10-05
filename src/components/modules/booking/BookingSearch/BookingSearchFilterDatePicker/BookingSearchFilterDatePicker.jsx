@@ -3,11 +3,20 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./BookingSearchFilterDatePicker.css";
 
-const BookingSearchFilterDatePicker = ({ dates, setDates }) => {
+const BookingSearchFilterDatePicker = ({
+  dates,
+  setDates,
+  dateFilterShow,
+  setDateFilterShow,
+}) => {
   const handleStartDateChange = (date) => {
     setDates({
       ...dates,
       startDate: date,
+    });
+    setDateFilterShow({
+      ...dateFilterShow,
+      endDate: true,
     });
   };
 
@@ -22,6 +31,8 @@ const BookingSearchFilterDatePicker = ({ dates, setDates }) => {
     <div className="datepicker">
       <div>
         <DatePicker
+          dateFormat="yy/MM/dd"
+          open={dateFilterShow?.startDate}
           selected={dates?.startDate}
           onChange={handleStartDateChange}
           selectsStart
@@ -31,6 +42,8 @@ const BookingSearchFilterDatePicker = ({ dates, setDates }) => {
       </div>
       <div>
         <DatePicker
+          dateFormat="yy/MM/dd"
+          open={dateFilterShow?.endDate}
           selected={dates?.endDate}
           onChange={handleEndDateChange}
           selectsEnd
