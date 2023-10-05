@@ -150,8 +150,11 @@ const BookingDetailed = () => {
           className={`${state?.config?.booking?.home?.hotel_detalis?.home?.back?.components?.back__btn?.className}`}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              navigate('/BookYourHotel', { state: { persist: true } });
-              activeHomeComponent.current = 'search';
+              dispatch({
+                type: 'SET_PERIST',
+                payload: true,
+              });
+              navigate('/BookYourHotel');
             }
           }}
         >

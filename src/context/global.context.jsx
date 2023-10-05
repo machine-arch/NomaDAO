@@ -1,31 +1,25 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer } from 'react';
 
 export const GlobalContext = createContext(null);
 
 export const GlobalProvider = ({ children }) => {
   const initialState = {
-    activePageName: "",
+    persist: false,
     config: {},
   };
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case "SET_CONFIG":
+      case 'SET_CONFIG':
         return {
           ...state,
           config: action.payload,
         };
 
-      case "SET_ACTIVE_PAGE_KEY":
+      case 'SET_PERIST':
         return {
           ...state,
-          activePageName: action.payload,
-        };
-
-      case "SET_ACTIVE_PARENT_COMPONENT_NAME":
-        return {
-          ...state,
-          activePArentComponentName: action.payload,
+          persist: action.payload,
         };
       default:
         return state;

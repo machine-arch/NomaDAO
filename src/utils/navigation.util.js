@@ -87,6 +87,8 @@ export default class BookingUtil {
       document.querySelector(`.${activeComp}`).blur();
       activeCompRef.current = null;
       activeHomeComponent.current = null;
+      configuration.booking.home.filter.display = false;
+      configuration.booking.home.results.display = false;
       setAsideActive(true);
       return;
     }

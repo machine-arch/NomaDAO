@@ -100,22 +100,55 @@ const Booking = () => {
   }
 
   useEffect(() => {
-    if (locationn?.state?.persist) {
+    if (state?.persist) {
       fetch(`${import.meta.env.VITE_API_URL}/hotel/?page=${1}&&limit=${10}`)
         .then((res) => {
           res.json().then((data) => {
             setData(data?.content);
-            configuration.booking.home.filter.display = true;
-            configuration.booking.home.results.display = true;
-            console.log(configuration.booking.home.results.display);
             setShowResult(true);
+            dispatch({
+              type: 'SET_PERIST',
+              payload: false,
+            });
           });
+        })
+        .then(async () => {
+          const tcomponents = configuration?.booking?.home?.search?.components;
+          const tcomponentsKeys = Object.keys(tcomponents);
+          tcomponents[tcomponentsKeys[0]].isActive = false;
+          const newConfig = JSON.parse(JSON.stringify(configuration));
+          dispatch({
+            type: 'SET_CONFIG',
+            payload: newConfig,
+          });
+          let activeDomElement = null;
+          const timeout = () => {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                activeDomElement = document.querySelector(
+                  '.booking-results-active-element',
+                );
+                resolve();
+              }, 500);
+            });
+          };
+          await timeout();
+          console.log(activeDomElement);
+          if (activeDomElement) {
+            activeDomElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            });
+            activeDomElement.focus();
+            activeHomeComponent.current = 'results';
+            activeComponent.current = 'booking__result__box';
+          }
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, []);
+  }, [state?.persist]);
 
   useEffect(() => {
     startup();
@@ -278,6 +311,9 @@ const Booking = () => {
     setShowResult((prev) => !prev);
     configuration.booking.home.results.display =
       !configuration.booking.home.results.display;
+    configuration.booking.home.results.factory.index = 0;
+
+    console.log(configuration.booking.home.results.display);
   };
 
   const filterResults = (e) => {
