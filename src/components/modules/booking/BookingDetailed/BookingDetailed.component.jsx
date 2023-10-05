@@ -12,9 +12,11 @@ import BookingUtil from '../../../../utils/navigation.util';
 import useMoveSound from '../../../../hooks/useMoveSound';
 import configuration from '../../../../navigateConfig';
 import _ from 'lodash';
+import { useNavigate } from 'react-router-dom';
 
 const BookingDetailed = () => {
   const { state, dispatch } = useContext(GlobalContext);
+  const navigate = useNavigate();
 
   const bookingUtil = new BookingUtil();
   const moveSound = useMoveSound;
@@ -145,6 +147,19 @@ const BookingDetailed = () => {
         />
         <button
           className={`${state?.config?.booking?.home?.hotel_detalis?.home?.back?.components?.back__btn?.className}`}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              navigate('/BookYourHotel');
+              configuration.booking.home.filter.display =
+                !configuration.booking.home.filter.display;
+              configuration.booking.home.results.display =
+                !configuration.booking.home.results.display;
+              const newConfig = _.cloneDeep(configuration);
+              configuration.booking.home.results.factory.index = 0;
+              activeHomeComponent.current = 'search';
+              dispatch({ type: 'SET_CONFIG', payload: newConfig });
+            }
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,7 @@
 import { handleSearchLocation } from './components/modules/booking/EventHandlers/BookingEventHandlers';
 import { handleDate } from './components/modules/booking/EventHandlers/BookingEventHandlers';
 import { handlePersons } from './components/modules/booking/EventHandlers/BookingEventHandlers';
+import { handleLocation } from './components/modules/booking/EventHandlers/BookingEventHandlers';
 
 const configuration = {
   booking: {
@@ -493,7 +494,7 @@ const configuration = {
                 eventHandlers: {
                   onKeyDown: {
                     name: 'onKeyDown',
-                    callback: handleSearchLocation,
+                    callback: handleLocation,
                   },
                 },
               },

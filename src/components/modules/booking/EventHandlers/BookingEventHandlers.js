@@ -10,6 +10,6 @@ export const handlePersons = () => {
   console.log('TEST');
 };
 
-export function handleLocation(ref) {
-  ref?.current?.click();
+export function handleLocation(e, ref) {
+  if (e.key === 'Enter') ref?.current?.click();
 }

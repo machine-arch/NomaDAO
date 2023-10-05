@@ -60,7 +60,7 @@ const BookingDetailedSlider = ({ config }) => {
                   config?.components?.detailed__slider__item?.isActive &&
                   i ===
                     config?.components?.detailed__slider__item?.factory?.index
-                    ? 'booking-result-active-element'
+                    ? config?.components?.detailed__slider__item?.activeClass
                     : ''
                 }`}
                 id={`${config?.components?.detailed__slider__item?.className}-${i}`}

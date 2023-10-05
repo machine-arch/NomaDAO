@@ -35,7 +35,7 @@ export default class BookingUtil {
         });
 
         const activeComponentDOM = document.getElementById(
-          coomponents[activeComp]?.className + '-' + index,
+          coomponents[activeComp]?.className + '-' + i,
         );
 
         activeComponentDOM.focus();
@@ -79,7 +79,10 @@ export default class BookingUtil {
           componentKeys.length
       ];
 
-    if (componentKeys.indexOf(activeComp) == 0) {
+    if (
+      componentKeys.indexOf(activeComp) == 0 &&
+      setAsideActive instanceof Function
+    ) {
       components[activeComp].isActive = false;
       document.querySelector(`.${activeComp}`).blur();
       activeCompRef.current = null;
@@ -158,8 +161,11 @@ export default class BookingUtil {
 
     if (home[homeKeys[currentHomeIndex]]?.type == 'collection') {
       let index = home[homeKeys[currentHomeIndex]]?.factory?.index;
-      if (index >= 9) return;
       const i = home[homeKeys[currentHomeIndex]]?.factory?.sequence(index);
+      if (index >= 9) {
+        return;
+      }
+
       home[homeKeys[currentHomeIndex]].factory.index = i;
       const newConfig = _.cloneDeep(configuration);
       dispatch({
@@ -282,7 +288,7 @@ export default class BookingUtil {
 
       activeComponentDOM.scrollIntoView({
         behavior: 'smooth',
-        block: 'end',
+        block: 'center',
       });
 
       return false;
@@ -346,6 +352,7 @@ export default class BookingUtil {
       type: 'SET_CONFIG',
       payload: newConfig,
     });
+
     activeCompRef.current = nextComponentKeys[nextComponentKeys.length - 1];
 
     const activeComponentDOM = document.querySelector(
