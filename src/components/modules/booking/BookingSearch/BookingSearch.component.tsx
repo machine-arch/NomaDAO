@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import './BookingSearch.stylesheet.css';
-import { useRef } from 'react';
-import useDebounce from '../../../../hooks/useDebounce/useDebounce';
+import React, { useEffect, useState } from "react";
+import "./BookingSearch.stylesheet.css";
+import { useRef } from "react";
+import useDebounce from "../../../../hooks/useDebounce/useDebounce";
+import BookingSearchFilterLocationDropdown from "./BookingSearchFilterLocationDropdown/BookingSearchFilterLocationDropdown";
+import BookingSearchFilterGuestsDropdown from "./BookingSearchFilterGuestsDropdown/BookingSearchFilterGuestsDropdown";
 
 const BookingSearch = ({
   filterResults,
@@ -13,19 +15,34 @@ const BookingSearch = ({
   const searchRef = useRef(null);
   const [location, setLocation] = useState("");
 
+  const [guests, setGuests] = useState({
+    adults: 0,
+    children: 0,
+    rooms: 0,
+  });
+
+  const [filterDisplay, setFilterDisplay] = useState({
+    location: false,
+    date: {
+      checkIn: false,
+      checkOut: false,
+    },
+    guests: false,
+  });
+
   return (
     <div className="booking__search" id={config?.id}>
       <div className="booking__search__box">
         <div
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+            if (e.key === "Enter") {
               config?.components?.search__location?.eventHandlers?.onKeyDown?.callback(
-                searchRef,
+                searchRef
               );
             }
           }}
-          className={`${'search__location'} ${
+          className={`${"search__location"} ${
             config?.components?.search__location?.isActive
               ? `${config?.components?.search__location?.activeClass}`
               : ""
@@ -40,17 +57,18 @@ const BookingSearch = ({
             placeholder="Where are you going?"
             id={`nav_index_1`}
           />
+          {filterDisplay?.location && <BookingSearchFilterLocationDropdown />}
         </div>
         <div className="vl"></div>
 
         <div
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+            if (e.key === "Enter") {
               config?.components?.search__date?.eventHandlers?.onKeyDown?.callback();
             }
           }}
-          className={`${'search__date'} ${
+          className={`${"search__date"} ${
             config?.components?.search__date?.isActive
               ? `${config?.components?.search__date?.activeClass}`
               : ""
@@ -68,12 +86,12 @@ const BookingSearch = ({
 
         <div
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+            if (e.key === "Enter") {
               config?.components?.search__persons?.eventHandlers?.onKeyDown?.callback();
             }
           }}
           tabIndex={0}
-          className={`${'search__persons'} ${
+          className={`${"search__persons"} ${
             config?.components?.search__persons?.isActive
               ? `${config?.components?.search__persons?.activeClass}`
               : ""
@@ -82,8 +100,15 @@ const BookingSearch = ({
         >
           <h1 className="searchBox__title">Guests</h1>
           <h5 className="searchBox__selectable navigable">
-            2 adult - 1 children - 1 room
+            {guests?.adults} adult - {guests?.children} children -{" "}
+            {guests?.rooms} room
           </h5>
+          {filterDisplay?.location && (
+            <BookingSearchFilterGuestsDropdown
+              guests={guests}
+              setGuests={setGuests}
+            />
+          )}
         </div>
         <div className="vl"></div>
 

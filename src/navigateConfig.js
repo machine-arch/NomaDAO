@@ -39,7 +39,7 @@ const configuration = {
             eventHandlers: {
               onKeyDown: {
                 name: 'onKeyDown',
-                callback: handleLocation,
+                callback: handleSearchLocation,
               },
             },
           },
