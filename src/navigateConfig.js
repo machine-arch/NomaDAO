@@ -35,8 +35,8 @@ const configuration = {
           search__location: {
             id: "1",
             isActive: false,
-            activeClass: "booking-search-active-element",
-            activeClass: "booking-search-active-element",
+            className: "search__location",
+            activeClass: "booking-search-search__location-active-element",
             eventHandlers: {
               onKeyDown: {
                 name: "onKeyDown",
@@ -47,7 +47,6 @@ const configuration = {
           search__date: {
             id: "2",
             isActive: false,
-            activeClass: "booking-search-active-element",
             activeClass: "booking-search-date-active-element",
             eventHandlers: {
               onKeyDown: {
@@ -59,8 +58,7 @@ const configuration = {
           search__persons: {
             id: "3",
             isActive: false,
-            activeClass: "booking-search-active-element",
-            activeClass: "booking-search-active-element",
+            activeClass: "booking-search-search__persons-active-element",
             eventHandlers: {
               onKeyDown: {
                 name: "onKeyDown",
@@ -72,8 +70,7 @@ const configuration = {
             id: "4",
             className: "search__Btn",
             isActive: false,
-            activeClass: "booking-search-active-element",
-            activeClass: "booking-search-active-element",
+            activeClass: "booking-search-search__Btn-active-element",
           },
         },
       },
