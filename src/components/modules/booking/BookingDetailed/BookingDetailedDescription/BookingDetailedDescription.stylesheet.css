@@ -80,3 +80,25 @@
   font-weight: 500;
   line-height: normal;
 }
+
+.booking-description__container-active-element {
+  border-radius: var(--Corner, 8px);
+  border: 4px solid var(--Brand-B, #0699D2);
+  padding: 1rem;
+}
+
+.booking-detailed__search__check-active-element, .booking-detailed__search__guests-active-element {
+  background: var(--nomadao-project-gradient-000-f, #0699D2);
+  border-radius: var(--Corner, 8px);
+
+}
+
+.booking-detailed__search__check-active-element > h1, .booking-detailed__search__guests-active-element > h1 {
+  color: white!important;
+}
+
+.booking-availability__btn-active-element {
+  background: var(--nomadao-project-gradient-000-f, #0699D2)!important;
+  color: white;
+}
+

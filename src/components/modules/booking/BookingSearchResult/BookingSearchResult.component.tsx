@@ -12,7 +12,7 @@ const BookingSearchResult = ({ index, config, data }) => {
           navigate(`/BookYourHotel/${index + 1}`);
         }
       }}
-      className="test"
+      className="booking__search__result"
       id={`${config?.components?.booking__result__box?.className}-${index}`}
       tabIndex={0}
     >

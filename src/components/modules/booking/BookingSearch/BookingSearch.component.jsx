@@ -20,6 +20,8 @@ const BookingSearch = ({
   locationFilterData,
   setLocationFilterData,
   fetchSuggestions,
+  dates,
+  setDates,
 }) => {
   const searchRef = useRef(null);
 
@@ -83,7 +85,11 @@ const BookingSearch = ({
             Fr 16 Jun - Fri 14 Jul
           </span>
           {filterDisplay?.date == true && (
-            <BookingSearchFilterDatePicker config={config} />
+            <BookingSearchFilterDatePicker
+              dates={dates}
+              setDates={setDates}
+              config={config}
+            />
           )}
         </div>
         <div className="vl"></div>
