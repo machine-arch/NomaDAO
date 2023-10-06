@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import "./BookingSearch.stylesheet.css";
-import { useRef } from "react";
-import BookingSearchFilterLocationDropdown from "./BookingSearchFilterLocationDropdown/BookingSearchFilterLocationDropdown";
-import BookingSearchFilterGuestsDropdown from "./BookingSearchFilterGuestsDropdown/BookingSearchFilterGuestsDropdown";
-import BookingSearchFilterDatePicker from "./BookingSearchFilterDatePicker/BookingSearchFilterDatePicker";
+import React, { useEffect, useState } from 'react';
+import './BookingSearch.stylesheet.css';
+import { useRef } from 'react';
+import BookingSearchFilterLocationDropdown from './BookingSearchFilterLocationDropdown/BookingSearchFilterLocationDropdown';
+import BookingSearchFilterGuestsDropdown from './BookingSearchFilterGuestsDropdown/BookingSearchFilterGuestsDropdown';
+import BookingSearchFilterDatePicker from './BookingSearchFilterDatePicker/BookingSearchFilterDatePicker';
 
 const BookingSearch = ({
   filterResults,
@@ -37,21 +37,22 @@ const BookingSearch = ({
         <div
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               config?.components?.search__location?.eventHandlers?.onKeyDown?.callback(
-                searchRef
+                searchRef,
               );
             }
           }}
-          className={`${"search__location"} ${
+          className={`${'search__location'} ${
             config?.components?.search__location?.isActive
               ? `${config?.components?.search__location?.activeClass}`
-              : ""
+              : ''
           }`}
           id={`search__${config?.components?.search__location?.id}`}
         >
           <h1 className="searchBox__title">Location</h1>
           <input
+            type="text"
             autoComplete="off"
             onKeyUp={(e) => {
               fetchSuggestions(e);
@@ -73,17 +74,17 @@ const BookingSearch = ({
         <div
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               config?.components?.search__date?.eventHandlers?.onKeyDown?.callback(
                 filterDisplay,
-                setFilterDisplay
+                setFilterDisplay,
               );
             }
           }}
-          className={`${"search__date"} ${
+          className={`${'search__date'} ${
             config?.components?.search__date?.isActive
               ? `${config?.components?.search__date?.activeClass}`
-              : ""
+              : ''
           }`}
           id={`search__${config?.components?.search__date?.id}`}
         >
@@ -112,25 +113,27 @@ const BookingSearch = ({
 
         <div
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               config?.components?.search__persons?.eventHandlers?.onKeyDown?.callback(
                 filterDisplay,
-                setFilterDisplay
+                setFilterDisplay,
               );
             }
           }}
           tabIndex={0}
-          className={`${"search__persons"} ${
+          className={`${'search__persons'} ${
             config?.components?.search__persons?.isActive
               ? `${config?.components?.search__persons?.activeClass}`
-              : ""
+              : ''
           }`}
           id={`search__${config?.components?.search__persons?.id}`}
         >
           <h1 className="searchBox__title">Guests</h1>
           <h5 className="searchBox__selectable navigable">
+
             {guests?.adultsCount} adult - {guests?.childrensCount} children -{" "}
             {guests?.roomsCount} room
+
           </h5>
           {filterDisplay?.guests && (
             <BookingSearchFilterGuestsDropdown
@@ -144,10 +147,10 @@ const BookingSearch = ({
         <div className="search__BtnDiv">
           <button
             onKeyDown={(e) => filterResults(e)}
-            className={`${"search__Btn"} ${
+            className={`${'search__Btn'} ${
               config?.components?.search__Btn?.isActive
                 ? `${config?.components?.search__Btn?.activeClass}`
-                : ""
+                : ''
             }`}
             id={`search__${config?.components?.search__Btn?.id}`}
           >

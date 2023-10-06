@@ -53,6 +53,11 @@ const BookingDetailedLocation = ({ config }) => {
           style={mapStyle}
           loading="lazy"
           allowFullScreen
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              window.location.href = `/home`;
+            }
+          }}
           referrerPolicy="no-referrer-when-downgrade"
           src={`https://www.google.com/maps/embed/v1/place?key=${
             import.meta.env.VITE_GOOGLEMAPS_API_KEY

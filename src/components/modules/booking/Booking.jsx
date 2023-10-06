@@ -12,6 +12,9 @@ import useMoveSound from "../../../hooks/useMoveSound";
 import _, { set } from "lodash";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import useFetch from '../../../hooks/useFetch/useFetch';
+import useDebounce from '../../../hooks/useDebounce/useDebounce';
+
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -86,20 +89,20 @@ const Booking = () => {
       setLocationFilterData([]);
       setLocationDataFetched(false);
     }
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       return;
     }
     if (e.target.value?.length > 2 && locationDataFetched == true) {
       const inputValue = e.target.value.toLowerCase();
       const filteredData = locationFilterDataCopy?.filter((item) =>
-        item.toLowerCase().includes(inputValue)
+        item.toLowerCase().includes(inputValue),
       );
       setLocationFilterData(filteredData);
       setLocation(e.target.value);
     }
     if (e.target.value?.length > 2 && locationDataFetched == false) {
       axios({
-        method: "POST",
+        method: 'POST',
         url: `${import.meta.env.VITE_API_URL}/hotel-filter/sugestions`,
         data: {
           locationSuggestions: e.target?.value,
@@ -137,7 +140,7 @@ const Booking = () => {
       document.querySelector(`.${firstSearchEl}`).focus();
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: "SET_CONFIG",
+        type: 'SET_CONFIG',
         payload: newConfig,
       });
       activeHomeComponent.current = firstHomeEl;
@@ -205,9 +208,9 @@ const Booking = () => {
 
   useEffect(() => {
     if (showFilterBox) {
-      const parent = "filter_box";
+      const parent = 'filter_box';
       const firstHomeEl = Object.keys(
-        configuration?.booking?.home[parent]?.home
+        configuration?.booking?.home[parent]?.home,
       )[0];
 
       const searchComponents =
@@ -219,7 +222,7 @@ const Booking = () => {
       activeHomeComponent.current = firstHomeEl;
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: "SET_CONFIG",
+        type: 'SET_CONFIG',
         payload: newConfig,
       });
       activeComponent.current = firstSearchEl;
@@ -232,21 +235,21 @@ const Booking = () => {
     currentHomeIndex,
     home,
     components,
-    homeKeys
+    homeKeys,
   ) => {
-    switch (e.key) {
-      case "ArrowRight":
+    switch (e.keyCode) {
+      case 39:
         bookingUtil.moveRight(
           activeHomeComponent,
           activeComponent,
           home,
           dispatch,
           configuration,
-          _
+          _,
         );
         useMoveSound();
         break;
-      case "ArrowLeft":
+      case 37:
         bookingUtil.moveLeft(
           activeComponent,
           activeHomeComponent,
@@ -254,11 +257,11 @@ const Booking = () => {
           dispatch,
           configuration,
           _,
-          setAsideActive
+          setAsideActive,
         );
         useMoveSound();
         break;
-      case "ArrowDown":
+      case 40:
         bookingUtil.moveDown(
           currentHomeIndex,
           homeKeys,
@@ -268,11 +271,11 @@ const Booking = () => {
           configuration,
           activeComponent,
           _,
-          showFilterBox
+          showFilterBox,
         );
         useMoveSound();
         break;
-      case "ArrowUp":
+      case 38:
         bookingUtil.moveUp(
           currentHomeIndex,
           homeKeys,
@@ -281,16 +284,16 @@ const Booking = () => {
           dispatch,
           configuration,
           activeComponent,
-          _
+          _,
         );
         useMoveSound();
         break;
-      case "Enter":
+      case 'Enter':
         break;
-      case "Backspace":
+      case 'Backspace':
         if (showFilterBox) {
           setShowFilterBox(false);
-          activeHomeComponent.current = "filter";
+          activeHomeComponent.current = 'filter';
           return;
         }
         break;
@@ -315,7 +318,7 @@ const Booking = () => {
         home = configuration?.booking?.home?.filter_box?.home;
         componentKeys = Object.keys(components);
         homeKeys = Object.keys(
-          configuration?.booking?.home?.filter_box?.home || {}
+          configuration?.booking?.home?.filter_box?.home || {},
         );
       }
       currentHomeIndex = homeKeys.indexOf(activeHomeComponent.current);
@@ -336,7 +339,7 @@ const Booking = () => {
       currentHomeIndex,
       home,
       components,
-      homeKeys
+      homeKeys,
     );
   };
 
@@ -351,9 +354,9 @@ const Booking = () => {
   };
 
   useEffect(() => {
-    canNavigate ? window.addEventListener("keydown", eventHendler) : null;
+    canNavigate ? window.addEventListener('keydown', eventHendler) : null;
     return () => {
-      window.removeEventListener("keydown", eventHendler);
+      window.removeEventListener('keydown', eventHendler);
     };
   }, [activeComponent.current, state?.config, showFilterBox, asideActive]);
 
@@ -368,9 +371,9 @@ const Booking = () => {
       // guests?.childrensCount == 0 ? null : guests?.childrensCount,
     };
     fetch(`${import.meta.env.VITE_API_URL}/hotel-filter?page=1&limit=10`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
@@ -389,7 +392,7 @@ const Booking = () => {
   };
 
   const filterResults = (e) => {
-    if (e.key !== "Enter" && e.type !== "click") return;
+    if (e.key !== 'Enter' && e.type !== 'click') return;
     configuration.booking.home.filter.display =
       !configuration.booking.home.filter.display;
     toggleResults();
@@ -399,9 +402,9 @@ const Booking = () => {
 
   return (
     <div className="booking__mainContainer">
-      <div className={`topBg ${showResult == true ? "showResults" : ""}`}>
+      <div className={`topBg ${showResult == true ? 'showResults' : ''}`}>
         <SignIn
-          type={showResult == true ? "secondary" : "primary"}
+          type={showResult == true ? 'secondary' : 'primary'}
           config={configuration?.booking?.home?.auth}
         />
         <BookingSearch
