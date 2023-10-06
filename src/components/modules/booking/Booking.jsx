@@ -84,6 +84,7 @@ const Booking = () => {
     setLocation(e.target.value);
     if (e.target.value.length == 0) {
       setLocationFilterDataCopy([]);
+      setFilterDisplay({ ...filterDisplay, location: false });
       setLocationFilterData([]);
       setLocationDataFetched(false);
     }
@@ -109,6 +110,7 @@ const Booking = () => {
         .then((res) => {
           setLocationFilterData(res?.data?.content);
           setLocationFilterDataCopy(res?.data?.content);
+          setFilterDisplay({ ...filterDisplay, location: true });
           setLocationDataFetched(true);
         })
         .catch((err) => {
@@ -380,12 +382,12 @@ const Booking = () => {
   const toggleResults = () => {
     const data = {
       location: location,
-      startDate: formatDate(dates?.startDate?.toLocaleDateString().toString()),
-      endDate: formatDate(dates?.endDate?.toLocaleDateString().toString()),
-      roomsCount: guests?.roomsCount == 0 ? null : guests?.roomsCount,
-      adultsCount: guests?.adultsCount == 0 ? null : guests?.adultsCount,
-      childrensCount:
-        guests?.childrensCount == 0 ? null : guests?.childrensCount,
+      // startDate: formatDate(dates?.startDate?.toLocaleDateString().toString()),
+      // endDate: formatDate(dates?.endDate?.toLocaleDateString().toString()),
+      // roomsCount: guests?.roomsCount == 0 ? null : guests?.roomsCount,
+      // adultsCount: guests?.adultsCount == 0 ? null : guests?.adultsCount,
+      // childrensCount:
+      // guests?.childrensCount == 0 ? null : guests?.childrensCount,
     };
     fetch(`${import.meta.env.VITE_API_URL}/hotel-filter?page=1&limit=10`, {
       method: 'POST',
@@ -414,6 +416,8 @@ const Booking = () => {
       !configuration.booking.home.filter.display;
     toggleResults();
   };
+
+  console.log(filterDisplay);
 
   return (
     <div className="booking__mainContainer">

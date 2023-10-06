@@ -115,7 +115,8 @@ const BookingSearch = ({
             placeholder="Where are you going?"
             id={`nav_index_1`}
           />
-          {locationFilterData?.length >= 1 && (
+
+          {filterDisplay?.location == true && (
             <BookingSearchFilterLocationDropdown
               locationFilterData={locationFilterData}
               location={location}
