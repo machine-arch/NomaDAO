@@ -9,8 +9,11 @@ import { GlobalContext } from '../../../context/global.context.jsx';
 import BookingUtil from '../../../utils/navigation.util';
 import configuration from '../../../navigateConfig.js';
 import useMoveSound from '../../../hooks/useMoveSound';
-import _ from 'lodash';
+import _, { set } from 'lodash';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
+import useFetch from '../../../hooks/useFetch/useFetch';
+import useDebounce from '../../../hooks/useDebounce/useDebounce';
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -241,9 +244,13 @@ const Booking = () => {
           dispatch,
           configuration,
           _,
-          isPopapsOpen,
         );
-
+        setIsPopapsOpen(false);
+        setFilterDisplay({
+          location: false,
+          date: false,
+          guests: false,
+        });
         useMoveSound();
         break;
       case 37:
@@ -255,8 +262,13 @@ const Booking = () => {
           configuration,
           _,
           setAsideActive,
-          isPopapsOpen,
         );
+        setFilterDisplay({
+          location: false,
+          date: false,
+          guests: false,
+        });
+        setIsPopapsOpen(false);
         useMoveSound();
         break;
       case 40:
@@ -350,7 +362,7 @@ const Booking = () => {
     let month = string?.slice(0, 2);
     let day = string?.slice(3, 5);
     let year = string?.slice(6, 10);
-    return `${year}-${month}-${day}`;
+    return `${year}-${day}-${month}`;
   };
 
   useEffect(() => {
@@ -369,19 +381,31 @@ const Booking = () => {
   const toggleResults = () => {
     const data = {
       location: location,
-      // startDate: formatDate(dates?.startDate?.toLocaleDateString().toString()),
-      // endDate: formatDate(dates?.endDate?.toLocaleDateString().toString()),
-      // roomsCount: guests?.roomsCount == 0 ? null : guests?.roomsCount,
-      // adultsCount: guests?.adultsCount == 0 ? null : guests?.adultsCount,
-      // childrensCount:
-      // guests?.childrensCount == 0 ? null : guests?.childrensCount,
+      startDate: formatDate(dates?.startDate?.toLocaleDateString().toString()),
+      endDate: formatDate(dates?.endDate?.toLocaleDateString().toString()),
+      roomsCount: guests?.roomsCount == 0 ? null : guests?.roomsCount,
+      adultsCount: guests?.adultsCount == 0 ? null : guests?.adultsCount,
+      childrensCount:
+        guests?.childrensCount == 0 ? null : guests?.childrensCount,
     };
+    const filteredData = {};
+    for (const key in data) {
+      if (
+        data[key] !== null &&
+        data[key] !== undefined &&
+        data[key] !== '' &&
+        data[key] !== false &&
+        data[key] !== 0
+      ) {
+        filteredData[key] = data[key];
+      }
+    }
     fetch(`${import.meta.env.VITE_API_URL}/hotel-filter?page=1&limit=10`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(filteredData),
     })
       .then((res) => {
         res.json().then((data) => {
