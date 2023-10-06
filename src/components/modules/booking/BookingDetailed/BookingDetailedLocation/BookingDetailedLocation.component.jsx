@@ -1,16 +1,16 @@
-import React from "react";
-import "./BookingDetailedLocation.stylesheet.css";
-import { useState, useRef } from "react";
+import React from 'react';
+import './BookingDetailedLocation.stylesheet.css';
+import { useState, useRef } from 'react';
 
 const BookingDetailedLocation = ({ config }) => {
   const [showMap, setShowMap] = useState(false);
   const buttonRef = useRef(null);
   const mapStyle = {
-    width: "100%",
-    height: "450px",
-    border: "0",
-    borderRadius: "16px",
-    position: "relative",
+    width: '100%',
+    height: '450px',
+    border: '0',
+    borderRadius: '16px',
+    position: 'relative',
   };
 
   return (
@@ -21,7 +21,7 @@ const BookingDetailedLocation = ({ config }) => {
         if (e.keyCode === 13) {
           config?.components?.location__container?.eventHandlers?.onKeyDown?.callback(
             showMap,
-            setShowMap
+            setShowMap,
           );
         }
       }}
@@ -49,7 +49,7 @@ const BookingDetailedLocation = ({ config }) => {
       </div>
       <div className="location__bottom">
         <iframe
-          className={showMap == false ? "location__bottom__map" : ""}
+          className={showMap == false ? 'location__bottom__map' : ''}
           style={mapStyle}
           loading="lazy"
           allowFullScreen
@@ -66,7 +66,7 @@ const BookingDetailedLocation = ({ config }) => {
         {showMap == false && (
           <button
             onClick={() => {
-              console.log("buttonRef", buttonRef);
+              // console.log('buttonRef', buttonRef);
             }}
             className="location__bottom__btn"
             ref={buttonRef}
