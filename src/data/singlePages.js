@@ -5,7 +5,7 @@ const singlePages = [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reiciendis necessitatibus, quo labore voluptatibus veniam voluptates distinctio voluptas impedit tempore assumenda, repellendus dolorem amet unde? Vel officiis soluta voluptatem perspiciatis!',
     // launch_link: "https://eventhall.nomadao.net",
-    launch_link: 'https://hotel1.nomadao.net:4443/',
+    launch_link: 'https://eventhall.nomadao.net',
     tutorial_link: 'https://www.youtube.com/embed/a1vclMx4eFQ',
   },
   {
@@ -14,7 +14,7 @@ const singlePages = [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reiciendis necessitatibus, quo labore voluptatibus veniam voluptates distinctio voluptas impedit tempore assumenda, repellendus dolorem amet unde? Vel officiis soluta voluptatem perspiciatis!',
     // launch_link: 'https://casino.nomadao.net',
-    launch_link: 'https://hotel1.nomadao.net:4443/',
+    launch_link: 'https://eventhall.nomadao.net',
     tutorial_link: 'https://www.youtube.com/embed/a1vclMx4eFQ',
   },
   {
@@ -23,7 +23,7 @@ const singlePages = [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reiciendis necessitatibus, quo labore voluptatibus veniam voluptates distinctio voluptas impedit tempore assumenda, repellendus dolorem amet unde? Vel officiis soluta voluptatem perspiciatis!',
     // launch_link: 'https://rooms.nomadao.net:4443',
-    launch_link: 'https://hotel1.nomadao.net:4443/',
+    launch_link: 'https://eventhall.nomadao.net',
     tutorial_link: 'https://www.youtube.com/embed/a1vclMx4eFQ',
   },
   {
@@ -32,7 +32,7 @@ const singlePages = [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reiciendis necessitatibus, quo labore voluptatibus veniam voluptates distinctio voluptas impedit tempore assumenda, repellendus dolorem amet unde? Vel officiis soluta voluptatem perspiciatis!',
     // launch_link: 'https://3dmap.nomadao.net',
-    launch_link: 'https://hotel1.nomadao.net:4443/',
+    launch_link: 'https://eventhall.nomadao.net',
     tutorial_link: 'https://www.youtube.com/embed/a1vclMx4eFQ',
   },
 ];

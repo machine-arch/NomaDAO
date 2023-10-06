@@ -40,6 +40,10 @@ const router = createBrowserRouter([
             element: <HomeContent />, // HomeContent component rendered when the path is '/index.html', for localhost
           },
           {
+            path: 'index.html',
+            element: <HomeContent />, // HomeContent component rendered when the path is '/index.html', for localhost
+          },
+          {
             path: ':pagename',
             element: <PageContent />, // PageContent component rendered for dynamic paths, e.g., '/Home', '/Entertainment'
           },
@@ -67,10 +71,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: '/*',
-  //   element: <Error />,
-  // },
+  {
+    path: '/*',
+    element: <Error />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
