@@ -139,6 +139,7 @@ export default class BookingUtil {
     activeCompRef,
     _,
     showFilterBox,
+    isPopapsOpen,
   ) {
     let activeComp = activeCompRef.current;
     let components = home[activeHomeComponent.current]?.components;
@@ -146,6 +147,8 @@ export default class BookingUtil {
     let nextActiveComp = componentKeys[componentKeys.indexOf(activeComp) + 1];
     let nextActiveComponentIndex = componentKeys.indexOf(nextActiveComp);
     let activeCompIndex = componentKeys.indexOf(activeComp);
+
+    if (isPopapsOpen) return;
 
     if (
       home[homeKeys[currentHomeIndex + 1]]?.display == false &&
@@ -259,11 +262,14 @@ export default class BookingUtil {
     configuration,
     activeCompRef,
     _,
+    isPopapsOpen,
   ) {
     let activeComp = activeCompRef.current;
     let components = home[activeHomeComponent.current]?.components;
     let componentKeys = Object.keys(components);
     let activeCompIndex = componentKeys.indexOf(activeComp);
+
+    if (isPopapsOpen) return;
 
     if (currentHomeIndex == 0) return;
 
