@@ -1,19 +1,19 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
-import './Booking.css';
-import BookingSearch from './BookingSearch/BookingSearch.component';
-import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
-import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
-import SignIn from '../../SignIn/SignIn.component';
-import AsideContext from '../../../context/AsideContext.js';
-import { GlobalContext } from '../../../context/global.context.jsx';
-import BookingUtil from '../../../utils/navigation.util';
-import configuration from '../../../navigateConfig.js';
-import useMoveSound from '../../../hooks/useMoveSound';
-import _, { set } from 'lodash';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
-import useFetch from '../../../hooks/useFetch/useFetch';
-import useDebounce from '../../../hooks/useDebounce/useDebounce';
+import React, { useEffect, useState, useContext, useRef } from "react";
+import "./Booking.css";
+import BookingSearch from "./BookingSearch/BookingSearch.component";
+import BookingSearchResult from "./BookingSearchResult/BookingSearchResult.component";
+import BookingSearchBarFilterBack from "./BookingSearchBarFilterBack/BookingSearchBarFilterBack.component";
+import SignIn from "../../SignIn/SignIn.component";
+import AsideContext from "../../../context/AsideContext.js";
+import { GlobalContext } from "../../../context/global.context.jsx";
+import BookingUtil from "../../../utils/navigation.util";
+import configuration from "../../../navigateConfig.js";
+import useMoveSound from "../../../hooks/useMoveSound";
+import _, { set } from "lodash";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch/useFetch";
+import useDebounce from "../../../hooks/useDebounce/useDebounce";
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -26,7 +26,7 @@ const Booking = () => {
   });
 
   const [advancedFilter, setAdvancedFilter] = useState({
-    '3dView': false,
+    "3dView": false,
     partnersHotels: false,
     lowPriceFirst: false,
     recomended: false,
@@ -88,20 +88,20 @@ const Booking = () => {
       setLocationFilterData([]);
       setLocationDataFetched(false);
     }
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       return;
     }
     if (e.target.value?.length > 2 && locationDataFetched == true) {
       const inputValue = e.target.value.toLowerCase();
       const filteredData = locationFilterDataCopy?.filter((item) =>
-        item.toLowerCase().includes(inputValue),
+        item.toLowerCase().includes(inputValue)
       );
       setLocationFilterData(filteredData);
       setLocation(e.target.value);
     }
     if (e.target.value?.length > 2 && locationDataFetched == false) {
       axios({
-        method: 'POST',
+        method: "POST",
         url: `${import.meta.env.VITE_API_URL}/hotel-filter/sugestions`,
         data: {
           locationSuggestions: e.target?.value,
@@ -139,7 +139,7 @@ const Booking = () => {
       document.querySelector(`.${firstSearchEl}`).focus();
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: 'SET_CONFIG',
+        type: "SET_CONFIG",
         payload: newConfig,
       });
       activeHomeComponent.current = firstHomeEl;
@@ -158,7 +158,7 @@ const Booking = () => {
             setData(data?.content);
             setShowResult(true);
             dispatch({
-              type: 'SET_PERIST',
+              type: "SET_PERIST",
               payload: false,
             });
           });
@@ -169,7 +169,7 @@ const Booking = () => {
           tcomponents[tcomponentsKeys[0]].isActive = false;
           const newConfig = JSON.parse(JSON.stringify(configuration));
           dispatch({
-            type: 'SET_CONFIG',
+            type: "SET_CONFIG",
             payload: newConfig,
           });
           let activeDomElement = null;
@@ -177,7 +177,7 @@ const Booking = () => {
             return new Promise((resolve) => {
               setTimeout(() => {
                 activeDomElement = document.querySelector(
-                  '.booking-results-active-element',
+                  ".booking-results-active-element"
                 );
                 resolve();
               }, 500);
@@ -187,12 +187,12 @@ const Booking = () => {
           console.log(activeDomElement);
           if (activeDomElement) {
             activeDomElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
+              behavior: "smooth",
+              block: "center",
             });
             activeDomElement.focus();
-            activeHomeComponent.current = 'results';
-            activeComponent.current = 'booking__result__box';
+            activeHomeComponent.current = "results";
+            activeComponent.current = "booking__result__box";
           }
         })
         .catch((err) => {
@@ -207,9 +207,9 @@ const Booking = () => {
 
   useEffect(() => {
     if (showFilterBox) {
-      const parent = 'filter_box';
+      const parent = "filter_box";
       const firstHomeEl = Object.keys(
-        configuration?.booking?.home[parent]?.home,
+        configuration?.booking?.home[parent]?.home
       )[0];
 
       const searchComponents =
@@ -221,7 +221,7 @@ const Booking = () => {
       activeHomeComponent.current = firstHomeEl;
       const newConfig = JSON.parse(JSON.stringify(configuration));
       dispatch({
-        type: 'SET_CONFIG',
+        type: "SET_CONFIG",
         payload: newConfig,
       });
       activeComponent.current = firstSearchEl;
@@ -234,7 +234,7 @@ const Booking = () => {
     currentHomeIndex,
     home,
     components,
-    homeKeys,
+    homeKeys
   ) => {
     switch (e.keyCode) {
       case 39:
@@ -244,10 +244,14 @@ const Booking = () => {
           home,
           dispatch,
           configuration,
-          _,
-          isPopapsOpen,
+          _
         );
-
+        setIsPopapsOpen(false);
+        setFilterDisplay({
+          location: false,
+          date: false,
+          guests: false,
+        });
         useMoveSound();
         break;
       case 37:
@@ -258,9 +262,14 @@ const Booking = () => {
           dispatch,
           configuration,
           _,
-          setAsideActive,
-          isPopapsOpen,
+          setAsideActive
         );
+        setFilterDisplay({
+          location: false,
+          date: false,
+          guests: false,
+        });
+        setIsPopapsOpen(false);
         useMoveSound();
         break;
       case 40:
@@ -274,7 +283,7 @@ const Booking = () => {
           activeComponent,
           _,
           showFilterBox,
-          isPopapsOpen,
+          isPopapsOpen
         );
         useMoveSound();
         break;
@@ -288,16 +297,16 @@ const Booking = () => {
           configuration,
           activeComponent,
           _,
-          isPopapsOpen,
+          isPopapsOpen
         );
         useMoveSound();
         break;
-      case 'Enter':
+      case "Enter":
         break;
-      case 'Backspace':
+      case "Backspace":
         if (showFilterBox) {
           setShowFilterBox(false);
-          activeHomeComponent.current = 'filter';
+          activeHomeComponent.current = "filter";
           return;
         }
         break;
@@ -322,7 +331,7 @@ const Booking = () => {
         home = configuration?.booking?.home?.filter_box?.home;
         componentKeys = Object.keys(components);
         homeKeys = Object.keys(
-          configuration?.booking?.home?.filter_box?.home || {},
+          configuration?.booking?.home?.filter_box?.home || {}
         );
       }
       currentHomeIndex = homeKeys.indexOf(activeHomeComponent.current);
@@ -343,7 +352,7 @@ const Booking = () => {
       currentHomeIndex,
       home,
       components,
-      homeKeys,
+      homeKeys
     );
   };
 
@@ -354,13 +363,13 @@ const Booking = () => {
     let month = string?.slice(0, 2);
     let day = string?.slice(3, 5);
     let year = string?.slice(6, 10);
-    return `${year}-${month}-${day}`;
+    return `${year}-${day}-${month}`;
   };
 
   useEffect(() => {
-    canNavigate ? window.addEventListener('keydown', eventHendler) : null;
+    canNavigate ? window.addEventListener("keydown", eventHendler) : null;
     return () => {
-      window.removeEventListener('keydown', eventHendler);
+      window.removeEventListener("keydown", eventHendler);
     };
   }, [
     activeComponent.current,
@@ -373,19 +382,31 @@ const Booking = () => {
   const toggleResults = () => {
     const data = {
       location: location,
-      // startDate: formatDate(dates?.startDate?.toLocaleDateString().toString()),
-      // endDate: formatDate(dates?.endDate?.toLocaleDateString().toString()),
-      // roomsCount: guests?.roomsCount == 0 ? null : guests?.roomsCount,
-      // adultsCount: guests?.adultsCount == 0 ? null : guests?.adultsCount,
-      // childrensCount:
-      // guests?.childrensCount == 0 ? null : guests?.childrensCount,
+      startDate: formatDate(dates?.startDate?.toLocaleDateString().toString()),
+      endDate: formatDate(dates?.endDate?.toLocaleDateString().toString()),
+      roomsCount: guests?.roomsCount == 0 ? null : guests?.roomsCount,
+      adultsCount: guests?.adultsCount == 0 ? null : guests?.adultsCount,
+      childrensCount:
+        guests?.childrensCount == 0 ? null : guests?.childrensCount,
     };
+    const filteredData = {};
+    for (const key in data) {
+      if (
+        data[key] !== null &&
+        data[key] !== undefined &&
+        data[key] !== "" &&
+        data[key] !== false &&
+        data[key] !== 0
+      ) {
+        filteredData[key] = data[key];
+      }
+    }
     fetch(`${import.meta.env.VITE_API_URL}/hotel-filter?page=1&limit=10`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(filteredData),
     })
       .then((res) => {
         res.json().then((data) => {
@@ -402,7 +423,7 @@ const Booking = () => {
   };
 
   const filterResults = (e) => {
-    if (e.key !== 'Enter' && e.type !== 'click') return;
+    if (e.key !== "Enter" && e.type !== "click") return;
     configuration.booking.home.filter.display =
       !configuration.booking.home.filter.display;
     toggleResults();
@@ -410,9 +431,9 @@ const Booking = () => {
 
   return (
     <div className="booking__mainContainer">
-      <div className={`topBg ${showResult == true ? 'showResults' : ''}`}>
+      <div className={`topBg ${showResult == true ? "showResults" : ""}`}>
         <SignIn
-          type={showResult == true ? 'secondary' : 'primary'}
+          type={showResult == true ? "secondary" : "primary"}
           config={configuration?.booking?.home?.auth}
         />
         <BookingSearch
