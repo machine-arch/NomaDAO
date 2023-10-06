@@ -6,6 +6,7 @@ export default class BookingUtil {
     dispatch,
     configuration,
     _,
+    isPopapsOpen,
   ) {
     if (!activeHomeComponent.current) return;
     const activeComp = activeCompRef.current;
@@ -15,6 +16,8 @@ export default class BookingUtil {
       componentKeys[
         (componentKeys.indexOf(activeComp) + 1) % componentKeys.length
       ];
+
+    if (isPopapsOpen) return;
 
     if (
       componentKeys.indexOf(activeComp) == componentKeys.length - 1 &&
@@ -69,6 +72,7 @@ export default class BookingUtil {
     configuration,
     _,
     setAsideActive,
+    isPopapsOpen,
   ) {
     const activeComp = activeCompRef.current;
     const components = home[activeHomeComponent.current]?.components;
@@ -78,6 +82,8 @@ export default class BookingUtil {
         (componentKeys.indexOf(activeComp) - 1 + componentKeys.length) %
           componentKeys.length
       ];
+
+    if (isPopapsOpen) return;
 
     if (
       componentKeys.indexOf(activeComp) == 0 &&

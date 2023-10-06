@@ -5,6 +5,7 @@ const BookingSearchFilterLocationDropdown = ({
   locationFilterData,
   location,
   setLocation,
+  setFilterDisplay,
 }) => {
   return (
     <div className="search__filter" tabIndex={0}>
@@ -16,9 +17,15 @@ const BookingSearchFilterLocationDropdown = ({
             onKeyDown={(e) => {
               if (e.keyCode === 13) {
                 setLocation(e.target.textContent);
+                setFilterDisplay((prev) => {
+                  return {
+                    ...prev,
+                    location: false,
+                  };
+                });
               }
             }}
-            tabIndex={0}
+            tabIndex={index}
           >
             <div className="search__filter__item__text">{item}</div>
           </div>

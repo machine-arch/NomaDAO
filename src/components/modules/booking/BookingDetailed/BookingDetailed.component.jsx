@@ -1,19 +1,19 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import "./BookingDetailed.stylesheet.css";
-import BookingDetailedSlider from "./BookingDetailedSlider/BookingDetailedSlider.component";
-import BookingDetailedDescription from "./BookingDetailedDescription/BookingDetailedDescription.component";
-import BookingDetailedLocation from "./BookingDetailedLocation/BookingDetailedLocation.component";
-import BookingDetailedRooms from "./BookingDetailedRooms/BookingDetailedRooms.component";
-import SignIn from "../../../SignIn/SignIn.component";
-import BookingComplete from "./BookingComplete/BookingComplete.component";
-import { useParams } from "react-router-dom";
-import { GlobalContext } from "../../../../context/global.context.jsx";
-import BookingUtil from "../../../../utils/navigation.util";
-import useMoveSound from "../../../../hooks/useMoveSound";
-import configuration from "../../../../navigateConfig";
-import _ from "lodash";
-import { useNavigate } from "react-router-dom";
-import useFetch from "../../../../hooks/useFetch/useFetch";
+import React, { useContext, useEffect, useState, useRef } from 'react';
+import './BookingDetailed.stylesheet.css';
+import BookingDetailedSlider from './BookingDetailedSlider/BookingDetailedSlider.component';
+import BookingDetailedDescription from './BookingDetailedDescription/BookingDetailedDescription.component';
+import BookingDetailedLocation from './BookingDetailedLocation/BookingDetailedLocation.component';
+import BookingDetailedRooms from './BookingDetailedRooms/BookingDetailedRooms.component';
+import SignIn from '../../../SignIn/SignIn.component';
+import BookingComplete from './BookingComplete/BookingComplete.component';
+import { useParams } from 'react-router-dom';
+import { GlobalContext } from '../../../../context/global.context.jsx';
+import BookingUtil from '../../../../utils/navigation.util';
+import useMoveSound from '../../../../hooks/useMoveSound';
+import configuration from '../../../../navigateConfig';
+import _ from 'lodash';
+import { useNavigate } from 'react-router-dom';
+import useFetch from '../../../../hooks/useFetch/useFetch';
 
 const BookingDetailed = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -29,13 +29,13 @@ const BookingDetailed = () => {
   const activeComponent = useRef(null);
   const [showFilterBox, setShowFilterBox] = useState(false);
 
-  const { data } = useFetch("/hotel", {
+  const { data } = useFetch('/hotel', {
     _id: params?.id,
   });
 
   function startup() {
     const firstHomeEl = Object.keys(
-      state?.config?.booking?.home?.hotel_detalis?.home
+      state?.config?.booking?.home?.hotel_detalis?.home,
     )[0];
 
     const searchComponents =
@@ -48,8 +48,6 @@ const BookingDetailed = () => {
     activeComponent.current = firstSearchEl;
     setCanNavigate(true);
   }
-
-  console.log(data?.content);
 
   useEffect(() => {
     startup();
@@ -64,7 +62,7 @@ const BookingDetailed = () => {
           home,
           dispatch,
           state?.config,
-          _
+          _,
         );
         moveSound();
         break;
@@ -75,7 +73,7 @@ const BookingDetailed = () => {
           home,
           dispatch,
           state?.config,
-          _
+          _,
         );
         moveSound();
         break;
@@ -88,7 +86,7 @@ const BookingDetailed = () => {
           dispatch,
           state?.config,
           activeComponent,
-          _
+          _,
         );
         moveSound();
         break;
@@ -101,16 +99,16 @@ const BookingDetailed = () => {
           dispatch,
           state?.config,
           activeComponent,
-          _
+          _,
         );
         moveSound();
         break;
-      case "Enter":
+      case 'Enter':
         break;
-      case "Backspace":
+      case 'Backspace':
         if (showFilterBox) {
           setShowFilterBox(false);
-          activeHomeComponent.current = "filter";
+          activeHomeComponent.current = 'filter';
         }
         break;
       default:
@@ -131,7 +129,7 @@ const BookingDetailed = () => {
     if (components) {
       home = state?.config?.booking?.home?.hotel_detalis?.home;
       homeKeys = Object.keys(
-        state?.config?.booking?.home?.hotel_detalis?.home || {}
+        state?.config?.booking?.home?.hotel_detalis?.home || {},
       );
       currentHomeIndex = homeKeys.indexOf(activeHomeComponent.current);
     }
@@ -140,9 +138,9 @@ const BookingDetailed = () => {
   };
 
   useEffect(() => {
-    canNavigate ? window.addEventListener("keydown", eventHendler) : null;
+    canNavigate ? window.addEventListener('keydown', eventHendler) : null;
     return () => {
-      window.removeEventListener("keydown", eventHendler);
+      window.removeEventListener('keydown', eventHendler);
     };
   }, [activeComponent.current, state?.config]);
 
@@ -156,12 +154,12 @@ const BookingDetailed = () => {
         <button
           className={`${state?.config?.booking?.home?.hotel_detalis?.home?.back?.components?.back__btn?.className}`}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               dispatch({
-                type: "SET_PERIST",
+                type: 'SET_PERIST',
                 payload: true,
               });
-              navigate("/BookYourHotel");
+              navigate('/BookYourHotel');
             }
           }}
         >
