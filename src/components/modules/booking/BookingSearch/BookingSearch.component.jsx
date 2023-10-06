@@ -25,6 +25,7 @@ const BookingSearch = ({
 }) => {
   const searchRef = useRef(null);
   const [activeLcationElement, setActiveLcationElement] = useState(null);
+  const [activeGestsElement, setActiveGestsElement] = useState(null);
   const [dateFilterShow, setDateFilterShow] = useState({
     startDate: true,
     endDate: false,
@@ -66,6 +67,47 @@ const BookingSearch = ({
           activeLcationElement.blur();
         }
         setActiveLcationElement(null);
+        break;
+    }
+  };
+
+  const moveGests = (e) => {
+    const filterContainer = document.querySelector('.guests__dropdown');
+    const firstEl = filterContainer?.firstChild;
+    const lastEl = filterContainer?.lastChild;
+
+    console.log(firstEl, lastEl);
+
+    if (!filterDisplay?.guests) return;
+
+    e.preventDefault();
+    switch (e.keyCode) {
+      case 40:
+        if (!activeGestsElement || !activeGestsElement.nextSibling) {
+          firstEl.focus();
+          setActiveGestsElement(firstEl);
+        } else {
+          const nextEl = activeGestsElement.nextSibling;
+          nextEl.focus();
+          setActiveGestsElement(nextEl);
+        }
+        break;
+
+      case 38:
+        if (!activeGestsElement || !activeGestsElement.previousSibling) {
+          lastEl.focus();
+          setActiveGestsElement(lastEl);
+        } else {
+          const prevEl = activeGestsElement.previousSibling;
+          prevEl.focus();
+          setActiveGestsElement(prevEl);
+        }
+        break;
+      case 13:
+        if (activeGestsElement) {
+          activeGestsElement.blur();
+        }
+        setActiveGestsElement(null);
         break;
     }
   };
@@ -122,6 +164,7 @@ const BookingSearch = ({
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.keyCode === 13) {
+              console.log('enter');
               config?.components?.search__date?.eventHandlers?.onKeyDown?.callback(
                 filterDisplay,
                 setFilterDisplay,
@@ -174,6 +217,7 @@ const BookingSearch = ({
               );
               setIsPopapsOpen((prev) => !prev);
             }
+            moveGests(e);
           }}
           tabIndex={0}
           className={`${'search__persons'} ${
