@@ -1,19 +1,20 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import './BookingDetailed.stylesheet.css';
-import BookingDetailedSlider from './BookingDetailedSlider/BookingDetailedSlider.component';
-import BookingDetailedDescription from './BookingDetailedDescription/BookingDetailedDescription.component';
-import BookingDetailedLocation from './BookingDetailedLocation/BookingDetailedLocation.component';
-import BookingDetailedRooms from './BookingDetailedRooms/BookingDetailedRooms.component';
-import SignIn from '../../../SignIn/SignIn.component';
-import BookingComplete from './BookingComplete/BookingComplete.component';
-import { useParams } from 'react-router-dom';
-import { GlobalContext } from '../../../../context/global.context.jsx';
-import BookingUtil from '../../../../utils/navigation.util';
-import useMoveSound from '../../../../hooks/useMoveSound';
-import configuration from '../../../../navigateConfig';
-import _ from 'lodash';
-import { useNavigate } from 'react-router-dom';
-import useFetch from '../../../../hooks/useFetch/useFetch';
+import React, { useContext, useEffect, useState, useRef } from "react";
+import "./BookingDetailed.stylesheet.css";
+import BookingDetailedSlider from "./BookingDetailedSlider/BookingDetailedSlider.component";
+import BookingDetailedDescription from "./BookingDetailedDescription/BookingDetailedDescription.component";
+import BookingDetailedLocation from "./BookingDetailedLocation/BookingDetailedLocation.component";
+import BookingDetailedRooms from "./BookingDetailedRooms/BookingDetailedRooms.component";
+import SignIn from "../../../SignIn/SignIn.component";
+import BookingComplete from "./BookingComplete/BookingComplete.component";
+import { useParams } from "react-router-dom";
+import { GlobalContext } from "../../../../context/global.context.jsx";
+import BookingUtil from "../../../../utils/navigation.util";
+import useMoveSound from "../../../../hooks/useMoveSound";
+import configuration from "../../../../navigateConfig";
+import _ from "lodash";
+import { useNavigate } from "react-router-dom";
+import useFetch from "../../../../hooks/useFetch/useFetch";
+import ResultStar from "../BookingSearchResult/ResultStar/ResultStar";
 
 const BookingDetailed = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -29,9 +30,8 @@ const BookingDetailed = () => {
   const activeComponent = useRef(null);
   const [showFilterBox, setShowFilterBox] = useState(false);
 
-  const { data } = useFetch('/hotel', {
-    _id: params?.id,
-  });
+
+  const { data } = useFetch(`/hotel/${params?.id}`, {});
 
   function startup() {
     const firstHomeEl = Object.keys(
@@ -187,69 +187,10 @@ const BookingDetailed = () => {
         <div className="title__rating">
           <div className="title__rating__left">
             <div>
-              <h1 className="hotel__title">The Tower Plaza Hotel Dubai</h1>
+              <h1 className="hotel__title">{data?.content?.hotelName}</h1>
               <div className="right__top__left_bottom">
                 <div className="stars">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.90287 14.3525L13.2696 16.3888C13.8862 16.7619 14.6406 16.2103 14.4784 15.5126L13.586 11.6834L16.5633 9.10363C17.1069 8.6331 16.8148 7.74071 16.1009 7.68392L12.1825 7.3513L10.6492 3.73308C10.3734 3.07595 9.43234 3.07595 9.15651 3.73308L7.62322 7.34319L3.70483 7.67581C2.99092 7.7326 2.69887 8.62498 3.24241 9.09552L6.21974 11.6753L5.32735 15.5045C5.1651 16.2022 5.91957 16.7538 6.53613 16.3806L9.90287 14.3525Z"
-                      fill="#FE8B48"
-                    />
-                  </svg>
+                  <ResultStar starsCount={data?.content?.rating} />
                 </div>
                 <button className="btn__partner">Partners Hotels</button>
               </div>
@@ -259,10 +200,12 @@ const BookingDetailed = () => {
             <div className="right__top__right">
               <div className="right__top__right__left">
                 <h1 className="review__title">Very Good</h1>
-                <h1 className="review__count">214 reviews</h1>
+                <h1 className="review__count">
+                  {data?.content?.reviews} reviews
+                </h1>
               </div>
               <div className="right__top__right__right">
-                <div className="rating__box">5/5</div>
+                <div className="rating__box">{data?.content?.rating}/5</div>
               </div>
             </div>
           </div>
@@ -275,6 +218,7 @@ const BookingDetailed = () => {
         />
         <hr className="detailed__hr"></hr>
         <BookingDetailedDescription
+          data={data?.content}
           config={
             state?.config?.booking?.home?.hotel_detalis?.home
               ?.description__container
@@ -282,6 +226,7 @@ const BookingDetailed = () => {
         />
         <hr className="detailed__hr"></hr>
         <BookingDetailedLocation
+          data={data?.content}
           config={
             state?.config?.booking?.home?.hotel_detalis?.home
               ?.location__conteiner
@@ -290,6 +235,7 @@ const BookingDetailed = () => {
         <hr className="detailed__hr"></hr>
       </div>
       <BookingDetailedRooms
+        data={data?.content}
         config={state?.config?.booking?.home?.hotel_detalis?.home}
       />
       <BookingComplete id={id} />

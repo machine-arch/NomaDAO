@@ -1,7 +1,7 @@
 import React from "react";
 import "./BookingDetailedRooms.stylesheet.css";
 import Room from "./Room/Room.component";
-const BookingDetailedRooms = ({ config }) => {
+const BookingDetailedRooms = ({ config, data }) => {
   return (
     <div className="booking__detailed__rooms">
       <div className="rooms__top">
@@ -57,10 +57,11 @@ const BookingDetailedRooms = ({ config }) => {
         </div>
         <hr className="detailed__rooms_hr" />
         <div className="rooms__list">
-          {Array.from({ length: 3 }).map((_, i) => {
+          {data?.hotelRooms?.map((item, i) => {
             return (
               <React.Fragment key={i}>
                 <Room
+                  data={item}
                   className={`${
                     config?.rooms__list?.components?.room__card?.className
                   } ${
