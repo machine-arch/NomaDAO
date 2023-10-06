@@ -3,7 +3,7 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import legacy from '@vitejs/plugin-legacy';
 
 export default defineConfig({
-  root: './',
+  base: './',
   build: {
     target: 'es6',
     outDir: 'dist',
