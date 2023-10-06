@@ -1,16 +1,16 @@
 import React from "react";
 import "./Room.stylesheet.css";
 
-const Room = ({ className, id }) => {
+const Room = ({ className, id, data }) => {
   return (
     <div className={className} id={id}>
       <div className="room__card__left">
-        <img src="/src/assets/images/RoomCardImg.jpeg" />
+        <img src={data?.image} />
       </div>
       <div className="room__card__right">
         <div className="room__card__right__top">
-          <h1>Twin bed</h1>
-          <button>$38/night</button>
+          <h1>{data?.bedType}</h1>
+          <button>${data?.price}/night</button>
         </div>
         <div className="room__card__right__middle">
           <span>
@@ -29,14 +29,23 @@ const Room = ({ className, id }) => {
             Facilities:
           </span>
           <div className="room__card__facilities">
-            <span className="room__card__facility">Wake up call</span>
-            <span className="room__card__facility">Car Hire</span>
-            <span className="room__card__facility">Flat TV</span>
-            <span className="room__card__facility">Internet - WiFi</span>
-            <span className="room__card__facility">Coffee and tea</span>
-            <span className="room__card__facility">
-              Laundry and dry cleaning
-            </span>
+            {data?.facilities?.wakeUpCall && (
+              <span className="room__card__facility">Wake up call</span>
+            )}
+            {data?.facilities?.dryCleaning && (
+              <span className="room__card__facility">
+                Laundry and dry cleaning
+              </span>
+            )}
+            {data?.facilities?.crHire && (
+              <span className="room__card__facility">Car Hire</span>
+            )}
+            {data?.facilities?.flatTv && (
+              <span className="room__card__facility">Flat TV</span>
+            )}
+            {data?.facilities?.internetUpCall && (
+              <span className="room__card__facility">Internet - WiFi</span>
+            )}
           </div>
         </div>
         <div className="room__card__right__bottom">
@@ -70,7 +79,7 @@ const Room = ({ className, id }) => {
                   </clipPath>
                 </defs>
               </svg>
-              1x
+              {data?.bedsCount}x
             </span>
             <span>
               <svg
@@ -85,7 +94,7 @@ const Room = ({ className, id }) => {
                   fill="#222222"
                 />
               </svg>
-              1x
+              {data?.adultsCount}x
             </span>
           </div>
           <div className="room__card__right__bottom__right">

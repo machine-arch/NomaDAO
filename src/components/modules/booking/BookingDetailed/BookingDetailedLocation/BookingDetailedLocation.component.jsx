@@ -2,7 +2,7 @@ import React from "react";
 import "./BookingDetailedLocation.stylesheet.css";
 import { useState, useRef } from "react";
 
-const BookingDetailedLocation = ({ config }) => {
+const BookingDetailedLocation = ({ config, data }) => {
   const [showMap, setShowMap] = useState(false);
   const buttonRef = useRef(null);
   const mapStyle = {
@@ -44,7 +44,7 @@ const BookingDetailedLocation = ({ config }) => {
               fill="#202020"
             />
           </svg>
-          Location: United Arab Emirates, Dubai
+          {data?.location}
         </span>
       </div>
       <div className="location__bottom">
@@ -61,7 +61,7 @@ const BookingDetailedLocation = ({ config }) => {
           referrerPolicy="no-referrer-when-downgrade"
           src={`https://www.google.com/maps/embed/v1/place?key=${
             import.meta.env.VITE_GOOGLEMAPS_API_KEY
-          }&q=41.716667,44.783333&zoom=15`}
+          }&q=${data?.latitude},${data?.longitude}&zoom=15`}
         ></iframe>
         {showMap == false && (
           <button
