@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BookingContext from './context/BookingContext';
 import { Outlet } from 'react-router-dom';
 import AsideContext from './context/AsideContext';
 import ProductContext from './context/ProductContext';
 import { GlobalProvider } from './context/global.context';
 import { IdSequenceProvider } from './context/IdSequence.context';
+import { useNavigate } from 'react-router-dom';
 export default function App() {
   const [asideActive, setAsideActive] = useState(true);
   const [pages, setPages] = useState([
@@ -16,6 +17,7 @@ export default function App() {
   ]);
   const [activePage, setActivePage] = useState(0);
   const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
 
   const [bookingParams, setBookingParams] = useState({
     showHotels: false,
@@ -24,6 +26,10 @@ export default function App() {
     checkOut: new Date(),
     guests: 2,
   });
+
+  useEffect(() => {
+    navigate('/Home');
+  }, [navigate]);
 
   return (
     <AsideContext.Provider

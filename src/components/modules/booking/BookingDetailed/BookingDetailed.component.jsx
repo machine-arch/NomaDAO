@@ -48,8 +48,8 @@ const BookingDetailed = () => {
   }, []);
 
   const handleKeyPress = (e, currentHomeIndex, home, components, homeKeys) => {
-    switch (e.key) {
-      case 'ArrowRight':
+    switch (e.keyCode) {
+      case 39:
         bookingUtil.moveRight(
           activeHomeComponent,
           activeComponent,
@@ -60,7 +60,7 @@ const BookingDetailed = () => {
         );
         moveSound();
         break;
-      case 'ArrowLeft':
+      case 37:
         bookingUtil.moveLeft(
           activeComponent,
           activeHomeComponent,
@@ -71,7 +71,7 @@ const BookingDetailed = () => {
         );
         moveSound();
         break;
-      case 'ArrowDown':
+      case 40:
         bookingUtil.moveDown(
           currentHomeIndex,
           homeKeys,
@@ -84,7 +84,7 @@ const BookingDetailed = () => {
         );
         moveSound();
         break;
-      case 'ArrowUp':
+      case 38:
         bookingUtil.moveUp(
           currentHomeIndex,
           homeKeys,
