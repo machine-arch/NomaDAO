@@ -1,20 +1,19 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
-import "./Booking.css";
-import BookingSearch from "./BookingSearch/BookingSearch.component";
-import BookingSearchResult from "./BookingSearchResult/BookingSearchResult.component";
-import BookingSearchBarFilterBack from "./BookingSearchBarFilterBack/BookingSearchBarFilterBack.component";
-import SignIn from "../../SignIn/SignIn.component";
-import AsideContext from "../../../context/AsideContext.js";
-import { GlobalContext } from "../../../context/global.context.jsx";
-import BookingUtil from "../../../utils/navigation.util";
-import configuration from "../../../navigateConfig.js";
-import useMoveSound from "../../../hooks/useMoveSound";
-import _, { set } from "lodash";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState, useContext, useRef } from 'react';
+import './Booking.css';
+import BookingSearch from './BookingSearch/BookingSearch.component';
+import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
+import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
+import SignIn from '../../SignIn/SignIn.component';
+import AsideContext from '../../../context/AsideContext.js';
+import { GlobalContext } from '../../../context/global.context.jsx';
+import BookingUtil from '../../../utils/navigation.util';
+import configuration from '../../../navigateConfig.js';
+import useMoveSound from '../../../hooks/useMoveSound';
+import _, { set } from 'lodash';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import useFetch from '../../../hooks/useFetch/useFetch';
 import useDebounce from '../../../hooks/useDebounce/useDebounce';
-
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -27,7 +26,7 @@ const Booking = () => {
   });
 
   const [advancedFilter, setAdvancedFilter] = useState({
-    "3dView": false,
+    '3dView': false,
     partnersHotels: false,
     lowPriceFirst: false,
     recomended: false,
@@ -127,7 +126,7 @@ const Booking = () => {
   const activeHomeComponent = useRef(null);
   const activeComponent = useRef(null);
   const [showFilterBox, setShowFilterBox] = useState(false);
-  const locationn = useLocation();
+  const [isPopapsOpen, setIsPopapsOpen] = useState(false);
 
   function startup() {
     if (!asideActive && !showFilterBox) {
@@ -159,7 +158,7 @@ const Booking = () => {
             setData(data?.content);
             setShowResult(true);
             dispatch({
-              type: "SET_PERIST",
+              type: 'SET_PERIST',
               payload: false,
             });
           });
@@ -170,7 +169,7 @@ const Booking = () => {
           tcomponents[tcomponentsKeys[0]].isActive = false;
           const newConfig = JSON.parse(JSON.stringify(configuration));
           dispatch({
-            type: "SET_CONFIG",
+            type: 'SET_CONFIG',
             payload: newConfig,
           });
           let activeDomElement = null;
@@ -178,7 +177,7 @@ const Booking = () => {
             return new Promise((resolve) => {
               setTimeout(() => {
                 activeDomElement = document.querySelector(
-                  ".booking-results-active-element"
+                  '.booking-results-active-element',
                 );
                 resolve();
               }, 500);
@@ -188,12 +187,12 @@ const Booking = () => {
           console.log(activeDomElement);
           if (activeDomElement) {
             activeDomElement.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
+              behavior: 'smooth',
+              block: 'center',
             });
             activeDomElement.focus();
-            activeHomeComponent.current = "results";
-            activeComponent.current = "booking__result__box";
+            activeHomeComponent.current = 'results';
+            activeComponent.current = 'booking__result__box';
           }
         })
         .catch((err) => {
@@ -247,6 +246,12 @@ const Booking = () => {
           configuration,
           _,
         );
+        setIsPopapsOpen(false);
+        setFilterDisplay({
+          location: false,
+          date: false,
+          guests: false,
+        });
         useMoveSound();
         break;
       case 37:
@@ -259,6 +264,12 @@ const Booking = () => {
           _,
           setAsideActive,
         );
+        setFilterDisplay({
+          location: false,
+          date: false,
+          guests: false,
+        });
+        setIsPopapsOpen(false);
         useMoveSound();
         break;
       case 40:
@@ -272,6 +283,7 @@ const Booking = () => {
           activeComponent,
           _,
           showFilterBox,
+          isPopapsOpen,
         );
         useMoveSound();
         break;
@@ -285,6 +297,7 @@ const Booking = () => {
           configuration,
           activeComponent,
           _,
+          isPopapsOpen,
         );
         useMoveSound();
         break;
@@ -358,7 +371,13 @@ const Booking = () => {
     return () => {
       window.removeEventListener('keydown', eventHendler);
     };
-  }, [activeComponent.current, state?.config, showFilterBox, asideActive]);
+  }, [
+    activeComponent.current,
+    state?.config,
+    showFilterBox,
+    asideActive,
+    isPopapsOpen,
+  ]);
 
   const toggleResults = () => {
     const data = {
@@ -425,6 +444,7 @@ const Booking = () => {
           setDates={setDates}
           config={configuration?.booking?.home?.search}
           formatDate={formatDate}
+          setIsPopapsOpen={setIsPopapsOpen}
         />
         {showResult == true && (
           <BookingSearchBarFilterBack

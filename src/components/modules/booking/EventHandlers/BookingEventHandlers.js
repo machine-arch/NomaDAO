@@ -1,4 +1,5 @@
-export const handleSearchLocation = (ref) => {
+export const handleSearchLocation = (ref, setIsModalOpen) => {
+  setIsModalOpen((prev) => !prev);
   if (ref.current === document.activeElement) {
     ref.current.blur();
   } else {

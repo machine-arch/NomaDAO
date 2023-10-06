@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import BookingSearchFilterLocationDropdown from './BookingSearchFilterLocationDropdown/BookingSearchFilterLocationDropdown';
 import BookingSearchFilterGuestsDropdown from './BookingSearchFilterGuestsDropdown/BookingSearchFilterGuestsDropdown';
 import BookingSearchFilterDatePicker from './BookingSearchFilterDatePicker/BookingSearchFilterDatePicker';
+import { set } from 'lodash';
 
 const BookingSearch = ({
   filterResults,
@@ -23,13 +24,61 @@ const BookingSearch = ({
   dates,
   setDates,
   formatDate,
+  setIsPopapsOpen,
+  location,
+  setLocation,
 }) => {
   const searchRef = useRef(null);
-
+  const [firstTime, setFirstTime] = useState(true);
+  const [activeLcationElement, setActiveLcationElement] = useState(null);
   const [dateFilterShow, setDateFilterShow] = useState({
     startDate: true,
     endDate: false,
   });
+
+  const move = (e) => {
+    switch (e.keyCode) {
+      case 40:
+        e.preventDefault();
+        if (locationFilterData.length >= 1 && firstTime === true) {
+          const firstEl = document.querySelector('.search__filter').firstChild;
+          firstEl.focus();
+          setActiveLcationElement(firstEl);
+          setFirstTime(false);
+        }
+
+        if (firstTime === false && locationFilterData.length >= 1) {
+          if (!activeLcationElement?.nextSibling) {
+            setActiveLcationElement(
+              document.querySelector('.search__filter').firstChild,
+            );
+            return;
+          }
+          activeLcationElement?.nextSibling.focus();
+          setActiveLcationElement(activeLcationElement?.nextSibling);
+        }
+        break;
+      case 38:
+        e.preventDefault();
+        if (locationFilterData.length >= 1 && firstTime === true) {
+          const firstEl = document.querySelector('.search__filter').firstChild;
+          firstEl.focus();
+          setActiveLcationElement(firstEl);
+          setFirstTime(false);
+        }
+
+        if (firstTime === false && locationFilterData.length >= 1) {
+          if (!activeLcationElement?.previousSibling) {
+            setActiveLcationElement(
+              document.querySelector('.search__filter').lastChild,
+            );
+            return;
+          }
+          activeLcationElement?.previousSibling.focus();
+          setActiveLcationElement(activeLcationElement?.previousSibling);
+        }
+    }
+  };
 
   return (
     <div className="booking__search" id={config?.id}>
@@ -37,11 +86,14 @@ const BookingSearch = ({
         <div
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              config?.components?.search__location?.eventHandlers?.onKeyDown?.callback(
-                searchRef,
-              );
+            switch (e.keyCode) {
+              case 13:
+                config?.components?.search__location?.eventHandlers?.onKeyDown?.callback(
+                  searchRef,
+                  setIsPopapsOpen,
+                );
             }
+            move(e);
           }}
           className={`${'search__location'} ${
             config?.components?.search__location?.isActive
@@ -54,9 +106,10 @@ const BookingSearch = ({
           <input
             type="text"
             autoComplete="off"
-            onKeyUp={(e) => {
+            onChange={(e) => {
               fetchSuggestions(e);
             }}
+            value={location || ''}
             ref={searchRef}
             className="searchBox__selectable navigable"
             placeholder="Where are you going?"
@@ -66,6 +119,8 @@ const BookingSearch = ({
           {filterDisplay?.location == true && (
             <BookingSearchFilterLocationDropdown
               locationFilterData={locationFilterData}
+              location={location}
+              setLocation={setLocation}
             />
           )}
         </div>
@@ -74,11 +129,12 @@ const BookingSearch = ({
         <div
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+            if (e.keyCode === 13) {
               config?.components?.search__date?.eventHandlers?.onKeyDown?.callback(
                 filterDisplay,
                 setFilterDisplay,
               );
+              setIsPopapsOpen((prev) => !prev);
             }
           }}
           className={`${'search__date'} ${
@@ -94,7 +150,7 @@ const BookingSearch = ({
           )}
           {dates?.startDate !== null && (
             <span className="searchBox__selectable navigable">
-              {formatDate(dates?.startDate?.toLocaleDateString().toString())} -{" "}
+              {formatDate(dates?.startDate?.toLocaleDateString().toString())} -{' '}
               {formatDate(dates?.endDate?.toLocaleDateString().toString())}
             </span>
           )}
@@ -113,11 +169,12 @@ const BookingSearch = ({
 
         <div
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+            if (e.keyCode === 13) {
               config?.components?.search__persons?.eventHandlers?.onKeyDown?.callback(
                 filterDisplay,
                 setFilterDisplay,
               );
+              setIsPopapsOpen((prev) => !prev);
             }
           }}
           tabIndex={0}
@@ -130,10 +187,8 @@ const BookingSearch = ({
         >
           <h1 className="searchBox__title">Guests</h1>
           <h5 className="searchBox__selectable navigable">
-
-            {guests?.adultsCount} adult - {guests?.childrensCount} children -{" "}
+            {guests?.adultsCount} adult - {guests?.childrensCount} children -{' '}
             {guests?.roomsCount} room
-
           </h5>
           {filterDisplay?.guests && (
             <BookingSearchFilterGuestsDropdown
