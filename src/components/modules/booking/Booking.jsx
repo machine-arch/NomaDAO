@@ -9,11 +9,8 @@ import { GlobalContext } from '../../../context/global.context.jsx';
 import BookingUtil from '../../../utils/navigation.util';
 import configuration from '../../../navigateConfig.js';
 import useMoveSound from '../../../hooks/useMoveSound';
-import _, { set } from 'lodash';
+import _ from 'lodash';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
-import useFetch from '../../../hooks/useFetch/useFetch';
-import useDebounce from '../../../hooks/useDebounce/useDebounce';
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -119,8 +116,7 @@ const Booking = () => {
     }
   };
 
-  const { asideActive, setAsideActive, pages, activePage, setActivePage } =
-    useContext(AsideContext);
+  const { asideActive, setAsideActive } = useContext(AsideContext);
   const { state, dispatch } = useContext(GlobalContext);
   const [canNavigate, setCanNavigate] = useState(false);
   const activeHomeComponent = useRef(null);

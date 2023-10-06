@@ -5,13 +5,16 @@ import legacy from '@vitejs/plugin-legacy';
 export default defineConfig({
   root: './',
   build: {
-    target: 'es2015',
+    target: 'es6',
     outDir: 'dist',
     rollupOptions: {
       output: {
         format: 'es',
         manualChunks: {
           index_1: ['src/components/modules/booking/Booking.jsx'],
+          index_2: [
+            'src/components/modules/booking/BookingDetailed/BookingDetailed.component.jsx',
+          ],
         },
       },
     },
