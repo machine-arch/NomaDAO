@@ -1,24 +1,26 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import './BookingDetailed.stylesheet.css';
-import BookingDetailedSlider from './BookingDetailedSlider/BookingDetailedSlider.component';
-import BookingDetailedDescription from './BookingDetailedDescription/BookingDetailedDescription.component';
-import BookingDetailedLocation from './BookingDetailedLocation/BookingDetailedLocation.component';
-import BookingDetailedRooms from './BookingDetailedRooms/BookingDetailedRooms.component';
-import SignIn from '../../../SignIn/SignIn.component';
-import BookingComplete from './BookingComplete/BookingComplete.component';
-import { useParams } from 'react-router-dom';
-import { GlobalContext } from '../../../../context/global.context.jsx';
-import BookingUtil from '../../../../utils/navigation.util';
-import useMoveSound from '../../../../hooks/useMoveSound';
-import configuration from '../../../../navigateConfig';
-import _ from 'lodash';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState, useRef } from "react";
+import "./BookingDetailed.stylesheet.css";
+import BookingDetailedSlider from "./BookingDetailedSlider/BookingDetailedSlider.component";
+import BookingDetailedDescription from "./BookingDetailedDescription/BookingDetailedDescription.component";
+import BookingDetailedLocation from "./BookingDetailedLocation/BookingDetailedLocation.component";
+import BookingDetailedRooms from "./BookingDetailedRooms/BookingDetailedRooms.component";
+import SignIn from "../../../SignIn/SignIn.component";
+import BookingComplete from "./BookingComplete/BookingComplete.component";
+import { useParams } from "react-router-dom";
+import { GlobalContext } from "../../../../context/global.context.jsx";
+import BookingUtil from "../../../../utils/navigation.util";
+import useMoveSound from "../../../../hooks/useMoveSound";
+import configuration from "../../../../navigateConfig";
+import _ from "lodash";
+import { useNavigate } from "react-router-dom";
+import useFetch from "../../../../hooks/useFetch/useFetch";
 
 const BookingDetailed = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const navigate = useNavigate();
   const originalConfig = configuration;
-
+  const params = useParams();
+  const id = params.id;
   const bookingUtil = new BookingUtil();
   const moveSound = useMoveSound;
 
@@ -27,9 +29,13 @@ const BookingDetailed = () => {
   const activeComponent = useRef(null);
   const [showFilterBox, setShowFilterBox] = useState(false);
 
+  const { data } = useFetch("/hotel", {
+    _id: params?.id,
+  });
+
   function startup() {
     const firstHomeEl = Object.keys(
-      state?.config?.booking?.home?.hotel_detalis?.home,
+      state?.config?.booking?.home?.hotel_detalis?.home
     )[0];
 
     const searchComponents =
@@ -43,35 +49,37 @@ const BookingDetailed = () => {
     setCanNavigate(true);
   }
 
+  console.log(data?.content);
+
   useEffect(() => {
     startup();
   }, []);
 
   const handleKeyPress = (e, currentHomeIndex, home, components, homeKeys) => {
     switch (e.key) {
-      case 'ArrowRight':
+      case "ArrowRight":
         bookingUtil.moveRight(
           activeHomeComponent,
           activeComponent,
           home,
           dispatch,
           state?.config,
-          _,
+          _
         );
         moveSound();
         break;
-      case 'ArrowLeft':
+      case "ArrowLeft":
         bookingUtil.moveLeft(
           activeComponent,
           activeHomeComponent,
           home,
           dispatch,
           state?.config,
-          _,
+          _
         );
         moveSound();
         break;
-      case 'ArrowDown':
+      case "ArrowDown":
         bookingUtil.moveDown(
           currentHomeIndex,
           homeKeys,
@@ -80,11 +88,11 @@ const BookingDetailed = () => {
           dispatch,
           state?.config,
           activeComponent,
-          _,
+          _
         );
         moveSound();
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         bookingUtil.moveUp(
           currentHomeIndex,
           homeKeys,
@@ -93,16 +101,16 @@ const BookingDetailed = () => {
           dispatch,
           state?.config,
           activeComponent,
-          _,
+          _
         );
         moveSound();
         break;
-      case 'Enter':
+      case "Enter":
         break;
-      case 'Backspace':
+      case "Backspace":
         if (showFilterBox) {
           setShowFilterBox(false);
-          activeHomeComponent.current = 'filter';
+          activeHomeComponent.current = "filter";
         }
         break;
       default:
@@ -123,7 +131,7 @@ const BookingDetailed = () => {
     if (components) {
       home = state?.config?.booking?.home?.hotel_detalis?.home;
       homeKeys = Object.keys(
-        state?.config?.booking?.home?.hotel_detalis?.home || {},
+        state?.config?.booking?.home?.hotel_detalis?.home || {}
       );
       currentHomeIndex = homeKeys.indexOf(activeHomeComponent.current);
     }
@@ -132,13 +140,12 @@ const BookingDetailed = () => {
   };
 
   useEffect(() => {
-    canNavigate ? window.addEventListener('keydown', eventHendler) : null;
+    canNavigate ? window.addEventListener("keydown", eventHendler) : null;
     return () => {
-      window.removeEventListener('keydown', eventHendler);
+      window.removeEventListener("keydown", eventHendler);
     };
   }, [activeComponent.current, state?.config]);
-  const params = useParams();
-  const id = params.id;
+
   return (
     <div className="detailed_conteiner">
       <div className="detailedBg">
@@ -149,12 +156,12 @@ const BookingDetailed = () => {
         <button
           className={`${state?.config?.booking?.home?.hotel_detalis?.home?.back?.components?.back__btn?.className}`}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+            if (e.key === "Enter") {
               dispatch({
-                type: 'SET_PERIST',
+                type: "SET_PERIST",
                 payload: true,
               });
-              navigate('/BookYourHotel');
+              navigate("/BookYourHotel");
             }
           }}
         >

@@ -9,7 +9,7 @@ const BookingSearchResult = ({ index, config, data }) => {
     <div
       onKeyDown={(e) => {
         if (e.key === "Enter") {
-          navigate(`/BookYourHotel/${index + 1}`);
+          navigate(`/BookYourHotel/${data?._id}`);
         }
       }}
       className="booking__search__result"
