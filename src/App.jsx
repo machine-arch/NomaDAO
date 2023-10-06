@@ -10,10 +10,10 @@ export default function App() {
   const [asideActive, setAsideActive] = useState(true);
   const [pages, setPages] = useState([
     'Home',
+    'Book Your Hotel',
     'Nomad Entertainment',
     'Hotel Highlights in 3D',
     'World 3D Tour (sightseeing)',
-    'Book Your Hotel',
   ]);
   const [activePage, setActivePage] = useState(0);
   const [product, setProduct] = useState(null);
