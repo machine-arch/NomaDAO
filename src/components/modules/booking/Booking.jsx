@@ -1,19 +1,20 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
-import './Booking.css';
-import BookingSearch from './BookingSearch/BookingSearch.component';
-import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
-import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
-import SignIn from '../../SignIn/SignIn.component';
-import AsideContext from '../../../context/AsideContext.js';
-import { GlobalContext } from '../../../context/global.context.jsx';
-import BookingUtil from '../../../utils/navigation.util';
-import configuration from '../../../navigateConfig.js';
-import useMoveSound from '../../../hooks/useMoveSound';
-import _, { set } from 'lodash';
+import React, { useEffect, useState, useContext, useRef } from "react";
+import "./Booking.css";
+import BookingSearch from "./BookingSearch/BookingSearch.component";
+import BookingSearchResult from "./BookingSearchResult/BookingSearchResult.component";
+import BookingSearchBarFilterBack from "./BookingSearchBarFilterBack/BookingSearchBarFilterBack.component";
+import SignIn from "../../SignIn/SignIn.component";
+import AsideContext from "../../../context/AsideContext.js";
+import { GlobalContext } from "../../../context/global.context.jsx";
+import BookingUtil from "../../../utils/navigation.util";
+import configuration from "../../../navigateConfig.js";
+import useMoveSound from "../../../hooks/useMoveSound";
+import _, { set } from "lodash";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 import useFetch from '../../../hooks/useFetch/useFetch';
 import useDebounce from '../../../hooks/useDebounce/useDebounce';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -21,8 +22,44 @@ const Booking = () => {
 
   const [location, setLocation] = useState(null);
   const [dates, setDates] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: null,
+    endDate: null,
+  });
+
+  const [advancedFilter, setAdvancedFilter] = useState({
+    "3dView": false,
+    partnersHotels: false,
+    lowPriceFirst: false,
+    recomended: false,
+    highPriceFirst: false,
+    hightRatingFirst: false,
+    priceMin: 0,
+    priceMax: 0,
+    hotelStarFive: false,
+    hotelStarFour: false,
+    hotelStarThree: false,
+    hotelStarTwo: false,
+    hotelStarOne: false,
+    reviewScoreFive: false,
+    reviewScoreFour: false,
+    reviewScoreThree: false,
+    reviewScoreTwo: false,
+    reviewScoreOne: false,
+    apartments: false,
+    hotels: false,
+    homestays: false,
+    villas: false,
+    motels: false,
+    wakeUpCall: false,
+    crHire: false,
+    flatTv: false,
+    dryCleaning: false,
+    internet: false,
+    havanaLobbyBar: false,
+    flestaRestaurant: false,
+    hotelTransportService: false,
+    laundryService: false,
+    petsWelcome: false,
   });
 
   const [locationFilterData, setLocationFilterData] = useState([]);
@@ -33,9 +70,9 @@ const Booking = () => {
   const [data, setData] = useState([]);
 
   const [guests, setGuests] = useState({
-    adults: 0,
-    children: 0,
-    rooms: 0,
+    adultsCount: 0,
+    childrensCount: 0,
+    roomsCount: 0,
   });
 
   const [filterDisplay, setFilterDisplay] = useState({
@@ -45,6 +82,7 @@ const Booking = () => {
   });
 
   const fetchSuggestions = (e) => {
+    setLocation(e.target.value);
     if (e.target.value.length == 0) {
       setLocationFilterDataCopy([]);
       setLocationFilterData([]);
@@ -79,6 +117,8 @@ const Booking = () => {
         });
     }
   };
+
+  console.log(advancedFilter);
 
   const { asideActive, setAsideActive, pages, activePage, setActivePage } =
     useContext(AsideContext);
@@ -119,7 +159,7 @@ const Booking = () => {
             setData(data?.content);
             setShowResult(true);
             dispatch({
-              type: 'SET_PERIST',
+              type: "SET_PERIST",
               payload: false,
             });
           });
@@ -130,7 +170,7 @@ const Booking = () => {
           tcomponents[tcomponentsKeys[0]].isActive = false;
           const newConfig = JSON.parse(JSON.stringify(configuration));
           dispatch({
-            type: 'SET_CONFIG',
+            type: "SET_CONFIG",
             payload: newConfig,
           });
           let activeDomElement = null;
@@ -138,7 +178,7 @@ const Booking = () => {
             return new Promise((resolve) => {
               setTimeout(() => {
                 activeDomElement = document.querySelector(
-                  '.booking-results-active-element',
+                  ".booking-results-active-element"
                 );
                 resolve();
               }, 500);
@@ -148,12 +188,12 @@ const Booking = () => {
           console.log(activeDomElement);
           if (activeDomElement) {
             activeDomElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
+              behavior: "smooth",
+              block: "center",
             });
             activeDomElement.focus();
-            activeHomeComponent.current = 'results';
-            activeComponent.current = 'booking__result__box';
+            activeHomeComponent.current = "results";
+            activeComponent.current = "booking__result__box";
           }
         })
         .catch((err) => {
@@ -303,6 +343,16 @@ const Booking = () => {
     );
   };
 
+  const formatDate = (string) => {
+    if (string == undefined) {
+      return null;
+    }
+    let month = string?.slice(0, 2);
+    let day = string?.slice(3, 5);
+    let year = string?.slice(6, 10);
+    return `${year}-${month}-${day}`;
+  };
+
   useEffect(() => {
     canNavigate ? window.addEventListener('keydown', eventHendler) : null;
     return () => {
@@ -313,6 +363,12 @@ const Booking = () => {
   const toggleResults = () => {
     const data = {
       location: location,
+      startDate: formatDate(dates?.startDate?.toLocaleDateString().toString()),
+      endDate: formatDate(dates?.endDate?.toLocaleDateString().toString()),
+      roomsCount: guests?.roomsCount == 0 ? null : guests?.roomsCount,
+      adultsCount: guests?.adultsCount == 0 ? null : guests?.adultsCount,
+      childrensCount:
+        guests?.childrensCount == 0 ? null : guests?.childrensCount,
     };
     fetch(`${import.meta.env.VITE_API_URL}/hotel-filter?page=1&limit=10`, {
       method: 'POST',
@@ -333,8 +389,6 @@ const Booking = () => {
     configuration.booking.home.results.display =
       !configuration.booking.home.results.display;
     configuration.booking.home.results.factory.index = 0;
-
-    console.log(configuration.booking.home.results.display);
   };
 
   const filterResults = (e) => {
@@ -368,9 +422,12 @@ const Booking = () => {
           dates={dates}
           setDates={setDates}
           config={configuration?.booking?.home?.search}
+          formatDate={formatDate}
         />
         {showResult == true && (
           <BookingSearchBarFilterBack
+            advancedFilter={advancedFilter}
+            setAdvancedFilter={setAdvancedFilter}
             config={configuration?.booking?.home}
             showFilterBox={showFilterBox}
             setShowFilterBox={setShowFilterBox}

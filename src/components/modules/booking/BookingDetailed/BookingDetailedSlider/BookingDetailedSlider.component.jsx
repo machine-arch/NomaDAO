@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import './BookingDetailedSlider.stylesheet.css';
-import BookingDetailedSliderBackArrow from './BookingDetailedSliderBackArrow/BookingDetailedSliderBackArrow';
-import BookingDetailedSliderNextArrow from './BookingDetailedSliderNextArrow/BookingDetailedSliderNextArrow';
-import BookingDetailedSlider3D from './BookingDetailedSlider3D/BookingDetailedSlider3D';
+import React, { useState } from "react";
+import "./BookingDetailedSlider.stylesheet.css";
+import BookingDetailedSliderBackArrow from "./BookingDetailedSliderBackArrow/BookingDetailedSliderBackArrow";
+import BookingDetailedSliderNextArrow from "./BookingDetailedSliderNextArrow/BookingDetailedSliderNextArrow";
+import BookingDetailedSlider3D from "./BookingDetailedSlider3D/BookingDetailedSlider3D";
 
 const BookingDetailedSlider = ({ config }) => {
   const SLIDER_IMGS = [
     {
       id: 1,
-      src: '/src/assets/images/mock_apartment_slider1.jpeg',
+      src: "/src/assets/images/mock_apartment_slider1.jpeg",
     },
     {
       id: 2,
-      src: '/src/assets/images/mock_apartment_slider2.jpeg',
+      src: "/src/assets/images/mock_apartment_slider2.jpeg",
     },
     {
       id: 3,
-      src: '/src/assets/images/mock_apartment_slider3.jpeg',
+      src: "/src/assets/images/mock_apartment_slider3.jpeg",
     },
   ];
 
@@ -36,7 +36,7 @@ const BookingDetailedSlider = ({ config }) => {
         className="detailed__slider__mainImage"
         src={SLIDER_IMGS[mainBgIndex].src}
       />
-      <button className="view__threed__btn">View in 3D</button>
+      {/* <button className="view__threed__btn">View in 3D</button> */}
       <div className="detailed__slider">
         <BookingDetailedSliderBackArrow />
         <div className="detailed__slider__item">
@@ -61,7 +61,7 @@ const BookingDetailedSlider = ({ config }) => {
                   i ===
                     config?.components?.detailed__slider__item?.factory?.index
                     ? config?.components?.detailed__slider__item?.activeClass
-                    : ''
+                    : ""
                 }`}
                 id={`${config?.components?.detailed__slider__item?.className}-${i}`}
               >

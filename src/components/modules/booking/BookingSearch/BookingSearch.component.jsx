@@ -22,8 +22,14 @@ const BookingSearch = ({
   fetchSuggestions,
   dates,
   setDates,
+  formatDate,
 }) => {
   const searchRef = useRef(null);
+
+  const [dateFilterShow, setDateFilterShow] = useState({
+    startDate: true,
+    endDate: false,
+  });
 
   return (
     <div className="booking__search" id={config?.id}>
@@ -82,11 +88,20 @@ const BookingSearch = ({
           id={`search__${config?.components?.search__date?.id}`}
         >
           <h1 className="searchBox__title">Check in - check out</h1>
-          <span className="searchBox__selectable navigable">
-            Fr 16 Jun - Fri 14 Jul
-          </span>
+          {dates?.startDate == null && (
+            <span className="datepicker__placeholder">Please select date</span>
+          )}
+          {dates?.startDate !== null && (
+            <span className="searchBox__selectable navigable">
+              {formatDate(dates?.startDate?.toLocaleDateString().toString())} -{" "}
+              {formatDate(dates?.endDate?.toLocaleDateString().toString())}
+            </span>
+          )}
+
           {filterDisplay?.date == true && (
             <BookingSearchFilterDatePicker
+              dateFilterShow={dateFilterShow}
+              setDateFilterShow={setDateFilterShow}
               dates={dates}
               setDates={setDates}
               config={config}
@@ -114,8 +129,10 @@ const BookingSearch = ({
         >
           <h1 className="searchBox__title">Guests</h1>
           <h5 className="searchBox__selectable navigable">
-            {guests?.adults} adult - {guests?.children} children -{' '}
-            {guests?.rooms} room
+
+            {guests?.adultsCount} adult - {guests?.childrensCount} children -{" "}
+            {guests?.roomsCount} room
+
           </h5>
           {filterDisplay?.guests && (
             <BookingSearchFilterGuestsDropdown

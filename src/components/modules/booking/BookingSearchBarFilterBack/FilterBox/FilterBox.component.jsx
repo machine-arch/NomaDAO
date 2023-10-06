@@ -2,7 +2,14 @@ import React from "react";
 import "./FilterBox.stylesheet.css";
 import IconStar from "./IconStar/IconStar";
 
-const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
+const FilterBox = ({
+  showFilterBox,
+  setShowFilterBox,
+  className,
+  config,
+  advancedFilter,
+  setAdvancedFilter,
+}) => {
   return (
     <div
       className={`${className} ${
@@ -12,9 +19,18 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
       <div className="filter__viewMode">
         <h1 className="filter__title">View Mode</h1>
         <button
+          onKeyDown={(e) => {
+            if (e.keyCode == 13) {
+              config?.dimension?.components?.filter__threed__btn.eventHandlers.onKeyDown.callback(
+                "3dView",
+                setAdvancedFilter
+              );
+            }
+          }}
           className={`${
-            config?.dimension?.components?.filter__threed__btn?.className
-          } ${
+            advancedFilter?.["3dView"] == true &&
+            config?.dimension?.components?.filter__threed__btn?.activeClass
+          } ${config?.dimension?.components?.filter__threed__btn?.className} ${
             config?.dimension?.components?.filter__threed__btn?.isActive
               ? config?.dimension?.components?.filter__threed__btn?.activeClass
               : ""
@@ -27,9 +43,20 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
         <h1 className="filter__title">Sort</h1>
         <div>
           <button
-            className={`${
-              config?.sort?.components?.filter__partners__btn?.className
-            } ${
+            onKeyDown={(e) => {
+              if (e.keyCode == 13) {
+                config?.sort?.components?.filter__partners__btn?.eventHandlers?.onKeyDown?.callback(
+                  "partnersHotels",
+                  setAdvancedFilter
+                );
+              }
+            }}
+            className={`
+            ${
+              advancedFilter?.["partnersHotels"] == true &&
+              config?.sort?.components?.filter__partners__btn?.activeClass
+            }
+            ${config?.sort?.components?.filter__partners__btn?.className} ${
               config?.sort?.components?.filter__partners__btn?.isActive
                 ? config?.sort?.components?.filter__partners__btn?.activeClass
                 : ""
@@ -38,10 +65,24 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
             Partner Hotels
           </button>
           <button
-            className={`filter__select__btn__default ${
+            onKeyDown={(e) => {
+              if (e.keyCode == 13) {
+                config?.sort?.components?.filter__select__btn__default_1?.eventHandlers?.onKeyDown?.callback(
+                  "lowPriceFirst",
+                  setAdvancedFilter
+                );
+              }
+            }}
+            className={`filter__select__btn__default
+            ${
+              advancedFilter?.["lowPriceFirst"] == true &&
               config?.sort?.components?.filter__select__btn__default_1
-                ?.className
+                ?.activeClass
             }
+             ${
+               config?.sort?.components?.filter__select__btn__default_1
+                 ?.className
+             }
             ${
               config?.sort?.components?.filter__select__btn__default_1?.isActive
                 ? config?.sort?.components?.filter__select__btn__default_1
@@ -206,6 +247,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.hotel_star?.components?.checkbox_hotel_3_star?.className} `}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <IconStar />
@@ -227,6 +273,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.hotel_star?.components?.checkbox_hotel_2_star?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <IconStar />
@@ -247,6 +298,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.hotel_star?.components?.checkbox_hotel_1_star?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <IconStar />
@@ -273,6 +329,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.review?.components?.checkbox_review_5_star?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <IconStar />
@@ -296,6 +357,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.review?.components?.checkbox_review_4_star?.className} `}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <IconStar />
@@ -318,6 +384,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.review?.components?.checkbox_review_3_star?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <IconStar />
@@ -339,6 +410,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.review?.components?.checkbox_review_2_star?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <IconStar />
@@ -359,6 +435,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.review?.components?.checkbox_review_1_star?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <IconStar />
@@ -387,6 +468,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.propertyType?.components?.checkbox_propertyType_1?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Apartments</h1>
@@ -407,6 +493,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.propertyType?.components?.checkbox_propertyType_2?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Hotels</h1>
@@ -427,6 +518,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.propertyType?.components?.checkbox_propertyType_3?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Homestays</h1>
@@ -447,6 +543,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.propertyType?.components?.checkbox_propertyType_4?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Villas</h1>
@@ -467,6 +568,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.propertyType?.components?.checkbox_propertyType_5?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Motels</h1>
@@ -494,6 +600,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.facilities?.components?.checkbox_facilities_1?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Wake-up call</h1>
@@ -513,6 +624,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.facilities?.components?.checkbox_facilities_2?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Cr hire</h1>
@@ -532,6 +648,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.facilities?.components?.checkbox_facilities_3?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Flat TV</h1>
@@ -551,6 +672,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.facilities?.components?.checkbox_facilities_4?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Laundry and dry cleaning</h1>
@@ -570,6 +696,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.facilities?.components?.checkbox_facilities_5?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Internet - WiFi</h1>
@@ -598,6 +729,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.hotelService?.components?.checkbox_hotelService_1?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Havana Lobby Bar</h1>
@@ -618,6 +754,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.hotelService?.components?.checkbox_hotelService_2?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Flesta Restaurant</h1>
@@ -638,6 +779,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.hotelService?.components?.checkbox_hotelService_3?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Hotel Transport Services</h1>
@@ -658,6 +804,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.hotelService?.components?.checkbox_hotelService_4?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Laundry Services</h1>
@@ -678,6 +829,11 @@ const FilterBox = ({ showFilterBox, setShowFilterBox, className, config }) => {
               <input
                 type="checkbox"
                 className={`${config?.hotelService?.components?.checkbox_hotelService_5?.className}`}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.target.checked = !e.target.checked;
+                  }
+                }}
               />
               <div className="checkbox__horizontal">
                 <h1 className="checkbox__title">Pets Welcome</h1>

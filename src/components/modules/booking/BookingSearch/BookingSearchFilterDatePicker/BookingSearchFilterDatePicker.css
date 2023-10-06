@@ -1,8 +1,21 @@
 .datepicker {
   display: flex;
   align-items: center;
+  gap: 20rem;
   transition: none!important;
   position: absolute;
-  top: 100px;
-  left: -27px;
+  top: 71px;
+  left: -160px;
+}
+
+.react-datepicker-wrapper input {
+  display: none;
+}
+
+.react-datepicker__triangle {
+  display: none;
+}
+
+.date-range-background {
+  background-color: white !important; /* Set the background color to white */
 }

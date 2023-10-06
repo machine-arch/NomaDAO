@@ -1,4 +1,7 @@
-import { handleSearchLocation } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
+import {
+  handleAdvancedFilter,
+  handleSearchLocation,
+} from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 import { handleDate } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 import { handlePersons } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 import { handleLocation } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
@@ -35,8 +38,8 @@ const configuration = {
           search__location: {
             id: "1",
             isActive: false,
-            activeClass: "booking-search-active-element",
-            activeClass: "booking-search-active-element",
+            className: "search__location",
+            activeClass: "booking-search-search__location-active-element",
             eventHandlers: {
               onKeyDown: {
                 name: "onKeyDown",
@@ -47,7 +50,6 @@ const configuration = {
           search__date: {
             id: "2",
             isActive: false,
-            activeClass: "booking-search-active-element",
             activeClass: "booking-search-date-active-element",
             eventHandlers: {
               onKeyDown: {
@@ -59,8 +61,7 @@ const configuration = {
           search__persons: {
             id: "3",
             isActive: false,
-            activeClass: "booking-search-active-element",
-            activeClass: "booking-search-active-element",
+            activeClass: "booking-search-search__persons-active-element",
             eventHandlers: {
               onKeyDown: {
                 name: "onKeyDown",
@@ -72,8 +73,7 @@ const configuration = {
             id: "4",
             className: "search__Btn",
             isActive: false,
-            activeClass: "booking-search-active-element",
-            activeClass: "booking-search-active-element",
+            activeClass: "booking-search-search__Btn-active-element",
           },
         },
       },
@@ -142,6 +142,12 @@ const configuration = {
                 hasSibling: false,
                 activeClass: "booking-filter_threed__btn-active-element",
                 className: "filter__threed__btn",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
             },
           },
@@ -154,6 +160,12 @@ const configuration = {
                 isActive: false,
                 activeClass: "booking-filter__partners__btn-active-element",
                 className: "filter__partners__btn",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
               filter__select__btn__default_1: {
                 id: "3",
@@ -161,6 +173,12 @@ const configuration = {
                 activeClass:
                   "booking-filter__select__btn__default-active-element",
                 className: "filter__select__btn__default_1",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
               filter__select__btn__default_2: {
                 id: "4",
@@ -168,6 +186,12 @@ const configuration = {
                 activeClass:
                   "booking-filter__select__btn__default-active-element",
                 className: "filter__select__btn__default_2",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
               filter__select__btn__default_3: {
                 id: "5",
@@ -175,6 +199,12 @@ const configuration = {
                 activeClass:
                   "booking-filter__select__btn__default-active-element",
                 className: "filter__select__btn__default_3",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
               filter__select__btn__default_4: {
                 id: "6",
@@ -182,6 +212,12 @@ const configuration = {
                 activeClass:
                   "booking-filter__select__btn__default-active-element",
                 className: "filter__select__btn__default_4",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleAdvancedFilter,
+                  },
+                },
               },
             },
           },
@@ -489,7 +525,7 @@ const configuration = {
               location__container: {
                 id: "1",
                 isActive: false,
-                activeClass: "booking-active-element",
+                activeClass: "booking-location__container-active-element",
                 className: "location__container",
                 eventHandlers: {
                   onKeyDown: {
@@ -545,7 +581,7 @@ const configuration = {
                 id: "1",
                 isActive: false,
                 className: "room__card",
-                activeClass: "booking-active-element",
+                activeClass: "booking-room__card-active-element",
               },
             },
           },

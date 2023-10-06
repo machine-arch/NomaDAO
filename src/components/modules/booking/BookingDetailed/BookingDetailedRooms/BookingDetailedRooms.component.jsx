@@ -1,6 +1,6 @@
-import React from 'react';
-import './BookingDetailedRooms.stylesheet.css';
-import Room from './Room/Room.component';
+import React from "react";
+import "./BookingDetailedRooms.stylesheet.css";
+import Room from "./Room/Room.component";
 const BookingDetailedRooms = ({ config }) => {
   return (
     <div className="booking__detailed__rooms">
@@ -22,11 +22,7 @@ const BookingDetailedRooms = ({ config }) => {
             }`}
           >
             <h1 className="search__bar__title">Check in - check out</h1>
-            <input
-              className="search__bar__check"
-              placeholder="Fr 16 Jun - Fri 14 Jul"
-              type="date"
-            />
+            <span>Fri 16 Jun - Fri 14 Jul</span>
           </div>
           <hr />
           <div
@@ -41,11 +37,7 @@ const BookingDetailedRooms = ({ config }) => {
             }`}
           >
             <h1 className="search__bar__title">Guests</h1>
-            <input
-              className="search__bar__guests"
-              placeholder="2 adult - 1 children - 1 room"
-              readOnly
-            />
+            <span>2 adult - 1 children - 1 room</span>
           </div>
           <div className="detailed__search__availability__btn">
             <button
@@ -74,8 +66,8 @@ const BookingDetailedRooms = ({ config }) => {
                   } ${
                     config?.rooms__list?.components?.room__card?.isActive &&
                     i === config?.rooms__list?.factory?.index
-                      ? 'booking-result-active-element'
-                      : ''
+                      ? config?.rooms__list?.components?.room__card?.activeClass
+                      : ""
                   }`}
                   id={`${config?.rooms__list?.components?.room__card?.className}-${i}`}
                 />

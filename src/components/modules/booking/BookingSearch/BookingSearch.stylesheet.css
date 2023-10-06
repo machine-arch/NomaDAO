@@ -49,6 +49,17 @@
   color: #3F3F3F ;
 }
 
+.datepicker__placeholder {
+  border: none;
+  padding: 0.2rem;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  color: #3F3F3F ;
+}
+
+
+
 .searchBox__selectable::placeholder {
   color: #3F3F3F!important;
 }
@@ -96,13 +107,6 @@
 
 
 
-.booking-search-date-active-element > h1, .booking-search-date-active-element > h5, .booking-search-date-active-element > span {
-  color: white!important;
-}
-
-.booking-search-date-active-element > input {
-  background: none!important;
-}
 
 
 
@@ -140,6 +144,83 @@
 
 
 
+/*BOOKING SEARCH LOCATION*/
+
+.booking-search-search__location-active-element{
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+  color: white!important;
+}
+
+.booking-search-search__location-active-element:focus{
+  outline: none;
+}
+
+.booking-search-search__location-active-element > h1 {
+  color: white!important;
+}
+
+.booking-search-search__location-active-element > input {
+  border-radius: 4px;
+  background: none!important;
+}
+
+.booking-search-search__location-active-element > input:focus {
+  border: 1px solid white;
+  outline: none;
+}
+
+.booking-search-search__location-active-element > input::placeholder, .booking-search-search__location-active-element > input {
+  color: white!important;
+}
+
+/*BOOKING SEARCH CHECK-IN / CHECK-OUT*/
+
+.booking-search-date-active-element > h1, .booking-search-date-active-element > h5, .booking-search-date-active-element > span {
+  color: white!important;
+}
+
+.booking-search-date-active-element > input {
+  background: none!important;
+}
+
+.booking-search-date-active-element:focus {
+  outline: none!important;
+}
+
+/*BOOKING SEARCH GUESTS*/
+
+.booking-search-search__persons-active-element{
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+  color: white!important;
+}
+
+.booking-search-search__persons-active-element:focus{
+  outline:none!important
+}
+
+.booking-search-search__persons-active-element > h1, .booking-search-search__persons-active-element > h5 {
+  color: white!important;
+}
+
+/*BOOKING SEARCH BTN*/
+
+.booking-search-search__Btn-active-element {
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+  color: white!important;
+}
+
+.booking-search-search__Btn-active-element:focus{
+  outline: none!important;
+}
+
+.booking-search-search__Btn-active-element svg{
+  fill: white!important;
+}
+
+/*END*/
 
 
 
