@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import "./BookingSearchFilterDatePicker.css";
+import React, { useEffect, useRef, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './BookingSearchFilterDatePicker.css';
 
 const BookingSearchFilterDatePicker = ({
   dates,
@@ -15,7 +15,7 @@ const BookingSearchFilterDatePicker = ({
       startDate: date,
     });
     setDateFilterShow({
-      ...dateFilterShow,
+      startDate: false,
       endDate: true,
     });
   };

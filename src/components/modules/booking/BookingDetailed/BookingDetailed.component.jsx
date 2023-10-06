@@ -30,11 +30,12 @@ const BookingDetailed = () => {
   const activeComponent = useRef(null);
   const [showFilterBox, setShowFilterBox] = useState(false);
 
+
   const { data } = useFetch(`/hotel/${params?.id}`, {});
 
   function startup() {
     const firstHomeEl = Object.keys(
-      state?.config?.booking?.home?.hotel_detalis?.home
+      state?.config?.booking?.home?.hotel_detalis?.home,
     )[0];
 
     const searchComponents =
@@ -61,7 +62,7 @@ const BookingDetailed = () => {
           home,
           dispatch,
           state?.config,
-          _
+          _,
         );
         moveSound();
         break;
@@ -72,7 +73,7 @@ const BookingDetailed = () => {
           home,
           dispatch,
           state?.config,
-          _
+          _,
         );
         moveSound();
         break;
@@ -85,7 +86,7 @@ const BookingDetailed = () => {
           dispatch,
           state?.config,
           activeComponent,
-          _
+          _,
         );
         moveSound();
         break;
@@ -98,16 +99,16 @@ const BookingDetailed = () => {
           dispatch,
           state?.config,
           activeComponent,
-          _
+          _,
         );
         moveSound();
         break;
-      case "Enter":
+      case 'Enter':
         break;
-      case "Backspace":
+      case 'Backspace':
         if (showFilterBox) {
           setShowFilterBox(false);
-          activeHomeComponent.current = "filter";
+          activeHomeComponent.current = 'filter';
         }
         break;
       default:
@@ -128,7 +129,7 @@ const BookingDetailed = () => {
     if (components) {
       home = state?.config?.booking?.home?.hotel_detalis?.home;
       homeKeys = Object.keys(
-        state?.config?.booking?.home?.hotel_detalis?.home || {}
+        state?.config?.booking?.home?.hotel_detalis?.home || {},
       );
       currentHomeIndex = homeKeys.indexOf(activeHomeComponent.current);
     }
@@ -137,9 +138,9 @@ const BookingDetailed = () => {
   };
 
   useEffect(() => {
-    canNavigate ? window.addEventListener("keydown", eventHendler) : null;
+    canNavigate ? window.addEventListener('keydown', eventHendler) : null;
     return () => {
-      window.removeEventListener("keydown", eventHendler);
+      window.removeEventListener('keydown', eventHendler);
     };
   }, [activeComponent.current, state?.config]);
 
@@ -153,12 +154,12 @@ const BookingDetailed = () => {
         <button
           className={`${state?.config?.booking?.home?.hotel_detalis?.home?.back?.components?.back__btn?.className}`}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               dispatch({
-                type: "SET_PERIST",
+                type: 'SET_PERIST',
                 payload: true,
               });
-              navigate("/BookYourHotel");
+              navigate('/BookYourHotel');
             }
           }}
         >

@@ -9,11 +9,6 @@ import { set } from 'lodash';
 const BookingSearch = ({
   filterResults,
   config,
-  // data,
-  // location,
-  // setLocation,
-  // setData,
-  // toggleResults,
   guests,
   setGuests,
   filterDisplay,
@@ -29,7 +24,6 @@ const BookingSearch = ({
   setLocation,
 }) => {
   const searchRef = useRef(null);
-  const [firstTime, setFirstTime] = useState(true);
   const [activeLcationElement, setActiveLcationElement] = useState(null);
   const [dateFilterShow, setDateFilterShow] = useState({
     startDate: true,
@@ -37,46 +31,42 @@ const BookingSearch = ({
   });
 
   const move = (e) => {
+    const filterContainer = document.querySelector('.search__filter');
+    const firstEl = filterContainer?.firstChild;
+    const lastEl = filterContainer?.lastChild;
+
+    if (!filterDisplay?.location) return;
+
+    e.preventDefault();
     switch (e.keyCode) {
       case 40:
-        e.preventDefault();
-        if (locationFilterData.length >= 1 && firstTime === true) {
-          const firstEl = document.querySelector('.search__filter').firstChild;
+        console.log(activeLcationElement);
+        if (!activeLcationElement || !activeLcationElement.nextSibling) {
           firstEl.focus();
           setActiveLcationElement(firstEl);
-          setFirstTime(false);
-        }
-
-        if (firstTime === false && locationFilterData.length >= 1) {
-          if (!activeLcationElement?.nextSibling) {
-            setActiveLcationElement(
-              document.querySelector('.search__filter').firstChild,
-            );
-            return;
-          }
-          activeLcationElement?.nextSibling.focus();
-          setActiveLcationElement(activeLcationElement?.nextSibling);
+        } else {
+          const nextEl = activeLcationElement.nextSibling;
+          nextEl.focus();
+          setActiveLcationElement(nextEl);
         }
         break;
-      case 38:
-        e.preventDefault();
-        if (locationFilterData.length >= 1 && firstTime === true) {
-          const firstEl = document.querySelector('.search__filter').firstChild;
-          firstEl.focus();
-          setActiveLcationElement(firstEl);
-          setFirstTime(false);
-        }
 
-        if (firstTime === false && locationFilterData.length >= 1) {
-          if (!activeLcationElement?.previousSibling) {
-            setActiveLcationElement(
-              document.querySelector('.search__filter').lastChild,
-            );
-            return;
-          }
-          activeLcationElement?.previousSibling.focus();
-          setActiveLcationElement(activeLcationElement?.previousSibling);
+      case 38:
+        if (!activeLcationElement || !activeLcationElement.previousSibling) {
+          lastEl.focus();
+          setActiveLcationElement(lastEl);
+        } else {
+          const prevEl = activeLcationElement.previousSibling;
+          prevEl.focus();
+          setActiveLcationElement(prevEl);
         }
+        break;
+      case 13:
+        if (activeLcationElement) {
+          activeLcationElement.blur();
+        }
+        setActiveLcationElement(null);
+        break;
     }
   };
 
@@ -91,6 +81,7 @@ const BookingSearch = ({
                 config?.components?.search__location?.eventHandlers?.onKeyDown?.callback(
                   searchRef,
                   setIsPopapsOpen,
+                  filterDisplay,
                 );
             }
             move(e);
@@ -121,6 +112,7 @@ const BookingSearch = ({
               locationFilterData={locationFilterData}
               location={location}
               setLocation={setLocation}
+              setFilterDisplay={setFilterDisplay}
             />
           )}
         </div>
@@ -135,6 +127,12 @@ const BookingSearch = ({
                 setFilterDisplay,
               );
               setIsPopapsOpen((prev) => !prev);
+              setTimeout(() => {
+                const FocusElement = document.querySelector(
+                  '.react-datepicker__day--today',
+                );
+                FocusElement?.focus();
+              }, 200);
             }
           }}
           className={`${'search__date'} ${

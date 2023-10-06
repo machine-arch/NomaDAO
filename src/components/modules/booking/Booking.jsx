@@ -245,13 +245,9 @@ const Booking = () => {
           dispatch,
           configuration,
           _,
+          isPopapsOpen,
         );
-        setIsPopapsOpen(false);
-        setFilterDisplay({
-          location: false,
-          date: false,
-          guests: false,
-        });
+
         useMoveSound();
         break;
       case 37:
@@ -263,13 +259,8 @@ const Booking = () => {
           configuration,
           _,
           setAsideActive,
+          isPopapsOpen,
         );
-        setFilterDisplay({
-          location: false,
-          date: false,
-          guests: false,
-        });
-        setIsPopapsOpen(false);
         useMoveSound();
         break;
       case 40:
@@ -416,8 +407,6 @@ const Booking = () => {
       !configuration.booking.home.filter.display;
     toggleResults();
   };
-
-  console.log(filterDisplay);
 
   return (
     <div className="booking__mainContainer">
