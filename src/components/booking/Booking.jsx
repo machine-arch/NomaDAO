@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import './Booking.css';
-import BookingSearch from './BookingSearch/BookingSearch.component';
-import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
-import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
+// import BookingSearch from './BookingSearch/BookingSearch.component';
+// import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
+// import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
 import SignIn from '../SignIn/SignIn.component';
 import AsideContext from '../../context/AsideContext.js';
 import { GlobalContext } from '../../context/global.context';
@@ -431,7 +431,7 @@ const Booking = () => {
           type={showResult == true ? 'secondary' : 'primary'}
           config={configuration?.booking?.home?.auth}
         />
-        <BookingSearch
+        {/* <BookingSearch
           locationFilterData={locationFilterData}
           setLocationFilterData={setLocationFilterData}
           filterResults={filterResults}
@@ -450,8 +450,8 @@ const Booking = () => {
           config={configuration?.booking?.home?.search}
           formatDate={formatDate}
           setIsPopapsOpen={setIsPopapsOpen}
-        />
-        {showResult == true && (
+        /> */}
+        {/* {showResult == true && (
           <BookingSearchBarFilterBack
             advancedFilter={advancedFilter}
             setAdvancedFilter={setAdvancedFilter}
@@ -459,9 +459,9 @@ const Booking = () => {
             showFilterBox={showFilterBox}
             setShowFilterBox={setShowFilterBox}
           />
-        )}
+        )} */}
       </div>
-      {showResult == true && (
+      {/* {showResult == true && (
         <div className="bottom">
           <div className="bottom_bgOverlay"></div>
           <div className="bottom__results">
@@ -478,7 +478,7 @@ const Booking = () => {
             })}
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
