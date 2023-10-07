@@ -3,7 +3,7 @@ import BookingContext from './context/BookingContext';
 import { Outlet, useNavigate } from 'react-router-dom';
 import AsideContext from './context/AsideContext';
 import ProductContext from './context/ProductContext';
-// import { GlobalProvider } from './context/global.context';
+import { GlobalProvider } from './context/global.context';
 export default function App() {
   // hooks
   const navigate = useNavigate();
@@ -26,9 +26,9 @@ export default function App() {
     <AsideContext.Provider value={{ asideActive, setAsideActive, pages, setPages, activePage, setActivePage}}>
       <BookingContext.Provider value={{bookingParams, setBookingParams}}>
           <ProductContext.Provider value={{product, setProduct}}>
-            {/* <GlobalProvider> */}
+            <GlobalProvider>
             <Outlet />
-            {/* </GlobalProvider> */}
+            </GlobalProvider>
           </ProductContext.Provider>
       </BookingContext.Provider>
     </AsideContext.Provider>
