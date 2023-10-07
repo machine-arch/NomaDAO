@@ -11,9 +11,6 @@ import configuration from '../../../navigateConfig.js';
 import useMoveSound from '../../../hooks/useMoveSound';
 import _, { set } from 'lodash';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
-import useFetch from '../../../hooks/useFetch/useFetch';
-import useDebounce from '../../../hooks/useDebounce/useDebounce';
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
@@ -183,7 +180,6 @@ const Booking = () => {
             });
           };
           await timeout();
-          console.log(activeDomElement);
           if (activeDomElement) {
             activeDomElement.scrollIntoView({
               behavior: 'smooth',

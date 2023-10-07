@@ -41,7 +41,6 @@ const BookingSearch = ({
     e.preventDefault();
     switch (e.keyCode) {
       case 40:
-        console.log(activeLcationElement);
         if (!activeLcationElement || !activeLcationElement.nextSibling) {
           firstEl.focus();
           setActiveLcationElement(firstEl);
@@ -75,8 +74,6 @@ const BookingSearch = ({
     const filterContainer = document.querySelector('.guests__dropdown');
     const firstEl = filterContainer?.firstChild;
     const lastEl = filterContainer?.lastChild;
-
-    console.log(firstEl, lastEl);
 
     if (!filterDisplay?.guests) return;
 
@@ -164,7 +161,6 @@ const BookingSearch = ({
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.keyCode === 13) {
-              console.log('enter');
               config?.components?.search__date?.eventHandlers?.onKeyDown?.callback(
                 filterDisplay,
                 setFilterDisplay,

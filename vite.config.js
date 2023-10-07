@@ -4,18 +4,13 @@ import legacy from '@vitejs/plugin-legacy';
 
 export default defineConfig({
   base: './',
+  root: './',
   build: {
-    target: 'es6',
+    target: 'es5',
     outDir: 'dist',
     rollupOptions: {
       output: {
-        format: 'es',
-        manualChunks: {
-          index_1: ['src/components/modules/booking/Booking.jsx'],
-          index_2: [
-            'src/components/modules/booking/BookingDetailed/BookingDetailed.component.jsx',
-          ],
-        },
+        format: 'iife',
       },
     },
   },
