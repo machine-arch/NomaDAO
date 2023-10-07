@@ -16,16 +16,16 @@ export default function App() {
     'Book Your Hotel',
   ]);
   const [activePage, setActivePage] = useState(0);
-  // const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState(null);
   const navigate = useNavigate();
 
-  // const [bookingParams, setBookingParams] = useState({
-  //   showHotels: false,
-  //   location: 'Tbilisi',
-  //   checkIn: new Date(),
-  //   checkOut: new Date(),
-  //   guests: 2,
-  // });
+  const [bookingParams, setBookingParams] = useState({
+    showHotels: false,
+    location: 'Tbilisi',
+    checkIn: new Date(),
+    checkOut: new Date(),
+    guests: 2,
+  });
 
   useEffect(() => {
     navigate('/Home');
@@ -42,15 +42,15 @@ export default function App() {
         setActivePage,
       }}
     >
-      {/* <BookingContext.Provider value={{ bookingParams, setBookingParams }}>
+      <BookingContext.Provider value={{ bookingParams, setBookingParams }}>
         <ProductContext.Provider value={{ product, setProduct }}>
           <GlobalProvider>
-            <IdSequenceProvider> */}
-      <Outlet />
-      {/* </IdSequenceProvider>
+            <IdSequenceProvider>
+              <Outlet />
+            </IdSequenceProvider>
           </GlobalProvider>
         </ProductContext.Provider>
-      </BookingContext.Provider> */}
+      </BookingContext.Provider>
     </AsideContext.Provider>
   );
 }
