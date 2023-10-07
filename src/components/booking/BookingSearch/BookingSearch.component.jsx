@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './BookingSearch.stylesheet.css';
-import { useRef } from 'react';
-import BookingSearchFilterLocationDropdown from './BookingSearchFilterLocationDropdown/BookingSearchFilterLocationDropdown';
-import BookingSearchFilterGuestsDropdown from './BookingSearchFilterGuestsDropdown/BookingSearchFilterGuestsDropdown';
-import BookingSearchFilterDatePicker from './BookingSearchFilterDatePicker/BookingSearchFilterDatePicker';
-import { set } from 'lodash';
+// import './BookingSearch.stylesheet.css';
+// import { useRef } from 'react';
+// import BookingSearchFilterLocationDropdown from './BookingSearchFilterLocationDropdown/BookingSearchFilterLocationDropdown';
+// import BookingSearchFilterGuestsDropdown from './BookingSearchFilterGuestsDropdown/BookingSearchFilterGuestsDropdown';
+// import BookingSearchFilterDatePicker from './BookingSearchFilterDatePicker/BookingSearchFilterDatePicker';
+// import { set } from 'lodash';
 
 const BookingSearch = ({
   filterResults,
@@ -23,95 +23,95 @@ const BookingSearch = ({
   location,
   setLocation,
 }) => {
-  const searchRef = useRef(null);
-  const [activeLcationElement, setActiveLcationElement] = useState(null);
-  const [activeGestsElement, setActiveGestsElement] = useState(null);
-  const [dateFilterShow, setDateFilterShow] = useState({
-    startDate: true,
-    endDate: false,
-  });
+  // const searchRef = useRef(null);
+  // const [activeLcationElement, setActiveLcationElement] = useState(null);
+  // const [activeGestsElement, setActiveGestsElement] = useState(null);
+  // const [dateFilterShow, setDateFilterShow] = useState({
+  //   startDate: true,
+  //   endDate: false,
+  // });
 
-  const move = (e) => {
-    const filterContainer = document.querySelector('.search__filter');
-    const firstEl = filterContainer?.firstChild;
-    const lastEl = filterContainer?.lastChild;
+  // const move = (e) => {
+  //   const filterContainer = document.querySelector('.search__filter');
+  //   const firstEl = filterContainer?.firstChild;
+  //   const lastEl = filterContainer?.lastChild;
 
-    if (!filterDisplay?.location) return;
+  //   if (!filterDisplay?.location) return;
 
-    e.preventDefault();
-    switch (e.keyCode) {
-      case 40:
-        if (!activeLcationElement || !activeLcationElement.nextSibling) {
-          firstEl.focus();
-          setActiveLcationElement(firstEl);
-        } else {
-          const nextEl = activeLcationElement.nextSibling;
-          nextEl.focus();
-          setActiveLcationElement(nextEl);
-        }
-        break;
+  //   e.preventDefault();
+  //   switch (e.keyCode) {
+  //     case 40:
+  //       if (!activeLcationElement || !activeLcationElement.nextSibling) {
+  //         firstEl.focus();
+  //         setActiveLcationElement(firstEl);
+  //       } else {
+  //         const nextEl = activeLcationElement.nextSibling;
+  //         nextEl.focus();
+  //         setActiveLcationElement(nextEl);
+  //       }
+  //       break;
 
-      case 38:
-        if (!activeLcationElement || !activeLcationElement.previousSibling) {
-          lastEl.focus();
-          setActiveLcationElement(lastEl);
-        } else {
-          const prevEl = activeLcationElement.previousSibling;
-          prevEl.focus();
-          setActiveLcationElement(prevEl);
-        }
-        break;
-      case 13:
-        if (activeLcationElement) {
-          activeLcationElement.blur();
-        }
-        setActiveLcationElement(null);
-        break;
-    }
-  };
+  //     case 38:
+  //       if (!activeLcationElement || !activeLcationElement.previousSibling) {
+  //         lastEl.focus();
+  //         setActiveLcationElement(lastEl);
+  //       } else {
+  //         const prevEl = activeLcationElement.previousSibling;
+  //         prevEl.focus();
+  //         setActiveLcationElement(prevEl);
+  //       }
+  //       break;
+  //     case 13:
+  //       if (activeLcationElement) {
+  //         activeLcationElement.blur();
+  //       }
+  //       setActiveLcationElement(null);
+  //       break;
+  //   }
+  // };
 
-  const moveGests = (e) => {
-    const filterContainer = document.querySelector('.guests__dropdown');
-    const firstEl = filterContainer?.firstChild;
-    const lastEl = filterContainer?.lastChild;
+  // const moveGests = (e) => {
+  //   const filterContainer = document.querySelector('.guests__dropdown');
+  //   const firstEl = filterContainer?.firstChild;
+  //   const lastEl = filterContainer?.lastChild;
 
-    if (!filterDisplay?.guests) return;
+  //   if (!filterDisplay?.guests) return;
 
-    e.preventDefault();
-    switch (e.keyCode) {
-      case 40:
-        if (!activeGestsElement || !activeGestsElement.nextSibling) {
-          firstEl.focus();
-          setActiveGestsElement(firstEl);
-        } else {
-          const nextEl = activeGestsElement.nextSibling;
-          nextEl.focus();
-          setActiveGestsElement(nextEl);
-        }
-        break;
+  //   e.preventDefault();
+  //   switch (e.keyCode) {
+  //     case 40:
+  //       if (!activeGestsElement || !activeGestsElement.nextSibling) {
+  //         firstEl.focus();
+  //         setActiveGestsElement(firstEl);
+  //       } else {
+  //         const nextEl = activeGestsElement.nextSibling;
+  //         nextEl.focus();
+  //         setActiveGestsElement(nextEl);
+  //       }
+  //       break;
 
-      case 38:
-        if (!activeGestsElement || !activeGestsElement.previousSibling) {
-          lastEl.focus();
-          setActiveGestsElement(lastEl);
-        } else {
-          const prevEl = activeGestsElement.previousSibling;
-          prevEl.focus();
-          setActiveGestsElement(prevEl);
-        }
-        break;
-      case 13:
-        if (activeGestsElement) {
-          activeGestsElement.blur();
-        }
-        setActiveGestsElement(null);
-        break;
-    }
-  };
+  //     case 38:
+  //       if (!activeGestsElement || !activeGestsElement.previousSibling) {
+  //         lastEl.focus();
+  //         setActiveGestsElement(lastEl);
+  //       } else {
+  //         const prevEl = activeGestsElement.previousSibling;
+  //         prevEl.focus();
+  //         setActiveGestsElement(prevEl);
+  //       }
+  //       break;
+  //     case 13:
+  //       if (activeGestsElement) {
+  //         activeGestsElement.blur();
+  //       }
+  //       setActiveGestsElement(null);
+  //       break;
+  //   }
+  // };
 
   return (
     <div className="booking__search" id={config?.id}>
-      <div className="booking__search__box">
+      {/* <div className="booking__search__box">
         <div
           tabIndex={0}
           onKeyDown={(e) => {
@@ -258,7 +258,7 @@ const BookingSearch = ({
             Search
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

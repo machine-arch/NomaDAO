@@ -1,5 +1,5 @@
 import React from 'react';
-import './BookingSearchFilterLocationDropdown.css';
+// import './BookingSearchFilterLocationDropdown.css';
 
 const BookingSearchFilterLocationDropdown = ({
   locationFilterData,
@@ -9,7 +9,7 @@ const BookingSearchFilterLocationDropdown = ({
 }) => {
   return (
     <div className="search__filter" tabIndex={0}>
-      {locationFilterData?.map((item, index) => {
+      {/* {locationFilterData?.map((item, index) => {
         return (
           <div
             className="search__filter__item"
@@ -30,7 +30,7 @@ const BookingSearchFilterLocationDropdown = ({
             <div className="search__filter__item__text">{item}</div>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };

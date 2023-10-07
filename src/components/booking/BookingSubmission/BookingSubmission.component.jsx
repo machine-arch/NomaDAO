@@ -1,14 +1,14 @@
-import React from "react";
-import "./BookingSubmission.stylesheet.css";
-import SignIn from "../../../SignIn/SignIn.component";
-import SubmissionForm from "./SubmissionForm/SubmissionForm.component";
-import SubmissionDetails from "./SubmissionDetails/SubmissionDetails.component";
-import SubmissionPayment from "./SubmissionPayment/SubmissionPayment.component";
+import React from 'react';
+// import "./BookingSubmission.stylesheet.css";
+// import SignIn from "../../../SignIn/SignIn.component";
+// import SubmissionForm from "./SubmissionForm/SubmissionForm.component";
+// import SubmissionDetails from "./SubmissionDetails/SubmissionDetails.component";
+// import SubmissionPayment from "./SubmissionPayment/SubmissionPayment.component";
 
 const BookingSubmission = () => {
   return (
     <div className="submission__mainContainer">
-      <div className="submission__topBg">
+      {/* <div className="submission__topBg">
         <button className="submission__back__btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ const BookingSubmission = () => {
           <SubmissionDetails />
           <SubmissionPayment />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

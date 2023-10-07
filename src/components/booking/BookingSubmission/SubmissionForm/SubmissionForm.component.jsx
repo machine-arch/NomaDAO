@@ -1,10 +1,10 @@
-import React from "react";
-import "./SubmissionForm.stylesheet.css";
+import React from 'react';
+// import './SubmissionForm.stylesheet.css';
 
 const SubmissionForm = () => {
   return (
     <div className="submission__form__container">
-      <div className="submission__header">
+      {/* <div className="submission__header">
         <span className="blue__box"></span>
         <h1>Booking submission</h1>
       </div>
@@ -23,7 +23,7 @@ const SubmissionForm = () => {
           <input type="text" placeholder="State/Province/Region" />
           <input type="text" placeholder="Country" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
