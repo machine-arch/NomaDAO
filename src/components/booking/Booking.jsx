@@ -7,7 +7,7 @@ import SignIn from '../SignIn/SignIn.component';
 import AsideContext from '../../context/AsideContext.js';
 import { GlobalContext } from '../../context/global.context';
 import BookingUtil from '../../utils/navigation.util';
-import configuration from '../../navigateConfig';
+// import configuration from '../../navigateConfig';
 import useMoveSound from '../../hooks/useMoveSound';
 import _, { set } from 'lodash';
 import axios from 'axios';
@@ -15,6 +15,7 @@ import axios from 'axios';
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
   const bookingUtil = new BookingUtil();
+  const configuration = {};
 
   const [location, setLocation] = useState(null);
   const [dates, setDates] = useState({
@@ -427,10 +428,10 @@ const Booking = () => {
   return (
     <div className="booking__mainContainer">
       <div className={`topBg ${showResult == true ? 'showResults' : ''}`}>
-        <SignIn
+        {/* <SignIn
           type={showResult == true ? 'secondary' : 'primary'}
           config={configuration?.booking?.home?.auth}
-        />
+        /> */}
         {/* <BookingSearch
           locationFilterData={locationFilterData}
           setLocationFilterData={setLocationFilterData}

@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import { GlobalContext } from '../../../../context/global.context.jsx';
 import BookingUtil from '../../../../utils/navigation.util';
 import useMoveSound from '../../../../hooks/useMoveSound';
-import configuration from '../../../../navigateConfig';
+// import configuration from '../../../../navigateConfig';
 import _ from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../../../../hooks/useFetch/useFetch';
@@ -19,11 +19,12 @@ import ResultStar from '../BookingSearchResult/ResultStar/ResultStar';
 const BookingDetailed = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const navigate = useNavigate();
-  const originalConfig = configuration;
+  // const originalConfig = configuration;
   const params = useParams();
   const id = params.id;
   const bookingUtil = new BookingUtil();
   const moveSound = useMoveSound;
+  const configuration = {};
 
   const [canNavigate, setCanNavigate] = useState(false);
   const activeHomeComponent = useRef(null);
