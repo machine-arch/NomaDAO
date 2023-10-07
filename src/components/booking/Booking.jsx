@@ -1,21 +1,20 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import './Booking.css';
-// import BookingSearch from './BookingSearch/BookingSearch.component';
-// import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
-// import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
-// import SignIn from '../SignIn/SignIn.component';
+import BookingSearch from './BookingSearch/BookingSearch.component';
+import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
+import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
+import SignIn from '../SignIn/SignIn.component';
 import AsideContext from '../../context/AsideContext.js';
 import { GlobalContext } from '../../context/global.context';
 import BookingUtil from '../../utils/navigation.util';
-// import configuration from '../../navigateConfig';
+import configuration from '../../navigateConfig';
 import useMoveSound from '../../hooks/useMoveSound';
-// import _, { set } from 'lodash';
-// import axios from 'axios';
+import _, { set } from 'lodash';
+import axios from 'axios';
 
 const Booking = () => {
   const [showResult, setShowResult] = useState(false);
   const bookingUtil = new BookingUtil();
-  const configuration = {};
 
   const [location, setLocation] = useState(null);
   const [dates, setDates] = useState({
@@ -78,44 +77,44 @@ const Booking = () => {
     guests: false,
   });
 
-  // const fetchSuggestions = (e) => {
-  //   setLocation(e.target.value);
-  //   if (e.target.value.length == 0) {
-  //     setLocationFilterDataCopy([]);
-  //     setFilterDisplay({ ...filterDisplay, location: false });
-  //     setLocationFilterData([]);
-  //     setLocationDataFetched(false);
-  //   }
-  //   if (e.key === 'Enter') {
-  //     return;
-  //   }
-  //   if (e.target.value?.length > 2 && locationDataFetched == true) {
-  //     const inputValue = e.target.value.toLowerCase();
-  //     const filteredData = locationFilterDataCopy?.filter((item) =>
-  //       item.toLowerCase().includes(inputValue),
-  //     );
-  //     setLocationFilterData(filteredData);
-  //     setLocation(e.target.value);
-  //   }
-  //   if (e.target.value?.length > 2 && locationDataFetched == false) {
-  //     axios({
-  //       method: 'POST',
-  //       url: `${import.meta.env.VITE_API_URL}/hotel-filter/sugestions`,
-  //       data: {
-  //         locationSuggestions: e.target?.value,
-  //       },
-  //     })
-  //       .then((res) => {
-  //         setLocationFilterData(res?.data?.content);
-  //         setLocationFilterDataCopy(res?.data?.content);
-  //         setFilterDisplay({ ...filterDisplay, location: true });
-  //         setLocationDataFetched(true);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // };
+  const fetchSuggestions = (e) => {
+    setLocation(e.target.value);
+    if (e.target.value.length == 0) {
+      setLocationFilterDataCopy([]);
+      setFilterDisplay({ ...filterDisplay, location: false });
+      setLocationFilterData([]);
+      setLocationDataFetched(false);
+    }
+    if (e.key === 'Enter') {
+      return;
+    }
+    if (e.target.value?.length > 2 && locationDataFetched == true) {
+      const inputValue = e.target.value.toLowerCase();
+      const filteredData = locationFilterDataCopy?.filter((item) =>
+        item.toLowerCase().includes(inputValue),
+      );
+      setLocationFilterData(filteredData);
+      setLocation(e.target.value);
+    }
+    if (e.target.value?.length > 2 && locationDataFetched == false) {
+      axios({
+        method: 'POST',
+        url: `${import.meta.env.VITE_API_URL}/hotel-filter/sugestions`,
+        data: {
+          locationSuggestions: e.target?.value,
+        },
+      })
+        .then((res) => {
+          setLocationFilterData(res?.data?.content);
+          setLocationFilterDataCopy(res?.data?.content);
+          setFilterDisplay({ ...filterDisplay, location: true });
+          setLocationDataFetched(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
   const { asideActive, setAsideActive } = useContext(AsideContext);
   const { state, dispatch } = useContext(GlobalContext);
@@ -147,55 +146,55 @@ const Booking = () => {
     }
   }
 
-  // useEffect(() => {
-  //   if (state?.persist) {
-  //     fetch(`${import.meta.env.VITE_API_URL}/hotel/?page=${1}&&limit=${10}`)
-  //       .then((res) => {
-  //         res.json().then((data) => {
-  //           setData(data?.content);
-  //           setShowResult(true);
-  //           dispatch({
-  //             type: 'SET_PERIST',
-  //             payload: false,
-  //           });
-  //         });
-  //       })
-  //       .then(async () => {
-  //         const tcomponents = configuration?.booking?.home?.search?.components;
-  //         const tcomponentsKeys = Object.keys(tcomponents);
-  //         tcomponents[tcomponentsKeys[0]].isActive = false;
-  //         const newConfig = JSON.parse(JSON.stringify(configuration));
-  //         dispatch({
-  //           type: 'SET_CONFIG',
-  //           payload: newConfig,
-  //         });
-  //         let activeDomElement = null;
-  //         const timeout = () => {
-  //           return new Promise((resolve) => {
-  //             setTimeout(() => {
-  //               activeDomElement = document.querySelector(
-  //                 '.booking-results-active-element',
-  //               );
-  //               resolve();
-  //             }, 500);
-  //           });
-  //         };
-  //         await timeout();
-  //         if (activeDomElement) {
-  //           activeDomElement.scrollIntoView({
-  //             behavior: 'smooth',
-  //             block: 'center',
-  //           });
-  //           activeDomElement.focus();
-  //           activeHomeComponent.current = 'results';
-  //           activeComponent.current = 'booking__result__box';
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // }, [state?.persist]);
+  useEffect(() => {
+    if (state?.persist) {
+      fetch(`${import.meta.env.VITE_API_URL}/hotel/?page=${1}&&limit=${10}`)
+        .then((res) => {
+          res.json().then((data) => {
+            setData(data?.content);
+            setShowResult(true);
+            dispatch({
+              type: 'SET_PERIST',
+              payload: false,
+            });
+          });
+        })
+        .then(async () => {
+          const tcomponents = configuration?.booking?.home?.search?.components;
+          const tcomponentsKeys = Object.keys(tcomponents);
+          tcomponents[tcomponentsKeys[0]].isActive = false;
+          const newConfig = JSON.parse(JSON.stringify(configuration));
+          dispatch({
+            type: 'SET_CONFIG',
+            payload: newConfig,
+          });
+          let activeDomElement = null;
+          const timeout = () => {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                activeDomElement = document.querySelector(
+                  '.booking-results-active-element',
+                );
+                resolve();
+              }, 500);
+            });
+          };
+          await timeout();
+          if (activeDomElement) {
+            activeDomElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            });
+            activeDomElement.focus();
+            activeHomeComponent.current = 'results';
+            activeComponent.current = 'booking__result__box';
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [state?.persist]);
 
   useEffect(() => {
     startup();
@@ -427,12 +426,12 @@ const Booking = () => {
 
   return (
     <div className="booking__mainContainer">
-      {/* <div className={`topBg ${showResult == true ? 'showResults' : ''}`}> */}
-      {/* <SignIn
+      <div className={`topBg ${showResult == true ? 'showResults' : ''}`}>
+        <SignIn
           type={showResult == true ? 'secondary' : 'primary'}
           config={configuration?.booking?.home?.auth}
-        /> */}
-      {/* <BookingSearch
+        />
+        <BookingSearch
           locationFilterData={locationFilterData}
           setLocationFilterData={setLocationFilterData}
           filterResults={filterResults}
@@ -451,8 +450,8 @@ const Booking = () => {
           config={configuration?.booking?.home?.search}
           formatDate={formatDate}
           setIsPopapsOpen={setIsPopapsOpen}
-        /> */}
-      {/* {showResult == true && (
+        />
+        {showResult == true && (
           <BookingSearchBarFilterBack
             advancedFilter={advancedFilter}
             setAdvancedFilter={setAdvancedFilter}
@@ -460,9 +459,9 @@ const Booking = () => {
             showFilterBox={showFilterBox}
             setShowFilterBox={setShowFilterBox}
           />
-        )} */}
-      {/* </div> */}
-      {/* {showResult == true && (
+        )}
+      </div>
+      {showResult == true && (
         <div className="bottom">
           <div className="bottom_bgOverlay"></div>
           <div className="bottom__results">
@@ -479,7 +478,7 @@ const Booking = () => {
             })}
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
