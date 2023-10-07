@@ -1,6 +1,6 @@
-import React from "react";
-import "./BookingComplete.stylesheet.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './BookingComplete.stylesheet.css';
+import { useNavigate } from 'react-router-dom';
 
 const BookingComplete = ({ id }) => {
   const navigate = useNavigate();

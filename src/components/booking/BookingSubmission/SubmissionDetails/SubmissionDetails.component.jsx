@@ -1,10 +1,10 @@
 import React from 'react';
-// import './SubmissionDetails.stylesheet.css';
+import './SubmissionDetails.stylesheet.css';
 
 const SubmissionDetails = () => {
   return (
     <div className="submission__details__container">
-      {/* <h1>Your submitted booking</h1>
+      <h1>Your submitted booking</h1>
       <div className="submission__details__info">
         <h1 className="submission__details__hotelname">
           The Tower Plaza Hotel Dubai
@@ -74,7 +74,7 @@ const SubmissionDetails = () => {
             <h1>$38</h1>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

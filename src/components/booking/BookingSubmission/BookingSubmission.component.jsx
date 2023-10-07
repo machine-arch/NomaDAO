@@ -8,7 +8,7 @@ import React from 'react';
 const BookingSubmission = () => {
   return (
     <div className="submission__mainContainer">
-      {/* <div className="submission__topBg">
+      <div className="submission__topBg">
         <button className="submission__back__btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ const BookingSubmission = () => {
           <SubmissionDetails />
           <SubmissionPayment />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

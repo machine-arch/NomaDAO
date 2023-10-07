@@ -1,22 +1,22 @@
 import React from 'react';
-// import { useState } from 'react';
-// import './BookingSearchFilterGuestsDropdown.css';
-// import IconMinus from '../IconMinus/IconMinus';
-// import IconPlus from '../IconPlus/IconPlus';
+import { useState } from 'react';
+import './BookingSearchFilterGuestsDropdown.css';
+import IconMinus from '../IconMinus/IconMinus';
+import IconPlus from '../IconPlus/IconPlus';
 
 const BookingSearchFilterGuestsDropdown = ({ guests, setGuests }) => {
-  // const onPlus = (name) => {
-  //   setGuests({ ...guests, [name]: guests[name] + 1 });
-  // };
+  const onPlus = (name) => {
+    setGuests({ ...guests, [name]: guests[name] + 1 });
+  };
 
-  // const onMinus = (name) => {
-  //   if (guests[name] === 0) return;
-  //   setGuests({ ...guests, [name]: guests[name] - 1 });
-  // };
+  const onMinus = (name) => {
+    if (guests[name] === 0) return;
+    setGuests({ ...guests, [name]: guests[name] - 1 });
+  };
 
   return (
     <div className="guests__dropdown">
-      {/* <div
+      <div
         className="guests__dropdown__item"
         tabIndex={0}
         onKeyDown={(e) => {
@@ -81,7 +81,7 @@ const BookingSearchFilterGuestsDropdown = ({ guests, setGuests }) => {
             <IconPlus onClick={() => onPlus('childrensCount')} />
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
