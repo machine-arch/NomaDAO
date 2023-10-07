@@ -3,10 +3,9 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import legacy from '@vitejs/plugin-legacy';
 
 export default defineConfig({
-  base: './',
   root: './',
   build: {
-    target: 'es5',
+    target: 'es2015',
     outDir: 'dist',
     rollupOptions: {
       output: {

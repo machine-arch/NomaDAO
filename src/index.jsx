@@ -23,14 +23,14 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />, // Home component rendered when the path is '/' as known as index element
         children: [
-          {
-            path: 'BookYourHotel',
-            element: <Booking />, // Booking component rendered when the path is '/BookYourHotel', it's custom page, so doesn't share same struture as /:pageName
-          },
-          {
-            path: 'BookYourHotel/:id',
-            element: <BookingDetailed />,
-          },
+          // {
+          //   path: 'BookYourHotel',
+          //   element: <Booking />, // Booking component rendered when the path is '/BookYourHotel', it's custom page, so doesn't share same struture as /:pageName
+          // },
+          // {
+          //   path: 'BookYourHotel/:id',
+          //   element: <BookingDetailed />,
+          // },
           {
             path: 'Home',
             element: <HomeContent />, // HomeContent component rendered when the path is '/Home', it's custom page, so doesn't share same struture as /:pageName
