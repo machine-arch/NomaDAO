@@ -3,12 +3,12 @@ import './Booking.css';
 import BookingSearch from './BookingSearch/BookingSearch.component';
 import BookingSearchResult from './BookingSearchResult/BookingSearchResult.component';
 import BookingSearchBarFilterBack from './BookingSearchBarFilterBack/BookingSearchBarFilterBack.component';
-import SignIn from '../../SignIn/SignIn.component';
-import AsideContext from '../../../context/AsideContext.js';
-import { GlobalContext } from '../../../context/global.context.jsx';
-import BookingUtil from '../../../utils/navigation.util';
-import configuration from '../../../navigateConfig.js';
-import useMoveSound from '../../../hooks/useMoveSound';
+import SignIn from '../SignIn/SignIn.component';
+import AsideContext from '../../context/AsideContext.js';
+import { GlobalContext } from '../../context/global.context';
+import BookingUtil from '../../utils/navigation.util';
+import configuration from '../../navigateConfig';
+import useMoveSound from '../../hooks/useMoveSound';
 import _, { set } from 'lodash';
 import axios from 'axios';
 
