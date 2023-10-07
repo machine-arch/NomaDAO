@@ -1,0 +1,228 @@
+.booking__search {
+  z-index: 202020;
+  padding: 2rem; 
+  width: 100%;
+}
+.search__location {
+  position: relative;
+}
+
+.search__persons {
+  position: relative;
+}
+
+.booking__search__box {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  align-items: center;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 8px;
+  background: #FFFFFF;
+}
+
+.searchBox__title {
+  white-space: nowrap;
+  font-size: 20px;
+  color: #0699D2;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.search__Btn {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1.304px solid #0699D2;
+}
+
+.searchBox__selectable { 
+  border: none;
+  padding: 0.2rem;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  color: #3F3F3F ;
+}
+
+.datepicker__placeholder {
+  border: none;
+  padding: 0.2rem;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  color: #3F3F3F ;
+}
+
+
+
+.searchBox__selectable::placeholder {
+  color: #3F3F3F!important;
+}
+
+
+.search__date {
+  position: relative;
+}
+
+
+.search__location, .search__date, .search__persons {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+  gap: 4px;
+}
+
+.search__BtnDiv {
+  padding: 1rem;
+  flex: 1;
+}
+
+.search__Btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.search__Btn > svg {
+  fill: #0699D2;
+}
+
+.vl{
+  border-left: 1.3px solid #B1B1B1;
+  height: 26px;
+}
+
+.booking-search-date-active-element{
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+}
+
+
+
+
+
+
+
+
+.booking-search-active-element {
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+  color: white!important;
+}
+
+.booking-search-active-element input {
+  color: white!important;
+}
+
+.booking-search-active-element > h1, .booking-search-active-element > h5 {
+  color: white!important;
+}
+
+.booking-search-active-element > input {
+  background: none!important;
+}
+
+.booking-search-active-element > input::placeholder {
+  color: white!important;
+}
+
+.booking-search-active-element > input::webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.booking-search-active-element svg {
+  fill: white!important;
+}
+
+
+
+/*BOOKING SEARCH LOCATION*/
+
+.booking-search-search__location-active-element{
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+  color: white!important;
+}
+
+.booking-search-search__location-active-element:focus{
+  outline: none;
+}
+
+.booking-search-search__location-active-element > h1 {
+  color: white!important;
+}
+
+.booking-search-search__location-active-element > input {
+  border-radius: 4px;
+  background: none!important;
+}
+
+.booking-search-search__location-active-element > input:focus {
+  border: 1px solid white;
+  outline: none;
+}
+
+.booking-search-search__location-active-element > input::placeholder, .booking-search-search__location-active-element > input {
+  color: white!important;
+}
+
+/*BOOKING SEARCH CHECK-IN / CHECK-OUT*/
+
+.booking-search-date-active-element > h1, .booking-search-date-active-element > h5, .booking-search-date-active-element > span {
+  color: white!important;
+}
+
+.booking-search-date-active-element > input {
+  background: none!important;
+}
+
+.booking-search-date-active-element:focus {
+  outline: none!important;
+}
+
+/*BOOKING SEARCH GUESTS*/
+
+.booking-search-search__persons-active-element{
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+  color: white!important;
+}
+
+.booking-search-search__persons-active-element:focus{
+  outline:none!important
+}
+
+.booking-search-search__persons-active-element > h1, .booking-search-search__persons-active-element > h5 {
+  color: white!important;
+}
+
+/*BOOKING SEARCH BTN*/
+
+.booking-search-search__Btn-active-element {
+  border-radius: 4px;
+  background: var(--Brand-B, #0699D2)!important;
+  color: white!important;
+}
+
+.booking-search-search__Btn-active-element:focus{
+  outline: none!important;
+}
+
+.booking-search-search__Btn-active-element svg{
+  fill: white!important;
+}
+
+/*END*/
+
+
+
+
+

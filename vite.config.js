@@ -11,7 +11,7 @@ export default defineConfig({
       output: {
         format: 'es',
         manualChunks: {
-          index_1: ['src/components/Booking/Booking.jsx'],
+          index_1: ['src/components/booking/Booking.jsx'],
         },
       },
     },

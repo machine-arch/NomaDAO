@@ -1,0 +1,128 @@
+.submission__payment__container {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.payment__providers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  border-radius: var(--Corner, 8px);
+  border: 1px solid var(--nomadao-blue-hover-2, rgba(1, 115, 159, 0.50));
+  background: var(--100, #ECECEC);
+  display: flex;
+  height: 166px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.submission__payment__container > h1 {
+  color: var(--900, #202020);
+  font-family: Albert Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.payment__option {
+  border-radius: 58px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100px;
+  width: 250px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.submission__agreement {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: end;
+  align-items: center;
+}
+
+.agreement__checkbox {
+ width: 20px;
+ height: 20px;
+}
+
+
+
+.payment__box > h1 {
+  margin-top: 1rem;
+  color: #000;
+  font-family: Albert Sans;
+  font-size: 20px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.paypal {
+  background: #FFF;
+}
+
+.stripe {
+  background: #32325D;
+}
+
+.paycard {
+  background: #FFF;
+}
+
+.elegro {
+  background: #FFF;
+}
+
+.submission__bold__text {
+  color: var(--800, #3F3F3F);
+  font-family: Albert Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14.5px; /* 103.571% */
+}
+
+.terms__policy {
+  color: var(--800, #3F3F3F);
+  font-family: Albert Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 14.5px;
+}
+
+.submission__submit__btn {
+  display: flex;
+  justify-content: end;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+}
+
+.submission__submit__btn > button {
+  display: flex;
+  padding: 8px 24px;
+  justify-content: center;
+  border: none;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  background: var(--nomadao-nomad-blue, #01739F);
+  color: var(--nomadao-project-gradient-100, var(--100, #ECECEC));
+  font-family: Albert Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

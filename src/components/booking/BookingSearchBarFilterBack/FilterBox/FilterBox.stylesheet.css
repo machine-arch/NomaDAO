@@ -1,0 +1,210 @@
+.filter__box {
+  display: flex;
+  opacity: 0;
+  flex-direction: column;
+  gap: 1rem;
+  top: 0;
+  left: 400px;
+  transform: translateX(150%);
+  transition: transform 0.5s ease-in-out;
+
+  padding: 4rem;
+  position: absolute;
+  border-radius: 2px;
+  background: var(--FFF, #FFF);
+  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.25);
+}
+
+.filter__box__visible {
+  display: flex;
+  opacity: 1;
+  transform: translateX(12%);
+  transition: display 0.5s ease-in-out;
+}
+
+.filter__box__hidden {
+  display: none;
+  opacity: 1;
+  transform: translateX(150%);
+  transition: display 0.5s ease-in-out;
+}
+
+
+
+.filter__title {
+  color: var(--nomadao-project-gradient-800, var(--800, #3F3F3F));
+font-family: Albert Sans;
+font-size: 20px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+
+.filter__select__btn__default {
+  background: none;
+  border-radius: 29px;
+  border-radius: 16px;
+  border: 1px solid #01739F;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 4px 1rem 4px 1rem;
+}
+
+.filter__threed__btn {
+  background: none;
+  border-radius: 29px;
+  border-radius: 16px;
+  border: 1px solid #01739F;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 4px 1rem 4px 1rem;
+  border: 1px solid  #994BE3;
+}
+
+.filter__partners__btn {
+  background: none;
+  border-radius: 29px;
+  border-radius: 16px;
+  border: 1px solid #F99A25;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 4px 1rem 4px 1rem;
+}
+
+.budget__min input, .budget__max input {
+  background: #FFFFFF;
+  border: 1px solid #01739F;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.min__max {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hr {
+  border: 2px solid #D8D8D8;;
+}
+
+.checkbox__container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+}
+
+.checkbox__horizontal {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.checkbox__title {
+  color: var(--nomadao-project-gradient-800, var(--800, #3F3F3F));
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.booking-filter_threed__btn-active-element {
+  background: var(--nomadao-products-nomadaonft, linear-gradient(106deg, #994BE3 11.09%, #228699 141.77%))!important;
+  color: white!important;
+  border: none!important;
+}
+.booking-filter_threed__btn-active-element:focus {
+  outline: none!important;
+}
+
+.booking-filter__partners__btn-active-element {
+  background: linear-gradient(117deg, #FEA014 2.45%, #C04BE9 127.41%);
+  color: white!important;
+  border: none!important;
+}
+
+.booking-filter__partners__btn-active-element {
+  outline: none!important;
+}
+
+.booking-filter__select__btn__default-active-element {
+  background: none!important;
+  border-radius: 16px!important;
+  border: 2px solid var(--Blue-Shade-5, #60CFFA)!important;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25)!important;
+}
+
+.booking-filter__select__btn__default-active-element {
+  outline: none!important;
+}
+
+.booking-perNight-active-element {
+  background: none!important;
+  border-radius: var(--Corner, 8px)!important;
+  border: 2px solid var(--Blue-Shade-5, #60CFFA)!important;
+}
+
+.booking-perNight-active-element:focus {
+  outline: none!important;
+}
+
+.booking-hotel__star-active-element {
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid var(--Blue-Shade-5, #60CFFA)!important;
+}
+
+.booking-hotel__star-active-element:focus {
+  outline: none!important;
+}
+
+
+.booking-checkbox__review-active-element {
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid var(--Blue-Shade-5, #60CFFA)!important;
+}
+
+.booking-checkbox__review-active-element {
+  outline: none!important;
+}
+
+
+.booking-propertyType-active-element {
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid #709BAC!important;}
+
+.booking-propertyType-active-element {
+  outline: none!important;
+}
+
+
+.booking-facilities-active-element
+{
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid #709BAC!important;}
+
+.booking-facilities-active-element
+{
+  outline: none!important;
+}
+
+
+
+
+
+.booking-hotelService-active-element
+{
+  background: none!important;
+  border-radius: var(--Corner-4, 4px)!important;
+  border: 2px solid #709BAC!important;}
+
+.booking-hotelService-active-element
+{
+  outline: none!important;
+}

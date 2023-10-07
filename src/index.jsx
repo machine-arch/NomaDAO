@@ -8,7 +8,7 @@ import Product from './components/Product/Product';
 import Home from './components/Home/Home';
 import Streaming from './components/Streaming/Streaming';
 import Error from './components/Error/Error';
-import Booking from './components/Booking/Booking';
+import Booking from './components/booking/Booking';
 import SingleHotel from './components/SingleHotel/SingleHotel';
 import HomeContent from './components/HomeContent/HomeContent';
 import AuthMarketplace from './components/AuthMarketplace/AuthMarketplace';

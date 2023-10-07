@@ -1,0 +1,123 @@
+.room__card {
+  padding-top: 1rem;
+  display: flex;
+}
+
+.room__card__left {
+  flex: 1;
+}
+.room__card__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  flex: 2;
+}
+
+.room__card__right__middle > span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.room__card__right__middle {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.room__card__left > img {
+  border-radius: 1rem;
+  height: 320px;
+  width: 480px;
+}
+
+.room__card__right__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.room__card__right__top > h1 {
+  color: var(--900, #202020);
+  font-family: Albert Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.room__card__right__top > button {
+  display: flex;
+  padding: 6.703px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5.362px;
+  border: none;
+  background: var(--Orange-Shade-8, #FE8B48);
+  color: var(--100, #ECECEC);
+  font-family: Albert Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.room__card__facilities {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  gap: 0.5rem;
+}
+
+.room__card__facility {
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  background: #07B0F2;
+  border-radius: 10px;
+}
+
+.room__card__right__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room__card__right__bottom__left > span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  border-radius: var(--Corner-4, 4px);
+  border: 1px solid var(--800, #3F3F3F);
+  gap: 0.5rem;
+}
+
+.room__card__right__bottom__left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.room__card__right__bottom__right > button {
+  color: var(--800, #3F3F3F);
+    font-family: Albert Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 120% */
+  border-radius: 0.25rem;
+  border: none;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+}
+
+.booking-room__card-choose__room-active-element > button {
+  border: 3px solid #0699D2;
+}
