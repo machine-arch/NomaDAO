@@ -9,8 +9,8 @@ import AsideContext from '../../context/AsideContext';
 // import BookingUtil from '../../../utils/navigation.util';
 // import configuration from '../../../navigateConfig.js';
 // import useMoveSound from '../../../hooks/useMoveSound';
-import _, { set } from 'lodash';
-import axios from 'axios';
+// import _, { set } from 'lodash';
+// import axios from 'axios';
 
 const Booking = () => {
   // const [showResult, setShowResult] = useState(false);
