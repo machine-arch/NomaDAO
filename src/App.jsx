@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import BookingContext from "./context/BookingContext";
-import { Outlet, useNavigate } from "react-router-dom";
-import AsideContext from "./context/AsideContext";
-import ProductContext from "./context/ProductContext";
+import React, { useEffect, useState } from 'react';
+import BookingContext from './context/BookingContext';
+import { Outlet, useNavigate } from 'react-router-dom';
+import AsideContext from './context/AsideContext';
+import ProductContext from './context/ProductContext';
+import { GlobalProvider } from './context/global.context';
 export default function App() {
   // hooks
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function App() {
 
   // navigate to home page on first render
   useEffect(() => {
-    navigate("/Home");
+    navigate('/Home');
   }, [navigate]);
 
   return (
@@ -25,7 +26,9 @@ export default function App() {
     <AsideContext.Provider value={{ asideActive, setAsideActive, pages, setPages, activePage, setActivePage}}>
       <BookingContext.Provider value={{bookingParams, setBookingParams}}>
           <ProductContext.Provider value={{product, setProduct}}>
+            <GlobalProvider>
             <Outlet />
+            </GlobalProvider>
           </ProductContext.Provider>
       </BookingContext.Provider>
     </AsideContext.Provider>
