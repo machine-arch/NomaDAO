@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import legacy from '@vitejs/plugin-legacy';
 
@@ -9,7 +10,10 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       output: {
-        format: 'iife',
+        format: 'es',
+        manualChunks: {
+          index_1: ['src/components/modules/booking/Booking.jsx'],
+        },
       },
     },
   },
@@ -19,6 +23,11 @@ export default defineConfig({
         data: {
           title: 'production',
         },
+      },
+    }),
+    react({
+      babel: {
+        plugins: ['@babel/plugin-proposal-optional-chaining'],
       },
     }),
     legacy({
