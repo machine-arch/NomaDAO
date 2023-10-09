@@ -396,7 +396,7 @@ const Booking = () => {
         filteredData[key] = data[key];
       }
     }
-    fetch(`${import.meta.env.VITE_API_URL}/hotel-filter?page=1&limit=10`, {
+    fetch(`${import.meta.env.VITE_API_URL}/hotel-filter?page=1&limit=100`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
