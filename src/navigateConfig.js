@@ -5,6 +5,7 @@ import {
 import { handleDate } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 import { handlePersons } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 import { handleLocation } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
+import { handleThreeD } from "./components/modules/booking/EventHandlers/BookingEventHandlers";
 
 const configuration = {
   booking: {
@@ -482,6 +483,12 @@ const configuration = {
                 isActive: false,
                 activeClass: "booking-active-element",
                 className: "detailed__slider__threed",
+                eventHandlers: {
+                  onKeyDown: {
+                    name: "onKeyDown",
+                    callback: handleThreeD,
+                  },
+                },
               },
               detailed__slider__item: {
                 name: "images",

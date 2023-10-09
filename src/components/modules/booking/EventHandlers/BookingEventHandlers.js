@@ -25,3 +25,8 @@ export const handleAdvancedFilter = (name, setState) => {
     [name]: !prevState[name],
   }));
 };
+
+export const handleThreeD = (navigate, url) => {
+  window.location.href = url;
+  // navigate(url);
+};

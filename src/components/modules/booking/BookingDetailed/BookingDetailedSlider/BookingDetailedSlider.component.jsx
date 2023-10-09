@@ -4,7 +4,7 @@ import BookingDetailedSliderBackArrow from "./BookingDetailedSliderBackArrow/Boo
 import BookingDetailedSliderNextArrow from "./BookingDetailedSliderNextArrow/BookingDetailedSliderNextArrow";
 import BookingDetailedSlider3D from "./BookingDetailedSlider3D/BookingDetailedSlider3D";
 
-const BookingDetailedSlider = ({ config }) => {
+const BookingDetailedSlider = ({ config, metadata }) => {
   const SLIDER_IMGS = [
     {
       id: 1,
@@ -30,6 +30,8 @@ const BookingDetailedSlider = ({ config }) => {
     }
   };
 
+  console.log(metadata);
+
   return (
     <div className="detailed__slider__bg">
       <img
@@ -41,6 +43,8 @@ const BookingDetailedSlider = ({ config }) => {
         <BookingDetailedSliderBackArrow />
         <div className="detailed__slider__item">
           <BookingDetailedSlider3D
+            metadata={metadata}
+            config={config?.components?.detailed__slider__threed}
             isActive={config?.components?.detailed__slider__threed?.isActive}
             className={config?.components?.detailed__slider__threed?.className}
             actieveClass={
