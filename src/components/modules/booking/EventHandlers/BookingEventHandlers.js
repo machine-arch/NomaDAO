@@ -26,7 +26,9 @@ export const handleAdvancedFilter = (name, setState) => {
   }));
 };
 
-export const handleThreeD = (navigate, url) => {
-  window.location.href = url;
+export const handleThreeD = (e, url) => {
+  if (e.keyCode == 13) {
+    window.location.href = url;
+  }
   // navigate(url);
 };

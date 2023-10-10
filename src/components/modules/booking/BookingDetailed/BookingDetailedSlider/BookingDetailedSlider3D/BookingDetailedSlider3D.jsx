@@ -12,8 +12,8 @@ const BookingDetailedSlider3D = ({
   return (
     <>
       <button
-        onClick={() =>
-          config?.eventHandlers?.onKeyDown.callback(navigate, metadata)
+        onKeyDown={(e) =>
+          config?.eventHandlers?.onKeyDown.callback(e, metadata)
         }
         className={`${className} ${isActive ? actieveClass : ""}`}
       >
